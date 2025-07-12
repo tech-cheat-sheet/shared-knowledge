@@ -1,0 +1,5 @@
+# Ignore HTML generated files via 'Markdown All-in-one' VS Code extension
+out/
+
+# Files to ignore
+_Notes_.md
