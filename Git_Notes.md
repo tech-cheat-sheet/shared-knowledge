@@ -37,28 +37,30 @@ git config user.email "you@example.com"
 | Category         | Command                                | Description                                                  |
 |------------------|----------------------------------------|--------------------------------------------------------------|
 | **Setup**        | `git config --global user.name "Name"` | Set your Git username                                        |
-|                  | `git config --global user.email "email@example.com"` | Set your Git email address                        |
+|                  | `git config --global user.email "email@example.com"` | Set your Git email address                    |
 | **Initialize**   | `git init`                             | Create a new Git repository                                 |
 |                  | `git clone <url>`                      | Clone an existing repository                                |
 | **Staging**      | `git add <file>`                       | Stage a specific file                                       |
 |                  | `git add .`                            | Stage all changes                                           |
 | **Commit**       | `git commit -m "message"`              | Commit staged changes with a message                        |
-|                  | `git commit --amend`                   | Modify the last commit                                     |
+|                  | `git commit --amend`                   | Modify the last commit                                      |
 | **Branching**    | `git branch`                           | List branches                                               |
-|                  | `git branch <name>`                    | Create a new branch                                         |
+|                  | `git branch <name>`                    | Create a new branch but does not switch to it               |
+|                  | `git branch -m <branch>`               | Rename current branch to <branch>                           |
+|                  | `git branch -m <old_branch> <new_branch>`| Rename <old_branch> to <new_branch>                       |
 |                  | `git checkout <name>`                  | Switch to a branch                                          |
-|                  | `git checkout -b <name>`               | Create and switch to a new branch                          |
-|                  | `git merge <branch>`                   | Merge a branch into current branch                         |
-| **Remote**       | `git remote add origin <url>`          | Add a remote repository                                    |
-|                  | `git remote`                           | List remote names only                                     |
-|                  | `git remote --verbose`                 | List remote names with their URLs (fetch & push)           |
-|                  | `git push -u origin <branch>`          | Push branch and set upstream                               |
-|                  | `git pull`                             | Fetch and merge changes from remote                        |
+|                  | `git checkout -b <name>`               | Create and switch to a new branch                           |
+|                  | `git merge <branch>`                   | Merge a branch into current branch                          |
+| **Remote**       | `git remote add origin <url>`          | Add a remote repository                                     |
+|                  | `git remote`                           | List remote names only                                      |
+|                  | `git remote --verbose`                 | List remote names with their URLs (fetch & push)            |
+|                  | `git push -u origin <branch>`          | Push branch and set upstream                                |
+|                  | `git pull`                             | Fetch and merge changes from remote                         |
 | **Status & Logs**| `git status`                           | Show current status                                         |
 |                  | `git log`                              | Show commit history                                         |
-|                  | `git diff`                             | Show unstaged changes                                      |
+|                  | `git diff`                             | Show unstaged changes                                       |
 | **Undo**         | `git reset <file>`                     | Unstage a file                                              |
-|                  | `git checkout -- <file>`               | Discard changes to a file                                  |
-|                  | `git revert <commit>`                  | Create a new commit that undoes a previous one             |
-| **Stash**        | `git stash`                            | Save changes for later                                     |
-|                  | `git stash pop`                        | Reapply stashed changes                                    |
+|                  | `git checkout -- <file>`               | Discard changes to a file                                   |
+|                  | `git revert <commit>`                  | Create a new commit that undoes a previous one              |
+| **Stash**        | `git stash`                            | Save changes for later                                      |
+|                  | `git stash pop`                        | Reapply stashed changes                                     |
