@@ -50,6 +50,8 @@ git config user.email "you@example.com"
 |                  | `git checkout -b <name>`               | Create and switch to a new branch                          |
 |                  | `git merge <branch>`                   | Merge a branch into current branch                         |
 | **Remote**       | `git remote add origin <url>`          | Add a remote repository                                    |
+|                  | `git remote`                           | List remote names only                                     |
+|                  | `git remote --verbose`                 | List remote names with their URLs (fetch & push)           |
 |                  | `git push -u origin <branch>`          | Push branch and set upstream                               |
 |                  | `git pull`                             | Fetch and merge changes from remote                        |
 | **Status & Logs**| `git status`                           | Show current status                                         |
