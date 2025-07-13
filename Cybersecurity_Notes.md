@@ -39,6 +39,7 @@
   - [Data Classifications](#data-classifications)
   - [Types of Data](#types-of-data)
   - [States of Data](#states-of-data)
+- [Types of Authentication Credentials](#types-of-authentication-credentials)
 # Information Security
 ## Principles of Security = Security Concepts + Security Controls
 ### Security Concepts = CIA + AAA
@@ -316,3 +317,13 @@ being performed by devices, such as printing a report from a device.
 - **Data in transit** Actions that transmit the data across a network, like an email sent across the
 Internet, are called data in transit (sometimes called data in motion).
 - **Data at rest** \is data that is stored on electronic media.
+# Types of Authentication Credentials
+| **Element**              | **Description**                                                  | **Scenario Example**                       |
+|--------------------------|------------------------------------------------------------------|--------------------------------------------|
+| Somewhere you are        | Restricted location                                               | Restricted military base                   |
+| Something you are        | Unique biological trait that cannot be changed                   | Fingerprint reader to enter building       |
+| Something you have       | Possession of a unique item                                       | Riker’s ID card                            |
+| Someone you know         | Validated by a known individual                                   | Li knows Peyton                            |
+| Something you exhibit    | Genetically determined physical characteristic                    | Peyton’s flaming red hair                  |
+| Something you can do     | A personal behavior or skill difficult to replicate               | Paolo’s signature                          |
+| Something you know       | Private knowledge known only to the individual                    | Combination to unlock locker               |
