@@ -1,4 +1,5 @@
 - [Useful Tools for cryptography](#useful-tools-for-cryptography)
+- [Benefits of Cryptography](#benefits-of-cryptography)
 - [🔐 Cryptographic Algorithms with Security Status](#-cryptographic-algorithms-with-security-status)
   - ["Block Cipher" vs "Block Cipher Mode"](#block-cipher-vs-block-cipher-mode)
     - [🔐 What Is a Block Cipher?](#-what-is-a-block-cipher)
@@ -73,6 +74,21 @@ To check the security posture/status of a cipher suites:
 Websites to play with: "Encryption Tools", "Hashing Tools" and "Encoding Tools":
 - https://anycript.com/
 - https://cryptotools.net/
+# Benefits of Cryptography
+- **Confidentiality** Cryptography can protect the confidentiality of information by ensuring that only authorized parties can view it. When private information, such as a list of employees to be laid off, is transmitted across the network or stored on a file server, its contents can be encrypted, which allows only authorized individuals who have the key to read it.
+- **Integrity** Cryptography can protect the integrity of information. Integrity ensures that the ­information is correct and no unauthorized person or malicious software has altered that data. Because ciphertext requires that a key must be used to open the data before it can be changed, cryptography can ensure its integrity. The list of employees to be laid off, for example, can be protected so that no names can be added or deleted by unauthorized personnel.
+- **Authentication** The authentication of the sender can be verified through cryptography. ­Specific types of cryptography, for example, can prevent a situation such as circulation of a list of employees to be laid off that appears to come from a manager but, in reality, it was sent by an imposter.
+- **Nonrepudiation** Cryptography can enforce nonrepudiation. Repudiation is defined as denial; nonrepudiation is the inability to deny. In information technology (IT), nonrepudiation is the process of proving that a user performed an action, such as sending an email message. ­Nonrepudiation prevents an individual from fraudulently reneging on an action. The nonrepudiation features of cryptography can prevent a manager from claiming they never sent the list of employees to be laid off to an unauthorized third party.
+- **Obfuscation** Obfuscation is making something obscure or unclear. Cryptography can provide a degree of obfuscation by encrypting a list of employees to be laid off so that an unauthorized user cannot read it.
+
+| **Characteristic**  | **Description**                                                                 | **Protection**                                                                                   |
+|---------------------|----------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
+| Confidentiality      | Ensures only authorized parties can view the information                        | Encrypted data can only be accessed with the correct decryption key                              |
+| Integrity            | Guarantees data has not been altered by unauthorized sources                    | Changes are restricted to authorized users who possess the encryption key                        |
+| Authentication       | Verifies the genuineness of a user or source                                   | Confirms sender identity to prevent impersonation                                                |
+| Nonrepudiation       | Prevents denial of actions taken                                                | Users can’t fraudulently deny having conducted specific transactions                             |
+| Obfuscation          | Makes information unclear or difficult to interpret                             | Conceals original data so its true form cannot be easily determined                              |
+
 # 🔐 Cryptographic Algorithms with Security Status
 | Algorithm             | Type          | Key Length(s)          | Cipher Type | Purpose(s)                        | Is Still Secured?                                                                 |
 |----------------------|---------------|------------------------|-------------|-----------------------------------|-----------------------------------------------------------------------------------|
