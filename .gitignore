@@ -3,3 +3,6 @@ out/
 
 # Files to ignore
 _Notes_.md
+
+# File extensions to ignore
+*.pdf
