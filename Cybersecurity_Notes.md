@@ -1,3 +1,9 @@
+- [Information Security](#information-security)
+  - [Principles of Security = Security Concepts + Security Controls](#principles-of-security--security-concepts--security-controls)
+    - [Security Concepts = CIA + AAA](#security-concepts--cia--aaa)
+    - [Security Controls](#security-controls)
+      - [Security Control Categories](#security-control-categories)
+      - [Security Control Types](#security-control-types)
 - [Popular Security Flaws](#popular-security-flaws)
 - [Threat Vector vs Attack Surface](#threat-vector-vs-attack-surface)
 - [Vulnerability Type vs Threat Vector](#vulnerability-type-vs-threat-vector)
@@ -26,6 +32,53 @@
   - [🧠 Why Threat Intelligence Matters in Vulnerability Management](#-why-threat-intelligence-matters-in-vulnerability-management)
   - [🔍 How the Big Three Integrate Threat Intelligence](#-how-the-big-three-integrate-threat-intelligence)
   - [📊 What This Means for You](#-what-this-means-for-you)
+# Information Security
+## Principles of Security = Security Concepts + Security Controls
+### Security Concepts = CIA + AAA
+- **Confidentiality** ensures that only authorized parties can
+view the information.
+- **Integrity** ensures that the information is correct and no unauthorized person or malicious software has altered the data.
+- **Availability** ensures that data is accessible to only authorized users and not to unapproved individuals.
+- **Authentication** Checking the delivery person’s credentials to be sure that they are authentic and not fabricated.
+- **Authorization** granting permission to take an action. Computer users are granted access only to the specific services, devices,applications, and files needed to perform their job duties.
+- **Accounting** creates a record that is preserved of who accessed the enterprise network, what resources they accessed, and when they disconnected from the network.
+### Security Controls
+A security control is a safeguard (sometimes called a countermeasure) that is employed within an enterprise to protect
+the CIA of information. A control attempts to limit the exposure of an asset to a danger.
+#### Security Control Categories
+| **Action**        | **Description**                    | **Scenario Example**                            | **Computer Process**                    |
+|-------------------|------------------------------------|--------------------------------------------------|------------------------------------------|
+| Identification    | Review of credentials              | Delivery person shows employee badge            | User enters username                     |
+| Authentication    | Validate credentials as genuine    | Gabe reads badge to confirm it is real          | User provides password                   |
+| Authorization     | Permission granted for admittance  | Gabe opens door to allow delivery person in     | User allowed to access specific data     |
+| Accounting        | Record of user actions             | Gabe signs to confirm package pickup            | Information recorded in log file         |
+#### Security Control Types
+| Control Category | Description                                         | Example                                                                      |
+|------------------|-----------------------------------------------------|------------------------------------------------------------------------------|
+| Managerial       | Controls using administrative methods               | Acceptable use policy restricting access to malicious websites              |
+| Operational      | Controls implemented and executed by individuals    | Training workshops teaching users to identify and delete suspicious emails  |
+| Technical        | Controls embedded in hardware, software, or firmware| Devices that block malicious content from entering the network              |
+| Physical         | Controls enforcing security through physical means  | Installing a fence to prevent unauthorized building access                   |
+
+
+| Control Type          | Description                                                                 |
+|-----------------------|-----------------------------------------------------------------------------|
+| Deterrent controls     | Attempt to discourage security violations before they occur                 |
+| Preventive controls    | Work to block threats from interacting with vulnerabilities                 |
+| Detective controls     | Identify threats that have already reached the system                       |
+| Compensating controls  | Provide alternative protections when standard controls can't be used       |
+| Corrective controls    | Lessen damage and help recover after an incident                            |
+| Directive controls     | Ensure specific outcomes are achieved through policy or guidance            |
+
+| Control Type         | Description                         | When It Occurs   | Example                                                        |
+|----------------------|-------------------------------------|------------------|----------------------------------------------------------------|
+| Deterrent Control     | Discourages potential attacks       | Before attack     | Signs indicating area is under video surveillance              |
+| Preventive Control    | Prevents threat exploitation        | Before attack     | Security awareness training for users                          |
+| Directive Control     | Guides desired behavior             | Before attack     | Incentives for completing a training course                    |
+| Detective Control     | Identifies an active attack         | During attack     | Motion detection sensors                                       |
+| Compensating Control  | Alternative safeguards during attack| During attack     | Isolating an infected computer on a separate network           |
+| Corrective Control    | Reduces damage and recovers systems| After attack      | Cleaning a virus from an infected server                       |
+
 # Popular Security Flaws
 | Vulnerability Type           | Description                                                        | Example                                                   | CVSS Score Range          |
 |------------------------------|--------------------------------------------------------------------|------------------------------------------------------------|---------------------------|
