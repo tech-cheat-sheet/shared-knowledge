@@ -13,6 +13,9 @@ sudo apt install git --yes
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 
+# Use git store credentials to avoid entering your token/username/password every time when running 'git push':
+git config --global credential.helper store
+
 git config --global init.defaultBranch main
 # hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and 'development'. The just-created branch can be renamed via this command: 
 # git branch -m  BRANCH_NAME
