@@ -16,6 +16,8 @@
   - [🧠 Key Features of MITRE ATT\&CK:](#-key-features-of-mitre-attck)
   - [📊 Structure of the Framework:](#-structure-of-the-framework)
 - [Cybersecurity Frameworks](#cybersecurity-frameworks)
+  - [Comparison Table: MITRE ATT\&CK vs OWASP vs CWE vs NIST vs ISO/IEC 27001](#comparison-table-mitre-attck-vs-owasp-vs-cwe-vs-nist-vs-isoiec-27001)
+    - [🧠 Summary](#-summary)
   - [MITRE ATT\&CK® framework](#mitre-attck-framework-1)
   - [🧩 Lockheed Martin Cyber Kill Chain](#-lockheed-martin-cyber-kill-chain)
   - [💎 Diamond Model of Intrusion Analysis](#-diamond-model-of-intrusion-analysis)
@@ -184,6 +186,26 @@ Each matrix includes:
 💡 Why it matters: MITRE ATT&CK helps organizations understand how attackers operate, simulate attacks, and strengthen defenses. It’s like a playbook of how cyber adversaries think and act.
 
 # Cybersecurity Frameworks
+## Comparison Table: MITRE ATT&CK vs OWASP vs CWE vs NIST vs ISO/IEC 27001
+
+| Feature / Focus Area                | MITRE ATT&CK                            | OWASP Top Ten                            | CWE (Common Weakness Enumeration)       | NIST Cybersecurity Framework            | ISO/IEC 27001                          |
+|------------------------------------|-----------------------------------------|------------------------------------------|-----------------------------------------|-----------------------------------------|----------------------------------------|
+| 🔍 Primary Focus                   | Adversary behavior & attack techniques  | Web application security risks           | Software and hardware weaknesses        | Cyber risk management & resilience      | Information security management system |
+| 🎯 Scope                           | Threat actor tactics, techniques & procedures | Web app vulnerabilities & misconfigurations | Broad software flaws across platforms   | Identify, protect, detect, respond, recover | Organizational security controls       |
+| 🧠 Use Case                        | Threat modeling, detection, red teaming | Developer awareness, secure coding       | Vulnerability classification & mapping  | Strategic planning, compliance, resilience | Certification, audit, governance       |
+| 🧩 Structure                       | Tactics → Techniques → Sub-techniques   | 10 categories of common risks            | Hierarchical: Pillars → Classes → Bases | Core Functions → Implementation Tiers → Profiles | Clauses → Controls → Annex A           |
+| 🛠️ Examples                       | T1210: Exploitation of Remote Services  | A01: Broken Access Control               | CWE-94: Code Injection, CWE-502: Deserialization | PR.AC: Access Control, DE.CM: Monitoring | A.9: Access Control, A.12: Operations Security |
+| 🔗 Relationship to CVEs            | Maps techniques to real-world exploits  | Maps categories to CWEs                  | Directly referenced in CVEs             | Indirect — supports risk-based CVE response | Indirect — supports control-based CVE mitigation |
+| 🧪 Detection & Mitigation Guidance | Yes — includes data sources & procedures | Yes — includes prevention recommendations | Yes — includes mitigation strategies    | Yes — includes best practices & maturity tiers | Yes — includes control objectives       |
+| 🧭 Ideal Audience                  | SOC teams, threat hunters, red teams    | Developers, app security teams           | Developers, security analysts           | CISOs, risk managers, compliance teams   | Executives, auditors, IT governance     |
+| 🧠 Maintained By                   | MITRE                                   | OWASP                                    | MITRE                                   | NIST (U.S. government)                   | ISO (International Organization for Standardization) |
+
+### 🧠 Summary
+- MITRE ATT&CK: Tactical lens on attacker behavior.
+- OWASP Top Ten: Developer-focused web app risks.
+- CWE: Granular catalog of software weaknesses.
+- NIST CSF: Strategic framework for cyber resilience.
+- ISO/IEC 27001: Global standard for security governance and certification.
 ## MITRE ATT&CK® framework
 ## 🧩 Lockheed Martin Cyber Kill Chain
 - Breaks down cyberattacks into seven linear stages: Reconnaissance, Weaponization, Delivery, Exploitation, Installation, Command & Control, and Actions on Objectives
