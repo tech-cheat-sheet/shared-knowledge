@@ -1,5 +1,6 @@
 - [Useful Tools for cryptography](#useful-tools-for-cryptography)
 - [Benefits of Cryptography](#benefits-of-cryptography)
+- [Cryptographic Constraints / Limitations of Cryptographic Ciphers](#cryptographic-constraints--limitations-of-cryptographic-ciphers)
 - [🔐 Cryptographic Algorithms with Security Status](#-cryptographic-algorithms-with-security-status)
   - ["Block Cipher" vs "Block Cipher Mode"](#block-cipher-vs-block-cipher-mode)
     - [🔐 What Is a Block Cipher?](#-what-is-a-block-cipher)
@@ -88,6 +89,18 @@ Websites to play with: "Encryption Tools", "Hashing Tools" and "Encoding Tools":
 | Authentication       | Verifies the genuineness of a user or source                                   | Confirms sender identity to prevent impersonation                                                |
 | Nonrepudiation       | Prevents denial of actions taken                                                | Users can’t fraudulently deny having conducted specific transactions                             |
 | Obfuscation          | Makes information unclear or difficult to interpret                             | Conceals original data so its true form cannot be easily determined                              |
+# Cryptographic Constraints / Limitations of Cryptographic Ciphers
+| **Limitation**            | **Explanation**                                                                 |
+|---------------------------|----------------------------------------------------------------------------------|
+| Speed                     | Encryption and decryption speed varies by hardware/software; slow performance may be unacceptable |
+| Size                      | Encrypted files can be up to one-third larger than plaintext versions           |
+| Weak keys                 | Some ciphers generate weak keys, leading to unpredictable behavior or compromised security |
+| Key length                | Short keys reduce security strength, making encryption easier to crack          |
+| Longevity                 | Advancements in computing may render ciphers obsolete sooner                    |
+| Predictability            | Poor random number generation can make output predictable                       |
+| Reuse                     | Reusing the same key increases the data footprint for attackers                 |
+| Entropy                   | Low randomness enables predictions about future values                          |
+| Computational overhead    | Devices like sensors and IoT may lack resources to handle heavy encryption      |
 
 # 🔐 Cryptographic Algorithms with Security Status
 | Algorithm             | Type          | Key Length(s)          | Cipher Type | Purpose(s)                        | Is Still Secured?                                                                 |
