@@ -5,7 +5,9 @@
       - [Security Control Categories](#security-control-categories)
       - [Security Control Types](#security-control-types)
 - [Popular Security Flaws](#popular-security-flaws)
+- [Threat Actor vs Threat Vector](#threat-actor-vs-threat-vector)
 - [Threat Vector vs Attack Surface](#threat-vector-vs-attack-surface)
+- [Attack Surfaces by Category](#attack-surfaces-by-category)
 - [Vulnerability Type vs Threat Vector](#vulnerability-type-vs-threat-vector)
   - [🔍 Real-World Analogy](#-real-world-analogy)
   - [🧩 How They Interact](#-how-they-interact)
@@ -93,6 +95,15 @@ the CIA of information. A control attempts to limit the exposure of an asset to 
 | Missing MFA                  | No second factor of authentication                                 | Single-factor login to sensitive dashboard                | 4.0–6.5 (Medium)          |
 | Cross-Site Request Forgery   | Tricking users into unwanted actions                               | Changing account email via forged request                 | 5.0–7.0 (Medium–High)     |
 | Insecure Deserialization     | Untrusted data leads to code execution or logic flaws              | Java app deserializing attacker-controlled object         | 8.0–9.8 (High–Critical)   |
+# Threat Actor vs Threat Vector
+| Aspect             | Threat Actor                                | Threat Vector                                    |
+|--------------------|---------------------------------------------|--------------------------------------------------|
+| **Definition**     | Entity responsible for initiating a threat  | Path or method used to carry out the threat      |
+| **Role**           | The attacker or malicious source            | The technique or channel exploited               |
+| **Examples**       | Hackers, nation-states, insiders, malware   | Phishing emails, USB drives, open ports          |
+| **Intent**         | Often intentional (malicious), sometimes accidental | Passive channel for delivering threats      |
+| **Focus**          | Who is behind the attack                    | How the attack reaches the target                |
+| **Security Usage** | Helps identify motives and capabilities     | Helps map out points of vulnerability            |
 # Threat Vector vs Attack Surface
 | Aspect              | Threat Vector                                       | Attack Surface                                          |
 |---------------------|----------------------------------------------------|---------------------------------------------------------|
@@ -109,6 +120,18 @@ the CIA of information. A control attempts to limit the exposure of an asset to 
 
 🧠 Think of it this way: the attack surface is the playground, and threat vectors are the ways attackers play dirty on it.
 Want to explore how to reduce your attack surface or defend against common threat vectors?
+# Attack Surfaces by Category
+| **Category** | **Attack Surface**             | **Explanation**                                                                 |
+|--------------|-------------------------------|----------------------------------------------------------------------------------|
+| Software     | Vulnerable software           | Contains security flaws exploitable by attackers; includes both client and agentless software |
+| Software     | File-based                    | Individual files targeted for infection or compromise                           |
+| Software     | Image-based                   | Entire system images can be vulnerable and subject to exploitation               |
+| Hardware     | Unsupported systems & apps    | No longer updated or monitored, increasing exposure to threats                   |
+| Hardware     | Removable devices             | USBs or external drives can introduce malware between systems                    |
+| Network      | Unsecure networks             | Weak wired or wireless networks provide broad access to connected devices        |
+| Network      | Open service ports            | Enabled but unused ports may become access points for attackers                  |
+| Network      | Default credentials           | Preconfigured admin accounts with known passwords can be exploited               |
+
 # Vulnerability Type vs Threat Vector
 | Aspect               | Threat Vector                                           | Vulnerability Type                                      |
 |----------------------|--------------------------------------------------------|----------------------------------------------------------|
