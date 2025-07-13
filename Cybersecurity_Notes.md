@@ -34,6 +34,11 @@
   - [🧠 Why Threat Intelligence Matters in Vulnerability Management](#-why-threat-intelligence-matters-in-vulnerability-management)
   - [🔍 How the Big Three Integrate Threat Intelligence](#-how-the-big-three-integrate-threat-intelligence)
   - [📊 What This Means for You](#-what-this-means-for-you)
+- [Physical Security Controls](#physical-security-controls)
+- [Data Controls](#data-controls)
+  - [Data Classifications](#data-classifications)
+  - [Types of Data](#types-of-data)
+  - [States of Data](#states-of-data)
 # Information Security
 ## Principles of Security = Security Concepts + Security Controls
 ### Security Concepts = CIA + AAA
@@ -281,3 +286,33 @@ Each matrix includes:
 - They help security teams focus on the 3–5% of vulnerabilities that truly matter, reducing noise and improving efficiency.
 
 So yes, threat intelligence is baked into the DNA of modern vulnerability scanners—and if a tool doesn’t offer it, it’s falling behind.
+# Physical Security Controls
+- Perimeter Defenses: Barriers, Security Guards, Sensors, Security Buffers
+- Locks
+- Preventing Data Leakage: Faraday Cage, Protected Distribution System
+# Data Controls
+## Data Classifications
+| **Data Type**    | **Description**                                                                 | **Recommended Handling**                                                                       |
+|------------------|----------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| Confidential     | Highest level of data sensitivity                                                | Only accessible by users with the highest level of preapproved authentication                 |
+| Private          | Medium confidentiality; access should be limited                                | Available only to users with a need-to-know basis                                              |
+| Sensitive        | Disclosure could cause catastrophic harm                                         | Restricted to employees with business need and formal approval                                |
+| Critical         | Essential for organizational functionality; must be available                    | Must be rigorously protected to maintain availability and mission                             |
+| Public           | No risk associated with release                                                  | Accessible by all; assumed public if no other data label is present                           |
+| Restricted       | Not available to the public                                                      | Exercise caution before using in emails or external communications                            |
+## Types of Data
+- **Regulated** is that which external stipulations are placed on it regarding who can see and use the data and in what contexts. Examples of regulated data include Protected Health Information (PHI), which is data about a person’s health status, provision of healthcare, or payment for healthcare, and is regulated by the Health Insurance Portability and Account- ability Act of 1996 (HIPAA).
+- **Intellectual property (IP)** is an invention or a work that is the result of creativity. The owner of IP can apply for protection from others who attempt to duplicate it;
+these protections over IP or its expression are patent, trademark, copyright, or trade secret.
+- **Trade secret** is enterprise data that is undisclosed. A trade secret has three
+elements: it is information that has either actual or potential independent economic value by
+virtue of not being generally known, it has value to others who cannot legitimately obtain the
+information, and it is subject to reasonable efforts to maintain its secrecy. All three of these
+­elements are required and, if any one of them ceases to exist, then the trade secret will also
+cease to exist. Otherwise, there is no limit on the amount of time a trade secret is protected.
+## States of Data
+- **Data in processing** Data in use (also called data in processing) is data on which actions are
+being performed by devices, such as printing a report from a device.
+- **Data in transit** Actions that transmit the data across a network, like an email sent across the
+Internet, are called data in transit (sometimes called data in motion).
+- **Data at rest** \is data that is stored on electronic media.
