@@ -19,6 +19,13 @@
     - [🔐 Secure Practices for Database Connection Strings](#-secure-practices-for-database-connection-strings)
       - [👎 Hardcoding Example (Don’t Do This)](#-hardcoding-example-dont-do-this)
       - [👍 Secure Loading Example](#-secure-loading-example)
+- [Databases](#databases)
+  - [🧱 SQL Database Features](#-sql-database-features)
+  - [📦 NoSQL Database Features](#-nosql-database-features)
+  - [🆚 SQL vs NoSQL: Side-by-Side Comparison](#-sql-vs-nosql-side-by-side-comparison)
+  - [🧠 Beyond Relational vs Non-Relational: Other Database Types](#-beyond-relational-vs-non-relational-other-database-types)
+  - [Azure CosmosDB](#azure-cosmosdb)
+    - [🗂️ Azure Cosmos DB: Supported Model Types](#️-azure-cosmos-db-supported-model-types)
 # REST vs gRPC vs SOAP
 | Aspect              | REST (HTTP/1.1)                  | gRPC (HTTP/2 + Protobuf)         | SOAP (XML + WS-*)                                 |
 |---------------------|----------------------------------|----------------------------------|---------------------------------------------------|
@@ -258,3 +265,60 @@ String dbUrl = System.getenv("DB_URL");
 String username = System.getenv("DB_USER");
 String password = System.getenv("DB_PASS");
 ```
+# Databases
+## 🧱 SQL Database Features
+| Feature           | Description                                                                                       |
+|-------------------|---------------------------------------------------------------------------------------------------|
+| **Structure**      | Data stored in tables with rows and columns                                                       |
+| **Schema**         | Fixed schema — must define structure before inserting data                                        |
+| **Scalability**    | Vertically scalable — upgrade server resources                                                    |
+| **Consistency**    | Strong consistency via ACID properties (Atomicity, Consistency, Isolation, Durability)           |
+| **Query Language** | Uses SQL (Structured Query Language)                                                              |
+| **Best For**       | Complex queries, transactional systems (e.g., banking, ERP)                                       |
+| **Examples**       | MySQL, PostgreSQL, Oracle, SQL Server                                                             |
+## 📦 NoSQL Database Features
+| Feature           | Description                                                                                                 |
+|-------------------|-------------------------------------------------------------------------------------------------------------|
+| **Structure**      | Data stored as documents, key-value pairs, graphs, or wide-columns                                          |
+| **Schema**         | Flexible schema — can store varied data formats                                                             |
+| **Scalability**    | Horizontally scalable — add more servers to handle load                                                     |
+| **Consistency**    | Often eventual consistency via BASE model (Basically Available, Soft state, Eventual consistency)           |
+| **Query Language** | Varies — MongoDB has its own syntax, others use JSON-like queries                                           |
+| **Best For**       | Big data, real-time apps, rapidly changing or unstructured data                                             |
+| **Examples**       | MongoDB, Cassandra, Redis, CouchDB, Neo4j                                                                   |
+## 🆚 SQL vs NoSQL: Side-by-Side Comparison
+| Feature           | 🧱 SQL (Relational)                                                                 | 📦 NoSQL (Non-Relational)                                                                    |
+|-------------------|-------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| **Structure**      | Tables with rows and columns                                                       | Documents, key-value pairs, graphs, wide-columns                                             |
+| **Schema**         | Fixed schema — must define structure before inserting data                         | Flexible schema — can store varied data formats                                              |
+| **Scalability**    | Vertically scalable — upgrade server resources                                     | Horizontally scalable — add more servers to handle load                                      |
+| **Consistency**    | Strong consistency via **ACID** (Atomicity, Consistency, Isolation, Durability)    | Eventual consistency via **BASE** (Basically Available, Soft state, Eventual consistency)    |
+| **Query Language** | SQL (Structured Query Language)                                                    | Varies — MongoDB syntax, JSON-like queries                                                   |
+| **Best For**       | Complex queries, transactional systems (e.g., banking, ERP)                        | Big data, real-time apps, rapidly changing or unstructured data                              |
+| **Examples**       | MySQL, PostgreSQL, Oracle, SQL Server                                              | MongoDB, Cassandra, Redis, CouchDB, Neo4j                                                    |
+## 🧠 Beyond Relational vs Non-Relational: Other Database Types
+| Type                     | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| **Object-Oriented DB**   | Stores data as objects (like in OOP). Great for complex data models and multimedia. |
+| **Time-Series DB**       | Optimized for timestamped data (e.g., IoT, metrics, logs). Fast for time-based queries. |
+| **Graph DB**             | Models relationships as nodes and edges. Ideal for social networks, recommendations. |
+| **Key-Value Store**      | Simple, fast storage using key-value pairs. Great for caching and session data. |
+| **Document DB**          | Stores semi-structured data as documents (e.g., JSON). Flexible schema. |
+| **Columnar DB**          | Stores data by columns instead of rows. Efficient for analytics and big data. |
+| **Hierarchical DB**      | Tree-like structure with parent-child relationships. Used in legacy systems. |
+| **Network DB**           | Graph-like structure with many-to-many relationships. Predecessor to relational DBs. |
+| **Cloud DB**             | Hosted on cloud platforms. Scalable, accessible, and often managed as a service. |
+| **Vector DB**            | Stores high-dimensional vectors for AI/ML use cases (e.g., embeddings, similarity search). |
+| **Centralized DB**       | All data stored in one location. Easier to manage but less scalable. |
+| **Distributed DB**       | Data spread across multiple nodes or locations. Improves availability and fault tolerance. |
+## Azure CosmosDB
+Azure Cosmos DB is a multi-model, fully managed distributed database that supports several types of data models and APIs — making it incredibly versatile.
+### 🗂️ Azure Cosmos DB: Supported Model Types
+| Model Type          | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| **NoSQL (Document)**| Stores JSON documents with flexible schema. Ideal for modern web/mobile apps. |
+| **Relational**       | Supports relational data via PostgreSQL API. Great for structured queries.  |
+| **Vector**           | Optimized for AI workloads like semantic search and embeddings.             |
+| **Key-Value**        | Simple key-value pairs for fast lookups and caching.                        |
+| **Graph**            | Models relationships using nodes and edges. Useful for social networks, recommendations. |
+| **Table**            | Compatible with Azure Table Storage for tabular data.                       |
