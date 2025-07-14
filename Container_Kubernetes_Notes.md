@@ -1,5 +1,33 @@
+- [Kubernetes (K8S)](#kubernetes-k8s)
+- [📊 Container Orchestration Comparison Table](#-container-orchestration-comparison-table)
+  - [🚀 Core Concepts](#-core-concepts)
+  - [⚙️ Kubernetes Capabilities](#️-kubernetes-capabilities)
+  - [🧠 Philosophy](#-philosophy)
+  - [🌍 Real-World Use Cases](#-real-world-use-cases)
+- [Ubuntu and Kubernetes](#ubuntu-and-kubernetes)
+  - [🧪 Option 1: Minikube (Best for Beginners)](#-option-1-minikube-best-for-beginners)
+  - [🧰 Option 2: MicroK8s (Canonical’s Lightweight Kubernetes)](#-option-2-microk8s-canonicals-lightweight-kubernetes)
+- [Minikube](#minikube)
+  - [🚀 Minikube Main Commands Cheat Sheet](#-minikube-main-commands-cheat-sheet)
+  - [Super command](#super-command)
+- [🧰 kubectl Main Commands Cheat Sheet](#-kubectl-main-commands-cheat-sheet)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
+# 📊 Container Orchestration Comparison Table
+| Feature                      | Docker Compose                         | Docker Swarm                          | Kubernetes                              |
+|-----------------------------|----------------------------------------|---------------------------------------|------------------------------------------|
+| 🚀 Purpose                   | Local multi-container development      | Basic container orchestration         | Advanced orchestration & scaling         |
+| 🛠 Complexity                | Low                                     | Moderate                              | High                                      |
+| 📦 Setup Time               | Minutes                                 | Few minutes                           | Hours (or use managed services)          |
+| 🧩 Configuration Language   | YAML                                    | YAML + CLI                            | YAML + kubectl + many config types       |
+| 🔁 Scaling Support          | Manual scale                            | Built-in scaling                      | Autoscaling, rolling updates             |
+| 🧪 Health Checks            | Basic                                   | Supported                             | Robust, customizable                     |
+| 🔌 Networking               | Simple bridge network                   | Overlay networks                      | Advanced networking model                |
+| 🏗 Service Discovery        | Limited                                 | Built-in                              | DNS-based, automatic                     |
+| 📦 Volume Management        | Simple                                  | Supported                             | Extensive with persistent volumes        |
+| 🌐 Cloud Native Support     | Minimal                                 | Limited                               | Strong (cloud providers love it)         |
+| 🧑‍🤝‍🧑 Community & Ecosystem | Small                                   | Niche                                  | Large, thriving ecosystem                |
+| 📦 Use Case Example         | Dev/testing multi-service apps          | Small scale deployments               | Microservices at scale                   |
 ## 🚀 Core Concepts
 - Containers: Lightweight, portable units that package code and dependencies.
 - Pods: The smallest deployable unit in Kubernetes, often wrapping one or more containers.
