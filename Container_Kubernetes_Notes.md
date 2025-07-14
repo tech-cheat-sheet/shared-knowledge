@@ -1,5 +1,5 @@
 - [Kubernetes (K8S)](#kubernetes-k8s)
-- [📊 Container Orchestration Comparison Table](#-container-orchestration-comparison-table)
+  - [📊 Container Orchestration Comparison Table](#-container-orchestration-comparison-table)
   - [🚀 Core Concepts](#-core-concepts)
   - [⚙️ Kubernetes Capabilities](#️-kubernetes-capabilities)
   - [🧠 Philosophy](#-philosophy)
@@ -13,7 +13,7 @@
 - [🧰 kubectl Main Commands Cheat Sheet](#-kubectl-main-commands-cheat-sheet)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
-# 📊 Container Orchestration Comparison Table
+## 📊 Container Orchestration Comparison Table
 | Feature                      | Docker Compose                         | Docker Swarm                          | Kubernetes                              |
 |-----------------------------|----------------------------------------|---------------------------------------|------------------------------------------|
 | 🚀 Purpose                   | Local multi-container development      | Basic container orchestration         | Advanced orchestration & scaling         |
