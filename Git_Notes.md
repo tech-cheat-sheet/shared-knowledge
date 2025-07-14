@@ -61,7 +61,8 @@ git config user.email "you@example.com"
 |                  | `git pull`                             | Fetch and merge changes from remote                         |
 | **Status & Logs**| `git status`                           | Show current status                                         |
 |                  | `git log`                              | Show commit history                                         |
-|                  | `git diff`                             | Show unstaged changes                                       |
+|                  | `git diff`                             | **Unstaged changes** — edits not yet added with `git add`   |
+|                  | `git diff --staged`                    | **Staged changes** — what will be committed next            |
 | **Undo**         | `git reset <file>`                     | Unstage a file                                              |
 |                  | `git checkout -- <file>`               | Discard changes to a file                                   |
 |                  | `git revert <commit>`                  | Create a new commit that undoes a previous one              |
