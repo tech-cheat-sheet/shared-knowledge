@@ -11,6 +11,7 @@
 - [🧱 Main Docker Objects \& Entities](#-main-docker-objects--entities)
 - [🐳 Docker Commands Cheat Sheet](#-docker-commands-cheat-sheet)
   - [Super commands](#super-commands)
+  - [🧼 Docker Prune Command Comparison](#-docker-prune-command-comparison)
 # How to install Docker
 https://docs.docker.com/engine/install/ubuntu/
 ## Uninstall all conflicting packages:
@@ -109,20 +110,18 @@ echo "================================================== NETWORKS" && \
 docker network ls && \
 echo "================================================== VOLUMES" && \
 docker volume ls
-
-# stop all running Docker containers
-# docker ps -q: Lists the container IDs of all running containers.
-# docker stop: Stops each container in that list gracefully.
-docker stop $(docker ps -q)
-
-# remove all containers after stopping them
-docker rm $(docker ps -aq)
 ```
 ```shell
+# if there is at least 1 container running, the following command is best:
 docker stop $(docker ps -q) && \
 docker rm $(docker ps -aq) && \
-docker rmi $(docker images -q)
-```
-```shell
+docker rmi $(docker images -q) && \
+docker network prune --force && \
+docker volume prune --force && \
 docker system prune --all --force
 ```
+## 🧼 Docker Prune Command Comparison
+| Command                               | Scope                    | What It Removes                                                                 |
+|---------------------------------------|---------------------------|----------------------------------------------------------------------------------|
+| `docker network prune --force`        | 🔌 Networks only           | All **unused Docker networks** not attached to containers                        |
+| `docker system prune --all --force`   | 🌪️ Everything (aggressive) | - Stopped containers<br>- All unused images (not just dangling)<br>- Unused networks<br>- Unused volumes<br>- Build cache |
