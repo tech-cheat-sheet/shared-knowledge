@@ -1,22 +1,29 @@
-- [How to install Docker](#how-to-install-docker)
-  - [Uninstall all conflicting packages:](#uninstall-all-conflicting-packages)
-  - [Add Docker's official GPG key:](#add-dockers-official-gpg-key)
-  - [Add the repository to Apt sources:](#add-the-repository-to-apt-sources)
-  - [Install the Docker packages](#install-the-docker-packages)
-  - [Verify](#verify)
+- [How to install Docker on Ubuntu](#how-to-install-docker-on-ubuntu)
+  - [Reference:](#reference)
+  - [0. Uninstall all conflicting packages:](#0-uninstall-all-conflicting-packages)
+  - [1. Add Docker's official GPG key:](#1-add-dockers-official-gpg-key)
+  - [2. Add the repository to Apt sources:](#2-add-the-repository-to-apt-sources)
+  - [3. Install the Docker packages](#3-install-the-docker-packages)
+  - [4. Verify](#4-verify)
 - [A Shipping Analogy for Docker, Kubernetes, and Helm](#a-shipping-analogy-for-docker-kubernetes-and-helm)
   - [Docker: The Shipping Container](#docker-the-shipping-container)
   - [Kubernetes: The Port \& Crane System](#kubernetes-the-port--crane-system)
   - [Helm: The Shipping Manifest \& Blueprint](#helm-the-shipping-manifest--blueprint)
 - [🧱 Main Docker Objects \& Entities](#-main-docker-objects--entities)
+- [Docker Registries](#docker-registries)
+  - [🧠 Choosing Tips](#-choosing-tips)
 - [🐳 Docker Commands Cheat Sheet](#-docker-commands-cheat-sheet)
   - [Super commands](#super-commands)
   - [🧼 Docker Prune Command Comparison](#-docker-prune-command-comparison)
-# How to install Docker
-https://docs.docker.com/engine/install/ubuntu/
-## Uninstall all conflicting packages:
+# How to install Docker on Ubuntu
+## Reference:
+- https://docs.docker.com/engine/install/ubuntu/
+
+## 0. Uninstall all conflicting packages:
+```shell
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
-## Add Docker's official GPG key:
+```
+## 1. Add Docker's official GPG key:
 ```shell
 sudo apt-get update
 sudo apt-get install ca-certificates curl
@@ -24,7 +31,7 @@ sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 ```
-## Add the repository to Apt sources:
+## 2. Add the repository to Apt sources:
 ```shell
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
@@ -32,11 +39,11 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 ```
-## Install the Docker packages
+## 3. Install the Docker packages
 ```shell
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
-## Verify
+## 4. Verify
 ```shell
 sudo docker run hello-world
 ```
@@ -73,6 +80,26 @@ With this model, you can see how each layer builds on the last: Docker standardi
 | **Registries**    | Storage locations for images — e.g., Docker Hub, private registries         |
 | **Layers**        | Each image is made up of stacked layers that improve caching and reuse      |
 | **Context**       | The build directory passed to `docker build` — includes Dockerfile & assets |
+
+
+# Docker Registries
+| Registry                  | Type         | Highlights                                                  |
+|---------------------------|--------------|-------------------------------------------------------------|
+| **Docker Hub**            | Public/Private | Default registry, massive image library, CI/CD integration |
+| **GitHub Container Registry** | Public/Private | Seamless with GitHub Actions, good for open-source projects |
+| **GitLab Container Registry** | Private       | Built into GitLab CI/CD, great for internal pipelines       |
+| **Amazon ECR**            | Private       | Deep AWS integration, IAM-based access control              |
+| **Azure Container Registry (ACR)** | Private       | Geo-replication, RBAC, Helm chart support                   |
+| **Google Artifact Registry** | Private       | Successor to GCR, supports multiple artifact types          |
+| **Harbor**                | Private/Open Source | CNCF project, vulnerability scanning, RBAC, replication |
+| **Quay.io / Red Hat Quay** | Private       | Enterprise-grade, geo-location support, BitTorrent delivery |
+| **JFrog Artifactory**     | Private       | Universal repo manager, supports Docker + other formats     |
+| **Sonatype Nexus Repository OSS** | Private       | Supports Docker, Maven, npm, and more                       |
+## 🧠 Choosing Tips
+- Public sharing? → Docker Hub (https://hub.docker.com/) or GitHub
+- Enterprise security? → Harbor, Quay, or ECR
+- CI/CD integration? → GitLab, GitHub, ACR
+- Multi-artifact support? → JFrog or Nexus
 
 
 # 🐳 Docker Commands Cheat Sheet
