@@ -15,6 +15,13 @@
 - [Ubuntu/Linux Graphical Package Manager:](#ubuntulinux-graphical-package-manager)
   - [🆚 App Center vs Synaptic](#-app-center-vs-synaptic)
   - [🧠 Which Should You Use?](#-which-should-you-use)
+- [Ubuntu Support](#ubuntu-support)
+  - [Types](#types)
+  - [Extended Security Maintenance (ESM)](#extended-security-maintenance-esm)
+    - [🧠 Why Use ESM?](#-why-use-esm)
+  - [🆚 Ubuntu Support Comparison](#-ubuntu-support-comparison)
+  - [🗂️ Ubuntu Repository Comparison](#️-ubuntu-repository-comparison)
+    - [🧠 Quick Summary](#-quick-summary)
 <!-- '# Ubuntu - Useful Commands' BEGIN -->
 # Ubuntu - Useful Commands
 ## Check Ubuntu Distribution
@@ -142,3 +149,51 @@ sudo apt install --yes synaptic
 ## 🧠 Which Should You Use?
 - Use App Center if you want a sleek, app-store-like experience and mostly install Snap packages or mainstream apps.
 - Use Synaptic if you need precision, control, or want to manage system-level packages and dependencies.
+# Ubuntu Support
+## Types
+There are 2 types of Ubuntu releases: Interim and LTS. Each Ubuntu LTS is maintained for 10 years total: 5 years of standard support + 5 years of ESM. Interim releases are maintained for 9 months.
+## Extended Security Maintenance (ESM)
+Extended Security Maintenance (ESM) is a service provided by Canonical that extends the life of Ubuntu Long-Term Support (LTS) releases beyond their standard 5-year support window.
+| Feature             | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| **Extended Support**| Adds up to 5 extra years of security updates after standard LTS ends         |
+| **Package Coverage**| Includes updates for both **Main** and **Universe** repositories             |
+| **Livepatching**    | Enables kernel updates **without rebooting**, reducing downtime              |
+| **Compliance Ready**| Helps meet standards like **HIPAA, GDPR, FIPS 140-2**                        |
+| **Access Methods**  | Available via **Ubuntu Pro**, **Ubuntu Advantage**, or **cloud platforms**  |
+| **Free Tier**       | Free for up to **5 personal machines** and **50 for Ubuntu community members** |
+
+### 🧠 Why Use ESM?
+- Keeps older Ubuntu systems secure and compliant without immediate upgrades
+- Ideal for legacy applications, regulated industries, or long-term deployments
+- Lets you plan upgrades at your own pace while maintaining protection
+
+Sources:
+- https://releases.ubuntu.com/
+
+## 🆚 Ubuntu Support Comparison
+| Feature             | 🛠️ Ubuntu Standard Support                              | 🚀 Ubuntu Pro Support                                         |
+|---------------------|----------------------------------------------------------|---------------------------------------------------------------|
+| **Support Duration**| 5 years (LTS releases only)                               | Up to 10 years (LTS releases)                                 |
+| **Package Coverage**| Security updates for **main** repository only            | Security updates for **main + universe** (25,000+ packages)   |
+| **Compliance Tools**| No built-in compliance support                           | Supports **HIPAA, GDPR, FIPS 140-2**, and more                |
+| **Livepatch Support**| ❌ Not included — kernel updates require reboot         | ✅ Included — patch kernel without reboot                      |
+| **Support Channels**| Community forums, optional paid support                  | Canonical enterprise-grade support (self-service or 24/7)     |
+| **Best Use Case**   | Personal machines, developers, non-critical projects     | Business-critical systems, enterprise, regulated industries   |
+| **Free Tier**       | Always free                                               | Free for **up to 5 personal machines**                        |
+
+## 🗂️ Ubuntu Repository Comparison
+| Repository     | License Type         | Maintained By       | Support Level           | Contains                                  |
+|----------------|----------------------|----------------------|--------------------------|-------------------------------------------|
+| **Main**        | Free & Open Source   | Canonical            | ✅ Fully supported        | Core OS packages, officially vetted apps  |
+| **Restricted**  | Proprietary          | Canonical            | ✅ Supported (limited)    | Essential proprietary drivers (e.g. GPU)  |
+| **Universe**    | Free & Open Source   | Community            | ⚠️ Community-supported    | Thousands of community-maintained apps    |
+| **Multiverse**  | Proprietary / Mixed  | Community            | ❌ Unsupported            | Software with legal or licensing issues   |
+### 🧠 Quick Summary
+- Main: Safe, stable, and officially maintained — ideal for production systems.
+- Restricted: Necessary proprietary drivers with Canonical support.
+- Universe: Huge library of open-source tools, but updates aren’t guaranteed.
+- Multiverse: Use with caution — includes codecs, games, and other non-free software.
+
+Sources:
+- https://ubuntu.com/about/release-cycle
