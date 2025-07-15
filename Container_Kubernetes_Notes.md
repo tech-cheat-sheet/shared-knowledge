@@ -4,6 +4,7 @@
   - [⚙️ Kubernetes Capabilities](#️-kubernetes-capabilities)
   - [🧠 Philosophy](#-philosophy)
   - [🌍 Real-World Use Cases](#-real-world-use-cases)
+  - [📦 Kubernetes Objects Summary Table](#-kubernetes-objects-summary-table)
 - [Ubuntu and Kubernetes](#ubuntu-and-kubernetes)
   - [🧪 Option 1: Minikube (Best for Beginners)](#-option-1-minikube-best-for-beginners)
   - [🧰 Option 2: MicroK8s (Canonical’s Lightweight Kubernetes)](#-option-2-microk8s-canonicals-lightweight-kubernetes)
@@ -57,6 +58,26 @@ Kubernetes uses a declarative model: you define your desired state (e.g., 5 repl
 - Media streaming with global content delivery
 - Financial services requiring secure, scalable infrastructure
 - Healthcare systems managing patient data and analytics
+## 📦 Kubernetes Objects Summary Table
+| Object Type       | Purpose / Role                                      | Typical Use Case                            |
+|-------------------|-----------------------------------------------------|---------------------------------------------|
+| **Pod**           | Smallest deployable unit; wraps one or more containers | Running a single app or tightly coupled containers |
+| **Deployment**    | Manages stateless Pods with rolling updates         | Web apps, APIs, frontend services           |
+| **ReplicaSet**    | Ensures a specified number of Pod replicas          | Used internally by Deployments              |
+| **StatefulSet**   | Manages stateful Pods with persistent identity      | Databases, queues, apps needing stable storage |
+| **DaemonSet**     | Ensures one Pod per node                            | Monitoring agents, log collectors           |
+| **Job**           | Runs a task to completion                           | Batch jobs, data processing                 |
+| **CronJob**       | Runs Jobs on a schedule                             | Backups, scheduled tasks                    |
+| **Service**       | Exposes Pods via stable networking                  | Internal/external access to apps            |
+| **Ingress**       | Manages external HTTP/S access to Services          | Routing traffic, SSL termination            |
+| **ConfigMap**     | Stores non-sensitive config data                    | App settings, environment variables         |
+| **Secret**        | Stores sensitive data securely                      | Passwords, tokens, certificates             |
+| **PersistentVolume (PV)** | Represents physical storage                  | Disk, NFS, cloud storage                    |
+| **PersistentVolumeClaim (PVC)** | Requests storage from PVs             | Attaching storage to Pods                   |
+| **Namespace**     | Logical cluster partitioning                        | Multi-team, multi-env isolation             |
+| **ServiceAccount**| Provides identity for Pods                          | Access control, API authentication          |
+| **ResourceQuota** | Limits resource usage per namespace                 | Preventing overconsumption                  |
+| **LimitRange**    | Sets default/request/limit values for resources     | Enforcing resource boundaries               |
 # Ubuntu and Kubernetes
 ## 🧪 Option 1: Minikube (Best for Beginners)
 ```shell
