@@ -151,15 +151,15 @@ minikube start --driver=docker --cpus=4 --memory=8192 --disk-size=10g
 | `kubectl config <subcommand>`      | Manage kubeconfig contexts and clusters                   |
 | `kubectl get all`                  | List all resources in the current namespace               |
 # 🧪 Kubernetes Certifications Comparison Table
-| Feature                     | CKAD (App Developer)             | CKA (Administrator)               | CKS (Security Specialist)            |
-|----------------------------|----------------------------------|-----------------------------------|--------------------------------------|
-| 🎯 Primary Focus           | App development & deployment     | Cluster operations & maintenance  | Securing Kubernetes environments     |
-| 👤 Target Audience         | Developers                       | Sysadmins / DevOps Engineers      | Security Engineers / Advanced Admins |
-| 🔧 Key Skills              | Deployments, Services, Configs   | Cluster setup, networking, storage| RBAC, secrets, runtime protection    |
-| 📋 Exam Format             | Hands-on, CLI-based              | Hands-on, CLI-based               | Hands-on, CLI-based                  |
-| ⏱ Duration                | 2 hours                          | 2 hours                           | 2 hours                              |
-| 🧑‍💻 Prerequisites          | None                             | None                              | Must hold valid CKA certification    |
-| 🏆 Difficulty Level        | Beginner to Intermediate         | Intermediate to Advanced          | Advanced                             |
-| 🎓 Credential Validity     | 3 years                          | 3 years                           | 2 years                              |
-| 📚 Learning Focus          | Kubernetes primitives, apps      | Cluster architecture, ops         | Threat modeling, hardening, policies |
-| 🧑‍🤝‍🧑 Community Recognition  | High                             | Very High                          | Highly Specialized                   |
+| Feature                     | KCNA (Associate)                  | CKAD (App Developer)             | CKA (Administrator)               | CKS (Security Specialist)            |
+|----------------------------|-----------------------------------|----------------------------------|-----------------------------------|--------------------------------------|
+| 🎯 Primary Focus           | Foundational Kubernetes & Cloud Native | App development & deployment     | Cluster operations & maintenance  | Securing Kubernetes environments     |
+| 👤 Target Audience         | Beginners, students, career switchers | Developers                       | Sysadmins / DevOps Engineers      | Security Engineers / Advanced Admins |
+| 🔧 Key Skills              | Concepts, kubectl basics, ecosystem | Deployments, Services, Configs   | Cluster setup, networking, storage| RBAC, secrets, runtime protection    |
+| 📋 Exam Format             | Multiple-choice, online           | Hands-on, CLI-based              | Hands-on, CLI-based               | Hands-on, CLI-based                  |
+| ⏱ Duration                | 90 minutes                        | 2 hours                          | 2 hours                           | 2 hours                              |
+| 🧑‍💻 Prerequisites          | None                              | None                             | None                              | Must hold valid CKA certification    |
+| 🏆 Difficulty Level        | Entry-level                       | Beginner to Intermediate         | Intermediate to Advanced          | Advanced                             |
+| 🎓 Credential Validity     | 2 years                           | 3 years                          | 3 years                           | 2 years                              |
+| 📚 Learning Focus          | Cloud native principles, Kubernetes basics | Kubernetes primitives, apps      | Cluster architecture, ops         | Threat modeling, hardening, policies |
+| 🧑‍🤝‍🧑 Community Recognition  | Growing                           | High                             | Very High                          | Highly Specialized                   |
