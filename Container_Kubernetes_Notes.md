@@ -7,6 +7,11 @@
   - [📦 Kubernetes Objects Summary Table](#-kubernetes-objects-summary-table)
   - [Note: Kubectl’s validation features](#note-kubectls-validation-features)
     - [✅ Built-in Validation Modes](#-built-in-validation-modes)
+- [Kustomize](#kustomize)
+  - [🧩 What Is Kustomize?](#-what-is-kustomize)
+  - [🚀 Why Use Kustomize?](#-why-use-kustomize)
+  - [🔧 Kustomize Features Overview](#-kustomize-features-overview)
+  - [📁 Typical Directory Structure](#-typical-directory-structure)
   - [⚙️ Kubernetes vs Istio Comparison Table](#️-kubernetes-vs-istio-comparison-table)
 - [Ubuntu and Kubernetes](#ubuntu-and-kubernetes)
   - [🧪 Option 1: Minikube (Best for Beginners)](#-option-1-minikube-best-for-beginners)
@@ -89,6 +94,37 @@ help developers catch errors in Kubernetes manifests before applying them to a c
 | `--dry-run=client`| Validates syntax locally without contacting the API server               |
 | `--dry-run=server`| Sends the manifest to the API server for full validation (schema + logic)|
 | `kubectl diff`    | Compares live resources with local manifests to preview changes          |
+# Kustomize 
+Kustomize is a powerful configuration management tool built specifically for Kubernetes — and the best part? It’s template-free and fully declarative, meaning you work directly with YAML files without introducing a new templating language.
+## 🧩 What Is Kustomize?
+Kustomize lets you customize Kubernetes manifests without modifying the original files. Instead of duplicating YAML for each environment (like dev, staging, prod), you define a base and apply overlays to patch or transform it.
+## 🚀 Why Use Kustomize?
+- Environment-specific configs without duplicating YAML
+- GitOps-friendly: declarative and version-controlled
+- Works with Helm: patch Helm-generated manifests
+- Integrated into CI/CD pipelines for clean deployments
+## 🔧 Kustomize Features Overview
+| Feature             | Description                                                            |
+|---------------------|------------------------------------------------------------------------|
+| Base & Overlays     | Reuse common configs and layer environment-specific changes            |
+| Transformers        | Add labels, annotations, prefixes, suffixes, namespaces                |
+| Generators          | Create ConfigMaps and Secrets from files or literals                   |
+| Patching            | Modify resources using strategic merge or JSON patches                 |
+| Built into kubectl  | Use `kubectl apply -k` to apply Kustomize configs directly             |
+| No Templating       | Works with plain YAML — no need for Helm-style templates               |
+## 📁 Typical Directory Structure
+```shell
+my-app/
+├── base/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── kustomization.yaml
+└── overlays/
+    ├── dev/
+    │   └── kustomization.yaml (patches, transformers)
+    └── prod/
+        └── kustomization.yaml (patches, transformers)
+```
 ## ⚙️ Kubernetes vs Istio Comparison Table
 | Feature                     | Kubernetes                                      | Istio                                                  |
 |----------------------------|--------------------------------------------------|--------------------------------------------------------|
