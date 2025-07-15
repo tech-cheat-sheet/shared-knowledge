@@ -5,6 +5,8 @@
   - [🧠 Philosophy](#-philosophy)
   - [🌍 Real-World Use Cases](#-real-world-use-cases)
   - [📦 Kubernetes Objects Summary Table](#-kubernetes-objects-summary-table)
+  - [Note: Kubectl’s validation features](#note-kubectls-validation-features)
+    - [✅ Built-in Validation Modes](#-built-in-validation-modes)
   - [⚙️ Kubernetes vs Istio Comparison Table](#️-kubernetes-vs-istio-comparison-table)
 - [Ubuntu and Kubernetes](#ubuntu-and-kubernetes)
   - [🧪 Option 1: Minikube (Best for Beginners)](#-option-1-minikube-best-for-beginners)
@@ -79,6 +81,14 @@ Kubernetes uses a declarative model: you define your desired state (e.g., 5 repl
 | **ServiceAccount**| Provides identity for Pods                          | Access control, API authentication          |
 | **ResourceQuota** | Limits resource usage per namespace                 | Preventing overconsumption                  |
 | **LimitRange**    | Sets default/request/limit values for resources     | Enforcing resource boundaries               |
+## Note: Kubectl’s validation features
+help developers catch errors in Kubernetes manifests before applying them to a cluster. These features are essential for maintaining clean, reliable configurations. Here's a breakdown of what they include:
+### ✅ Built-in Validation Modes
+| Mode              | Description                                                               |
+|-------------------|---------------------------------------------------------------------------|
+| `--dry-run=client`| Validates syntax locally without contacting the API server               |
+| `--dry-run=server`| Sends the manifest to the API server for full validation (schema + logic)|
+| `kubectl diff`    | Compares live resources with local manifests to preview changes          |
 ## ⚙️ Kubernetes vs Istio Comparison Table
 | Feature                     | Kubernetes                                      | Istio                                                  |
 |----------------------------|--------------------------------------------------|--------------------------------------------------------|
