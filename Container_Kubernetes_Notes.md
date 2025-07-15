@@ -11,6 +11,7 @@
   - [🚀 Minikube Main Commands Cheat Sheet](#-minikube-main-commands-cheat-sheet)
   - [Super command](#super-command)
 - [🧰 kubectl Main Commands Cheat Sheet](#-kubectl-main-commands-cheat-sheet)
+- [🧪 Kubernetes Certifications Comparison Table](#-kubernetes-certifications-comparison-table)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -149,3 +150,16 @@ minikube start --driver=docker --cpus=4 --memory=8192 --disk-size=10g
 | `kubectl top <resource>`           | View resource usage (CPU/memory)                          |
 | `kubectl config <subcommand>`      | Manage kubeconfig contexts and clusters                   |
 | `kubectl get all`                  | List all resources in the current namespace               |
+# 🧪 Kubernetes Certifications Comparison Table
+| Feature                     | CKAD (App Developer)             | CKA (Administrator)               | CKS (Security Specialist)            |
+|----------------------------|----------------------------------|-----------------------------------|--------------------------------------|
+| 🎯 Primary Focus           | App development & deployment     | Cluster operations & maintenance  | Securing Kubernetes environments     |
+| 👤 Target Audience         | Developers                       | Sysadmins / DevOps Engineers      | Security Engineers / Advanced Admins |
+| 🔧 Key Skills              | Deployments, Services, Configs   | Cluster setup, networking, storage| RBAC, secrets, runtime protection    |
+| 📋 Exam Format             | Hands-on, CLI-based              | Hands-on, CLI-based               | Hands-on, CLI-based                  |
+| ⏱ Duration                | 2 hours                          | 2 hours                           | 2 hours                              |
+| 🧑‍💻 Prerequisites          | None                             | None                              | Must hold valid CKA certification    |
+| 🏆 Difficulty Level        | Beginner to Intermediate         | Intermediate to Advanced          | Advanced                             |
+| 🎓 Credential Validity     | 3 years                          | 3 years                           | 2 years                              |
+| 📚 Learning Focus          | Kubernetes primitives, apps      | Cluster architecture, ops         | Threat modeling, hardening, policies |
+| 🧑‍🤝‍🧑 Community Recognition  | High                             | Very High                          | Highly Specialized                   |
