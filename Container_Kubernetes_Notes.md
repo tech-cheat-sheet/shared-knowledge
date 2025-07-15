@@ -15,6 +15,9 @@
   - [⚙️ Kubernetes vs Istio Comparison Table](#️-kubernetes-vs-istio-comparison-table)
 - [Ubuntu and Kubernetes](#ubuntu-and-kubernetes)
   - [🧪 Option 1: Minikube (Best for Beginners)](#-option-1-minikube-best-for-beginners)
+    - [Error caused by minikube when using Nordvpn](#error-caused-by-minikube-when-using-nordvpn)
+      - [Explanation](#explanation)
+      - [✅ How to Fix It](#-how-to-fix-it)
   - [🧰 Option 2: MicroK8s (Canonical’s Lightweight Kubernetes)](#-option-2-microk8s-canonicals-lightweight-kubernetes)
 - [Minikube](#minikube)
   - [🚀 Minikube Main Commands Cheat Sheet](#-minikube-main-commands-cheat-sheet)
@@ -176,6 +179,34 @@ Sources:
 ✅ Pros: Easy setup, low resource usage
 
 ⚠️ Cons: Not production-grade, limited to one node
+### Error caused by minikube when using Nordvpn
+When you run:
+```shell
+nordvpn statu
+```
+you will see:
+```shell
+update.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.nordvpn /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect "/run/user/1000/doc": lstat /run/user/1000/doc: permission denie
+```
+#### Explanation
+```shell
+You: 
+1. Added your user to the docker group (good!)
+2. Started a new shell session with docker as your primary group (temporary)
+
+This new shell session can alter environment variables and session paths, which Snap-based apps like NordVPN rely on. That’s why you saw the error involving /run/user/1000/doc — Snap couldn’t access your user’s document portal due to permission mismatches in the new shell.
+```
+#### ✅ How to Fix It
+1. Exit the newgrp shell Just type exit to return to your original shell.
+2. Log out and log back in This ensures your group membership is fully applied across your session.
+3. Restart Snapd (optional)
+```shell
+sudo systemctl restart snapd
+```
+4. Try NordVPN again Run:
+```shell
+nordvpn status
+```
 ## 🧰 Option 2: MicroK8s (Canonical’s Lightweight Kubernetes)
 ```shell
 # Install MicroK8s
