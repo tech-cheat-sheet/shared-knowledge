@@ -5,6 +5,7 @@
   - [🧠 Philosophy](#-philosophy)
   - [🌍 Real-World Use Cases](#-real-world-use-cases)
   - [📦 Kubernetes Objects Summary Table](#-kubernetes-objects-summary-table)
+  - [⚙️ Kubernetes vs Istio Comparison Table](#️-kubernetes-vs-istio-comparison-table)
 - [Ubuntu and Kubernetes](#ubuntu-and-kubernetes)
   - [🧪 Option 1: Minikube (Best for Beginners)](#-option-1-minikube-best-for-beginners)
   - [🧰 Option 2: MicroK8s (Canonical’s Lightweight Kubernetes)](#-option-2-microk8s-canonicals-lightweight-kubernetes)
@@ -78,6 +79,21 @@ Kubernetes uses a declarative model: you define your desired state (e.g., 5 repl
 | **ServiceAccount**| Provides identity for Pods                          | Access control, API authentication          |
 | **ResourceQuota** | Limits resource usage per namespace                 | Preventing overconsumption                  |
 | **LimitRange**    | Sets default/request/limit values for resources     | Enforcing resource boundaries               |
+## ⚙️ Kubernetes vs Istio Comparison Table
+| Feature                     | Kubernetes                                      | Istio                                                  |
+|----------------------------|--------------------------------------------------|--------------------------------------------------------|
+| 🎯 Primary Role            | Container orchestration platform                | Service mesh for microservice communication            |
+| 🧠 Core Functionality      | Deploying, scaling, and managing containers     | Traffic management, security, observability            |
+| 🔌 Networking              | Basic service discovery, DNS, load balancing    | Advanced routing, retries, fault injection, mTLS       |
+| 🔐 Security Capabilities   | RBAC, Network Policies, Secrets                 | Zero-trust security, mTLS, access control policies     |
+| 📦 Configuration Style     | Declarative YAML manifests                      | Declarative YAML policies (VirtualService, DestinationRule) |
+| 🔄 Automation              | Self-healing, autoscaling, rolling updates      | Canary deployments, traffic shifting, circuit breaking |
+| 📊 Observability           | Basic metrics via Prometheus, logging via Fluentd | Built-in telemetry, tracing, logging integrations      |
+| 🧩 Integration             | Works with Helm, Argo, Prometheus, etc.         | Integrates with Envoy, Prometheus, Grafana, Zipkin     |
+| 🧑‍🤝‍🧑 Community & Ecosystem | Massive CNCF ecosystem                          | CNCF graduated project with growing adoption           |
+| 🧪 Use Case Example        | Running containerized apps at scale             | Managing secure, observable microservice traffic       |
+
+
 # Ubuntu and Kubernetes
 ## 🧪 Option 1: Minikube (Best for Beginners)
 ```shell
