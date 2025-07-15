@@ -12,6 +12,10 @@
   - [Super command](#super-command)
 - [🧰 kubectl Main Commands Cheat Sheet](#-kubectl-main-commands-cheat-sheet)
 - [🧪 Kubernetes Certifications Comparison Table](#-kubernetes-certifications-comparison-table)
+- [🧪 CNCF Certifications Beyond CKAD, CKA, CKS, and KCNA](#-cncf-certifications-beyond-ckad-cka-cks-and-kcna)
+- [🧪 KCNA vs KCA Certification Comparison Table](#-kcna-vs-kca-certification-comparison-table)
+  - [⚙️ Kubernetes vs Kyverno Comparison Table](#️-kubernetes-vs-kyverno-comparison-table)
+- [🔐 CKS vs KCSA Certification Comparison Table](#-cks-vs-kcsa-certification-comparison-table)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -163,3 +167,55 @@ minikube start --driver=docker --cpus=4 --memory=8192 --disk-size=10g
 | 🎓 Credential Validity     | 2 years                           | 3 years                          | 3 years                           | 2 years                              |
 | 📚 Learning Focus          | Cloud native principles, Kubernetes basics | Kubernetes primitives, apps      | Cluster architecture, ops         | Threat modeling, hardening, policies |
 | 🧑‍🤝‍🧑 Community Recognition  | Growing                           | High                             | Very High                          | Highly Specialized                   |
+# 🧪 CNCF Certifications Beyond CKAD, CKA, CKS, and KCNA
+| Certification                        | Focus Area                          | Ideal For                              |
+|-------------------------------------|-------------------------------------|----------------------------------------|
+| **KCSA** – Kubernetes & Cloud Security Associate | Foundational cloud-native security | Beginners interested in security       |
+| **PCA** – Prometheus Certified Associate        | Monitoring & observability         | Devs & SREs working with metrics       |
+| **ICA** – Istio Certified Associate             | Service mesh fundamentals           | Engineers using Istio for traffic mgmt |
+| **CCA** – Cilium Certified Associate            | Networking & observability          | Platform engineers, cloud specialists  |
+| **CAPA** – Certified Argo Project Associate     | Argo ecosystem (Workflows, CD)     | DevOps, data scientists                |
+| **CGOA** – GitOps Certified Associate           | GitOps principles & practices       | CI/CD practitioners, platform teams    |
+| **CBA** – Certified Backstage Associate         | Internal developer platforms       | Engineers building IDPs                |
+| **OTCA** – OpenTelemetry Certified Associate    | Telemetry, tracing, logging        | Observability-focused professionals    |
+| **KCA** – Kyverno Certified Associate           | Kubernetes policy management        | Security & compliance engineers        |
+| **CNPA** – Cloud Native Platform Engineering Associate | Platform engineering fundamentals | Early-career platform engineers        |
+# 🧪 KCNA vs KCA Certification Comparison Table
+| Feature                     | KCNA (Kubernetes & Cloud Native Associate) | KCA (Kyverno Certified Associate)         |
+|----------------------------|--------------------------------------------|-------------------------------------------|
+| 🎯 Primary Focus           | Foundational Kubernetes & cloud-native concepts | Kubernetes policy management with Kyverno |
+| 👤 Target Audience         | Beginners, students, career switchers      | Kubernetes admins, DevSecOps, security engineers |
+| 🔧 Key Skills              | Kubernetes basics, cloud-native ecosystem  | Writing, applying, and managing Kyverno policies |
+| 📋 Exam Format             | Multiple-choice, online                    | Multiple-choice, online                    |
+| ⏱ Duration                | 90 minutes                                 | 90 minutes                                 |
+| 🧑‍💻 Prerequisites          | None                                       | Familiarity with Kubernetes recommended    |
+| 🏆 Difficulty Level        | Entry-level                                | Intermediate                               |
+| 🎓 Credential Validity     | 2 years                                    | 2 years                                    |
+| 📚 Learning Focus          | kubectl, containers, observability, architecture | Kyverno CLI, policy writing, security enforcement |
+| 🧑‍🤝‍🧑 Community Recognition  | Growing                                    | Niche but rising in cloud security circles |
+## ⚙️ Kubernetes vs Kyverno Comparison Table
+| Feature                     | Kubernetes                                      | Kyverno                                              |
+|----------------------------|--------------------------------------------------|------------------------------------------------------|
+| 🎯 Primary Role            | Container orchestration platform                | Kubernetes-native policy engine                      |
+| 🧠 Core Functionality      | Deploying, scaling, and managing containers     | Validating, mutating, generating, and verifying resources |
+| 🛠 Configuration Style     | Declarative YAML manifests                      | Declarative YAML policies (no new language needed)   |
+| 🔐 Security Capabilities   | RBAC, Network Policies, Secrets                 | Enforces security policies, image verification, PSPs |
+| 🧪 Policy Enforcement      | Basic via admission controllers                 | Advanced via dynamic admission control               |
+| 🔄 Automation              | Self-healing, autoscaling, rolling updates      | Auto-labeling, just-in-time provisioning, cleanup    |
+| 📦 Resource Scope          | Pods, Services, Deployments, etc.               | All Kubernetes resources, including CRDs             |
+| 📋 Reporting               | Limited built-in reporting                      | Policy reports, audit logs, compliance tracking      |
+| 🧑‍🤝‍🧑 Community & Ecosystem | Massive CNCF ecosystem                          | CNCF incubating project with growing adoption        |
+| 🧩 Integration             | Works with tools like Helm, Argo, Prometheus    | Integrates with Cosign, Sixty, Chainsaw, GitOps tools |
+# 🔐 CKS vs KCSA Certification Comparison Table
+| Feature                     | CKS (Certified Kubernetes Security Specialist) | KCSA (Kubernetes & Cloud Native Security Associate) |
+|----------------------------|------------------------------------------------|-----------------------------------------------------|
+| 🎯 Primary Focus           | Securing Kubernetes clusters & workloads       | Foundational cloud-native & Kubernetes security     |
+| 👤 Target Audience         | Experienced Kubernetes admins & security pros  | Beginners, career switchers, aspiring security engineers |
+| 🔧 Key Skills              | RBAC, network policies, runtime protection, supply chain security | Cluster hardening, threat modeling, compliance frameworks |
+| 📋 Exam Format             | Hands-on, CLI-based                            | Multiple-choice, online                             |
+| ⏱ Duration                | 2 hours                                        | 90 minutes                                          |
+| 🧑‍💻 Prerequisites          | Valid CKA certification                        | None                                                |
+| 🏆 Difficulty Level        | Advanced                                       | Entry-level to intermediate                         |
+| 🎓 Credential Validity     | 2 years                                        | 2 years                                             |
+| 📚 Learning Focus          | Real-world security scenarios, mitigation tools | Security fundamentals, best practices, frameworks   |
+| 🧑‍🤝‍🧑 Community Recognition  | High (industry standard for Kubernetes security) | Growing (newer cert with rising relevance)          |
