@@ -20,6 +20,8 @@
     - [💾 Docker Volumes](#-docker-volumes)
   - [🧩 Advanced Components](#-advanced-components)
   - [🧮 Container Runtime vs Container Engine Comparison](#-container-runtime-vs-container-engine-comparison)
+  - [🧮 Containerd vs CRI-O Comparison Table](#-containerd-vs-cri-o-comparison-table)
+    - [🔍 Summary:](#-summary)
 - [🧮 Container vs Virtual Machine Comparison](#-container-vs-virtual-machine-comparison)
 - [Docker Registries](#docker-registries)
   - [🧠 Choosing Tips](#-choosing-tips)
@@ -144,6 +146,29 @@ Persistent data storage.
 | **Use Case**             | Kernel-level container execution                            | Full container lifecycle management                       |
 
 Think of the runtime as the engine block of a car—it powers the container. The container engine is the dashboard and controls—it lets you drive, steer, and manage the whole experience.
+
+
+## 🧮 Containerd vs CRI-O Comparison Table
+| **Aspect**               | **containerd**                                             | **CRI-O**                                                  |
+|--------------------------|------------------------------------------------------------|-------------------------------------------------------------|
+| **Purpose**              | General-purpose container runtime                          | Lightweight runtime focused solely on Kubernetes             |
+| **Origin**               | Developed by Docker, now part of CNCF                      | Created by Red Hat, maintained by Kubernetes community       |
+| **CRI Compatibility**    | Requires CRI plugin (`cri-containerd`)                     | Built specifically to implement Kubernetes CRI               |
+| **OCI Compliance**       | Fully OCI-compliant (images and runtime)                   | Fully OCI-compliant                                          |
+| **Architecture**         | Daemon-based, manages full container lifecycle             | Daemon-less, minimal components tailored for Kubernetes      |
+| **Image Handling**       | Pulls, stores, and manages container images                | Uses `containers/image` library for image management         |
+| **Security Features**    | Supports gVisor, Kata Containers, seccomp, AppArmor        | Emphasizes SELinux, AppArmor, and minimal attack surface     |
+| **Resource Footprint**   | Moderate                                                   | Very lightweight                                             |
+| **Popular Use Cases**    | Kubernetes, Docker replacement, CI/CD pipelines            | Kubernetes-native clusters, OpenShift                        |
+| **Community & Ecosystem**| Large CNCF ecosystem, widely adopted                       | Smaller but growing Kubernetes-focused community             |
+| **Extensibility**        | Highly extensible via plugins and APIs                     | Focused on Kubernetes extensibility                          |
+| **Logging & Monitoring** | Integrated with Kubernetes logging                         | Uses `conmon` for container monitoring and logging           |
+| **Networking**           | Relies on CNI plugins                                      | Relies on CNI plugins                                        |
+| **Storage Support**      | Integrates with CSI plugins                                | Integrates with CSI plugins                                  |
+
+### 🔍 Summary:
+- containerd is versatile and widely used beyond Kubernetes, making it a solid choice for general container management.
+- CRI-O is purpose-built for Kubernetes, offering a leaner, more secure runtime with minimal overhead.
 
 
 # 🧮 Container vs Virtual Machine Comparison
