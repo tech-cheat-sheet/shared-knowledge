@@ -35,6 +35,8 @@
   - [🚀 Minikube Main Commands Cheat Sheet](#-minikube-main-commands-cheat-sheet)
   - [Super command](#super-command)
 - [🧰 kubectl Main Commands Cheat Sheet](#-kubectl-main-commands-cheat-sheet)
+  - [⚔️ `kubectl create` vs `kubectl apply` – Comparison Table](#️-kubectl-create-vs-kubectl-apply--comparison-table)
+    - [✅ Validity in Latest Kubernetes Version](#-validity-in-latest-kubernetes-version)
 - [🧪 Kubernetes Certifications Comparison Table](#-kubernetes-certifications-comparison-table)
 - [🧪 CNCF Certifications Beyond CKAD, CKA, CKS, and KCNA](#-cncf-certifications-beyond-ckad-cka-cks-and-kcna)
 - [🧪 KCNA vs KCA Certification Comparison Table](#-kcna-vs-kca-certification-comparison-table)
@@ -425,6 +427,7 @@ minikube start --driver=docker --cpus=4 --memory=8192 --disk-size=10g
 # Check disk space with 'df -h'
 ```
 
+
 # 🧰 kubectl Main Commands Cheat Sheet
 | Command                            | Purpose                                                   |
 |------------------------------------|-----------------------------------------------------------|
@@ -442,6 +445,23 @@ minikube start --driver=docker --cpus=4 --memory=8192 --disk-size=10g
 | `kubectl top <resource>`           | View resource usage (CPU/memory)                          |
 | `kubectl config <subcommand>`      | Manage kubeconfig contexts and clusters                   |
 | `kubectl get all`                  | List all resources in the current namespace               |
+## ⚔️ `kubectl create` vs `kubectl apply` – Comparison Table
+| **Aspect**                  | **`kubectl create`**                                               | **`kubectl apply`**                                                |
+|-----------------------------|---------------------------------------------------------------------|---------------------------------------------------------------------|
+| **Command Type**            | Imperative                                                         | Declarative                                                         |
+| **Primary Use**             | Create new resources                                               | Create or update resources                                          |
+| **Behavior if Resource Exists** | Errors out (`AlreadyExists`)                                      | Updates the existing resource                                       |
+| **Update Capability**       | Cannot update existing resources                                   | Can update existing resources based on changes in config            |
+| **Input Format**            | YAML or JSON                                                       | YAML or JSON                                                        |
+| **Version Control Friendly**| ❌ Not ideal for GitOps workflows                                   | ✅ Ideal for GitOps and CI/CD pipelines                             |
+| **Partial Config Support**  | Requires full resource definition                                  | Supports partial updates                                            |
+| **Annotation Tracking**     | Does not track last applied configuration unless `--save-config`  | Automatically tracks last applied configuration                    |
+| **Typical Use Case**        | Quick creation, experimentation                                    | Production deployments, config drift management                    |
+| **Error Handling**          | Fails if resource exists                                           | Applies changes safely and incrementally                           |
+### ✅ Validity in Latest Kubernetes Version
+Both `kubectl create` and `kubectl apply` are **fully supported** and **stable** in the latest Kubernetes releases (v1.33+). They serve different purposes and are often used together in real-world workflows.
+
+
 # 🧪 Kubernetes Certifications Comparison Table
 | Feature                     | KCNA (Associate)                  | CKAD (App Developer)             | CKA (Administrator)               | CKS (Security Specialist)            |
 |----------------------------|-----------------------------------|----------------------------------|-----------------------------------|--------------------------------------|
