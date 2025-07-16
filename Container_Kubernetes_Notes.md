@@ -249,10 +249,16 @@ curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikub
 
 sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
 
-# 🛠️ Fix: Enable Docker Driver
+# 🛠️ Fix: Enable Docker Driver for your user
+whoami
+groups
 docker --version
-sudo usermod -aG docker $USER
-newgrp docker
+sudo usermod -aG docker $USER && newgrp docker
+whoami
+groups
+# Without "sudo usermod -aG docker $USER && newgrp docker", you will get:
+# 💣  Exiting due to PROVIDER_DOCKER_NEWGRP: "docker version --format <no value>-<no value>:<no value>" exit status 1: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.51/version": dial unix /var/run/docker.sock: connect: permission denied
+
 
 # Start your cluster
 minikube start --driver=docker
