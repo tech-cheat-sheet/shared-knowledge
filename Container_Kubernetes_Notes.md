@@ -56,6 +56,12 @@
 - [🌐 Kubernetes Networking Overview](#-kubernetes-networking-overview)
   - [✅ Networking Requirements in Kubernetes](#-networking-requirements-in-kubernetes)
   - [🧠 **Summary**:](#-summary-1)
+- [Kubernetes Network Plugins](#kubernetes-network-plugins)
+  - [🌐 Popular Kubernetes Network Plugins](#-popular-kubernetes-network-plugins)
+  - [🧠 How They Work](#-how-they-work)
+  - [🔌 How Kubernetes Handles Networking](#-how-kubernetes-handles-networking)
+  - [Minikube and Network Plugins](#minikube-and-network-plugins)
+    - [🧪 Check Active Network Plugin in Minikube](#-check-active-network-plugin-in-minikube)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -565,3 +571,41 @@ How Kubernetes manages **network communication** across various layers in a clus
 - **Flat, routable IP space** across pods and services: no need for Network Address Translation (NAT)
 ## 🧠 **Summary**:  
 Kubernetes simplifies networking using a unified model where pods are addressable and services abstract access, while kube-proxy handles the routing mechanics. The cluster's SDN ensures seamless communication across nodes and services—*without network address translation*.
+# Kubernetes Network Plugins
+also known as CNI (Container Network Interface) plugins—are essential components that enable networking between pods, nodes, and services in a Kubernetes cluster. They implement the Kubernetes networking model, which requires:
+- All pods to communicate with each other without NAT
+- All nodes to communicate with all pods
+- Each pod to see its own IP as others see it
+## 🌐 Popular Kubernetes Network Plugins
+| **Plugin**         | **Highlights**                                                                 |
+|--------------------|----------------------------------------------------------------------------------|
+| **Calico**         | High-performance networking with advanced network policy enforcement            |
+| **Flannel**        | Simple overlay network; great for basic setups and beginners                    |
+| **Cilium**         | Uses eBPF for deep observability, security, and L3–L7 network policies           |
+| **Weave Net**      | Easy to install; includes DNS and encryption for multi-host communication       |
+| **Canal**          | Combines Calico + Flannel for hybrid networking and policy support              |
+| **Kube-router**    | Integrates routing, firewall, and load balancing in one plugin                  |
+| **Antrea**         | Designed for Kubernetes; supports network policies and multiple modes           |
+| **Multus**         | Allows attaching multiple network interfaces to pods                            |
+| **OVN-Kubernetes** | Based on Open Virtual Network; supports overlay networking and load balancing   |
+| **SR-IOV**         | Direct access to physical NICs for high-performance workloads                   |
+## 🧠 How They Work
+When a pod is created:
+1. The kubelet calls the container runtime (e.g., containerd).
+2. The runtime invokes the configured CNI plugin.
+3. The plugin:
+  - Assigns an IP address
+  - Sets up network interfaces
+  - Configures routing and firewall rules
+
+Kubernetes doesn’t ship with a built-in network plugin. Instead, it relies on the Container Network Interface (CNI) specification, which allows you to choose and install a plugin that best fits your cluster’s needs.
+## 🔌 How Kubernetes Handles Networking
+- Kubernetes expects a CNI-compatible plugin to be installed on each node.
+- The plugin is responsible for assigning IPs, setting up interfaces, and routing traffic between pods and services.
+- You configure the plugin during cluster setup—Kubernetes itself doesn’t enforce a specific one.
+## Minikube and Network Plugins
+Minikube doesn’t come with a built-in command to list all CNI (Container Network Interface) plugins directly, but you can still inspect what’s active using a few handy commands:
+### 🧪 Check Active Network Plugin in Minikube
+```shell
+minikube addons list
+```
