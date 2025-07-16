@@ -84,6 +84,8 @@ groups
 # 1. Log out completely from your user session (not just the terminal).
 # 2. Log back in—this refreshes your group memberships.
 # 3. Run groups again, and you’ll see docker included.
+exit
+sudo reboot
 ```
 
 <!-- '# A Shipping Analogy for Docker, Kubernetes, and Helm' BEGIN -->
