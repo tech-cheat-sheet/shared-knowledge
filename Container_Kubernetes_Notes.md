@@ -78,6 +78,11 @@
   - [📘 Explanation of Kubernetes Commands](#-explanation-of-kubernetes-commands)
     - [🧠 Summary](#-summary-3)
   - [📘 Using `kubectl` for API Discovery](#-using-kubectl-for-api-discovery)
+- [⚙️ What Is `kubectl autoscale`?](#️-what-is-kubectl-autoscale)
+  - [🧰 Command Syntax](#-command-syntax)
+  - [Example](#example)
+  - [📋 Key Options](#-key-options)
+  - [✅ Validity in Latest Kubernetes Version](#-validity-in-latest-kubernetes-version-2)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -780,3 +785,26 @@ Want help customizing the YAML output or converting it into a reusable manifest 
 | `kubectl explain <resource>`                    | Provides documentation for a specific resource type                             |
 | `kubectl explain <resource>.spec`               | Shows details about the `spec` field of the resource                            |
 | `kubectl explain --recursive <resource>`        | Recursively displays all fields and nested properties of the resource           |
+
+
+# ⚙️ What Is `kubectl autoscale`?
+`kubectl autoscale` is a Kubernetes CLI command used to create a **Horizontal Pod Autoscaler (HPA)**. It automatically adjusts the number of pod replicas in a deployment, replica set, or replication controller based on resource usage—typically **CPU utilization**.
+## 🧰 Command Syntax
+```bash
+kubectl autoscale <resource_type>/<resource_name> --min=<min_pods> --max=<max_pods> --cpu-percent=<target_cpu>
+```
+## Example
+```bash
+kubectl autoscale deployment my-app --min=2 --max=10 --cpu-percent=50
+```
+This creates an HPA that scales the `my-app` deployment between 2 and 10 pods based on CPU usage.
+## 📋 Key Options
+| **Flag**           | **Description**                                                                 |
+|--------------------|----------------------------------------------------------------------------------|
+| `--min`            | Minimum number of pods                                                           |
+| `--max`            | Maximum number of pods                                                           |
+| `--cpu-percent`    | Target average CPU utilization across pods                                       |
+| `--dry-run`        | Simulate the command without applying changes (`client`, `server`, or `none`)   |
+| `-o yaml/json`     | Output the HPA manifest in YAML or JSON format                                   |
+## ✅ Validity in Latest Kubernetes Version
+As of Kubernetes **v1.33**, `kubectl autoscale` is still **valid and supported**, though it's considered a **convenience command**. For more advanced autoscaling (e.g., based on memory or custom metrics), it's recommended to use the **`autoscaling/v2` API** and define HPA objects
