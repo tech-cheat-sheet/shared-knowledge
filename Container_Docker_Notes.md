@@ -31,11 +31,11 @@
   - [🐳 Docker Run Variants – Comparison Table](#-docker-run-variants--comparison-table)
     - [📋 Explanation of Flags](#-explanation-of-flags)
     - [✅ Use Cases](#-use-cases)
-    - [Example](#example)
-    - [🧑‍💻 Attach to the Running Container](#-attach-to-the-running-container)
-      - [🧠 Why It Feels Stuck](#-why-it-feels-stuck)
-      - [✅ What You Can Do Instead](#-what-you-can-do-instead)
-    - [🧠 Pro Tip](#-pro-tip)
+  - [Example with Nginx](#example-with-nginx)
+  - [🧑‍💻 Attach to the Running Container](#-attach-to-the-running-container)
+    - [🧠 Why It Feels Stuck](#-why-it-feels-stuck)
+  - [✅ What You Can Do Instead](#-what-you-can-do-instead)
+  - [🧠 Pro Tip](#-pro-tip)
   - [Super commands - Start from a clean state](#super-commands---start-from-a-clean-state)
   - [🧼 Docker Prune Command Comparison](#-docker-prune-command-comparison)
 - [🧩 Container Standards \& Interfaces Comparison](#-container-standards--interfaces-comparison)
@@ -311,13 +311,15 @@ RUNC enables 'running container'
 | `docker run IMAGE_NAME`           | Quick one-off commands or testing output directly                            |
 | `docker run -d IMAGE_NAME`        | Running background services like web servers or daemons                      |
 | `docker run -it IMAGE_NAME`       | Debugging, shell access, or manual interaction with the container            |
-### Example
+
+
+## Example with Nginx
 ```shell
 docker run -d -p 8080:80 nginx
 ```
 - -d runs the container in detached mode (background).
 - -p 8080:80 maps port `80` inside the container (where NGINX listens) to port `8080` on your host.
-### 🧑‍💻 Attach to the Running Container
+## 🧑‍💻 Attach to the Running Container
 ```shell
 docker attach <container_name_or_id>
 ```
@@ -325,7 +327,7 @@ docker attach <container_name_or_id>
 ```shell
 Ctrl + P, Ctrl + Q
 ```
-#### 🧠 Why It Feels Stuck
+### 🧠 Why It Feels Stuck
 You're attaching to the standard input/output of the running container. But in the case of:
 ```shell
 docker run -d -p 8080:80 nginx
@@ -336,11 +338,11 @@ you're running the official NGINX image, which:
 - Outputs very little unless there's traffic or errors
 
 So when you attach, you're just seeing the container's idle state — no shell, no prompt, no output unless someone hits the NGINX server.
-#### ✅ What You Can Do Instead
+## ✅ What You Can Do Instead
 ```shell
 docker logs <container_name_or_id>
 ```
-### 🧠 Pro Tip
+## 🧠 Pro Tip
 You can combine flags:
 ```bash
 docker run -it -d IMAGE_NAME
@@ -348,6 +350,8 @@ docker run -it -d IMAGE_NAME
 This runs the container interactively **in the background**, useful for long-running interactive services.
 
 Want help choosing the right mode for a specific app or writing a Dockerfile to match? I’ve got you covered!
+
+
 ## Super commands - Start from a clean state
 ```shell
 ## List all docker objects
