@@ -332,6 +332,13 @@ which docker
 which minikube
 which kubectl
 docker --version
+# 0. Validate that the 'docker' group exist
+getent group | grep -i docker
+# 0. Validate that your Linux user is part of 'docker' group
+whoami
+groups
+# if NOT, go back to 
+# 'Container_Docker_Notes.md#how-to-install-docker-on-ubuntu'
 
 # Install dependencies
 cd ~ && sudo apt update --yes
@@ -346,6 +353,7 @@ ls -la | grep -i minikube
 
 sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
 
+: <<'PLEASE_MAKE_SURE_YOUR_LINUX_USER_IS_PART_OF_DOCKER_GROUP'
 # 🛠️ Fix: Enable Docker Driver for your user
 whoami
 groups
@@ -383,9 +391,12 @@ sudo reboot
 # Run:
 whoami
 groups
+PLEASE_MAKE_SURE_YOUR_LINUX_USER_IS_PART_OF_DOCKER_GROUP
 
 # Start your cluster
 minikube start --driver=docker
+# or
+minikube start
 
 # Minikube internal tool
 minikube kubectl -- get pods -A
