@@ -19,6 +19,7 @@
     - [Network Drivers:](#network-drivers)
     - [💾 Docker Volumes](#-docker-volumes)
   - [🧩 Advanced Components](#-advanced-components)
+  - [🧮 Container Runtime vs Container Engine Comparison](#-container-runtime-vs-container-engine-comparison)
 - [Docker Registries](#docker-registries)
   - [🧠 Choosing Tips](#-choosing-tips)
 - [🐳 Docker Commands Cheat Sheet](#-docker-commands-cheat-sheet)
@@ -127,6 +128,21 @@ Persistent data storage.
 ## 🧩 Advanced Components
 - Docker Compose: Defines multi-container apps using a docker-compose.yml file.
 - Docker Swarm: Built-in orchestration tool for clustering and managing distributed containers.
+## 🧮 Container Runtime vs Container Engine Comparison
+| **Aspect**               | **Container Runtime**                                      | **Container Engine**                                      |
+|--------------------------|------------------------------------------------------------|-----------------------------------------------------------|
+| **Purpose**              | Executes containers by interfacing with OS kernel features | Manages full container lifecycle including image handling |
+| **Scope**                | Low-level operations (start, stop, isolate containers)      | High-level orchestration, image building, CLI/API support |
+| **Examples**             | `runc`, `crun`, `runhcs`                                    | `Docker Engine`, `Podman`, `CRI-O`, `containerd`          |
+| **User Interaction**     | Typically not used directly by developers                   | Provides CLI/API for developers and operators             |
+| **Image Management**     | No image building or pulling capabilities                   | Pulls, builds, and manages container images               |
+| **Networking & Storage** | Relies on engine or external plugins                        | May include built-in networking and storage features      |
+| **Integration**          | Used by engines and orchestrators like Kubernetes           | Interfaces with runtimes and orchestrators                |
+| **Standardization**      | Follows OCI Runtime Specification                           | Often follows OCI Image Specification                     |
+| **Complexity Level**     | Lightweight and minimal                                     | More feature-rich and complex                            |
+| **Use Case**             | Kernel-level container execution                            | Full container lifecycle management                       |
+
+Think of the runtime as the engine block of a car—it powers the container. The container engine is the dashboard and controls—it lets you drive, steer, and manage the whole experience.
 
 
 # Docker Registries
