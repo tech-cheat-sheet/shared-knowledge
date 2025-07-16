@@ -69,6 +69,10 @@
       - [2. Inspect CNI Config on Node](#2-inspect-cni-config-on-node)
       - [3. Check Running Pods in kube-system](#3-check-running-pods-in-kube-system)
       - [4. Check Node Runtime Info](#4-check-node-runtime-info)
+- [Kubernetes YAML Required Fields](#kubernetes-yaml-required-fields)
+  - [📘 Explanation of Kubernetes Commands](#-explanation-of-kubernetes-commands)
+    - [🧠 Summary](#-summary-3)
+  - [📘 Using `kubectl` for API Discovery](#-using-kubectl-for-api-discovery)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -704,3 +708,36 @@ Look for pods like ``flannel-xxxx``, ``cilium-xxxx``, or ``calico-xxxx`` — the
 kubectl get node <node-name> -o jsonpath='{.status.nodeInfo.containerRuntimeVersion}'
 ```
 While this shows the container runtime (e.g., containerd), it helps confirm the environment your CNI plugin is operating in.
+
+
+# Kubernetes YAML Required Fields
+| **Field**      | **Description**                                                                 |
+|----------------|----------------------------------------------------------------------------------|
+| **apiVersion** | Specifies the version of the Kubernetes API used to define the resource         |
+| **kind**       | Indicates the type of resource (e.g., Pod, Service, Deployment)                 |
+| **metadata**   | Contains identifying information such as the resource name                      |
+| **spec**       | Defines the desired state of the resource; varies by API version                |
+| **status**     | Reflects the current state of the resource, managed by the cluster              |
+## 📘 Explanation of Kubernetes Commands
+| **Command**                                                                 | **Purpose**                                                                                   |
+|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| `kubectl create deploy myweb --image=nginx`                                 | Creates a new Deployment named `myweb` using the official `nginx` container image             |
+| `kubectl get deploy myweb -o yaml`                                          | Retrieves the full YAML configuration of the `myweb` Deployment                               |
+| `kubectl create deploy myweb --image=nginx --dry-run=client -o yaml`       | Simulates the creation of the Deployment and outputs the YAML without applying it             |
+### 🧠 Summary
+These commands help you:
+- **Create** a deployment (`create deploy`)
+- **Inspect** its configuration (`get deploy -o yaml`)
+- **Generate** YAML manifests for version control or manual editing (`--dry-run=client -o yaml`)
+
+Ideal for learning how Kubernetes objects are defined and managed through YAML.
+
+Want help customizing the YAML output or converting it into a reusable manifest file?
+## 📘 Using `kubectl` for API Discovery
+| **Command**                                      | **Description**                                                                 |
+|--------------------------------------------------|----------------------------------------------------------------------------------|
+| `kubectl api-resources`                         | Lists all available Kubernetes resource types                                   |
+| `kubectl api-versions`                          | Displays all supported API versions in the cluster                              |
+| `kubectl explain <resource>`                    | Provides documentation for a specific resource type                             |
+| `kubectl explain <resource>.spec`               | Shows details about the `spec` field of the resource                            |
+| `kubectl explain --recursive <resource>`        | Recursively displays all fields and nested properties of the resource           |
