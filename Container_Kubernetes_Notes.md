@@ -45,6 +45,14 @@
     - [📄 Example Role YAML: pod-reader](#-example-role-yaml-pod-reader)
     - [🔗 Example RoleBinding YAML](#-example-rolebinding-yaml)
     - [🧠 Best Practices](#-best-practices)
+- [🧮 kubectl vs crictl Comparison Table](#-kubectl-vs-crictl-comparison-table)
+  - [🧠 Summary:](#-summary)
+- [🧪 `crictl` Cheat Sheet – Container Runtime Debugging CLI](#-crictl-cheat-sheet--container-runtime-debugging-cli)
+  - [🔍 Pod Operations](#-pod-operations)
+  - [📦 Container Operations](#-container-operations)
+  - [🖼 Image Operations](#-image-operations)
+  - [⚙️ Runtime \& Config](#️-runtime--config)
+  - [🧠 **Tips**:](#-tips)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -478,3 +486,62 @@ roleRef:
 - Prefer least privilege: grant only the permissions needed.
 - Regularly audit RBAC policies to avoid privilege creep.
 - Use groups to simplify access management across teams.
+
+
+# 🧮 kubectl vs crictl Comparison Table
+| **Aspect**               | **kubectl**                                                  | **crictl**                                                   |
+|--------------------------|--------------------------------------------------------------|---------------------------------------------------------------|
+| **Purpose**              | Interacts with the Kubernetes API server                     | Interacts directly with container runtimes via CRI            |
+| **Scope**                | Cluster-wide management (pods, services, deployments, etc.)  | Node-level container inspection and debugging                 |
+| **Typical Use Case**     | Managing Kubernetes resources and workloads                  | Troubleshooting containers on individual nodes                |
+| **Interface Level**      | High-level (Kubernetes abstraction)                          | Low-level (runtime abstraction)                               |
+| **Dependencies**         | Requires access to kube-apiserver                            | Requires access to container runtime socket                   |
+| **Common Commands**      | `kubectl get pods`, `kubectl apply`, `kubectl logs`          | `crictl ps`, `crictl inspect`, `crictl logs`                  |
+| **Supported Runtimes**   | Any CRI-compatible runtime via Kubernetes                    | Any CRI-compatible runtime (e.g., containerd, CRI-O)          |
+| **Installation**         | Comes with Kubernetes tools                                  | Part of `cri-tools`; must be installed separately             |
+| **Use in Debugging**     | Used for cluster-level diagnostics                           | Used for node-level container runtime diagnostics             |
+| **Security Context**     | Requires Kubernetes RBAC permissions                         | Requires access to runtime socket (e.g., `/var/run/containerd`) |
+## 🧠 Summary:
+- Use ``kubectl`` when managing or deploying resources across your Kubernetes cluster.
+- Use ``crictl`` when you need to inspect or debug containers directly on a node—especially useful when the Kubernetes API is unavailable.
+
+
+# 🧪 `crictl` Cheat Sheet – Container Runtime Debugging CLI
+## 🔍 Pod Operations
+| Command                              | Description                                      |
+|-------------------------------------|--------------------------------------------------|
+| `crictl pods`                       | List all pods                                    |
+| `crictl pods --name <POD_NAME>`     | Filter pods by name                              |
+| `crictl pods --label <key=value>`   | Filter pods by label                             |
+| `crictl inspectp <POD_ID>`          | Inspect pod details                              |
+| `crictl stopp <POD_ID>`             | Stop a pod and its containers                    |
+| `crictl rmp <POD_ID>`               | Remove a pod                                     |
+## 📦 Container Operations
+| Command                              | Description                                      |
+|-------------------------------------|--------------------------------------------------|
+| `crictl ps`                         | List running containers                          |
+| `crictl ps -a`                      | List all containers (including exited)           |
+| `crictl inspect <CONTAINER_ID>`     | Inspect container details                        |
+| `crictl exec -it <CONTAINER_ID> sh` | Open interactive shell inside container          |
+| `crictl logs <CONTAINER_ID>`        | View container logs                              |
+| `crictl stop <CONTAINER_ID>`        | Stop a container                                 |
+| `crictl rm <CONTAINER_ID>`          | Remove a container                               |
+## 🖼 Image Operations
+| Command                              | Description                                      |
+|-------------------------------------|--------------------------------------------------|
+| `crictl images`                     | List all images                                  |
+| `crictl pull <IMAGE>`               | Pull image from registry                         |
+| `crictl rmi <IMAGE_ID>`             | Remove image                                     |
+| `crictl inspecti <IMAGE_ID>`        | Inspect image metadata                           |
+## ⚙️ Runtime & Config
+| Command                              | Description                                      |
+|-------------------------------------|--------------------------------------------------|
+| `crictl info`                       | Show runtime info                                |
+| `crictl stats`                      | Show container resource usage                    |
+| `crictl config --get <option>`      | Get config value                                 |
+| `crictl config --set debug=true`    | Enable debug mode                                |
+| `crictl --runtime-endpoint <path>`  | Set runtime socket manually                      |
+## 🧠 **Tips**:
+- Use `-o json` or `-o yaml` for structured output.
+- Combine with `jq` for advanced filtering.
+- Avoid using `crictl runp` or `create` on production clusters—Kubelet may delete unmanaged pods.
