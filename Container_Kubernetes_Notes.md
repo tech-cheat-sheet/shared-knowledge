@@ -295,6 +295,8 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-a
 whoami
 groups
 docker --version
+getent group | grep -i docker
+sudo groupadd docker
 sudo usermod -aG docker $USER && newgrp docker
 whoami
 groups
@@ -312,7 +314,20 @@ groups
 # After running "sudo usermod -aG docker $USER && newgrp docker":
 # You should be able to use Docker commands like docker ps or docker images without prefixing them with sudo.
 # This is important for tools like Minikube, which rely on Docker being accessible to your user.
-
+#
+# 🧠 How to Make It Stick
+# To avoid having to rerun "newgrp docker" every time. exit the subshell:
+exit
+whoami
+groups
+# 1. Log out completely from your desktop or terminal session.
+# echo $XDG_CURRENT_DESKTOP
+# gnome-session-quit --logout --no-prompt
+sudo reboot
+# 2. Log back in — this refreshes your group memberships.
+# Run:
+whoami
+groups
 
 # Start your cluster
 minikube start --driver=docker
