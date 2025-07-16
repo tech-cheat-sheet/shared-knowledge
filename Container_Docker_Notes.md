@@ -403,7 +403,7 @@ echo "================================================== NETWORKS" && \
 docker network ls && \
 echo "================================================== VOLUMES" && \
 docker volume ls
-# # if there is at least 1 container running, the following command is best:
+## if there is at least 1 container running, the following command is best:
 echo "================================================== Stopping all running containers" && \
 docker stop $(docker ps -q) && \
 echo "================================================== Removing all containers" && \
