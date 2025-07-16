@@ -9,6 +9,9 @@
   - [🎯 So, What's Required?](#-so-whats-required)
 - [🧮 Cloud-Native Approaches Comparison Table](#-cloud-native-approaches-comparison-table)
   - [🚀 Core Concepts/Main Objects](#-core-conceptsmain-objects)
+  - [📦 Common Kubernetes Objects Summary](#-common-kubernetes-objects-summary)
+  - [🧮 Kubernetes Objects vs Resources Comparison](#-kubernetes-objects-vs-resources-comparison)
+    - [🧠 Summary:](#-summary)
   - [📦 Kubernetes Component Summary](#-kubernetes-component-summary)
   - [⚙️ Kubernetes Capabilities](#️-kubernetes-capabilities)
   - [🧠 Philosophy](#-philosophy)
@@ -46,7 +49,7 @@
     - [🔗 Example RoleBinding YAML](#-example-rolebinding-yaml)
     - [🧠 Best Practices](#-best-practices)
 - [🧮 kubectl vs crictl Comparison Table](#-kubectl-vs-crictl-comparison-table)
-  - [🧠 Summary:](#-summary)
+  - [🧠 Summary:](#-summary-1)
 - [🧪 `crictl` Cheat Sheet – Container Runtime Debugging CLI](#-crictl-cheat-sheet--container-runtime-debugging-cli)
   - [🔍 Pod Operations](#-pod-operations)
   - [📦 Container Operations](#-container-operations)
@@ -55,7 +58,7 @@
   - [🧠 **Tips**:](#-tips)
 - [🌐 Kubernetes Networking Overview](#-kubernetes-networking-overview)
   - [✅ Networking Requirements in Kubernetes](#-networking-requirements-in-kubernetes)
-  - [🧠 **Summary**:](#-summary-1)
+  - [🧠 **Summary**:](#-summary-2)
 - [Kubernetes Network Plugins](#kubernetes-network-plugins)
   - [🌐 Popular Kubernetes Network Plugins](#-popular-kubernetes-network-plugins)
   - [🧠 How They Work](#-how-they-work)
@@ -139,6 +142,30 @@ These approaches aren’t mutually exclusive—they often complement each other 
 - Cluster: A group of nodes managed together.
 - Control Plane: The brain of Kubernetes, scheduling and managing workloads.
 - Kubelet & Kube-proxy: Agents on nodes that ensure containers run and communicate properly.
+## 📦 Common Kubernetes Objects Summary
+| **Object**     | **Purpose**                                                                 |
+|----------------|------------------------------------------------------------------------------|
+| **Pod**        | The smallest unit in Kubernetes; manages one or more containers             |
+| **Deployment** | Adds scalability and enables zero-downtime updates for applications         |
+| **Service**    | Exposes workloads via a stable endpoint; provides a single access point     |
+| **ConfigMap**  | Stores non-sensitive configuration data                                     |
+| **Secret**     | Stores sensitive data like passwords, tokens, and keys                      |
+## 🧮 Kubernetes Objects vs Resources Comparison
+| **Aspect**               | **Kubernetes Objects**                                                                 | **Kubernetes Resources**                                                                 |
+|--------------------------|-----------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| **Definition**           | Persistent entities that represent the desired and actual state of the cluster         | API endpoints used to access and manipulate Kubernetes objects                           |
+| **Purpose**              | Describe what you want Kubernetes to manage (e.g., Pods, Services, Deployments)        | Provide RESTful access to collections of objects via HTTP verbs (GET, POST, etc.)        |
+| **Format**               | Defined using YAML or JSON manifests with fields like `apiVersion`, `kind`, `spec`     | Represented as URLs in the Kubernetes API (e.g., `/api/v1/pods`)                         |
+| **Examples**             | Pod, Deployment, Service, ConfigMap, Secret                                             | `/api/v1/pods`, `/apis/apps/v1/deployments`, `/api/v1/namespaces`                        |
+| **Interaction**          | Created and managed via `kubectl` or client libraries                                  | Accessed via Kubernetes API server using HTTP requests                                   |
+| **Persistence**          | Stored in `etcd` as records of intent                                                   | Resources are the interfaces to retrieve or modify those records                         |
+| **Relationship**         | Objects are the data entities                                                          | Resources are the API paths used to interact with those entities                         |
+| **Custom Extensions**    | Can be extended via Custom Resource Definitions (CRDs)                                  | Custom resources create new API endpoints for custom objects                             |
+### 🧠 Summary:
+- Objects are the what — the actual entities you define and manage.
+- Resources are the how — the API interfaces through which you interact with those entities.
+
+
 ## 📦 Kubernetes Component Summary
 | **Component**              | **Role & Function**                                                                 |
 |---------------------------|-------------------------------------------------------------------------------------|
