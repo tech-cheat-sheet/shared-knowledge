@@ -373,9 +373,12 @@ hostnamectl | grep -i architecture
 curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
 
 ls -la | grep -i minikube
-# if you see '.minikube', uninstall docker, minikube, kubectl before continuing again
+# if you see '.minikube', follow the steps for uninstalling minikube in "Container_0_Notes.md#2--uninstall-minikube" before continuing again
 
 sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+
+# Validate that minikube is working
+minikube status
 
 : <<'PLEASE_MAKE_SURE_YOUR_LINUX_USER_IS_PART_OF_DOCKER_GROUP'
 # 🛠️ Fix: Enable Docker Driver for your user
@@ -422,6 +425,12 @@ minikube start --driver=docker
 
 # Minikube internal tool
 minikube kubectl -- get pods -A
+
+# 🧹 Step-by-Step Cleanup Guide for Minikube
+# This removes the entire cluster and all associated resources:
+minikube delete --all --purge
+# --all: Deletes all Minikube profiles.
+# --purge: Removes the .minikube folder from your home directory.
 
 # Use kubectl to interact (OPTIONAL)
 sudo apt update
