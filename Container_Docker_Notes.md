@@ -24,6 +24,7 @@
 - [🐳 Docker Commands Cheat Sheet](#-docker-commands-cheat-sheet)
   - [Super commands](#super-commands)
   - [🧼 Docker Prune Command Comparison](#-docker-prune-command-comparison)
+- [🧩 Container Standards \& Interfaces Comparison](#-container-standards--interfaces-comparison)
 # How to install Docker on Ubuntu
 ## Reference:
 - https://docs.docker.com/engine/install/ubuntu/
@@ -198,3 +199,17 @@ docker system prune --all --force
 |---------------------------------------|---------------------------|----------------------------------------------------------------------------------|
 | `docker network prune --force`        | 🔌 Networks only           | All **unused Docker networks** not attached to containers                        |
 | `docker system prune --all --force`   | 🌪️ Everything (aggressive) | - Stopped containers<br>- All unused images (not just dangling)<br>- Unused networks<br>- Unused volumes<br>- Build cache |
+
+
+# 🧩 Container Standards & Interfaces Comparison
+| **Aspect**                | **Open Container Initiative (OCI)**                          | **Container Network Interface (CNI)**                     | **Container Runtime Interface (CRI)**                     | **Container Storage Interface (CSI)**                     | **Service Mesh Interface (SMI)**                          |
+|--------------------------|---------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|
+| **Purpose**              | Define open standards for container images and runtimes       | Standardize container networking across platforms         | Enable Kubernetes to interact with container runtimes     | Standardize volume/storage management in Kubernetes       | Provide a common interface for service mesh features      |
+| **Scope**                | Industry-wide container format and runtime specs              | Networking plugins for container orchestration systems    | Kubernetes-specific runtime abstraction                   | Kubernetes-specific storage abstraction                   | Kubernetes-focused service mesh abstraction               |
+| **Key Components**       | `image-spec`, `runtime-spec`, `distribution-spec`             | IP address management, routing, DNS                       | `RuntimeService`, `ImageService` gRPC APIs                | Volume provisioning, attach/detach, mount/unmount         | Traffic policies, telemetry, access control               |
+| **Primary Use Case**     | Ensuring container portability and interoperability           | Plug-and-play networking for containers                   | Decouple Kubernetes from specific runtimes (e.g. Docker)  | Enable dynamic storage provisioning in clusters           | Unified service mesh behavior across implementations      |
+| **Popular Implementations** | Docker, containerd, runc                                     | Calico, Flannel, Cilium                                  | containerd, CRI-O                                         | Rook, OpenEBS, Portworx                                   | Istio, Linkerd, Consul (via SMI adapter)                  |
+| **Governance**           | Maintained by the Linux Foundation                            | CNCF project                                               | Kubernetes project                                        | Kubernetes project                                        | CNCF project                                               |
+| **Interoperability Goal**| Cross-platform container compatibility                        | Modular networking stack                                  | Runtime flexibility in Kubernetes                         | Storage vendor neutrality                                 | Mesh-agnostic service mesh tooling                        |
+
+These interfaces and standards are like the plumbing and wiring behind the scenes of modern container orchestration. They don’t always get the spotlight, but they’re what make the magic of Kubernetes and cloud-native apps possible.
