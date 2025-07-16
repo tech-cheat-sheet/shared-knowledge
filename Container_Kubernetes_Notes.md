@@ -339,6 +339,29 @@ whoami
 groups
 # if NOT, go back to 
 # 'Container_Docker_Notes.md#how-to-install-docker-on-ubuntu'
+# 0. Start with a clean state
+## List all docker objects
+echo "================================================== CONTAINERS" && \
+docker container ls --all && \
+echo "================================================== IMAGES" && \
+docker image ls --all && \
+echo "================================================== NETWORKS" && \
+docker network ls && \
+echo "================================================== VOLUMES" && \
+docker volume ls
+## if there is at least 1 container running, the following command is best:
+echo "================================================== Stopping all running containers" && \
+docker stop $(docker ps -q) && \
+echo "================================================== Removing all containers" && \
+docker rm $(docker ps -aq) && \
+echo "================================================== Removing all images" && \
+docker rmi $(docker images -q) && \
+echo "================================================== Removing all networks" && \
+docker network prune --force && \
+echo "================================================== Removing all volumes" && \
+docker volume prune --force && \
+echo "================================================== Docker system cleanup" && \
+docker system prune --all --force
 
 # Install dependencies
 cd ~ && sudo apt update --yes
@@ -395,8 +418,6 @@ PLEASE_MAKE_SURE_YOUR_LINUX_USER_IS_PART_OF_DOCKER_GROUP
 
 # Start your cluster
 minikube start --driver=docker
-# or
-minikube start
 
 # Minikube internal tool
 minikube kubectl -- get pods -A
