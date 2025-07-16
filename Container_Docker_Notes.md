@@ -1,6 +1,6 @@
 - [How to install Docker on Ubuntu](#how-to-install-docker-on-ubuntu)
   - [Reference:](#reference)
-  - [0. Uninstall all conflicting packages:](#0-uninstall-all-conflicting-packages)
+  - [0. Uninstall all conflicting packages, if exist:](#0-uninstall-all-conflicting-packages-if-exist)
   - [1. Add Docker's official GPG key:](#1-add-dockers-official-gpg-key)
   - [2. Add the repository to Apt sources:](#2-add-the-repository-to-apt-sources)
   - [3. Install the Docker packages](#3-install-the-docker-packages)
@@ -35,7 +35,7 @@
 ## Reference:
 - https://docs.docker.com/engine/install/ubuntu/
 
-## 0. Uninstall all conflicting packages:
+## 0. Uninstall all conflicting packages, if exist:
 ```shell
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
@@ -61,6 +61,10 @@ sudo apt-get install --yes docker-ce docker-ce-cli containerd.io docker-buildx-p
 ```
 ## 4. Verify
 ```shell
+which docker
+
+docker --version
+
 sudo docker run hello-world
 
 ## 5. Run 'docker' commands without 'sudo'
