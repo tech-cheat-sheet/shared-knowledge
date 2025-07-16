@@ -37,6 +37,9 @@
 - [🧪 KCNA vs KCA Certification Comparison Table](#-kcna-vs-kca-certification-comparison-table)
   - [⚙️ Kubernetes vs Kyverno Comparison Table](#️-kubernetes-vs-kyverno-comparison-table)
 - [🔐 CKS vs KCSA Certification Comparison Table](#-cks-vs-kcsa-certification-comparison-table)
+- [Kubernetes Access Control](#kubernetes-access-control)
+  - [🔐 Kubernetes Access Control Components](#-kubernetes-access-control-components)
+  - [🧭 RBAC in Action](#-rbac-in-action)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -403,3 +406,25 @@ minikube start --driver=docker --cpus=4 --memory=8192 --disk-size=10g
 | 🎓 Credential Validity     | 2 years                                        | 2 years                                             |
 | 📚 Learning Focus          | Real-world security scenarios, mitigation tools | Security fundamentals, best practices, frameworks   |
 | 🧑‍🤝‍🧑 Community Recognition  | High (industry standard for Kubernetes security) | Growing (newer cert with rising relevance)          |
+
+
+# Kubernetes Access Control
+## 🔐 Kubernetes Access Control Components
+| **Component**                        | **Function**                                                                 |
+|-------------------------------------|------------------------------------------------------------------------------|
+| **Authentication**                  | Verifies the identity of users or services (e.g., via certificates, tokens) |
+| **Authorization**                   | Determines what authenticated entities are allowed to do                    |
+| **RBAC (Role-Based Access Control)**| Grants permissions based on roles assigned to users or groups               |
+| **ABAC (Attribute-Based Access Control)** | Uses user attributes and policies for fine-grained access control     |
+| **Service Accounts**                | Special accounts for pods to interact with the Kubernetes API               |
+| **Network Policies**                | Control pod-to-pod communication and traffic flow                           |
+| **Pod Security Policies**           | Define security constraints for pod deployment                              |
+| **Audit Logging**                   | Tracks access and changes for monitoring and compliance                     |
+## 🧭 RBAC in Action
+RBAC is the most commonly used method in Kubernetes. It involves:
+- Roles: Define what actions (verbs like get, list, create) can be performed on which resources (pods, services, etc.)
+- RoleBindings: Assign roles to users or service accounts within a namespace
+- ClusterRoles: Like Roles, but apply across the entire cluster
+- ClusterRoleBindings: Bind ClusterRoles to users or groups cluster-wide
+
+This lets you enforce the principle of least privilege, ensuring users only have access to what they need.
