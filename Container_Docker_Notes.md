@@ -28,6 +28,10 @@
 - [Docker Registries](#docker-registries)
   - [🧠 Choosing Tips](#-choosing-tips)
 - [🐳 Docker Commands Cheat Sheet](#-docker-commands-cheat-sheet)
+  - [🐳 Docker Run Variants – Comparison Table](#-docker-run-variants--comparison-table)
+    - [📋 Explanation of Flags](#-explanation-of-flags)
+    - [✅ Use Cases](#-use-cases)
+    - [🧠 Pro Tip](#-pro-tip)
   - [Super commands - Start from a clean state](#super-commands---start-from-a-clean-state)
   - [🧼 Docker Prune Command Comparison](#-docker-prune-command-comparison)
 - [🧩 Container Standards \& Interfaces Comparison](#-container-standards--interfaces-comparison)
@@ -262,10 +266,10 @@ RUNC enables 'running container'
 
 
 # 🐳 Docker Commands Cheat Sheet
-| Command                          | Purpose                                                   |
-|----------------------------------|-----------------------------------------------------------|
+| Command                         | Purpose                                                  |
+|---------------------------------|----------------------------------------------------------|
 | `docker run <image>`            | Create and start a container from an image               |
-| `docker ps`                      | List running containers                                  |
+| `docker ps`                     | List running containers                                  |
 | `docker ps -a`                  | List all containers (running + stopped)                  |
 | `docker stop <container>`       | Gracefully stop a running container                      |
 | `docker start <container>`      | Start a stopped container                                |
@@ -275,16 +279,40 @@ RUNC enables 'running container'
 | `docker exec -it <container> <cmd>` | Run a command inside a running container             |
 | `docker logs <container>`       | View container logs                                      |
 | `docker images`                 | List all local Docker images                             |
-| `docker pull <image>`           | Download an image from Docker Hub                       |
-| `docker build -t <name> .`      | Build an image from a Dockerfile                        |
+| `docker pull <image>`           | Download an image from Docker Hub                        |
+| `docker build -t <name> .`      | Build an image from a Dockerfile                         |
 | `docker rmi <image>`            | Remove an image                                          |
 | `docker inspect <container>`    | View detailed info about a container/image               |
 | `docker cp <src> <dest>`        | Copy files between host and container                    |
-| `docker login`                  | Authenticate with Docker Hub                            |
-| `docker push <image>`           | Upload an image to Docker Hub                           |
+| `docker login`                  | Authenticate with Docker Hub                             |
+| `docker push <image>`           | Upload an image to Docker Hub                            |
 | `docker network ls`             | List Docker networks                                     |
 | `docker volume ls`              | List Docker volumes                                      |
 | `docker system prune`           | Clean up unused containers, images, volumes, networks    |
+## 🐳 Docker Run Variants – Comparison Table
+| **Command**                       | **Mode**         | **Behavior**                                                                |
+|-----------------------------------|------------------|-----------------------------------------------------------------------------|
+| `docker run IMAGE_NAME`           | Foreground       | Runs the container in the foreground; output appears in your terminal       |
+| `docker run -d IMAGE_NAME`        | Detached         | Runs the container in the background; frees up your terminal                |
+| `docker run -it IMAGE_NAME`       | Interactive + TTY| Opens an interactive terminal session inside the container                  |
+### 📋 Explanation of Flags
+- `-d` = **Detached mode**: container runs in the background
+- `-i` = **Interactive mode**: keeps STDIN open so you can type into the container
+- `-t` = **TTY mode**: allocates a pseudo-terminal for better shell experience
+### ✅ Use Cases
+| **Command**                       | **Use Case**                                                                 |
+|-----------------------------------|------------------------------------------------------------------------------|
+| `docker run IMAGE_NAME`           | Quick one-off commands or testing output directly                            |
+| `docker run -d IMAGE_NAME`        | Running background services like web servers or daemons                      |
+| `docker run -it IMAGE_NAME`       | Debugging, shell access, or manual interaction with the container            |
+### 🧠 Pro Tip
+You can combine flags:
+```bash
+docker run -it -d IMAGE_NAME
+```
+This runs the container interactively **in the background**, useful for long-running interactive services.
+
+Want help choosing the right mode for a specific app or writing a Dockerfile to match? I’ve got you covered!
 ## Super commands - Start from a clean state
 ```shell
 ## List all docker objects
