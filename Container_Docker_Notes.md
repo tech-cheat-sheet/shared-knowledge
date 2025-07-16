@@ -171,6 +171,18 @@ Think of the runtime as the engine block of a car—it powers the container. The
 - CRI-O is purpose-built for Kubernetes, offering a leaner, more secure runtime with minimal overhead.
 
 
+```shell
+Kubernetes interfaces with the CRI to talks to Containerd
+or
+Kubernetes interfaces with the CRI to talks to CRI-O
+
+Containerd talks to RUNC (OCI)
+CRI-O talks to RUNC (OCI)
+
+RUNC enables 'running container'
+```
+
+
 # 🧮 Container vs Virtual Machine Comparison
 | **Aspect**               | **Container**                                              | **Virtual Machine (VM)**                                  |
 |--------------------------|------------------------------------------------------------|-----------------------------------------------------------|
