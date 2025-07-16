@@ -298,7 +298,6 @@ RUNC enables 'running container'
 | `docker push <image>`           | Upload an image to Docker Hub                            |
 | `docker network ls`             | List Docker networks                                     |
 | `docker volume ls`              | List Docker volumes                                      |
-| `docker system prune`           | Clean up unused containers, images, volumes, networks    |
 ## 🐳 Docker Run Variants – Comparison Table
 | **Command**                       | **Mode**         | **Behavior**                                                                |
 |-----------------------------------|------------------|-----------------------------------------------------------------------------|
@@ -413,15 +412,15 @@ docker rmi $(docker images -q) && \
 echo "================================================== Removing all networks" && \
 docker network prune --force && \
 echo "================================================== Removing all volumes" && \
-docker volume prune --force && \
-echo "================================================== Docker system cleanup" && \
-docker system prune --all --force
+docker volume prune --force
 ```
 ## 🧼 Docker Prune Command Comparison
 | Command                               | Scope                    | What It Removes                                                                 |
 |---------------------------------------|---------------------------|----------------------------------------------------------------------------------|
 | `docker network prune --force`        | 🔌 Networks only           | All **unused Docker networks** not attached to containers                        |
 | `docker system prune --all --force`   | 🌪️ Everything (aggressive) | - Stopped containers<br>- All unused images (not just dangling)<br>- Unused networks<br>- Unused volumes<br>- Build cache |
+
+**NOTE:** Stop using `docker system prune --all --force` because it breaks minikube!
 
 
 # 🧩 Container Standards & Interfaces Comparison
