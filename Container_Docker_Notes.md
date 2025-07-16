@@ -31,12 +31,14 @@
   - [🐳 Docker Run Variants – Comparison Table](#-docker-run-variants--comparison-table)
     - [📋 Explanation of Flags](#-explanation-of-flags)
     - [✅ Use Cases](#-use-cases)
-  - [Example with Nginx](#example-with-nginx)
+- [Example with Nginx](#example-with-nginx)
   - [🧑‍💻 Attach to the Running Container](#-attach-to-the-running-container)
-    - [🧠 Why It Feels Stuck](#-why-it-feels-stuck)
+  - [🧠 Why It Feels Stuck](#-why-it-feels-stuck)
   - [✅ What You Can Do Instead](#-what-you-can-do-instead)
   - [🧠 Pro Tip](#-pro-tip)
-  - [Super commands - Start from a clean state](#super-commands---start-from-a-clean-state)
+- [Example with Busybox](#example-with-busybox)
+  - [Interactive mode](#interactive-mode)
+- [Super commands - Start from a clean state](#super-commands---start-from-a-clean-state)
   - [🧼 Docker Prune Command Comparison](#-docker-prune-command-comparison)
 - [🧩 Container Standards \& Interfaces Comparison](#-container-standards--interfaces-comparison)
 # How to install Docker on Ubuntu
@@ -313,7 +315,7 @@ RUNC enables 'running container'
 | `docker run -it IMAGE_NAME`       | Debugging, shell access, or manual interaction with the container            |
 
 
-## Example with Nginx
+# Example with Nginx
 ```shell
 docker run -d -p 8080:80 nginx
 ```
@@ -327,7 +329,7 @@ docker attach <container_name_or_id>
 ```shell
 Ctrl + P, Ctrl + Q
 ```
-### 🧠 Why It Feels Stuck
+## 🧠 Why It Feels Stuck
 You're attaching to the standard input/output of the running container. But in the case of:
 ```shell
 docker run -d -p 8080:80 nginx
@@ -352,7 +354,22 @@ This runs the container interactively **in the background**, useful for long-run
 Want help choosing the right mode for a specific app or writing a Dockerfile to match? I’ve got you covered!
 
 
-## Super commands - Start from a clean state
+# Example with Busybox
+## Interactive mode
+```shell
+docker run -it busybox
+ps aux
+Ctrl + P, Ctrl + Q
+docker container ls --all
+
+docker attach CONTAINER_ID_OR_NAME
+ps aux
+exit
+docker container ls --all
+```
+
+
+# Super commands - Start from a clean state
 ```shell
 ## List all docker objects
 echo "================================================== CONTAINERS" && \
