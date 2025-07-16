@@ -1,6 +1,9 @@
 - [Kubernetes (K8S)](#kubernetes-k8s)
   - [📊 Container Orchestration Comparison Table](#-container-orchestration-comparison-table)
-  - [🚀 Core Concepts](#-core-concepts)
+  - [Kubernetes was built for Backend Services](#kubernetes-was-built-for-backend-services)
+    - [🖥️ Deploying Desktop Applications with Kubernetes](#️-deploying-desktop-applications-with-kubernetes)
+    - [📱 Deploying Mobile Apps](#-deploying-mobile-apps)
+  - [🚀 Core Concepts/Main Objects](#-core-conceptsmain-objects)
   - [⚙️ Kubernetes Capabilities](#️-kubernetes-capabilities)
   - [🧠 Philosophy](#-philosophy)
   - [🌍 Real-World Use Cases](#-real-world-use-cases)
@@ -45,7 +48,20 @@ Kubernetes (often abbreviated as K8s) is an open-source platform designed to aut
 | 🌐 Cloud Native Support     | Minimal                                 | Limited                               | Strong (cloud providers love it)         |
 | 🧑‍🤝‍🧑 Community & Ecosystem | Small                                   | Niche                                  | Large, thriving ecosystem                |
 | 📦 Use Case Example         | Dev/testing multi-service apps          | Small scale deployments               | Microservices at scale                   |
-## 🚀 Core Concepts
+## Kubernetes was built for Backend Services
+You use Kubernetes to host and manage the backend services: APIs, databases, authentication, push notification servers, etc.
+### 🖥️ Deploying Desktop Applications with Kubernetes
+- Uncommon setup: Desktop apps are typically designed to run with direct user interaction on a local device. Kubernetes is geared toward running services in a remote, headless environment—like servers.
+- Workaround scenarios:
+  - You can containerize parts of a desktop app (like its backend services or APIs) and run them on Kubernetes.
+  - In some niche cases, people use Kubernetes to deploy virtual desktops or streamed apps using technologies like VNC or WebRTC—but that’s more specialized.
+### 📱 Deploying Mobile Apps
+- Not directly: You don’t deploy the mobile app itself with Kubernetes since it runs on a user’s smartphone. Instead:
+  - You use Kubernetes to host and manage the backend services: APIs, databases, authentication, push notification servers, etc.
+  - This allows your mobile app to interact with a scalable and resilient infrastructure.
+
+💡 Think of Kubernetes as the backstage crew of a theater: it doesn’t perform on stage (your app on the user’s device), but it keeps the lights, sound, and props running flawlessly behind the scenes.
+## 🚀 Core Concepts/Main Objects
 - Containers: Lightweight, portable units that package code and dependencies.
 - Pods: The smallest deployable unit in Kubernetes, often wrapping one or more containers.
 - Nodes: Machines (physical or virtual) that run your workloads.
