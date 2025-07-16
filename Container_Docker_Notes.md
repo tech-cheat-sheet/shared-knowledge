@@ -269,6 +269,8 @@ RUNC enables 'running container'
 | Command                         | Purpose                                                  |
 |---------------------------------|----------------------------------------------------------|
 | `docker run <image>`            | Create and start a container from an image               |
+| `docker run -d <image>`         | Create and start a container from an image (in the background)|
+| `docker run -it <image>`        | Create and start a container from an image in interactive mode|
 | `docker ps`                     | List running containers                                  |
 | `docker ps -a`                  | List all containers (running + stopped)                  |
 | `docker stop <container>`       | Gracefully stop a running container                      |
