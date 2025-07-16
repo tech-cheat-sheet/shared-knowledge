@@ -28,7 +28,7 @@
 - [Docker Registries](#docker-registries)
   - [🧠 Choosing Tips](#-choosing-tips)
 - [🐳 Docker Commands Cheat Sheet](#-docker-commands-cheat-sheet)
-  - [Super commands](#super-commands)
+  - [Super commands - Start from a clean state](#super-commands---start-from-a-clean-state)
   - [🧼 Docker Prune Command Comparison](#-docker-prune-command-comparison)
 - [🧩 Container Standards \& Interfaces Comparison](#-container-standards--interfaces-comparison)
 # How to install Docker on Ubuntu
@@ -41,10 +41,10 @@ for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker c
 ```
 ## 1. Add Docker's official GPG key:
 ```shell
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo apt-get update --yes && \
+sudo apt-get install --yes ca-certificates curl && \
+sudo install -m 0755 -d /etc/apt/keyrings && \
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc && \
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 ```
 ## 2. Add the repository to Apt sources:
@@ -57,11 +57,29 @@ sudo apt-get update
 ```
 ## 3. Install the Docker packages
 ```shell
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install --yes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 ## 4. Verify
 ```shell
 sudo docker run hello-world
+
+## 5. Run 'docker' commands without 'sudo'
+# https://docs.docker.com/engine/install/linux-postinstall/
+whoami
+groups
+getent group | grep -i docker
+sudo groupadd docker
+sudo usermod -aG docker $USER && newgrp docker
+whoami
+groups
+# 🔍 Why You Lose It After 'exit'
+# When you run 'newgrp docker', you're in a temporary subshell with updated group membership.
+# When you type 'exit', you leave that subshell and return to your original shell session, which was started before your group membership changed.
+# That original shell doesn’t know about the new group membership yet.
+# To make the group membership apply system-wide:
+# 1. Log out completely from your user session (not just the terminal).
+# 2. Log back in—this refreshes your group memberships.
+# 3. Run groups again, and you’ll see docker included.
 ```
 
 <!-- '# A Shipping Analogy for Docker, Kubernetes, and Helm' BEGIN -->
@@ -261,9 +279,9 @@ RUNC enables 'running container'
 | `docker network ls`             | List Docker networks                                     |
 | `docker volume ls`              | List Docker volumes                                      |
 | `docker system prune`           | Clean up unused containers, images, volumes, networks    |
-## Super commands
+## Super commands - Start from a clean state
 ```shell
-# List all docker objects
+## List all docker objects
 echo "================================================== CONTAINERS" && \
 docker container ls --all && \
 echo "================================================== IMAGES" && \
@@ -272,14 +290,18 @@ echo "================================================== NETWORKS" && \
 docker network ls && \
 echo "================================================== VOLUMES" && \
 docker volume ls
-```
-```shell
-# if there is at least 1 container running, the following command is best:
+# # if there is at least 1 container running, the following command is best:
+echo "================================================== Stopping all running containers" && \
 docker stop $(docker ps -q) && \
+echo "================================================== Removing all containers" && \
 docker rm $(docker ps -aq) && \
+echo "================================================== Removing all images" && \
 docker rmi $(docker images -q) && \
+echo "================================================== Removing all networks" && \
 docker network prune --force && \
+echo "================================================== Removing all volumes" && \
 docker volume prune --force && \
+echo "================================================== Docker system cleanup" && \
 docker system prune --all --force
 ```
 ## 🧼 Docker Prune Command Comparison
