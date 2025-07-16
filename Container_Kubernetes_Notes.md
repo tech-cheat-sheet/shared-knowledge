@@ -9,6 +9,7 @@
   - [🎯 So, What's Required?](#-so-whats-required)
 - [🧮 Cloud-Native Approaches Comparison Table](#-cloud-native-approaches-comparison-table)
   - [🚀 Core Concepts/Main Objects](#-core-conceptsmain-objects)
+  - [📦 Kubernetes Component Summary](#-kubernetes-component-summary)
   - [⚙️ Kubernetes Capabilities](#️-kubernetes-capabilities)
   - [🧠 Philosophy](#-philosophy)
   - [🌍 Real-World Use Cases](#-real-world-use-cases)
@@ -101,6 +102,7 @@ Originally created by Heroku, it outlines principles such as:
 
 These approaches aren’t mutually exclusive—they often complement each other in modern architectures. For instance, you might use the 12-Factor model to design your app, deploy it using GitOps, run parts as serverless functions, and wrap services in sidecars within a service mesh.
 
+
 ## 🚀 Core Concepts/Main Objects
 - Containers: Lightweight, portable units that package code and dependencies.
 - Pods: The smallest deployable unit in Kubernetes, often wrapping one or more containers.
@@ -108,6 +110,18 @@ These approaches aren’t mutually exclusive—they often complement each other 
 - Cluster: A group of nodes managed together.
 - Control Plane: The brain of Kubernetes, scheduling and managing workloads.
 - Kubelet & Kube-proxy: Agents on nodes that ensure containers run and communicate properly.
+## 📦 Kubernetes Component Summary
+| **Component**              | **Role & Function**                                                                 |
+|---------------------------|-------------------------------------------------------------------------------------|
+| **kube-apiserver**        | Validates API objects and serves as Kubernetes’ front-end                          |
+| **etcd**                  | Key-value store for all cluster state and resources                                |
+| **kube-scheduler**        | Assigns newly created pods to nodes based on resource availability and policies    |
+| **kube-controller-manager** | Runs background processes that regulate cluster state                             |
+| **cloud-controller-manager** | Integrates Kubernetes with cloud provider APIs                                  |
+| **container runtime**     | Executes container workloads within nodes                                          |
+| **kubelet**               | Agent on each node that ensures containers are running as instructed               |
+
+
 ## ⚙️ Kubernetes Capabilities
 | Capability             | Description                                                                 |
 |------------------------|-----------------------------------------------------------------------------|
