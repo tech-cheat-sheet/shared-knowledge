@@ -10,6 +10,9 @@
 - [🧮 Cloud-Native Approaches Comparison Table](#-cloud-native-approaches-comparison-table)
   - [🚀 Core Concepts/Main Objects](#-core-conceptsmain-objects)
   - [📦 Common Kubernetes Objects Summary](#-common-kubernetes-objects-summary)
+  - [🧱 Kubernetes Pod vs Deployment – Comparison Table](#-kubernetes-pod-vs-deployment--comparison-table)
+  - [| **Best Practice**        | Use for one-off or tightly controlled scenarios                         | Use for all scalable, resilient applications                                   |](#-best-practice---------use-for-one-off-or-tightly-controlled-scenarios--------------------------use-for-all-scalable-resilient-applications-----------------------------------)
+    - [✅ Validity in Latest Kubernetes Version](#-validity-in-latest-kubernetes-version)
   - [🧮 Kubernetes Objects vs Resources Comparison](#-kubernetes-objects-vs-resources-comparison)
     - [🧠 Summary:](#-summary)
   - [📦 Kubernetes Component Summary](#-kubernetes-component-summary)
@@ -36,7 +39,7 @@
   - [Super command](#super-command)
 - [🧰 kubectl Main Commands Cheat Sheet](#-kubectl-main-commands-cheat-sheet)
   - [⚔️ `kubectl create` vs `kubectl apply` – Comparison Table](#️-kubectl-create-vs-kubectl-apply--comparison-table)
-    - [✅ Validity in Latest Kubernetes Version](#-validity-in-latest-kubernetes-version)
+    - [✅ Validity in Latest Kubernetes Version](#-validity-in-latest-kubernetes-version-1)
 - [🧪 Kubernetes Certifications Comparison Table](#-kubernetes-certifications-comparison-table)
 - [🧪 CNCF Certifications Beyond CKAD, CKA, CKS, and KCNA](#-cncf-certifications-beyond-ckad-cka-cks-and-kcna)
 - [🧪 KCNA vs KCA Certification Comparison Table](#-kcna-vs-kca-certification-comparison-table)
@@ -156,6 +159,22 @@ These approaches aren’t mutually exclusive—they often complement each other 
 | **Service**    | Exposes workloads via a stable endpoint; provides a single access point     |
 | **ConfigMap**  | Stores non-sensitive configuration data                                     |
 | **Secret**     | Stores sensitive data like passwords, tokens, and keys                      |
+## 🧱 Kubernetes Pod vs Deployment – Comparison Table
+| **Aspect**               | **Pod**                                                                 | **Deployment**                                                                 |
+|--------------------------|--------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| **Definition**           | The smallest unit in Kubernetes; encapsulates one or more containers    | A higher-level object that manages Pods via ReplicaSets                        |
+| **Lifecycle Management** | No built-in self-healing; must be manually recreated if it fails        | Automatically replaces failed Pods to maintain desired state                   |
+| **Scalability**          | Not scalable on its own; must be manually duplicated                    | Supports scaling via `replicas` field                                          |
+| **Updates**              | Manual updates; requires deleting and recreating                        | Supports rolling updates and rollbacks                                         |
+| **Use Case**             | Ideal for testing, debugging, or short-lived tasks                      | Recommended for production workloads                                           |
+| **Persistence**          | Ephemeral; not designed for long-term persistence                       | Persistent and resilient across node failures                                  |
+| **Creation Method**      | `kubectl run` or `kubectl create -f pod.yaml`                           | `kubectl create deployment` or `kubectl apply -f deployment.yaml`             |
+| **Controller Involved**  | None                                                                     | Uses ReplicaSet controller to manage Pods                                      |
+| **Monitoring**           | No automatic monitoring                                                  | Continuously monitors and reconciles desired vs actual state                  |
+| **Best Practice**        | Use for one-off or tightly controlled scenarios                         | Use for all scalable, resilient applications                                   |
+---
+### ✅ Validity in Latest Kubernetes Version
+Both **Pod** and **Deployment** are fully supported and valid in the latest Kubernetes release (v1.33+). However, **Deployments are preferred** for most real-world applications due to their automation, scalability, and fault tolerance.
 ## 🧮 Kubernetes Objects vs Resources Comparison
 | **Aspect**               | **Kubernetes Objects**                                                                 | **Kubernetes Resources**                                                                 |
 |--------------------------|-----------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
