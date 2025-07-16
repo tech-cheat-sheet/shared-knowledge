@@ -245,11 +245,22 @@ my-app/
 # Ubuntu and Kubernetes
 ## 🧪 Option 1: Minikube (Best for Beginners)
 ```shell
+# 0. Verify that docker is installed (and nothing else)
+which docker
+which minikube
+which kubectl
+docker --version
+
 # Install dependencies
-sudo apt update
+cd ~ && sudo apt update --yes
 
 # Install Minikube
+hostnamectl | grep -i architecture
+
 curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+
+ls -la | grep -i minikube
+# if you see '.minikube', uninstall docker, minikube, kubectl before continuing again
 
 sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
 
@@ -262,6 +273,18 @@ whoami
 groups
 # Without "sudo usermod -aG docker $USER && newgrp docker", you will get:
 # 💣  Exiting due to PROVIDER_DOCKER_NEWGRP: "docker version --format <no value>-<no value>:<no value>" exit status 1: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.51/version": dial unix /var/run/docker.sock: connect: permission denied
+#
+# 1. sudo usermod -aG docker $USER
+# This part adds your current user ($USER) to the docker group.
+# Why? Because Docker’s daemon (dockerd) requires group membership for permission to run Docker commands without sudo.
+#
+# 2. newgrp docker
+# This activates your membership in the docker group immediately in the current shell session.
+# Otherwise, you’d need to log out and log back in for the group change to take effect.
+#
+# After running "sudo usermod -aG docker $USER && newgrp docker":
+# You should be able to use Docker commands like docker ps or docker images without prefixing them with sudo.
+# This is important for tools like Minikube, which rely on Docker being accessible to your user.
 
 
 # Start your cluster
@@ -270,7 +293,7 @@ minikube start --driver=docker
 # Minikube internal tool
 minikube kubectl -- get pods -A
 
-# Use kubectl to interact
+# Use kubectl to interact (OPTIONAL)
 sudo apt update
 sudo apt install snapd -y
 sudo snap install kubectl --classic
