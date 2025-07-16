@@ -40,6 +40,11 @@
 - [Kubernetes Access Control](#kubernetes-access-control)
   - [🔐 Kubernetes Access Control Components](#-kubernetes-access-control-components)
   - [🧭 RBAC in Action](#-rbac-in-action)
+  - [Common Kubernetes RBAC Roles \& Bindings](#common-kubernetes-rbac-roles--bindings)
+    - [🔐 Popular Kubernetes RBAC Roles](#-popular-kubernetes-rbac-roles)
+    - [📄 Example Role YAML: pod-reader](#-example-role-yaml-pod-reader)
+    - [🔗 Example RoleBinding YAML](#-example-rolebinding-yaml)
+    - [🧠 Best Practices](#-best-practices)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -428,3 +433,48 @@ RBAC is the most commonly used method in Kubernetes. It involves:
 - ClusterRoleBindings: Bind ClusterRoles to users or groups cluster-wide
 
 This lets you enforce the principle of least privilege, ensuring users only have access to what they need.
+## Common Kubernetes RBAC Roles & Bindings
+### 🔐 Popular Kubernetes RBAC Roles
+| **RBAC Role**             | **Purpose**                                                                 |
+|---------------------------|------------------------------------------------------------------------------|
+| **cluster-admin**         | Full access to all resources across the cluster (use sparingly!)            |
+| **admin**                 | Full access within a namespace, including managing roles and bindings       |
+| **edit**                  | Can create, update, delete most resources in a namespace (except RBAC)      |
+| **view**                  | Read-only access to resources in a namespace                                |
+| **pod-reader**            | Custom role to allow viewing pods (`get`, `list`, `watch`)                  |
+| **secret-reader**         | Grants access to view secrets (often used with monitoring tools)            |
+| **deployment-manager**    | Allows managing deployments, pods, services, etc.                           |
+| **metrics-collector**     | Read-only access to metrics APIs across namespaces                          |
+### 📄 Example Role YAML: pod-reader
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: dev
+  name: pod-reader
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch"]
+```
+### 🔗 Example RoleBinding YAML
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-pods
+  namespace: dev
+subjects:
+- kind: User
+  name: arthur
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io
+```
+### 🧠 Best Practices
+- Use RoleBindings for namespace-scoped access and ClusterRoleBindings for cluster-wide access.
+- Prefer least privilege: grant only the permissions needed.
+- Regularly audit RBAC policies to avoid privilege creep.
+- Use groups to simplify access management across teams.
