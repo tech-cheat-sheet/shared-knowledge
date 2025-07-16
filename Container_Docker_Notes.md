@@ -38,6 +38,8 @@
   - [🧠 Pro Tip](#-pro-tip)
 - [Example with Busybox](#example-with-busybox)
   - [Interactive mode](#interactive-mode)
+- [🧱 Application Image vs System Image – Comparison Table](#-application-image-vs-system-image--comparison-table)
+    - [✅ Validity in Modern Systems](#-validity-in-modern-systems)
 - [Super commands - Start from a clean state](#super-commands---start-from-a-clean-state)
   - [🧼 Docker Prune Command Comparison](#-docker-prune-command-comparison)
 - [🧩 Container Standards \& Interfaces Comparison](#-container-standards--interfaces-comparison)
@@ -367,6 +369,27 @@ ps aux
 exit
 docker container ls --all
 ```
+
+
+# 🧱 Application Image vs System Image – Comparison Table
+| **Aspect**               | **Application Image**                                                  | **System Image**                                                       |
+|--------------------------|------------------------------------------------------------------------|------------------------------------------------------------------------|
+| **Definition**           | A container or package that includes a specific user-facing application| A complete snapshot of an operating system and its configuration       |
+| **Purpose**              | Runs a single app or service (e.g., web server, database)              | Boots and runs an entire system environment                           |
+| **Scope**                | Limited to one task or service                                         | Includes OS, drivers, system tools, and possibly apps                 |
+| **Examples**             | Docker image for NGINX, PostgreSQL, Node.js                            | ISO file for Ubuntu, Windows recovery image, VM disk image            |
+| **User Interaction**     | Direct interaction with the app                                        | Indirect; system image sets up the environment                        |
+| **Customization**        | Tailored for app deployment and scaling                                | Tailored for system recovery, cloning, or provisioning                |
+| **Size**                 | Typically small and lightweight                                        | Larger due to OS and full system components                          |
+| **Usage Context**        | Microservices, containers, CI/CD pipelines                             | OS installation, backup, virtualization                              |
+| **Update Strategy**      | Rebuilt or redeployed per app version                                  | Updated via system patches or full image replacement                 |
+| **Dependency**           | Depends on a host OS or container runtime                              | Self-contained; includes its own OS                                  |
+### ✅ Validity in Modern Systems
+Both types are widely used in modern computing:
+- **Application images** dominate in cloud-native and containerized environments.
+- **System images** are essential for infrastructure provisioning, recovery, and virtualization.
+
+Want help building a Docker application image or creating a bootable system image for deployment?
 
 
 # Super commands - Start from a clean state
