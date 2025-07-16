@@ -10,6 +10,15 @@
   - [Kubernetes: The Port \& Crane System](#kubernetes-the-port--crane-system)
   - [Helm: The Shipping Manifest \& Blueprint](#helm-the-shipping-manifest--blueprint)
 - [🧱 Main Docker Objects \& Entities](#-main-docker-objects--entities)
+- [🐳 Docker: Main Components](#-docker-main-components)
+  - [🧠 Docker Engine](#-docker-engine)
+  - [📦 Docker Images](#-docker-images)
+  - [🚀 Docker Containers](#-docker-containers)
+  - [🗂️ Docker Registries](#️-docker-registries)
+  - [🌐 Docker Networking](#-docker-networking)
+    - [Network Drivers:](#network-drivers)
+    - [💾 Docker Volumes](#-docker-volumes)
+  - [🧩 Advanced Components](#-advanced-components)
 - [Docker Registries](#docker-registries)
   - [🧠 Choosing Tips](#-choosing-tips)
 - [🐳 Docker Commands Cheat Sheet](#-docker-commands-cheat-sheet)
@@ -80,6 +89,43 @@ With this model, you can see how each layer builds on the last: Docker standardi
 | **Registries**    | Storage locations for images — e.g., Docker Hub, private registries         |
 | **Layers**        | Each image is made up of stacked layers that improve caching and reuse      |
 | **Context**       | The build directory passed to `docker build` — includes Dockerfile & assets |
+
+
+# 🐳 Docker: Main Components
+## 🧠 Docker Engine
+The heart of Docker's architecture.
+- Docker Daemon (dockerd): Background service managing containers.
+- REST API: Interface for remote management of Docker features.
+- Docker CLI: Command-line tool (docker) used to interact with Docker.
+## 📦 Docker Images
+Templates used to create containers.
+- Built from a Dockerfile.
+- Can be pulled from Docker Hub or built locally.
+- Immutable and reusable across environments.
+## 🚀 Docker Containers
+Running instances of images.
+- Lightweight and isolated from the host OS.
+- Easily managed using CLI commands.
+- Ideal for deploying services and apps consistently.
+## 🗂️ Docker Registries
+Storage and distribution hubs for images.
+- Docker Hub: Default public registry.
+- Private Registries: Custom repositories for internal use.
+## 🌐 Docker Networking
+Enables communication between containers and the outside world.
+### Network Drivers:
+- Bridge – Default, connects containers on a host.
+- Host – Shares host’s networking stack.
+- Overlay – Connects containers across multiple hosts.
+- None – Disables all networking.
+- Macvlan – Assigns a MAC address to containers for direct access.
+### 💾 Docker Volumes
+Persistent data storage.
+- Remains intact across container restarts or deletions.
+- Used for sharing data between containers.
+## 🧩 Advanced Components
+- Docker Compose: Defines multi-container apps using a docker-compose.yml file.
+- Docker Swarm: Built-in orchestration tool for clustering and managing distributed containers.
 
 
 # Docker Registries
