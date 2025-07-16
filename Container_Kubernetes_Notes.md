@@ -277,7 +277,7 @@ Sources:
 ### Error caused by minikube when using Nordvpn
 When you run:
 ```shell
-nordvpn statu
+nordvpn status
 ```
 you will see:
 ```shell
