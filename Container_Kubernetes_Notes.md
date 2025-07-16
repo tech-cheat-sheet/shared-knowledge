@@ -32,6 +32,9 @@
   - [⚙️ Kubernetes vs Istio Comparison Table](#️-kubernetes-vs-istio-comparison-table)
 - [Ubuntu and Kubernetes](#ubuntu-and-kubernetes)
   - [🧪 Option 1: Minikube (Best for Beginners)](#-option-1-minikube-best-for-beginners)
+    - [Minikube and `docker system prune --all --force`](#minikube-and-docker-system-prune---all---force)
+      - [⚠️ What the Command Does](#️-what-the-command-does)
+      - [🧨 How It Affects Minikube](#-how-it-affects-minikube)
     - [Error caused by minikube when using Nordvpn](#error-caused-by-minikube-when-using-nordvpn)
       - [Explanation](#explanation)
       - [✅ How to Fix It](#-how-to-fix-it)
@@ -359,9 +362,7 @@ docker rmi $(docker images -q) && \
 echo "================================================== Removing all networks" && \
 docker network prune --force && \
 echo "================================================== Removing all volumes" && \
-docker volume prune --force && \
-echo "================================================== Docker system cleanup" && \
-docker system prune --all --force
+docker volume prune --force
 
 # Install dependencies
 cd ~ && sudo apt update --yes
@@ -436,6 +437,28 @@ Sources:
 ✅ Pros: Easy setup, low resource usage
 
 ⚠️ Cons: Not production-grade, limited to one node
+### Minikube and `docker system prune --all --force`
+```shell
+echo "================================================== Docker system cleanup" && \
+docker system prune --all --force
+```
+#### ⚠️ What the Command Does
+This command removes:
+- All stopped containers
+- All unused images (even those not dangling)
+- All unused networks
+- All build cache
+
+If you add --volumes, it also removes anonymous volumes, which may contain persistent data.
+#### 🧨 How It Affects Minikube
+If Minikube is using Docker as its container runtime (via --driver=docker), then:
+- The Minikube VM itself is a Docker container.
+- Pruning aggressively may remove images used by Minikube workloads.
+- It can also remove networks or volumes Minikube depends on.
+
+In some cases, users have reported needing to restart or recreate the Minikube cluster after pruning.
+
+
 ### Error caused by minikube when using Nordvpn
 When you run:
 ```shell
