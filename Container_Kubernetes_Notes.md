@@ -62,6 +62,10 @@
   - [🔌 How Kubernetes Handles Networking](#-how-kubernetes-handles-networking)
   - [Minikube and Network Plugins](#minikube-and-network-plugins)
     - [🧪 Check Active Network Plugin in Minikube](#-check-active-network-plugin-in-minikube)
+      - [1. List Addons](#1-list-addons)
+      - [2. Inspect CNI Config on Node](#2-inspect-cni-config-on-node)
+      - [3. Check Running Pods in kube-system](#3-check-running-pods-in-kube-system)
+      - [4. Check Node Runtime Info](#4-check-node-runtime-info)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -612,6 +616,26 @@ Kubernetes doesn’t ship with a built-in network plugin. Instead, it relies on 
 ## Minikube and Network Plugins
 Minikube doesn’t come with a built-in command to list all CNI (Container Network Interface) plugins directly, but you can still inspect what’s active using a few handy commands:
 ### 🧪 Check Active Network Plugin in Minikube
+#### 1. List Addons
 ```shell
 minikube addons list
 ```
+- Shows all available Minikube addons, including networking-related ones like ``cilium``, ``flannel``, or ``calico``.
+- Enabled plugins will be marked as ``enabled``.
+#### 2. Inspect CNI Config on Node
+```shell
+minikube ssh
+ls /etc/cni/net.d/
+```
+- This directory contains CNI configuration files.
+- You’ll see filenames like ``10-flannel.conflist`` or ``cilium.conf`` that indicate which plugin is active.
+#### 3. Check Running Pods in kube-system
+```shell
+kubectl get pods -n kube-system
+```
+Look for pods like ``flannel-xxxx``, ``cilium-xxxx``, or ``calico-xxxx`` — these are the network plugin agents.
+#### 4. Check Node Runtime Info
+```shell
+kubectl get node <node-name> -o jsonpath='{.status.nodeInfo.containerRuntimeVersion}'
+```
+While this shows the container runtime (e.g., containerd), it helps confirm the environment your CNI plugin is operating in.
