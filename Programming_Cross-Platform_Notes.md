@@ -1,3 +1,4 @@
+- [Software Development Platforms](#software-development-platforms)
 - [Electron vs .NET MAUI](#electron-vs-net-maui)
   - [🧱 Architecture \& Tech Stack](#-architecture--tech-stack)
   - [🖥️ Platform Support](#️-platform-support)
@@ -11,6 +12,23 @@
   - [🧩 How They Might Intersect](#-how-they-might-intersect)
 - [Electron vs Web Apps](#electron-vs-web-apps)
 - [Javascript vs Typescript](#javascript-vs-typescript)
+# Software Development Platforms
+| Platform Type         | Description                                                                 | Examples                                      | Technology Stack                                  |
+|-----------------------|-----------------------------------------------------------------------------|-----------------------------------------------|---------------------------------------------------|
+| Desktop               | Apps that run on personal computers with full OS access                     | Microsoft Word, Photoshop, VS Code            | C++, C#, Java, Electron (JS/TS + Chromium)        |
+| Web                   | Browser-based apps accessed via URL, often hosted on servers                | Gmail, Trello, Google Docs                    | HTML, CSS, JS/TS, React, Angular, Vue, Node.js    |
+| Mobile                | Apps designed for smartphones and tablets                                   | WhatsApp, Instagram, Uber                     | Kotlin, Swift, React Native, Flutter, Xamarin     |
+| Embedded              | Software built into hardware devices with limited UI                        | Microwave firmware, car infotainment systems  | C, C++, Assembly, RTOS, MicroPython               |
+| IoT (Internet of Things) | Apps that connect and control smart devices over the internet            | Smart thermostats, wearables, home automation | MQTT, C/C++, Python, Node.js, ARM, Azure IoT      |
+| Cloud                 | Apps hosted remotely, accessed via APIs or web interfaces                   | AWS, Google Cloud Platform, Dropbox           | Java, Go, Python, Kubernetes, Docker, REST APIs   |
+| Gaming                | Platforms for running video games                                           | Xbox OS, PlayStation OS, Steam                | C++, C#, Unity, Unreal Engine                     |
+| Enterprise            | Large-scale business platforms for operations and data                      | SAP, Salesforce, Oracle ERP                   | Java, .NET, SQL, Spring, GraphQL, SOAP            |
+| AR/VR                 | Apps for augmented and virtual reality environments                         | Oculus apps, HoloLens, ARKit-based apps       | Unity, Unreal Engine, C#, C++, WebXR, OpenXR      |
+| Robotics              | Software controlling robotic systems and automation                         | ROS (Robot Operating System), Webots          | C++, Python, ROS, Gazebo, OpenCV                  |
+| Automotive            | Platforms for in-vehicle systems and diagnostics                            | Android Auto, Tesla OS                        | C++, Qt, Android Automotive, AUTOSAR              |
+| Wearables             | Apps for smartwatches, fitness trackers, and health monitors                | Fitbit OS, watchOS                            | Swift, Kotlin, C, TinyOS, Wear OS SDK             |
+| Smart TV              | Apps for streaming and media on television platforms                        | Netflix on Roku, Samsung Tizen                | HTML5, JavaScript, Tizen Studio, Roku SDK         |
+| Voice Assistant       | Platforms for voice-controlled interactions                                 | Alexa Skills, Google Assistant Actions        | Node.js, Python, AWS Lambda, Dialogflow, SSML     |
 # Electron vs .NET MAUI
 Electron and .NET MAUI are both powerful frameworks for building cross-platform apps—but they take very different paths to get there. Here’s a breakdown to help you compare:
 ## 🧱 Architecture & Tech Stack
