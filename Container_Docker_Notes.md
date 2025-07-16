@@ -22,7 +22,9 @@
   - [🧮 Container Runtime vs Container Engine Comparison](#-container-runtime-vs-container-engine-comparison)
   - [🧮 Containerd vs CRI-O Comparison Table](#-containerd-vs-cri-o-comparison-table)
     - [🔍 Summary:](#-summary)
-- [🧮 Container vs Virtual Machine Comparison](#-container-vs-virtual-machine-comparison)
+  - [🧩 Container Technology Stack Overview](#-container-technology-stack-overview)
+  - [🔍 Summary](#-summary-1)
+  - [🧮 Container vs Virtual Machine Comparison](#-container-vs-virtual-machine-comparison)
 - [Docker Registries](#docker-registries)
   - [🧠 Choosing Tips](#-choosing-tips)
 - [🐳 Docker Commands Cheat Sheet](#-docker-commands-cheat-sheet)
@@ -171,6 +173,8 @@ Think of the runtime as the engine block of a car—it powers the container. The
 - CRI-O is purpose-built for Kubernetes, offering a leaner, more secure runtime with minimal overhead.
 
 
+## 🧩 Container Technology Stack Overview
+This image outlines how different container technologies and runtimes interconnect, especially in Kubernetes environments:
 ```shell
 Kubernetes interfaces with the CRI to talks to Containerd
 or
@@ -181,9 +185,22 @@ CRI-O talks to RUNC (OCI)
 
 RUNC enables 'running container'
 ```
+| **Layer**              | **Components & Relationships**                                                                                                                                   |
+|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Container Engines**  | - **Docker** and **Podman**: User-facing tools for building and managing containers.                                                                            |
+| **Runtime Interfaces** | - **CRI-O** and **Containerd**: Act as bridges between Kubernetes and low-level runtimes.<br>• CRI-O works well with Podman and Docker.<br>• Containerd connects directly with Kubernetes. |
+| **Runtime Spec (OCI)** | - **runc**: The low-level container runtime used by CRI-O and Containerd to start and stop containers following the Open Container Initiative (OCI) spec.        |
+| **Orchestration**      | - **Kubernetes**: Manages containers at scale; communicates with CRI-O or Containerd using the **Container Runtime Interface (CRI)**.                           |
+| **Output**             | - **Running Containers**: The result of orchestration and runtime execution across the system.                                                                  |
+## 🔍 Summary
+- Podman/Docker help define and manage containers.
+- CRI-O/Containerd translate Kubernetes commands into container operations.
+- runc handles the low-level execution based on standardized specs.
+- Kubernetes ties it all together—it's the master conductor.
+- The final product: containers running seamlessly across infrastructure.
 
 
-# 🧮 Container vs Virtual Machine Comparison
+## 🧮 Container vs Virtual Machine Comparison
 | **Aspect**               | **Container**                                              | **Virtual Machine (VM)**                                  |
 |--------------------------|------------------------------------------------------------|-----------------------------------------------------------|
 | **Virtualization Level** | OS-level virtualization                                    | Hardware-level virtualization                             |
