@@ -328,7 +328,7 @@ microk8s status --wait-ready
 | `minikube logs`                    | Displays cluster logs for troubleshooting                 |
 | `minikube config view`            | Shows current configuration settings                      |
 | `minikube update-check`           | Checks for Minikube updates                               |
-| `minikube ssh`                     | SSH into the Minikube VM/container                        |
+| `minikube ssh`                     | SSH into the Minikube VM/container which will allow you to use ``crictl``|
 ## Super command
 ```shell
 minikube start --driver=docker --cpus=4 --memory=8192 --disk-size=10g
