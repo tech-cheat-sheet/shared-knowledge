@@ -88,6 +88,21 @@
       - [🗂️ Source Control](#️-source-control)
     - [🌍 IPv6 Addressing](#-ipv6-addressing)
       - [🧩 Transition Techniques](#-transition-techniques)
+- [2.0 Network Implementation](#20-network-implementation)
+  - [2.1 Explain characteristics of routing technologies](#21-explain-characteristics-of-routing-technologies)
+    - [🚦 Routing Types](#-routing-types)
+      - [🛣️ Static Routing](#️-static-routing)
+      - [🔄 Dynamic Routing](#-dynamic-routing)
+        - [🌐 Common Dynamic Routing Protocols](#-common-dynamic-routing-protocols)
+    - [📍 Route Selection Criteria](#-route-selection-criteria)
+    - [🔄 Address Translation](#-address-translation)
+      - [🌐 NAT (Network Address Translation)](#-nat-network-address-translation)
+      - [🔢 PAT (Port Address Translation)](#-pat-port-address-translation)
+    - [🛡️ Redundancy and Virtualization](#️-redundancy-and-virtualization)
+      - [🧭 First Hop Redundancy Protocol (FHRP)](#-first-hop-redundancy-protocol-fhrp)
+      - [🧠 Virtual IP (VIP)](#-virtual-ip-vip)
+      - [🧩 Subinterfaces](#-subinterfaces)
+    - [🧠 Summary Table](#-summary-table)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -509,3 +524,57 @@ Modern networks are evolving to meet the demands of scalability, security, autom
 | **NAT64**                | Translates IPv6 to IPv4 for legacy systems.                                |
 
 > **Use Case**: Future-proofing networks, global connectivity, IoT scalability.
+# 2.0 Network Implementation
+## 2.1 Explain characteristics of routing technologies
+Routing technologies determine how data moves across networks. They include static and dynamic methods, address translation, and redundancy protocols to ensure reliable and efficient communication.
+### 🚦 Routing Types
+#### 🛣️ Static Routing
+- **Definition**: Manually configured routes by a network administrator.
+- **Pros**: Simple, predictable, secure.
+- **Cons**: No automatic failover, not scalable.
+#### 🔄 Dynamic Routing
+- **Definition**: Routers automatically exchange routing information.
+- **Pros**: Scalable, adaptive to network changes.
+- **Cons**: More complex, requires CPU/memory resources.
+##### 🌐 Common Dynamic Routing Protocols
+| Protocol | Type        | Description                                                                 |
+|----------|-------------|-----------------------------------------------------------------------------|
+| **BGP**  | Exterior Gateway Protocol | Used between autonomous systems (e.g., ISPs). Highly scalable. |
+| **EIGRP**| Interior Gateway Protocol | Cisco proprietary; uses bandwidth and delay as metrics.         |
+| **OSPF** | Interior Gateway Protocol | Open standard; uses link-state algorithm and cost metric.       |
+### 📍 Route Selection Criteria
+| Criterion              | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| **Administrative Distance (AD)** | Trustworthiness of a routing source (lower is preferred).       |
+| **Prefix Length**      | More specific routes (longer subnet mask) are preferred.                    |
+| **Metric**             | Value used by routing protocols to determine best path (e.g., cost, delay). |
+### 🔄 Address Translation
+#### 🌐 NAT (Network Address Translation)
+- **Function**: Translates private IP addresses to public IPs.
+- **Use Case**: Allows internal devices to access the internet.
+#### 🔢 PAT (Port Address Translation)
+- **Function**: Maps multiple private IPs to a single public IP using port numbers.
+- **Use Case**: Conserves public IPs; common in home/office routers.
+### 🛡️ Redundancy and Virtualization
+#### 🧭 First Hop Redundancy Protocol (FHRP)
+- **Definition**: Ensures availability of default gateway.
+- **Examples**: HSRP (Cisco), VRRP (open standard), GLBP.
+#### 🧠 Virtual IP (VIP)
+- **Definition**: IP address shared among multiple devices for failover.
+- **Use Case**: Load balancing, high availability.
+#### 🧩 Subinterfaces
+- **Definition**: Logical interfaces on a physical interface.
+- **Use Case**: VLAN tagging (802.1Q), routing between VLANs.
+### 🧠 Summary Table
+| Feature/Protocol        | Purpose                          | Key Benefit                          |
+|-------------------------|----------------------------------|--------------------------------------|
+| Static Routing          | Manual route configuration       | Simplicity, control                  |
+| Dynamic Routing         | Automatic route updates          | Scalability, adaptability            |
+| BGP                     | Inter-AS routing                 | Internet backbone routing            |
+| OSPF                    | Intra-AS routing                 | Fast convergence, open standard      |
+| EIGRP                   | Cisco IGP                        | Efficient metric-based routing       |
+| NAT                     | IP translation                   | Internet access for private networks |
+| PAT                     | Port-based NAT                   | Multiple devices share one IP        |
+| FHRP                    | Gateway redundancy               | High availability                    |
+| VIP                     | Shared IP for failover/load bal. | Seamless failover                    |
+| Subinterfaces           | VLAN routing                     | Logical segmentation                 |
