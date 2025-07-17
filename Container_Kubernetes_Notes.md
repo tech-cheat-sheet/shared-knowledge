@@ -1388,7 +1388,7 @@ spec:
 It will exist, but won’t route traffic anywhere — because no pods match the selector.
 <!-- 
 ###################################################################################################
-# INGRESS DEMO
+# INGRESS DEMO (BEGIN)
 ###################################################################################################
 -->
 # Working with Ingress in Minikube
@@ -1514,6 +1514,11 @@ sudo gedit /etc/hosts
 curl http://hello-world.example
 ## Or open http://hello-world.example in your browser.
 ```
+<!-- 
+###################################################################################################
+# INGRESS DEMO (END)
+###################################################################################################
+-->
 
 
 # 🌐 Comparison: NodePort vs Ingress
