@@ -67,6 +67,18 @@
       - [🧱 Collapsed Core](#-collapsed-core)
     - [🚦 Traffic Flows](#-traffic-flows)
     - [🧠 Summary Comparison Table](#-summary-comparison-table-3)
+  - [1.7 Given a scenario, use appropriate IPv4 network addressing](#17-given-a-scenario-use-appropriate-ipv4-network-addressing)
+    - [🌍 Public vs. Private Addressing](#-public-vs-private-addressing)
+      - [🔄 APIPA (Automatic Private IP Addressing)](#-apipa-automatic-private-ip-addressing)
+      - [🔁 Loopback / Localhost](#-loopback--localhost)
+    - [🧩 Subnetting Techniques](#-subnetting-techniques)
+      - [📏 Variable Length Subnet Mask (VLSM)](#-variable-length-subnet-mask-vlsm)
+      - [🧮 Classless Inter-Domain Routing (CIDR)](#-classless-inter-domain-routing-cidr)
+    - [🏷️ IPv4 Address Classes](#️-ipv4-address-classes)
+    - [🧠 Scenario-Based Examples](#-scenario-based-examples)
+      - [🏠 Home Network](#-home-network)
+      - [🏢 Enterprise Network](#-enterprise-network)
+      - [🌐 Public Web Server](#-public-web-server)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -380,3 +392,50 @@ Network design affects performance, scalability, fault tolerance, and traffic ma
 | Architecture     | Collapsed Core         | Simplified two-layer design          | SMB networks                           |
 | Traffic Flow     | North-South            | External/internal communication      | Internet access, cloud services        |
 | Traffic Flow     | East-West              | Internal communication               | Microservices, virtualization          |
+## 1.7 Given a scenario, use appropriate IPv4 network addressing
+IPv4 addressing is foundational to network design and communication. Choosing the right type of address and subnetting strategy depends on the scenario—whether it's internal networking, internet-facing services, or specialized routing.
+### 🌍 Public vs. Private Addressing
+| Type       | Description                                                                 | Example Ranges                        |
+|------------|-----------------------------------------------------------------------------|----------------------------------------|
+| **Public** | Routable on the internet; assigned by IANA or ISPs.                         | Any address not in RFC1918 ranges      |
+| **Private**| Non-routable; used within internal networks.                                | Defined by [RFC1918](https://datatracker.ietf.org/doc/html/rfc1918): |
+|            |                                                                             | - 10.0.0.0 – 10.255.255.255 (Class A)  |
+|            |                                                                             | - 172.16.0.0 – 172.31.255.255 (Class B)|
+|            |                                                                             | - 192.168.0.0 – 192.168.255.255 (Class C)|
+#### 🔄 APIPA (Automatic Private IP Addressing)
+- **Range**: 169.254.0.0 – 169.254.255.255
+- **Use Case**: Assigned automatically when DHCP fails.
+- **Limitation**: Only supports local communication.
+#### 🔁 Loopback / Localhost
+- **Range**: 127.0.0.0 – 127.255.255.255
+- **Common Address**: 127.0.0.1
+- **Use Case**: Testing and internal host communication.
+### 🧩 Subnetting Techniques
+#### 📏 Variable Length Subnet Mask (VLSM)
+- **Definition**: Allows subnets of different sizes within the same network.
+- **Benefit**: Efficient IP address utilization.
+- **Use Case**: Assigning IPs based on host requirements.
+#### 🧮 Classless Inter-Domain Routing (CIDR)
+- **Notation**: Uses slash notation (e.g., `192.168.1.0/24`).
+- **Benefit**: Flexible subnetting beyond traditional class boundaries.
+- **Use Case**: Modern routing and IP allocation.
+### 🏷️ IPv4 Address Classes
+| Class   | Range                          | Default Subnet Mask | Use Case                          |
+|---------|--------------------------------|----------------------|-----------------------------------|
+| **A**   | 1.0.0.0 – 126.255.255.255       | 255.0.0.0            | Large networks (16M hosts)        |
+| **B**   | 128.0.0.0 – 191.255.255.255     | 255.255.0.0          | Medium networks (65K hosts)       |
+| **C**   | 192.0.0.0 – 223.255.255.255     | 255.255.255.0        | Small networks (254 hosts)        |
+| **D**   | 224.0.0.0 – 239.255.255.255     | N/A                  | Multicast                         |
+| **E**   | 240.0.0.0 – 255.255.255.255     | N/A                  | Reserved for experimental use     |
+
+> Note: Classful addressing is largely obsolete; CIDR and VLSM are preferred in modern networks.
+### 🧠 Scenario-Based Examples
+#### 🏠 Home Network
+- **Use**: Private IPs (e.g., `192.168.1.0/24`)
+- **Subnetting**: CIDR for dividing into smaller segments
+#### 🏢 Enterprise Network
+- **Use**: RFC1918 ranges with VLSM
+- **Example**: `10.0.0.0/8` split into `/16` or `/24` subnets
+#### 🌐 Public Web Server
+- **Use**: Public IP (e.g., `203.0.113.5`)
+- **Subnetting**: CIDR for efficient routing
