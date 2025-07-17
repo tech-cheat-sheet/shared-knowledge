@@ -33,6 +33,20 @@
       - [🔐 Virtual Private Network (VPN)](#-virtual-private-network-vpn)
       - [🚦 Quality of Service (QoS)](#-quality-of-service-qos)
     - [🧠 Summary Comparison Table](#-summary-comparison-table-1)
+  - [1.3 Summarize cloud concepts and connectivity options](#13-summarize-cloud-concepts-and-connectivity-options)
+    - [🧠 Core Cloud Concepts](#-core-cloud-concepts)
+      - [🔧 Network Functions Virtualization (NFV)](#-network-functions-virtualization-nfv)
+      - [🛡️ Network Security Groups (NSG)](#️-network-security-groups-nsg)
+      - [📜 Network Security Lists (NSL)](#-network-security-lists-nsl)
+    - [🏗️ Virtual Private Cloud (VPC)](#️-virtual-private-cloud-vpc)
+    - [🌐 Cloud Gateways](#-cloud-gateways)
+    - [🔌 Cloud Connectivity Options](#-cloud-connectivity-options)
+    - [🏗️ Deployment Models](#️-deployment-models)
+    - [🧰 Service Models](#-service-models)
+    - [📈 Scalability, Elasticity, Multitenancy](#-scalability-elasticity-multitenancy)
+      - [📊 Scalability](#-scalability)
+      - [🔄 Elasticity](#-elasticity)
+      - [🧑‍🤝‍🧑 Multitenancy](#-multitenancy)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -168,3 +182,51 @@ Networking solutions aren't limited to physical or virtual appliances—they als
 | Application  | CDN                   | Cloud-based  | Faster content delivery              | Global edge servers                    |
 | Function     | VPN                   | Software/Hardware | Secure remote access             | VPN clients, routers                   |
 | Function     | QoS                   | Configuration | Traffic prioritization               | Network devices (routers/switches)     |
+## 1.3 Summarize cloud concepts and connectivity options
+Cloud computing introduces a wide range of technologies and models that enable scalable, secure, and flexible infrastructure and services. Below is a summary of essential concepts, components, and deployment strategies.
+### 🧠 Core Cloud Concepts
+#### 🔧 Network Functions Virtualization (NFV)
+- **Definition**: Virtualizes traditional network services (e.g., firewalls, load balancers) into software running on commodity hardware.
+- **Benefits**: Reduces hardware dependency, improves scalability and agility.
+#### 🛡️ Network Security Groups (NSG)
+- **Definition**: Virtual firewalls that control inbound/outbound traffic to cloud resources.
+- **Use Case**: Applied to VMs or subnets in platforms like Azure or AWS.
+#### 📜 Network Security Lists (NSL)
+- **Definition**: Stateless rules for controlling traffic at the subnet level.
+- **Use Case**: Common in Oracle Cloud Infrastructure (OCI).
+### 🏗️ Virtual Private Cloud (VPC)
+- **Definition**: A logically isolated section of a cloud provider’s network where users can launch resources in a virtual network.
+- **Features**: Custom IP ranges, subnets, route tables, gateways.
+- **Providers**: AWS VPC, Azure Virtual Network, Google VPC.
+### 🌐 Cloud Gateways
+| Gateway Type         | Description                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| **Internet Gateway** | Enables communication between VPC resources and the public internet.        |
+| **NAT Gateway**       | Allows private subnet resources to access the internet without being exposed. |
+### 🔌 Cloud Connectivity Options
+| Option         | Description                                                                 | Use Case                          |
+|----------------|-----------------------------------------------------------------------------|-----------------------------------|
+| **VPN**        | Secure, encrypted connection over the internet to a cloud network.          | Remote access, site-to-site links |
+| **Direct Connect** | Dedicated private connection to cloud provider (e.g., AWS Direct Connect). | High-performance, low-latency     |
+### 🏗️ Deployment Models
+| Model      | Description                                                                 | Example Use Case                  |
+|------------|-----------------------------------------------------------------------------|-----------------------------------|
+| **Public** | Cloud resources shared across multiple tenants, managed by provider.        | SaaS apps, web hosting            |
+| **Private**| Cloud infrastructure dedicated to a single organization.                    | Sensitive data, regulatory needs  |
+| **Hybrid** | Combines public and private clouds for flexibility and control.             | Disaster recovery, burst scaling  |
+### 🧰 Service Models
+| Model      | Description                                                                 | Example                          |
+|------------|-----------------------------------------------------------------------------|----------------------------------|
+| **SaaS**   | Software delivered over the internet; no infrastructure management.         | Microsoft 365, Salesforce        |
+| **IaaS**   | Provides virtualized computing resources over the internet.                 | AWS EC2, Azure VMs               |
+| **PaaS**   | Platform for developing, running, and managing applications.                | Google App Engine, Azure App Service |
+### 📈 Scalability, Elasticity, Multitenancy
+#### 📊 Scalability
+- **Definition**: Ability to increase resources to meet growing demand.
+- **Types**: Vertical (more power), Horizontal (more instances).
+#### 🔄 Elasticity
+- **Definition**: Automatic scaling up/down of resources based on demand.
+- **Benefit**: Cost efficiency and performance optimization.
+#### 🧑‍🤝‍🧑 Multitenancy
+- **Definition**: Multiple customers share the same infrastructure while maintaining data isolation.
+- **Use Case**: SaaS platforms serving many clients securely.
