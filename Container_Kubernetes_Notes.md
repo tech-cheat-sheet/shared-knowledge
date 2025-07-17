@@ -108,6 +108,7 @@
   - [🧠 Summary](#-summary-4)
   - [✅ Aliases in `kubectl`](#-aliases-in-kubectl)
 - [Scaling Applications Examples](#scaling-applications-examples)
+- [Deployment Update \& Rollback Demo](#deployment-update--rollback-demo)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -1121,4 +1122,33 @@ kubectl get all
 
 # Scale down the deployment to 1 replica (reduce the number of running pods)
 kubectl scale deployment my-web-app-deployment --replicas=1
+```
+
+
+# Deployment Update & Rollback Demo
+This walkthrough demonstrates how to manage application updates and rollbacks using `kubectl` commands with a deployment named `rollingnginx`.
+```shell
+# 1. Create a deployment using a specific NGINX version
+kubectl create deployment rollingnginx --image=nginx:1.15
+
+# 2. View rollout history (initial revision)
+kubectl rollout history deployment
+
+# 3. Edit the deployment to use a newer image (e.g., nginx:latest)
+kubectl edit deployment rollingnginx  # manually change image to nginx:latest
+
+# 4. View updated rollout history (new revision added)
+kubectl rollout history deployment
+
+# 5. Describe the deployment to inspect current state
+kubectl describe deployment rollingnginx
+
+# 6. View details of revision 2
+kubectl rollout history deployment rollingnginx --revision=2
+
+# 7. View details of revision 1
+kubectl rollout history deployment rollingnginx --revision=1
+
+# 8. Roll back to revision 1
+kubectl rollout undo deployment rollingnginx --to-revision=1
 ```
