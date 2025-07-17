@@ -26,6 +26,13 @@
       - [📶 Wireless Access Point (AP)](#-wireless-access-point-ap)
       - [🧭 Wireless Controller](#-wireless-controller)
     - [🧠 Summary Comparison Table](#-summary-comparison-table)
+    - [🧩 Networking Applications and Functions](#-networking-applications-and-functions)
+    - [🖥️ 1. Applications](#️-1-applications)
+      - [🌍 Content Delivery Network (CDN)](#-content-delivery-network-cdn)
+    - [⚙️ 2. Functions](#️-2-functions)
+      - [🔐 Virtual Private Network (VPN)](#-virtual-private-network-vpn)
+      - [🚦 Quality of Service (QoS)](#-quality-of-service-qos)
+    - [🧠 Summary Comparison Table](#-summary-comparison-table-1)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -128,3 +135,36 @@ Networking components can be deployed as **physical hardware** or **virtual soft
 | SAN                      | Fiber Channel arrays          | Software-defined SANs               |
 | Wireless AP              | Wi-Fi access points           | Simulated APs                       |
 | Wireless Controller      | Centralized hardware          | Cloud-managed platforms             |
+### 🧩 Networking Applications and Functions
+Networking solutions aren't limited to physical or virtual appliances—they also include **applications** and **functions** that enhance performance, security, and user experience across networks.
+### 🖥️ 1. Applications
+#### 🌍 Content Delivery Network (CDN)
+| Aspect              | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| **Function**         | Distributes content (e.g., websites, videos) across geographically dispersed servers to reduce latency and improve availability. |
+| **Deployment**       | Typically cloud-based or hosted by providers like Cloudflare, Akamai, or AWS CloudFront. |
+| **Benefits**         | Faster load times, reduced bandwidth costs, improved reliability, DDoS mitigation. |
+| **Use Cases**        | Streaming media, e-commerce sites, global web applications. |
+### ⚙️ 2. Functions
+#### 🔐 Virtual Private Network (VPN)
+| Aspect              | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| **Function**         | Creates a secure, encrypted tunnel between a user and a network over the internet. |
+| **Types**            | Remote-access VPN, site-to-site VPN.                                       |
+| **Deployment**       | Software-based (OpenVPN, WireGuard) or hardware-based (VPN routers).       |
+| **Benefits**         | Privacy, secure remote access, bypassing geo-restrictions.                 |
+| **Use Cases**        | Remote work, secure browsing, connecting branch offices.                   |
+#### 🚦 Quality of Service (QoS)
+| Aspect              | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| **Function**         | Prioritizes network traffic to ensure performance for critical applications. |
+| **Techniques**       | Traffic shaping, bandwidth reservation, packet classification.             |
+| **Deployment**       | Configured on routers, switches, or firewalls.                             |
+| **Benefits**         | Reduced latency for VoIP/video, improved reliability for business apps.    |
+| **Use Cases**        | VoIP, video conferencing, enterprise networks with mixed traffic.          |
+### 🧠 Summary Comparison Table
+| Category     | Name                  | Type         | Key Benefit                          | Common Deployment                     |
+|--------------|-----------------------|--------------|--------------------------------------|----------------------------------------|
+| Application  | CDN                   | Cloud-based  | Faster content delivery              | Global edge servers                    |
+| Function     | VPN                   | Software/Hardware | Secure remote access             | VPN clients, routers                   |
+| Function     | QoS                   | Configuration | Traffic prioritization               | Network devices (routers/switches)     |
