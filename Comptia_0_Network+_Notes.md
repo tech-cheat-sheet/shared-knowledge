@@ -47,6 +47,11 @@
       - [📊 Scalability](#-scalability)
       - [🔄 Elasticity](#-elasticity)
       - [🧑‍🤝‍🧑 Multitenancy](#-multitenancy)
+  - [1.4 Explain common networking ports, protocols, services, and traffic types](#14-explain-common-networking-ports-protocols-services-and-traffic-types)
+    - [🔢 Protocols and Well-Known Ports](#-protocols-and-well-known-ports)
+    - [📡 Internet Protocol (IP) Types](#-internet-protocol-ip-types)
+      - [🔐 IPSec Components](#-ipsec-components)
+    - [🚦 Traffic Types](#-traffic-types)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -230,3 +235,47 @@ Cloud computing introduces a wide range of technologies and models that enable s
 #### 🧑‍🤝‍🧑 Multitenancy
 - **Definition**: Multiple customers share the same infrastructure while maintaining data isolation.
 - **Use Case**: SaaS platforms serving many clients securely.
+## 1.4 Explain common networking ports, protocols, services, and traffic types
+Understanding networking protocols and traffic types is essential for configuring, securing, and troubleshooting networks. Below is a comprehensive summary of key elements.
+### 🔢 Protocols and Well-Known Ports
+| Protocol/Service                                | Port(s)   | Description                                           |
+|--------------------------------------------------|-----------|-------------------------------------------------------|
+| **FTP (File Transfer Protocol)**                 | 20/21     | Transfers files between client and server.            |
+| **SFTP (Secure File Transfer Protocol)**         | 22        | Secure file transfer over SSH.                        |
+| **SSH (Secure Shell)**                           | 22        | Secure remote login and command execution.            |
+| **Telnet**                                       | 23        | Unsecured remote terminal access.                     |
+| **SMTP (Simple Mail Transfer Protocol)**         | 25        | Sends email messages.                                |
+| **DNS (Domain Name System)**                     | 53        | Resolves domain names to IP addresses.                |
+| **DHCP (Dynamic Host Configuration Protocol)**   | 67/68     | Assigns IP addresses to devices dynamically.          |
+| **TFTP (Trivial File Transfer Protocol)**        | 69        | Simple, unsecured file transfer.                      |
+| **HTTP (Hypertext Transfer Protocol)**           | 80        | Web traffic (unencrypted).                            |
+| **NTP (Network Time Protocol)**                  | 123       | Synchronizes clocks across devices.                   |
+| **SNMP (Simple Network Management Protocol)**    | 161/162   | Monitors and manages network devices.                 |
+| **LDAP (Lightweight Directory Access Protocol)** | 389       | Accesses and maintains directory services.            |
+| **HTTPS (Hypertext Transfer Protocol Secure)**   | 443       | Secure web traffic.                                   |
+| **SMB (Server Message Block)**                   | 445       | File and printer sharing in Windows networks.         |
+| **Syslog**                                       | 514       | Logging protocol for system messages.                 |
+| **SMTPS (Secure SMTP)**                          | 587       | Secure email sending.                                |
+| **LDAPS (LDAP over SSL)**                        | 636       | Secure directory access.                              |
+| **SQL Server**                                   | 1433      | Microsoft SQL database communication.                 |
+| **RDP (Remote Desktop Protocol)**                | 3389      | Remote desktop access to Windows systems.             |
+| **SIP (Session Initiation Protocol)**            | 5060/5061 | Initiates and manages VoIP sessions.                  |
+### 📡 Internet Protocol (IP) Types
+| Protocol                      | Description                                                                 |
+|-------------------------------|-----------------------------------------------------------------------------|
+| **ICMP (Internet Control Message Protocol)** | Used for diagnostics (e.g., ping, traceroute).               |
+| **TCP (Transmission Control Protocol)**      | Reliable, connection-oriented communication.                  |
+| **UDP (User Datagram Protocol)**             | Fast, connectionless communication (e.g., streaming).         |
+| **GRE (Generic Routing Encapsulation)**      | Encapsulates packets for tunneling.                           |
+| **IPSec (Internet Protocol Security)**       | Secures IP communications via encryption and authentication. |
+#### 🔐 IPSec Components
+- **AH (Authentication Header)**: Provides integrity and authentication.
+- **ESP (Encapsulating Security Payload)**: Provides encryption, integrity, and authentication.
+- **IKE (Internet Key Exchange)**: Negotiates security associations for IPSec.
+### 🚦 Traffic Types
+| Type       | Description                                                                 |
+|------------|-----------------------------------------------------------------------------|
+| **Unicast** | One-to-one communication between a sender and a receiver.                  |
+| **Multicast** | One-to-many communication to a specific group of recipients.             |
+| **Anycast** | One-to-nearest communication; data is sent to the closest node in a group. |
+| **Broadcast** | One-to-all communication within a network segment.                        |
