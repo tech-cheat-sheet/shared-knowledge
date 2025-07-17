@@ -109,6 +109,7 @@
   - [✅ Aliases in `kubectl`](#-aliases-in-kubectl)
 - [Scaling Applications Examples](#scaling-applications-examples)
 - [Deployment Update \& Rollback Demo](#deployment-update--rollback-demo)
+- [Label Management Demo](#label-management-demo)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -1151,4 +1152,24 @@ kubectl rollout history deployment rollingnginx --revision=1
 
 # 8. Roll back to revision 1
 kubectl rollout undo deployment rollingnginx --to-revision=1
+```
+
+
+# Label Management Demo
+This demo illustrates how to use `kubectl` commands to manage labels on Kubernetes resources, which is crucial for organizing, filtering, and selecting workloads.
+```shell
+# 1. View all resources and their labels in the current namespace
+kubectl get all --show-labels
+
+# 2. Filter resources with a specific label (app=rollingnginx)
+kubectl get all --selector app=rollingnginx
+
+# 3. Add a new label 'type=static' to the deployment named 'rollingnginx'
+kubectl label deploy rollingnginx type=static
+
+# 4. Remove the label 'app' from the deployment
+kubectl label deploy rollingnginx app-
+
+# 5. View all pods and their labels
+kubectl get pods --show-labels
 ```
