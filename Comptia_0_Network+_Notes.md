@@ -60,6 +60,13 @@
       - [📦 Form Factors](#-form-factors)
     - [🔌 Connector Types](#-connector-types)
     - [🧠 Summary Comparison Table](#-summary-comparison-table-2)
+  - [1.6 Compare and contrast network topologies, architectures, and types](#16-compare-and-contrast-network-topologies-architectures-and-types)
+    - [🔗 Network Topologies](#-network-topologies)
+    - [🏗️ Network Architectures](#️-network-architectures)
+      - [🏛️ Three-Tier Hierarchical Model](#️-three-tier-hierarchical-model)
+      - [🧱 Collapsed Core](#-collapsed-core)
+    - [🚦 Traffic Flows](#-traffic-flows)
+    - [🧠 Summary Comparison Table](#-summary-comparison-table-3)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -336,3 +343,40 @@ Transmission media and transceivers are essential components in networking, dete
 | Transceiver Protocols | Ethernet, Fibre Channel       | Network and storage connectivity  |
 | Form Factors       | SFP, QSFP                        | Modular transceiver deployment    |
 | Connector Types    | RJ45, LC, SC, MPO, BNC           | Physical cable termination        |
+## 1.6 Compare and contrast network topologies, architectures, and types
+Network design affects performance, scalability, fault tolerance, and traffic management. Below is a comparison of common topologies, architectures, and traffic flow patterns.
+### 🔗 Network Topologies
+| Topology        | Description                                                                 | Pros                                      | Cons                                      |
+|------------------|-----------------------------------------------------------------------------|-------------------------------------------|-------------------------------------------|
+| **Mesh**         | Every node connects to every other node.                                   | High redundancy, fault tolerance          | Complex, expensive                        |
+| **Hybrid**       | Combines multiple topologies (e.g., star + mesh).                          | Flexible, scalable                        | Design complexity                         |
+| **Star / Hub-and-Spoke** | Central node connects to all others.                          | Simple, easy to manage                    | Single point of failure                   |
+| **Spine and Leaf**| Used in data centers; leaf switches connect to spine switches.            | High bandwidth, predictable latency       | Requires careful planning                 |
+| **Point-to-Point**| Direct connection between two nodes.                                      | Fast, simple                              | Not scalable                              |
+### 🏗️ Network Architectures
+#### 🏛️ Three-Tier Hierarchical Model
+| Layer         | Role                                                                 |
+|---------------|----------------------------------------------------------------------|
+| **Core**      | High-speed backbone; connects distribution layers.                   |
+| **Distribution** | Policy control, routing between VLANs/subnets.                  |
+| **Access**    | Connects end devices (PCs, printers, APs).                           |
+#### 🧱 Collapsed Core
+- **Definition**: Combines core and distribution layers into one.
+- **Use Case**: Small to medium-sized networks.
+- **Benefit**: Simplified design, reduced cost.
+- **Trade-off**: Less scalability and separation of concerns.
+### 🚦 Traffic Flows
+| Flow Type      | Description                                                                 | Example Use Case                        |
+|----------------|-----------------------------------------------------------------------------|-----------------------------------------|
+| **North-South**| Traffic between internal network and external sources (e.g., internet).     | Web browsing, cloud access              |
+| **East-West**  | Traffic within the data center or internal network.                         | Server-to-server, VM-to-VM communication|
+### 🧠 Summary Comparison Table
+| Category         | Type/Model             | Key Feature                          | Best For                              |
+|------------------|------------------------|--------------------------------------|----------------------------------------|
+| Topology         | Mesh                   | Full interconnectivity               | High availability networks             |
+| Topology         | Star / Hub-and-Spoke   | Centralized control                  | Small LANs                             |
+| Topology         | Spine and Leaf         | Uniform latency, scalability         | Data centers                           |
+| Architecture     | Three-Tier             | Layered design                       | Large enterprise networks              |
+| Architecture     | Collapsed Core         | Simplified two-layer design          | SMB networks                           |
+| Traffic Flow     | North-South            | External/internal communication      | Internet access, cloud services        |
+| Traffic Flow     | East-West              | Internal communication               | Microservices, virtualization          |
