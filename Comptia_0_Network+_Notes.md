@@ -151,6 +151,19 @@
       - [🪞 Port Mirroring](#-port-mirroring)
     - [🛠️ Monitoring Solutions](#️-monitoring-solutions)
     - [🧠 Summary Table](#-summary-table-2)
+  - [3.3 Explain disaster recovery (DR) concepts](#33-explain-disaster-recovery-dr-concepts)
+    - [📊 DR Metrics](#-dr-metrics)
+      - [🔁 Recovery Point Objective (RPO)](#-recovery-point-objective-rpo)
+      - [⏱️ Recovery Time Objective (RTO)](#️-recovery-time-objective-rto)
+      - [🔧 Mean Time to Repair (MTTR)](#-mean-time-to-repair-mttr)
+      - [📉 Mean Time Between Failures (MTBF)](#-mean-time-between-failures-mtbf)
+    - [🏢 DR Sites](#-dr-sites)
+    - [⚙️ High-Availability Approaches](#️-high-availability-approaches)
+      - [🔄 Active-Active](#-active-active)
+      - [💤 Active-Passive](#-active-passive)
+    - [🧪 Testing](#-testing)
+      - [🗂️ Tabletop Exercises](#️-tabletop-exercises)
+      - [✅ Validation Tests](#-validation-tests)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -920,3 +933,45 @@ Network monitoring is essential for maintaining performance, security, and avail
 | Performance Monitoring  | SLA and QoS tracking             | ThousandEyes, AppNeta              |
 | Availability Monitoring | Uptime checks                    | Pingdom, Uptime Robot              |
 | Configuration Monitoring| Change tracking                  | RANCID, NetBox                     |
+## 3.3 Explain disaster recovery (DR) concepts
+Disaster Recovery (DR) refers to the strategies and processes that ensure an organization can recover and continue operations after a disruptive event such as a cyberattack, natural disaster, or system failure.
+### 📊 DR Metrics
+These metrics help define recovery goals and measure system reliability and responsiveness.
+#### 🔁 Recovery Point Objective (RPO)
+- **Definition**: Maximum acceptable amount of data loss measured in time.
+- **Example**: If RPO is 4 hours, backups must occur at least every 4 hours to avoid unacceptable data loss.
+#### ⏱️ Recovery Time Objective (RTO)
+- **Definition**: Maximum acceptable time to restore services after a disruption.
+- **Example**: If RTO is 2 hours, systems must be back online within 2 hours of failure.
+#### 🔧 Mean Time to Repair (MTTR)
+- **Definition**: Average time required to fix a failed component and restore it to normal operation.
+- **Focus**: Measures efficiency of repair processes.
+#### 📉 Mean Time Between Failures (MTBF)
+- **Definition**: Average time between system failures.
+- **Focus**: Indicates system reliability and durability.
+### 🏢 DR Sites
+These are alternate locations used to restore operations in case the primary site becomes unavailable.
+
+| Site Type   | Description | Cost | Recovery Speed |
+|-------------|-------------|------|----------------|
+| ❄️ Cold Site | Basic infrastructure, no live data or systems | Low | Slow |
+| 🌤️ Warm Site | Partially configured with some data and systems | Medium | Moderate |
+| 🔥 Hot Site | Fully operational replica of the primary site | High | Fast |
+### ⚙️ High-Availability Approaches
+These strategies ensure continuous availability of services, minimizing downtime.
+#### 🔄 Active-Active
+- **Definition**: All systems run simultaneously and share the load.
+- **Benefits**: High performance and redundancy.
+- **Use Case**: Load-balanced web servers.
+#### 💤 Active-Passive
+- **Definition**: Primary system is active; backup remains idle until needed.
+- **Benefits**: Simpler setup, lower cost.
+- **Use Case**: Database failover clusters.
+### 🧪 Testing
+Testing ensures that DR plans are effective and executable during real incidents.
+#### 🗂️ Tabletop Exercises
+- **Definition**: Simulated discussion-based scenarios with stakeholders.
+- **Goal**: Identify gaps and improve coordination.
+#### ✅ Validation Tests
+- **Definition**: Actual execution of DR procedures to verify functionality.
+- **Goal**: Confirm systems can be restored as planned.
