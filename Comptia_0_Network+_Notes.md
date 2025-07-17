@@ -270,6 +270,21 @@
     - [⚙️ Hardware Issues](#️-hardware-issues)
       - [🔋 Power over Ethernet (PoE)](#-power-over-ethernet-poe)
       - [🔦 Transceivers](#-transceivers-1)
+  - [5.3 Given a scenario, troubleshoot common issues with network services](#53-given-a-scenario-troubleshoot-common-issues-with-network-services)
+    - [🔀 Switching Issues](#-switching-issues)
+      - [🌐 STP (Spanning Tree Protocol)](#-stp-spanning-tree-protocol)
+        - [🔁 Common STP Problems](#-common-stp-problems)
+      - [🎨 Incorrect VLAN Assignment](#-incorrect-vlan-assignment)
+      - [📜 ACLs (Access Control Lists)](#-acls-access-control-lists)
+    - [🧭 Route Selection](#-route-selection)
+      - [📘 Routing Table](#-routing-table)
+      - [🛣️ Default Routes](#️-default-routes)
+    - [🧮 Addressing Issues](#-addressing-issues)
+      - [🚫 Address Pool Exhaustion](#-address-pool-exhaustion)
+      - [❌ Incorrect Default Gateway](#-incorrect-default-gateway)
+      - [🧭 Incorrect IP Address](#-incorrect-ip-address)
+      - [⚠️ Duplicate IP Address](#️-duplicate-ip-address)
+      - [📏 Incorrect Subnet Mask](#-incorrect-subnet-mask)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -1432,3 +1447,49 @@ Monitor interface statistics for signs of trouble.
 - **Mismatch**: Incompatible transceiver and port type (e.g., SFP vs. SFP+).
 - **Signal Strength**: Weak signal due to dirty connectors or long cable runs.
 - **Impact**: Link failures, degraded performance.
+## 5.3 Given a scenario, troubleshoot common issues with network services
+Network services are critical for connectivity and performance. Misconfigurations or failures in switching, routing, and addressing can lead to outages or degraded service.
+### 🔀 Switching Issues
+#### 🌐 STP (Spanning Tree Protocol)
+Used to prevent network loops in Layer 2 networks.
+##### 🔁 Common STP Problems
+- **Network Loops**: Occur when STP is disabled or misconfigured, causing broadcast storms.
+- **Root Bridge Selection**: Incorrect root bridge can lead to suboptimal paths.
+- **Port Roles**:
+  - Root Port: Best path to root bridge.
+  - Designated Port: Forwarding port for a segment.
+  - Blocked Port: Prevents loops.
+- **Port States**:
+  - Listening → Learning → Forwarding → Blocking.
+  - Misconfigured states can prevent traffic flow.
+#### 🎨 Incorrect VLAN Assignment
+- Devices placed in wrong VLANs may lose connectivity or access unauthorized resources.
+- **Impact**: Segmentation failure, security risks, communication issues.
+#### 📜 ACLs (Access Control Lists)
+- Misconfigured ACLs can block legitimate traffic or allow unauthorized access.
+- **Impact**: Connectivity issues, security breaches.
+### 🧭 Route Selection
+#### 📘 Routing Table
+- Contains paths to destination networks.
+- **Issues**:
+  - Missing or incorrect entries.
+  - Conflicting routes.
+#### 🛣️ Default Routes
+- Used when no specific route matches a destination.
+- **Impact**: Incorrect default route can prevent internet or external network access.
+### 🧮 Addressing Issues
+#### 🚫 Address Pool Exhaustion
+- DHCP scope runs out of available IP addresses.
+- **Impact**: Devices fail to obtain IP, resulting in limited or no connectivity.
+#### ❌ Incorrect Default Gateway
+- Devices can't reach external networks.
+- **Impact**: Internet and inter-subnet communication fails.
+#### 🧭 Incorrect IP Address
+- **Static Misconfiguration**: Wrong IP manually assigned.
+- **Impact**: Network conflicts or isolation.
+#### ⚠️ Duplicate IP Address
+- Two devices share the same IP.
+- **Impact**: Intermittent connectivity, ARP conflicts.
+#### 📏 Incorrect Subnet Mask
+- Devices miscalculate network boundaries.
+- **Impact**: Inability to communicate with intended hosts.
