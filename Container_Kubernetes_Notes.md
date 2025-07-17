@@ -32,6 +32,8 @@
   - [⚙️ Kubernetes vs Istio Comparison Table](#️-kubernetes-vs-istio-comparison-table)
 - [Ubuntu and Kubernetes](#ubuntu-and-kubernetes)
   - [🧪 Option 1: Minikube (Best for Beginners)](#-option-1-minikube-best-for-beginners)
+    - [PROBLEM: `minikube start` errors](#problem-minikube-start-errors)
+    - [SOLUTION: Uninstall and Re-Install Minikube](#solution-uninstall-and-re-install-minikube)
     - [Minikube and `docker system prune --all --force`](#minikube-and-docker-system-prune---all---force)
       - [⚠️ What the Command Does](#️-what-the-command-does)
       - [🧨 How It Affects Minikube](#-how-it-affects-minikube)
@@ -330,11 +332,13 @@ my-app/
 # Ubuntu and Kubernetes
 ## 🧪 Option 1: Minikube (Best for Beginners)
 ```shell
+###############################################################################
+# CHECK PRE-REQUISITES
+###############################################################################
 # 0. Verify that docker is installed (and nothing else)
 which docker
 which minikube
 which kubectl
-docker --version
 # 0. Validate that the 'docker' group exist
 getent group | grep -i docker
 # 0. Validate that your Linux user is part of 'docker' group
@@ -357,13 +361,20 @@ echo "================================================== Stopping all running co
 docker stop $(docker ps -q) && \
 echo "================================================== Removing all containers" && \
 docker rm $(docker ps -aq) && \
-echo "================================================== Removing all images" && \
-docker rmi $(docker images -q) && \
+echo "================================================== Removing all images (except minikube)" && \
+docker images --format "{{.Repository}}:{{.Tag}} {{.ID}}" | \
+  grep -v "gcr.io/k8s-minikube/kicbase" | \
+  awk '{print $2}' | \
+  xargs -r docker rmi && \
 echo "================================================== Removing all networks" && \
 docker network prune --force && \
 echo "================================================== Removing all volumes" && \
 docker volume prune --force
 
+
+###############################################################################
+# MINIKUBE INSTALLATION
+###############################################################################
 # Install dependencies
 cd ~ && sudo apt update --yes
 
@@ -378,7 +389,7 @@ ls -la | grep -i minikube
 sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
 
 # Validate that minikube is working
-minikube status
+which minikube && minikube status
 
 : <<'PLEASE_MAKE_SURE_YOUR_LINUX_USER_IS_PART_OF_DOCKER_GROUP'
 # 🛠️ Fix: Enable Docker Driver for your user
@@ -424,7 +435,7 @@ PLEASE_MAKE_SURE_YOUR_LINUX_USER_IS_PART_OF_DOCKER_GROUP
 minikube start --driver=docker
 
 # Minikube internal tool
-minikube kubectl -- get pods -A
+minikube kubectl -- get pods --all-namespaces
 
 # 🧹 Step-by-Step Cleanup Guide for Minikube
 # This removes the entire cluster and all associated resources:
@@ -432,20 +443,63 @@ minikube delete --all --purge
 # --all: Deletes all Minikube profiles.
 # --purge: Removes the .minikube folder from your home directory.
 
-# Use kubectl to interact (OPTIONAL)
+###############################################################################
+# Download and install kubectl
+###############################################################################
+# Solution 1 - SNAP
+# ✅ Pros: Fast, simple, auto-updates 
+# ⚠️ Cons: May not always be the latest version
 sudo apt update
 sudo apt install snapd -y
 sudo snap install kubectl --classic
-# ✅ Pros: Fast, simple, auto-updates 
-# ⚠️ Cons: May not always be the latest version
+
+
+# Solution 2 - APT (BETTER SOLUTION)
+# Create keyrings directory if it doesn't exist
+cd ~
+sudo mkdir -p /etc/apt/keyrings
+# Download and store the GPG key
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | \
+  sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+# Add the new Kubernetes APT repository
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] \
+  https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" | \
+  sudo tee /etc/apt/sources.list.d/kubernetes.list
+# Update and install kubectl
+sudo apt update
+sudo apt install --yes kubectl
+
+# Test
+which docker && which minikube && which kubectl
+minikube status
+minikube kubectl -- get pods --all-namespaces
 kubectl get pods --all-namespaces
 ```
 Sources:
 - https://minikube.sigs.k8s.io/docs/start
+- https://github.com/sandervanvugt/kubernetes/blob/master/minikube-docker-setup.sh
 
 ✅ Pros: Easy setup, low resource usage
 
 ⚠️ Cons: Not production-grade, limited to one node
+### PROBLEM: `minikube start` errors
+If you get:
+```shell
+❗  Enabling 'storage-provisioner' returned an error: running callbacks: [sudo KUBECONFIG=/var/lib/minikube/kubeconfig /var/lib/minikube/binaries/v1.33.1/kubectl apply --force -f /etc/kubernetes/addons/storage-provisioner.yaml: Process exited with status 1
+stdout:
+
+stderr:
+error: error validating "/etc/kubernetes/addons/storage-provisioner.yaml": error validating data: failed to download openapi: Get "https://localhost:8443/openapi/v2?timeout=32s": dial tcp [::1]:8443: connect: connection refused; if you choose to ignore these errors, turn validation off with --validate=false
+]
+❗  Enabling 'default-storageclass' returned an error: running callbacks: [sudo KUBECONFIG=/var/lib/minikube/kubeconfig /var/lib/minikube/binaries/v1.33.1/kubectl apply --force -f /etc/kubernetes/addons/storageclass.yaml: Process exited with status 1
+stdout:
+
+stderr:
+error: error validating "/etc/kubernetes/addons/storageclass.yaml": error validating data: failed to download openapi: Get "https://localhost:8443/openapi/v2?timeout=32s": dial tcp [::1]:8443: connect: connection refused; if you choose to ignore these errors, turn validation off with --validate=false
+```
+### SOLUTION: Uninstall and Re-Install Minikube
+See:
+- Container_0_Notes.md#1-verify-what-is-installed
 ### Minikube and `docker system prune --all --force`
 ```shell
 echo "================================================== Docker system cleanup" && \
