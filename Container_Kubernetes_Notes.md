@@ -43,7 +43,8 @@
   - [🧰 Option 2: MicroK8s (Canonical’s Lightweight Kubernetes)](#-option-2-microk8s-canonicals-lightweight-kubernetes)
 - [Minikube](#minikube)
   - [🚀 Minikube Main Commands Cheat Sheet](#-minikube-main-commands-cheat-sheet)
-  - [Super command](#super-command)
+  - [Launching Minikube with multiple Nodes](#launching-minikube-with-multiple-nodes)
+- [Start with a clean state](#start-with-a-clean-state)
 - [🧰 kubectl Main Commands Cheat Sheet](#-kubectl-main-commands-cheat-sheet)
   - [⚔️ `kubectl create` vs `kubectl apply` – Comparison Table](#️-kubectl-create-vs-kubectl-apply--comparison-table)
     - [✅ Validity in Latest Kubernetes Version](#-validity-in-latest-kubernetes-version-2)
@@ -644,6 +645,26 @@ microk8s status --wait-ready
 | `minikube config view`            | Shows current configuration settings                      |
 | `minikube update-check`           | Checks for Minikube updates                               |
 | `minikube ssh`                     | SSH into the Minikube VM/container which will allow you to use ``crictl``|
+## Launching Minikube with multiple Nodes
+```shell`
+# Start with a clean state
+minikube stop && minikube delete --all --purge
+minikube start --driver=docker --nodes=3
+kubectl get nodes
+```
+### 🧾 Breakdown of kubectl get nodes Output
+| **Node Name**   | **Role**         | **Status** | **Notes**                                      |
+|-----------------|------------------|------------|------------------------------------------------|
+| `minikube`      | `control-plane`  | Ready      | This is the master node (scheduler, API server, etc.) |
+| `minikube-m02`  | `<none>`         | Ready      | Worker node #1                                 |
+| `minikube-m03`  | `<none>`         | Ready      | Worker node #2                                 |
+### ✅ What You’ve Achieved
+- You’ve created a multi-node Minikube cluster using the Docker driver.
+- The control plane is running on minikube.
+- Two additional worker nodes (m02, m03) are ready to run workloads.
+### 🧠 Why This Matters
+- Great for testing distributed apps, node affinity, taints/tolerations, and failover scenarios.
+- Mimics production-like environments more closely than single-node setups.
 ## Super command
 ```shell
 minikube start --driver=docker --cpus=4 --memory=8192 --disk-size=10g
