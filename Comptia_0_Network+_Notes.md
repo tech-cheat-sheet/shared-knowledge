@@ -285,6 +285,19 @@
       - [🧭 Incorrect IP Address](#-incorrect-ip-address)
       - [⚠️ Duplicate IP Address](#️-duplicate-ip-address)
       - [📏 Incorrect Subnet Mask](#-incorrect-subnet-mask)
+  - [5.4 Given a scenario, troubleshoot common performance issues](#54-given-a-scenario-troubleshoot-common-performance-issues)
+    - [🔁 Congestion / Contention](#-congestion--contention)
+    - [🧱 Bottlenecking](#-bottlenecking)
+    - [📶 Bandwidth and Throughput](#-bandwidth-and-throughput)
+    - [⏱️ Latency](#️-latency)
+    - [📦 Packet Loss](#-packet-loss)
+    - [📉 Jitter](#-jitter)
+    - [📡 Wireless Performance Issues](#-wireless-performance-issues)
+      - [📡 Interference](#-interference)
+      - [📉 Signal Degradation or Loss](#-signal-degradation-or-loss)
+      - [📍 Insufficient Wireless Coverage](#-insufficient-wireless-coverage)
+      - [🔄 Client Disassociation Issues](#-client-disassociation-issues)
+      - [🚶 Roaming Misconfiguration](#-roaming-misconfiguration)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -1493,3 +1506,62 @@ Used to prevent network loops in Layer 2 networks.
 #### 📏 Incorrect Subnet Mask
 - Devices miscalculate network boundaries.
 - **Impact**: Inability to communicate with intended hosts.
+## 5.4 Given a scenario, troubleshoot common performance issues
+Performance issues can degrade user experience and disrupt business operations. Identifying and resolving these problems requires understanding key metrics and environmental factors.
+### 🔁 Congestion / Contention
+- **Description**: Too many devices competing for limited network resources.
+- **Impact**: Slower speeds, increased latency, dropped packets.
+- **Common Causes**:
+  - Overloaded switches or routers.
+  - Excessive broadcast traffic.
+  - High concurrent usage (e.g., video streaming, large file transfers).
+### 🧱 Bottlenecking
+- **Description**: A single device or link limits overall network performance.
+- **Impact**: Reduced throughput despite available capacity elsewhere.
+- **Common Causes**:
+  - Legacy hardware.
+  - Misconfigured QoS policies.
+  - Insufficient uplink capacity.
+### 📶 Bandwidth and Throughput
+- **Bandwidth**: Maximum data capacity of a link.
+- **Throughput**: Actual data successfully transmitted.
+- **Impact**: Low throughput despite high bandwidth may indicate congestion, interference, or hardware issues.
+### ⏱️ Latency
+- **Description**: Delay between sending and receiving data.
+- **Impact**: Lag in applications like VoIP, gaming, and video conferencing.
+- **Common Causes**:
+  - Long routing paths.
+  - Queuing delays.
+  - Network congestion.
+### 📦 Packet Loss
+- **Description**: Data packets fail to reach their destination.
+- **Impact**: Retransmissions, poor voice/video quality, failed connections.
+- **Common Causes**:
+  - Faulty cables or interfaces.
+  - Congestion.
+  - Wireless interference.
+### 📉 Jitter
+- **Description**: Variability in packet arrival times.
+- **Impact**: Choppy audio/video in real-time applications.
+- **Common Causes**:
+  - Network congestion.
+  - Inconsistent routing paths.
+  - Poor QoS configuration.
+### 📡 Wireless Performance Issues
+#### 📡 Interference
+- **Channel Overlap**: Multiple APs using the same or adjacent channels.
+- **Impact**: Reduced throughput, increased latency, packet loss.
+#### 📉 Signal Degradation or Loss
+- **Causes**: Physical obstructions, distance from AP, poor antenna placement.
+- **Impact**: Weak connections, dropped packets, disconnections.
+#### 📍 Insufficient Wireless Coverage
+- **Description**: Dead zones or weak signal areas.
+- **Impact**: Inconsistent connectivity, roaming failures.
+#### 🔄 Client Disassociation Issues
+- **Description**: Devices disconnect from APs unexpectedly.
+- **Impact**: Interrupted sessions, reconnection delays.
+- **Causes**: Power-saving settings, AP misconfigurations, interference.
+#### 🚶 Roaming Misconfiguration
+- **Description**: Devices fail to switch to stronger APs when moving.
+- **Impact**: Poor performance, dropped connections.
+- **Causes**: Inconsistent SSIDs, lack of fast roaming support, AP placement.
