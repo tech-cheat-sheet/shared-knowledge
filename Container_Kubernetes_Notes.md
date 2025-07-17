@@ -121,6 +121,8 @@
   - [Deployment vs Service](#deployment-vs-service)
     - [🧠 Why You Need a Deployment First](#-why-you-need-a-deployment-first)
     - [❌ Why You Can’t Just Create a Service Alone](#-why-you-cant-just-create-a-service-alone)
+- [Working with Ingress in Minikube](#working-with-ingress-in-minikube)
+- [Working with Port-Forwarding in Minikube](#working-with-port-forwarding-in-minikube)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -1323,3 +1325,134 @@ spec:
     - port: 80
 ```
 It will exist, but won’t route traffic anywhere — because no pods match the selector.
+
+
+# Working with Ingress in Minikube
+This example shows how to expose a web app using an Ingress resource in Minikube.
+```bash
+# Get minikube status before deleting the cluster
+minikube status
+
+# Stop and delete current cluster
+minikube stop && minikube delete --all --purge
+
+# Get minikube status after deleting the cluster
+minikube status
+
+# Create a clean state minikube cluster
+minikube start --driver=docker
+
+# Enable Ingress addon
+kubectl get all --all-namespaces | grep -i ingress-nginx
+minikube addons enable ingress
+kubectl get all --all-namespaces | grep -i ingress-nginx
+
+# Validate that ingress was enabled
+minikube addons list | grep -i ingress | grep -i enabled
+
+# 📦 Step 1: Deploy a Sample App
+kubectl get all --selector app=web --output wide
+kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
+
+# Test connection from outside the cluster
+kubectl get all --selector app=web --output wide
+curl POD_IP # Example: curl 10.244.0.6
+curl POD_IP:80 # Example: curl 10.244.0.6:80
+curl POD_IP:8080 # Example: curl 10.244.0.6:8080
+# will all fail because there is no Service exposing the app
+
+# Test connection from inside the cluster
+minikube ssh
+docker container ls | grep -i hello-app
+curl POD_IP # Example: curl 10.244.0.6
+curl POD_IP:80 # Example: curl 10.244.0.6:80
+# both will fail because there is no Service exposing the app
+curl POD_IP:8080 # Example: curl 10.244.0.6:8080
+# above will work because the app listens on port 8080!
+# See Dockerfile on:
+# https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/main/quickstarts/hello-app
+[START gke_quickstarts_hello_app_dockerfile]
+FROM golang:1.24.3 as builder
+WORKDIR /app
+RUN go mod init hello-app
+COPY *.go ./
+RUN CGO_ENABLED=0 GOOS=linux go build -o /hello-app
+
+FROM gcr.io/distroless/base-debian11
+WORKDIR /
+COPY --from=builder /hello-app /hello-app
+ENV PORT 8080
+USER nonroot:nonroot
+CMD ["/hello-app"]
+[END gke_quickstarts_hello_app_dockerfile]
+
+# Create a service to expose the app
+kubectl get all --selector app=web --output wide
+kubectl expose deployment web --port=8080
+
+# Test connection from outside the cluster
+kubectl get all --selector app=web --output wide
+curl SERVICE_CLUSTER_IP # Example: curl 10.105.78.9
+curl SERVICE_CLUSTER_IP:SERVICE_PORT # Example: curl 10.105.78.9:8080
+# above will all fail because the Service.Type=ClusterIP
+
+# Test connection from inside the cluster
+minikube ssh
+docker container ls | grep -i hello-app
+curl SERVICE_CLUSTER_IP:SERVICE_PORT # Example: curl 10.105.78.9:8080
+# worked!
+
+# 📄 Step 2A: Create an Ingress Resource to expose our Service to the outside world
+kubectl get ingress --all-namespaces
+kubectl create ingress example-ingress --class=nginx --rule="hello-world.example/=web:8080"
+kubectl get ingress --all-namespaces
+# 🧠 Explanation:
+## example-ingress: Name of the Ingress resource.
+## --class=nginx: Specifies the Ingress class (must match your controller).
+## --rule="host/path=service:port": Defines routing rule:
+## hello-world.example/: Host and path.
+## web:8080: Backend service and port.
+
+# 📄 Step 2B: Create an Ingress Resource to expose our Service to the outside world
+touch example-ingress.yaml
+gedit example-ingress.yaml
+# Deploy ingress
+kubectl get all --selector app=web --output wide
+kubectl apply -f example-ingress.yaml
+```
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: hello-world.example
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: web
+            port:
+              number: 8080
+```
+
+
+```shell
+# 🧪 Step 3: Test the Ingress
+## Validate that our ingress has the same IP as minikube
+kubectl get ingress --output wide | grep -i $(minikube ip)
+## Add minikube-ip to `/etc/hosts`:
+sudo gedit /etc/hosts
+<minikube-ip> hello-world.example # Example: 192.168.49.2 hello-world.example
+## Access the app via CLI:
+curl http://hello-world.example
+## Or open http://hello-world.example in your browser.
+```
+
+
+# Working with Port-Forwarding in Minikube
+PLACEHOLDER
