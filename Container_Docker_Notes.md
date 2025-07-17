@@ -43,6 +43,12 @@
 - [Super commands - Start from a clean state](#super-commands---start-from-a-clean-state)
   - [🧼 Docker Prune Command Comparison](#-docker-prune-command-comparison)
 - [🧩 Container Standards \& Interfaces Comparison](#-container-standards--interfaces-comparison)
+- [Dockerfile Example: Ubuntu + Ping](#dockerfile-example-ubuntu--ping)
+  - [Setup](#setup)
+  - [ping.sh](#pingsh)
+  - [mydockerfile](#mydockerfile)
+  - [Build the image](#build-the-image)
+  - [🔍 Explanation:](#-explanation)
 # How to install Docker on Ubuntu
 ## Reference:
 - https://docs.docker.com/engine/install/ubuntu/
@@ -435,3 +441,60 @@ docker volume prune --force
 | **Interoperability Goal**| Cross-platform container compatibility                        | Modular networking stack                                  | Runtime flexibility in Kubernetes                         | Storage vendor neutrality                                 | Mesh-agnostic service mesh tooling                        |
 
 These interfaces and standards are like the plumbing and wiring behind the scenes of modern container orchestration. They don’t always get the spotlight, but they’re what make the magic of Kubernetes and cloud-native apps possible.
+
+
+# Dockerfile Example: Ubuntu + Ping
+## Setup
+```shell
+cd ~
+mkdir dockerfile_test
+cd dockerfile_test
+touch mydockerfile
+touch ping.sh
+```
+## ping.sh
+And content to ``ping.sh``
+```shell
+#!/bin/sh
+ping -c 4 "${1:-google.com}"
+```
+## mydockerfile
+And content to ``mydockerfile``
+```dockerfile
+# Use Ubuntu as a parent image
+FROM ubuntu
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Install dependencies
+RUN apt update --yes && \
+    apt install --yes iputils-ping
+
+# Copy the ping script into the working directory
+COPY ping.sh .
+
+# Make the ping script executable
+RUN chmod +x ping.sh
+
+# Set ENTRYPOINT to ping
+ENTRYPOINT ["./ping.sh"]
+```
+save and close
+## Build the image
+```shell
+ls -la
+
+# 🏗️ 1. Tag During Build
+docker build -f mydockerfile -t my-image-name:my-tag .
+# 🏷️ 2. Tag After Build
+docker tag existing-image:oldtag new-image:newtag
+
+docker image ls --all
+docker run pingbox google.com
+```
+## 🔍 Explanation:
+- -f mydockerfile: Specifies your custom Dockerfile name.
+- -t my-image-name: Tags the image with a name.
+- .: Sets the build context to the current directory.
+- my-tag: Version or label (e.g., v1, latest, dev).
