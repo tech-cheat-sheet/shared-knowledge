@@ -194,6 +194,22 @@
       - [🧵 Console](#-console)
     - [🧱 Jump Box / Jump Host](#-jump-box--jump-host)
     - [📡 In-Band vs. Out-of-Band Management](#-in-band-vs-out-of-band-management)
+- [4.0 Network Security](#40-network-security)
+  - [4.1 Explain the importance of basic network security concepts](#41-explain-the-importance-of-basic-network-security-concepts)
+    - [🧠 Logical Security](#-logical-security)
+      - [🔒 Encryption](#-encryption)
+      - [📜 Certificates](#-certificates)
+      - [👤 Identity and Access Management (IAM)](#-identity-and-access-management-iam)
+        - [🔐 Authentication](#-authentication)
+        - [✅ Authorization](#-authorization)
+      - [🌍 Geofencing](#-geofencing)
+    - [🏢 Physical Security](#-physical-security)
+    - [🕵️‍♂️ Deception Technologies](#️️-deception-technologies)
+    - [📚 Common Security Terminology](#-common-security-terminology)
+    - [📋 Audits and Regulatory Compliance](#-audits-and-regulatory-compliance)
+    - [🧩 Network Segmentation Enforcement](#-network-segmentation-enforcement)
+      - [🧠 Specialized Systems](#-specialized-systems)
+      - [👥 User-Based Segmentation](#-user-based-segmentation)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -1116,3 +1132,53 @@ Understanding how administrators and users securely access and manage network re
 |--------|-------------|------|------|
 | In-Band | Management traffic shares the same network as user data | Convenient; no extra hardware | Vulnerable if production network fails |
 | Out-of-Band | Uses a separate management network or interface | Reliable during outages; more secure | Requires additional infrastructure |
+# 4.0 Network Security
+## 4.1 Explain the importance of basic network security concepts
+Network security is essential for protecting data, systems, and users from unauthorized access, misuse, or disruption. It encompasses logical and physical safeguards, identity management, and compliance with regulations.
+### 🧠 Logical Security
+#### 🔒 Encryption
+- **Data in Transit**: Protects data moving across networks (e.g., HTTPS, VPN).
+- **Data at Rest**: Secures stored data (e.g., disk encryption, database encryption).
+#### 📜 Certificates
+- **Public Key Infrastructure (PKI)**: Uses digital certificates and public/private keys for secure communication.
+- **Self-Signed**: Certificates not issued by a trusted authority; useful for internal use but less secure.
+#### 👤 Identity and Access Management (IAM)
+##### 🔐 Authentication
+- **Multifactor Authentication (MFA)**: Requires multiple forms of verification (e.g., password + phone).
+- **Single Sign-On (SSO)**: One login grants access to multiple systems.
+- **RADIUS**: Centralized authentication for remote access.
+- **LDAP**: Directory-based authentication protocol.
+- **SAML**: XML-based protocol for exchanging authentication and authorization data.
+- **TACACS+**: Cisco protocol for authentication, authorization, and accounting.
+- **Time-Based Authentication**: Uses time-sensitive codes (e.g., TOTP apps).
+##### ✅ Authorization
+- **Least Privilege**: Users get only the access necessary for their role.
+- **Role-Based Access Control (RBAC)**: Access based on user roles and responsibilities.
+#### 🌍 Geofencing
+- Restricts or allows access based on geographic location.
+- Useful for blocking access from high-risk regions.
+### 🏢 Physical Security
+- **Camera**: Surveillance to monitor and record activity.
+- **Locks**: Prevent unauthorized physical access to devices and infrastructure.
+### 🕵️‍♂️ Deception Technologies
+- **Honeypot**: Decoy system designed to attract attackers and study their behavior.
+- **Honeynet**: Network of honeypots simulating a full environment to gather intelligence.
+### 📚 Common Security Terminology
+| Term | Definition |
+|------|------------|
+| Risk | Potential for loss or damage when a threat exploits a vulnerability |
+| Vulnerability | Weakness that can be exploited |
+| Exploit | Method used to take advantage of a vulnerability |
+| Threat | Potential cause of an unwanted impact |
+| CIA Triad | Core principles: **Confidentiality**, **Integrity**, **Availability** |
+### 📋 Audits and Regulatory Compliance
+- **Data Locality**: Ensures data is stored and processed in approved geographic regions.
+- **PCI DSS**: Standards for securing credit card data.
+- **GDPR**: EU regulation for protecting personal data and privacy.
+### 🧩 Network Segmentation Enforcement
+#### 🧠 Specialized Systems
+- **IoT & IIoT**: Devices must be isolated to prevent lateral movement.
+- **SCADA / ICS / OT**: Critical infrastructure systems require strict segmentation and monitoring.
+#### 👥 User-Based Segmentation
+- **Guest**: Isolated network access for visitors.
+- **BYOD (Bring Your Own Device)**: Personal devices must be segmented and monitored to reduce risk.
