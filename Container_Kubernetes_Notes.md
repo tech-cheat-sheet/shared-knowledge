@@ -117,7 +117,8 @@
 - [🧭 Kubernetes Service Types Overview](#-kubernetes-service-types-overview)
   - [🔧 Service Types and Their Use Cases](#-service-types-and-their-use-cases)
   - [✅ Summary](#-summary-5)
-  - [🚀 Kubernetes Service Demo with Minikube](#-kubernetes-service-demo-with-minikube)
+- [Networking and Service Demo with Minikube - Manual Editing Example](#networking-and-service-demo-with-minikube---manual-editing-example)
+- [Networking and Service Demo with Minikube - Automatic Example](#networking-and-service-demo-with-minikube---automatic-example)
   - [Deployment vs Service](#deployment-vs-service)
     - [🧠 Why You Need a Deployment First](#-why-you-need-a-deployment-first)
     - [❌ Why You Can’t Just Create a Service Alone](#-why-you-cant-just-create-a-service-alone)
@@ -1236,16 +1237,23 @@ Kubernetes offers multiple service types to expose applications based on differe
 - Use `LoadBalancer` for cloud-native external access.
 - Use `ExternalName` for DNS-based redirection.
 - Use services without selectors for static IP/port routing.
-## 🚀 Kubernetes Service Demo with Minikube
+
+
+# Networking and Service Demo with Minikube - Manual Editing Example
 This demo walks through deploying an Nginx application, exposing it as a service, and accessing it both internally and externally using Minikube.
 ```shell
-# 1. Create a deployment named 'nginxsvc' with 3 replicas
-kubectl create deploy nginxsvc --image=nginx --replicas=3
+# 0. Start from clean state
+minikube status && minikube stop && minikube delete --all --purge
+minikube start --driver=docker
 
-# 2. Get detailed pod information using a label selector
-kubectl get all
-kubectl get pods --selector app=nginxsvc -o wide
-kubectl get all --selector app=nginxsvc --output wide
+# 1. Create a deployment named 'my-nginx-service' with 3 replicas
+kubectl get all --selector app=my-nginx-service --output wide
+kubectl create deployment my-nginx-service --image=nginx --replicas=3
+kubectl get all --selector app=my-nginx-service --output wide
+
+# 2. Scale down deployment named 'my-nginx-service' to 1 replicas
+kubectl scale deployment my-nginx-service --replicas=1
+kubectl get all --selector app=my-nginx-service --output wide
 # `--output wide` allows us to see more columns:
 # for pods:
 # IP, NODE, NOMINATED NODE, READINESS GATES,
@@ -1257,34 +1265,86 @@ kubectl get all --selector app=nginxsvc --output wide
 # CONTAINERS, IMAGES, SELECTOR
 
 # 3. Expose the deployment as a service on port 80 (default type: ClusterIP)
-kubectl expose deploy nginxsvc --port=80
+kubectl expose deploy my-nginx-service --port=80
 
 # 4. List all services in the cluster
-kubectl get svc
+kubectl get service
 
-# 5. Try accessing the service IP from your local machine (will fail)
+# 5. Try accessing the service IP from your local machine (outside the cluster)
 curl <CLUSTER-IP>  # Expected to fail due to ClusterIP being internal-only
 curl <CLUSTER-IP>:PORT  # Expected to fail due to ClusterIP being internal-only
 
 # 6. SSH into the Minikube VM
 minikube ssh
-docker container ls --all | grep -i nginxsvc
+docker container ls --all | grep -i my-nginx-service
 
 # 7. Access the service IP from inside the cluster, then exit
-curl <CLUSTER-IP>:PORT ; exit
 curl <CLUSTER-IP> ; exit
+curl <CLUSTER-IP>:PORT ; exit
 
 # 8. Edit the service to change its type to NodePort for external access
-kubectl get all --selector app=nginxsvc --output wide
+kubectl get all --selector app=my-nginx-service --output wide
 # Temporary set gedit as the Default Editor for kubectl edit
 export KUBE_EDITOR=gedit
 # Edit
-kubectl edit svc nginxsvc  # Change 'type: ClusterIP' to 'type: NodePort'
+kubectl edit service my-nginx-service  # Change 'type: ClusterIP' to 'type: NodePort'
+# Save and close
 
 # 9. Access the service externally using Minikube's IP and NodePort
-kubectl get all --selector app=nginxsvc --output wide | grep -i tcp
+kubectl get all --selector app=my-nginx-service --output wide | grep -i tcp
 curl $(minikube ip):<TCP_PORT> # Example: curl $(minikube ip):31991
+# or in one line:
+curl $(minikube ip):$(kubectl get service my-nginx-service --output=jsonpath='{.spec.ports[0].nodePort}')
 ```
+
+
+# Networking and Service Demo with Minikube - Automatic Example
+```shell
+# 0. Start from clean state
+minikube status && minikube stop && minikube delete --all --purge
+minikube start --driver=docker
+
+# 1. Create a deployment named 'my-nginx-service' with 3 replicas
+kubectl get all --selector app=my-nginx-service --output wide
+kubectl create deployment my-nginx-service --image=nginx --replicas=3
+kubectl get all --selector app=my-nginx-service --output wide
+
+# 2. Scale down deployment named 'my-nginx-service' to 1 replicas
+kubectl scale deployment my-nginx-service --replicas=1
+kubectl get all --selector app=my-nginx-service --output wide
+# `--output wide` allows us to see more columns:
+# for pods:
+# IP, NODE, NOMINATED NODE, READINESS GATES,
+# for services:
+# SELECTOR
+# for deployments:
+# CONTAINERS, IMAGES, SELECTOR
+# for replicasets:
+# CONTAINERS, IMAGES, SELECTOR
+
+# 3. Expose the deployment as a service on port 80 as NodePort (default type: ClusterIP)
+kubectl expose deploy my-nginx-service --port=80 --type=NodePort
+
+# 4. List all services in the cluster
+kubectl get service
+
+# 5. Try accessing the service IP from your local machine (outside the cluster)
+curl <CLUSTER-IP>  # Expected to fail due to ClusterIP being internal-only; Example: curl 10.101.222.52
+curl <CLUSTER-IP>:PORT  # Expected to fail due to ClusterIP being internal-only; Example: curl 10.101.222.52:80, curl 10.101.222.52:8080
+
+# 6. SSH into the Minikube VM
+minikube ssh
+docker container ls --all | grep -i my-nginx-service
+
+# 7. Access the service IP from inside the cluster, then exit
+curl <CLUSTER-IP> ; exit # Example: curl 10.101.222.52 -> worked!
+curl <CLUSTER-IP>:PORT ; exit # Example: curl 10.101.222.52:80 -> worked!
+
+# 8. Access the service externally using Minikube's IP and NodePort
+curl $(minikube ip):$(kubectl get service my-nginx-service --output=jsonpath='{.spec.ports[0].nodePort}')
+```
+
+
 ## Deployment vs Service
 We don’t just create a Service directly instead of first creating a Deployment with:
 ```shell
