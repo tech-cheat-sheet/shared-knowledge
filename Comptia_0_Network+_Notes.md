@@ -164,6 +164,23 @@
     - [🧪 Testing](#-testing)
       - [🗂️ Tabletop Exercises](#️-tabletop-exercises)
       - [✅ Validation Tests](#-validation-tests)
+  - [3.4 Given a scenario, implement IPv4 and IPv6 network services](#34-given-a-scenario-implement-ipv4-and-ipv6-network-services)
+    - [🔄 Dynamic Addressing](#-dynamic-addressing)
+      - [🧭 DHCP (Dynamic Host Configuration Protocol)](#-dhcp-dynamic-host-configuration-protocol)
+        - [📌 Key Concepts](#-key-concepts)
+      - [🌱 SLAAC (Stateless Address Autoconfiguration)](#-slaac-stateless-address-autoconfiguration)
+    - [🧭 Name Resolution](#-name-resolution)
+      - [🗂️ DNS (Domain Name System)](#️-dns-domain-name-system)
+        - [🔐 Security Enhancements](#-security-enhancements)
+        - [📄 Record Types](#-record-types)
+        - [🗃️ Zone Types](#️-zone-types)
+        - [🧑‍⚖️ Authority](#️-authority)
+        - [🧩 Server Roles](#-server-roles)
+      - [🧾 Hosts File](#-hosts-file)
+    - [⏰ Time Protocols](#-time-protocols)
+      - [🕰️ NTP (Network Time Protocol)](#️-ntp-network-time-protocol)
+      - [🧮 PTP (Precision Time Protocol)](#-ptp-precision-time-protocol)
+      - [🔐 NTS (Network Time Security)](#-nts-network-time-security)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -975,3 +992,60 @@ Testing ensures that DR plans are effective and executable during real incidents
 #### ✅ Validation Tests
 - **Definition**: Actual execution of DR procedures to verify functionality.
 - **Goal**: Confirm systems can be restored as planned.
+## 3.4 Given a scenario, implement IPv4 and IPv6 network services
+This section outlines key services and protocols used to implement and manage IPv4 and IPv6 networks, including dynamic addressing, name resolution, and time synchronization.
+### 🔄 Dynamic Addressing
+#### 🧭 DHCP (Dynamic Host Configuration Protocol)
+Used in IPv4 and IPv6 (DHCPv6) to automatically assign IP addresses and configuration settings.
+##### 📌 Key Concepts
+- **Reservations**: Assign a specific IP address to a device based on its MAC address.
+- **Scope**: Defines the range of IP addresses available for assignment.
+- **Lease Time**: Duration for which an IP address is assigned to a device.
+- **Options**: Additional settings like default gateway, DNS servers, etc.
+- **Relay/IP Helper**: Forwards DHCP requests across subnets.
+- **Exclusions**: IP addresses within the scope that should not be assigned.
+#### 🌱 SLAAC (Stateless Address Autoconfiguration)
+Used in IPv6 to allow devices to self-configure IP addresses without a DHCP server.
+
+- **Mechanism**: Devices generate their own address using network prefix advertised by routers.
+- **Benefit**: Simplifies configuration in IPv6-only environments.
+### 🧭 Name Resolution
+#### 🗂️ DNS (Domain Name System)
+Translates domain names into IP addresses.
+##### 🔐 Security Enhancements
+- **DNSSEC**: Adds cryptographic signatures to DNS data to prevent spoofing.
+- **DoH (DNS over HTTPS)**: Encrypts DNS queries using HTTPS.
+- **DoT (DNS over TLS)**: Encrypts DNS queries using TLS.
+##### 📄 Record Types
+| Type | Description |
+|------|-------------|
+| A | Maps domain to IPv4 address |
+| AAAA | Maps domain to IPv6 address |
+| CNAME | Alias for another domain name |
+| MX | Mail server for the domain |
+| TXT | Arbitrary text, often used for SPF or verification |
+| NS | Authoritative name server for the domain |
+| PTR | Reverse lookup for IP to domain name |
+##### 🗃️ Zone Types
+- **Forward Zone**: Maps domain names to IP addresses.
+- **Reverse Zone**: Maps IP addresses to domain names.
+##### 🧑‍⚖️ Authority
+- **Authoritative**: DNS server with original source data.
+- **Non-authoritative**: DNS server that caches data from other servers.
+##### 🧩 Server Roles
+- **Primary**: Holds the original zone file.
+- **Secondary**: Holds a copy of the zone file from the primary.
+- **Recursive**: Resolves queries by querying other DNS servers on behalf of the client.
+#### 🧾 Hosts File
+- Local file on a device that maps hostnames to IP addresses.
+- Used before querying DNS.
+### ⏰ Time Protocols
+#### 🕰️ NTP (Network Time Protocol)
+- Synchronizes clocks of networked devices.
+- Uses hierarchical system of time sources (stratum levels).
+#### 🧮 PTP (Precision Time Protocol)
+- Provides higher accuracy than NTP.
+- Common in industrial and financial systems.
+#### 🔐 NTS (Network Time Security)
+- Adds security to NTP using encryption and authentication.
+- Protects against spoofing and man-in-the-middle attacks.
