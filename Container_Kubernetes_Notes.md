@@ -107,6 +107,7 @@
   - [📊 Comparison: `default` vs `kube-system` Namespace](#-comparison-default-vs-kube-system-namespace)
   - [🧠 Summary](#-summary-4)
   - [✅ Aliases in `kubectl`](#-aliases-in-kubectl)
+- [Scaling Applications Examples](#scaling-applications-examples)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -1104,4 +1105,20 @@ kubectl api-resources
 
 # Print only the `NAME` and `SHORTNAMES` columns
 kubectl api-resources | awk '{printf "%-35s %-20s\n", $1, $2}'
+```
+
+
+# Scaling Applications Examples
+```shell
+# List all default resources in the current namespace (pods, services, deployments, etc.)
+kubectl get all
+
+# Create a deployment named 'my-web-app-deployment' using the nginx image with 3 replicas
+kubectl create deployment my-web-app-deployment --image=nginx --replicas=3
+
+# View all resources again to confirm the deployment and pods were created
+kubectl get all
+
+# Scale down the deployment to 1 replica (reduce the number of running pods)
+kubectl scale deployment my-web-app-deployment --replicas=1
 ```
