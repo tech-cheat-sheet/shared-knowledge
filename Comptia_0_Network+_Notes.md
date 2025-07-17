@@ -79,6 +79,15 @@
       - [🏠 Home Network](#-home-network)
       - [🏢 Enterprise Network](#-enterprise-network)
       - [🌐 Public Web Server](#-public-web-server)
+  - [1.8 Summarize evolving use cases for modern network environments](#18-summarize-evolving-use-cases-for-modern-network-environments)
+    - [🧠 Software-Defined Networking (SDN) \& Software-Defined WAN (SD-WAN)](#-software-defined-networking-sdn--software-defined-wan-sd-wan)
+    - [🌐 Virtual Extensible LAN (VXLAN)](#-virtual-extensible-lan-vxlan)
+    - [🔐 Zero Trust Architecture (ZTA)](#-zero-trust-architecture-zta)
+    - [🛡️ Secure Access Service Edge (SASE) / Security Service Edge (SSE)](#️-secure-access-service-edge-sase--security-service-edge-sse)
+    - [⚙️ Infrastructure as Code (IaC)](#️-infrastructure-as-code-iac)
+      - [🗂️ Source Control](#️-source-control)
+    - [🌍 IPv6 Addressing](#-ipv6-addressing)
+      - [🧩 Transition Techniques](#-transition-techniques)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -439,3 +448,64 @@ IPv4 addressing is foundational to network design and communication. Choosing th
 #### 🌐 Public Web Server
 - **Use**: Public IP (e.g., `203.0.113.5`)
 - **Subnetting**: CIDR for efficient routing
+## 1.8 Summarize evolving use cases for modern network environments
+Modern networks are evolving to meet the demands of scalability, security, automation, and cloud-native architectures. Below is a summary of key technologies and their use cases.
+### 🧠 Software-Defined Networking (SDN) & Software-Defined WAN (SD-WAN)
+| Feature                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| **Application Aware**    | Optimizes traffic based on application type and performance needs.          |
+| **Zero-Touch Provisioning** | Automates deployment without manual configuration.                    |
+| **Transport Agnostic**   | Works across MPLS, broadband, LTE, etc.                                     |
+| **Central Policy Management** | Centralized control of routing, security, and QoS policies.         |
+
+> **Use Case**: Simplified WAN management, cloud integration, branch office connectivity.
+### 🌐 Virtual Extensible LAN (VXLAN)
+| Feature                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| **Data Center Interconnect (DCI)** | Connects multiple data centers over Layer 3.                   |
+| **Layer 2 Encapsulation** | Encapsulates Layer 2 frames in UDP for scalable overlay networks.         |
+
+> **Use Case**: Multi-tenant cloud environments, scalable virtual networks.
+### 🔐 Zero Trust Architecture (ZTA)
+| Principle                | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| **Policy-Based Authentication** | Access decisions based on identity and context.                  |
+| **Authorization**        | Granular control over what users/devices can access.                      |
+| **Least Privilege Access** | Users/devices get only the access they need.                          |
+
+> **Use Case**: Secure remote access, cloud-native security, insider threat mitigation.
+### 🛡️ Secure Access Service Edge (SASE) / Security Service Edge (SSE)
+- **SASE**: Combines networking and security functions into a cloud-delivered service.
+- **SSE**: Focuses on the security components of SASE (e.g., SWG, CASB, ZTNA).
+
+> **Use Case**: Unified security and connectivity for remote users and cloud apps.
+### ⚙️ Infrastructure as Code (IaC)
+| Feature                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| **Automation**           | Uses scripts/playbooks to automate infrastructure deployment.              |
+| **Playbooks/Templates**  | Reusable tasks for consistent configuration.                               |
+| **Configuration Drift**  | Detects and corrects deviations from desired state.                        |
+| **Upgrades**             | Automates patching and version updates.                                    |
+| **Dynamic Inventories**  | Automatically tracks infrastructure changes.                               |
+#### 🗂️ Source Control
+| Feature                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| **Version Control**      | Tracks changes to code and configurations.                                 |
+| **Central Repository**   | Stores IaC artifacts for collaboration.                                    |
+| **Conflict Identification** | Detects and resolves code conflicts.                                 |
+| **Branching**            | Enables parallel development and testing.                                  |
+
+> **Use Case**: DevOps workflows, cloud infrastructure management, compliance enforcement.
+### 🌍 IPv6 Addressing
+| Feature                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| **Mitigating Address Exhaustion** | Vast address space (128-bit) solves IPv4 limitations.         |
+| **Compatibility Requirements** | Ensures coexistence with IPv4 networks.                          |
+#### 🧩 Transition Techniques
+| Technique                | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| **Tunneling**            | Encapsulates IPv6 traffic over IPv4 networks.                              |
+| **Dual Stack**           | Runs IPv4 and IPv6 simultaneously.                                         |
+| **NAT64**                | Translates IPv6 to IPv4 for legacy systems.                                |
+
+> **Use Case**: Future-proofing networks, global connectivity, IoT scalability.
