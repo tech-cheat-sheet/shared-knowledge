@@ -258,6 +258,18 @@
       - [🛡️ Preventive Measures:](#️-preventive-measures)
     - [🗂️ 7. Document Findings, Actions, and Outcomes](#️-7-document-findings-actions-and-outcomes)
       - [📚 Include:](#-include)
+  - [5.2 Given a scenario, troubleshoot common cabling and physical interface issues](#52-given-a-scenario-troubleshoot-common-cabling-and-physical-interface-issues)
+    - [🧵 Cable Issues](#-cable-issues)
+      - [🔌 Incorrect Cable Type](#-incorrect-cable-type)
+      - [📉 Signal Degradation](#-signal-degradation)
+      - [❌ Improper Termination](#-improper-termination)
+      - [🔄 TX/RX Transposed](#-txrx-transposed)
+    - [🔌 Interface Issues](#-interface-issues)
+      - [📈 Increasing Interface Counters](#-increasing-interface-counters)
+      - [🚦 Port Status](#-port-status)
+    - [⚙️ Hardware Issues](#️-hardware-issues)
+      - [🔋 Power over Ethernet (PoE)](#-power-over-ethernet-poe)
+      - [🔦 Transceivers](#-transceivers-1)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -1369,3 +1381,54 @@ Maintain records for future reference and continuous improvement.
 - Steps taken.
 - Final resolution.
 - Lessons learned.
+## 5.2 Given a scenario, troubleshoot common cabling and physical interface issues
+Cabling and physical interfaces are foundational to network connectivity. Misconfigurations or hardware faults can lead to degraded performance or complete outages.
+### 🧵 Cable Issues
+#### 🔌 Incorrect Cable Type
+- **Single Mode vs. Multimode Fiber**:
+  - Single mode: Long-distance, narrow core, laser-based.
+  - Multimode: Short-distance, wider core, LED-based.
+  - **Impact**: Mismatched fiber types cause signal loss or failure.
+- **Category 5/6/7/8**:
+  - Higher categories support faster speeds and longer distances.
+  - **Impact**: Using lower category cables can limit performance or fail to meet standards.
+- **STP vs. UTP**:
+  - STP: Shielded to reduce interference.
+  - UTP: Unshielded, more flexible and cost-effective.
+  - **Impact**: Using UTP in high-interference environments can lead to signal degradation.
+#### 📉 Signal Degradation
+- **Crosstalk**: Signal leakage between adjacent wires.
+- **Interference**: External electromagnetic sources disrupt signal.
+- **Attenuation**: Signal weakens over long distances.
+- **Impact**: Reduced throughput, increased errors, dropped connections.
+#### ❌ Improper Termination
+- Poor crimping or connector installation can cause intermittent connectivity.
+- **Impact**: Increased error rates, unstable links.
+#### 🔄 TX/RX Transposed
+- Transmit and receive wires reversed.
+- **Impact**: No link or failed communication.
+### 🔌 Interface Issues
+#### 📈 Increasing Interface Counters
+Monitor interface statistics for signs of trouble.
+
+| Counter | Description | Cause |
+|---------|-------------|-------|
+| CRC | Cyclic redundancy check errors | Signal corruption |
+| Runts | Packets smaller than minimum size | Collisions or duplex mismatch |
+| Giants | Packets larger than maximum size | MTU mismatch or faulty NIC |
+| Drops | Packets discarded | Congestion or buffer overflow |
+#### 🚦 Port Status
+| Status | Meaning | Action |
+|--------|---------|--------|
+| Error Disabled | Port shut down due to violation | Investigate cause (e.g., security violation) |
+| Administratively Down | Disabled by configuration | Enable via CLI or GUI |
+| Suspended | Temporarily inactive | Check protocol or configuration dependencies |
+### ⚙️ Hardware Issues
+#### 🔋 Power over Ethernet (PoE)
+- **Power Budget Exceeded**: Too many devices drawing power.
+- **Incorrect Standard**: Device requires PoE+, but switch only supports PoE.
+- **Impact**: Devices fail to power on or operate intermittently.
+#### 🔦 Transceivers
+- **Mismatch**: Incompatible transceiver and port type (e.g., SFP vs. SFP+).
+- **Signal Strength**: Weak signal due to dirty connectors or long cable runs.
+- **Impact**: Link failures, degraded performance.
