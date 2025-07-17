@@ -362,10 +362,8 @@ docker stop $(docker ps -q) && \
 echo "================================================== Removing all containers" && \
 docker rm $(docker ps -aq) && \
 echo "================================================== Removing all images (except minikube)" && \
-docker images --format "{{.Repository}}:{{.Tag}} {{.ID}}" | \
-  grep -v "gcr.io/k8s-minikube/kicbase" | \
-  awk '{print $2}' | \
-  xargs -r docker rmi && \
+MINIKUBE_IMAGE_ID=$(docker images --format "{{.Repository}} {{.ID}}" | grep "gcr.io/k8s-minikube/kicbase" | awk '{print $2}')
+docker images -q | grep -v "$MINIKUBE_IMAGE_ID" | xargs -r docker rmi && \
 echo "================================================== Removing all networks" && \
 docker network prune --force && \
 echo "================================================== Removing all volumes" && \
@@ -439,7 +437,12 @@ minikube kubectl -- get pods --all-namespaces
 
 # 🧹 Step-by-Step Cleanup Guide for Minikube
 # This removes the entire cluster and all associated resources:
-minikube delete --all --purge
+echo "================================================================================ RUNNING minikube stop" && \
+minikube stop && \
+echo "================================================================================ RUNNING minikube delete" && \
+minikube delete --all --purge && \
+echo "================================================================================ RUNNING minikube status" && \
+minikube status
 # --all: Deletes all Minikube profiles.
 # --purge: Removes the .minikube folder from your home directory.
 
@@ -470,9 +473,13 @@ sudo apt update
 sudo apt install --yes kubectl
 
 # Test
-which docker && which minikube && which kubectl
-minikube status
-minikube kubectl -- get pods --all-namespaces
+echo "================================================================================ CHECK all tools" && \
+which docker && which minikube && which kubectl && \
+echo "================================================================================ RUNNING minikube status" && \
+minikube status && \
+echo "================================================================================ RUNNING minikube kubectl" && \
+minikube kubectl -- get pods --all-namespaces && \
+echo "================================================================================ RUNNING kubectl" && \
 kubectl get pods --all-namespaces
 ```
 Sources:
