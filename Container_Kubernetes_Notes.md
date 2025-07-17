@@ -98,6 +98,15 @@
     - [1. Run a One-Time Job](#1-run-a-one-time-job)
     - [2. Create a Deployment That Runs a Shell](#2-create-a-deployment-that-runs-a-shell)
   - [🧪 Check What Was Created](#-check-what-was-created)
+- [📦 Demo: Managing Applications in Namespaces](#-demo-managing-applications-in-namespaces)
+  - [🔧 Commands Used](#-commands-used)
+  - [🧠 Purpose](#-purpose)
+  - [Note `kubectl get all --all-namespaces`](#note-kubectl-get-all---all-namespaces)
+  - [🧠 Comprehensive Command (All Namespaced Resources)](#-comprehensive-command-all-namespaced-resources)
+    - [🔍 What It Does:](#-what-it-does)
+  - [📊 Comparison: `default` vs `kube-system` Namespace](#-comparison-default-vs-kube-system-namespace)
+  - [🧠 Summary](#-summary-4)
+  - [✅ Aliases in `kubectl`](#-aliases-in-kubectl)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -1010,4 +1019,89 @@ kubectl logs <pod-name>
 
 kubectl delete deployment my-deployment
 kubectl delete job my-job
+```
+
+
+# 📦 Demo: Managing Applications in Namespaces
+This demo showcases how to manage Kubernetes applications using namespaces via `kubectl` commands.
+## 🔧 Commands Used
+```bash
+# Create a new namespace
+kubectl create ns secret
+kubectl create namespace secret
+
+# Get all Kubernetes resources across all namespaces
+kubectl get all --all-namespaces
+
+# Deploy an nginx application in the default namespace
+kubectl create deploy secret --image=nginx
+
+# View pods in the current namespace
+kubectl get pods
+
+# View pods specifically in the 'secret' namespace
+kubectl get pods -n secret
+kubectl get pods --namespace secret
+
+# View pods across all namespaces
+kubectl get pods -A
+
+# Set the current context to use the 'secret' namespace
+kubectl config set-context --current --namespace secret
+
+# View pods again (now scoped to 'secret' namespace)
+kubectl get pods
+
+# Reset context back to the 'default' namespace
+kubectl config set-context --current --namespace default
+```
+## 🧠 Purpose
+These commands help you:
+- Create and switch between namespaces
+- Deploy and inspect resources within specific namespaces
+- Manage context for easier namespace-scoped operations
+## Note `kubectl get all --all-namespaces`
+This retrieves:
+- Pods
+- Services
+- Deployments
+- ReplicaSets
+- StatefulSets
+- DaemonSets
+- Jobs
+- CronJobs
+
+⚠️ This does not include ConfigMaps, Secrets, PersistentVolumes, Ingresses, or Custom Resource Definitions (CRDs).
+## 🧠 Comprehensive Command (All Namespaced Resources)
+```shell
+kubectl api-resources --verbs=list --namespaced -o name | \
+xargs -n 1 kubectl get --show-kind --ignore-not-found -A
+```
+### 🔍 What It Does:
+- `kubectl api-resources`: Lists all resource types.
+- `--verbs=list --namespaced`: Filters for listable, namespaced resources.
+- `xargs`: Runs kubectl get on each resource type.
+- `-A`: Gets resources from all namespaces.
+- `--ignore-not-found`: Skips types with no instances.
+- `--show-kind`: Displays the resource type in the output.
+## 📊 Comparison: `default` vs `kube-system` Namespace
+| Feature                    | `default` Namespace                          | `kube-system` Namespace                          |
+|---------------------------|----------------------------------------------|--------------------------------------------------|
+| 🧭 Purpose                | For user-created resources by default        | For system-critical components and controllers   |
+| 📦 Typical Contents       | Deployments, services, pods created by users | Core Kubernetes services (e.g., kube-dns, kube-proxy) |
+| 🛠️ Created By            | Automatically created by Kubernetes          | Automatically created by Kubernetes              |
+| 👤 Access                 | Used unless another namespace is specified   | Reserved for internal use; users should not modify |
+| 🔐 Security Implications  | Less sensitive; user-managed                 | Highly sensitive; modifying can break the cluster |
+| 📜 Examples of Resources  | `nginx`, `my-app`, `frontend-service`        | `coredns`, `etcd`, `kube-apiserver`, `metrics-server` |
+| 🧑‍💻 Recommended Usage    | For learning, testing, and general workloads | Only for system components; avoid deploying here |
+| 📍 Default Context Behavior | Used when no namespace is explicitly set     | Must be explicitly targeted with `-n kube-system` |
+## 🧠 Summary
+- Use `default` for your own apps and experiments.
+- Leave `kube-system` alone unless you're debugging or managing cluster internals.
+## ✅ Aliases in `kubectl`
+```shell
+kubectl api-resources
+
+# Print only the `NAME` and `SHORTNAMES` columns
+kubectl api-resources | awk '{printf "%-35s %-20s\n", $1, $2}'
 ```
