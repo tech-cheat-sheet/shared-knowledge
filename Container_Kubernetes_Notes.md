@@ -1785,3 +1785,7 @@ This makes the service accessible at `192.168.29.110:8888`.
 | 🛠️ Use Case                   | Temporary scratch space, cache                         | Persistent cluster storage                           | Requesting persistent storage for pods               |
 | 🔐 Data Durability             | Volatile                                                | Durable and reliable                                 | Durable and reliable                                 |
 | 🧪 Example                     | `emptyDir`, `configMap`, `secret`                      | Admin-defined storage volumes                        | Developer-defined storage requests                   |
+- Pod Storage: Temporary, tied to pod lifecycle.
+- PersistentVolume (PV): Actual storage resource in the cluster.
+- PersistentVolumeClaim (PVC): A pod’s request for persistent storage.
+- PVC is the bridge between your pod and the underlying PV.
