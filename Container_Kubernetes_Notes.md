@@ -110,6 +110,10 @@
 - [Scaling Applications Examples](#scaling-applications-examples)
 - [Deployment Update \& Rollback Demo](#deployment-update--rollback-demo)
 - [Label Management Demo](#label-management-demo)
+- [🌐 Kubernetes Networking Flow Diagram](#-kubernetes-networking-flow-diagram)
+  - [🧭 Key Components](#-key-components)
+  - [🔄 Traffic Flow Summary](#-traffic-flow-summary)
+  - [✅ Use Case](#-use-case)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -1173,3 +1177,35 @@ kubectl label deploy rollingnginx app-
 # 5. View all pods and their labels
 kubectl get pods --show-labels
 ```
+
+
+# 🌐 Kubernetes Networking Flow Diagram
+![alt text](images/Kubernetes-Network-Flow-Diagram.png)
+
+This diagram illustrates how network traffic flows from external sources into a Kubernetes cluster and ultimately reaches the pods. It highlights key components involved in routing and managing traffic.
+## 🧭 Key Components
+- **Ingress**: Manages external HTTP/S access to services within the cluster.
+- **DNS**: Resolves domain names to IP addresses for services.
+- **Load Balancer (LB)**: Distributes incoming traffic across nodes.
+- **Nodes (n1, n2, n3)**: Physical or virtual machines running Kubernetes workloads.
+- **Services**:
+  - **ClusterIP**: Default service type, accessible only within the cluster.
+  - **NodePort**: Exposes a service on a static port (e.g., `32000`) on each node.
+- **Pods**:
+  - Individual containers (`p1`, `p2`, `p3`) running inside the cluster.
+  - Connected via the **pod network**.
+- **Networks**:
+  - **External net**: Traffic from outside the cluster.
+  - **Cluster net**: Internal communication between services and nodes.
+  - **Pod net**: Network connecting pods to each other and to services.
+## 🔄 Traffic Flow Summary
+1. External traffic enters via the **Load Balancer**.
+2. Traffic is routed to the appropriate **NodePort** or **Ingress**.
+3. **DNS** resolves service names.
+4. Traffic reaches the **ClusterIP** service.
+5. The service forwards traffic to the appropriate **pod**.
+## ✅ Use Case
+Understanding this flow is essential for:
+- Designing scalable and secure Kubernetes applications.
+- Configuring services and ingress controllers.
+- Troubleshooting network connectivity issues.
