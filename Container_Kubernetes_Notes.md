@@ -124,7 +124,15 @@
     - [❌ Why You Can’t Just Create a Service Alone](#-why-you-cant-just-create-a-service-alone)
 - [Working with Ingress in Minikube via CLI Demo](#working-with-ingress-in-minikube-via-cli-demo)
 - [Working with Ingress in Minikube via YAML Demo](#working-with-ingress-in-minikube-via-yaml-demo)
+- [🧠 Why a Service Is Required Before Ingress](#-why-a-service-is-required-before-ingress)
+  - [🔗 Ingress → Service → Pod](#-ingress--service--pod)
+  - [✅ Typical Workflow](#-typical-workflow)
+  - [⚠️ What Happens If You Skip the Service?](#️-what-happens-if-you-skip-the-service)
 - [🌐 Comparison: NodePort vs Ingress](#-comparison-nodeport-vs-ingress)
+- [❓ Should You Use NodePort with Ingress?](#-should-you-use-nodeport-with-ingress)
+  - [Recommended:](#recommended)
+  - [Why?](#why)
+  - [Example:](#example-2)
 - [Working with Port-Forwarding in Minikube](#working-with-port-forwarding-in-minikube)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
@@ -1679,6 +1687,36 @@ curl http://hello-world.example
 -->
 
 
+# 🧠 Why a Service Is Required Before Ingress
+An Ingress is just a routing layer. It doesn’t talk directly to pods — it routes traffic to Services, which in turn forward traffic to the appropriate pods.
+## 🔗 Ingress → Service → Pod
+- Ingress defines rules for routing HTTP/S traffic.
+- It uses a backend service name and port to forward requests.
+- That service must already exist and be connected to your pods (usually via a Deployment).
+## ✅ Typical Workflow
+```shell
+# 1. Create a Deployment:
+kubectl create deployment web --image=nginx
+
+# 2. Expose the Deployment as a Service:
+kubectl expose deployment web --port=80 [--type=ClusterIP||--type=NodePort]
+
+# 3A. Create an Ingress that points to the Service - CLI
+kubectl create ingress example-ingress --class=nginx --rule="hello-world.example/=web:80"
+# 3B. Create an Ingress that points to the Service - YAML
+backend:
+  service:
+    name: web
+    port:
+      number: 80
+```
+## ⚠️ What Happens If You Skip the Service?
+If you create an Ingress pointing to a non-existent service:
+- The Ingress controller will fail to route traffic.
+- You’ll get 404 errors or connection failures.
+- The Ingress resource may still be created, but it won’t work.
+
+
 # 🌐 Comparison: NodePort vs Ingress
 | Feature                     | `Service.type=NodePort`                                | `Ingress`                                           |
 |----------------------------|---------------------------------------------------------|-----------------------------------------------------|
@@ -1694,6 +1732,18 @@ curl http://hello-world.example
 | 🧪 Use Case                | Quick testing, local access                             | Production-grade routing, multiple services/domains |
 - Use NodePort for quick access or local development.
 - Use Ingress for scalable, domain-based routing with TLS and advanced rules.
+# ❓ Should You Use NodePort with Ingress?
+✅ You can — but it's not required.
+## Recommended:
+Use `ClusterIP` (default) when exposing a service for Ingress.
+## Why?
+- Ingress controllers access services internally.
+- NodePort is only needed for direct external access.
+## Example:
+```shell
+kubectl expose deployment web --port=80 # ClusterIP is sufficient
+```
+
 
 # Working with Port-Forwarding in Minikube
 PLACEHOLDER
