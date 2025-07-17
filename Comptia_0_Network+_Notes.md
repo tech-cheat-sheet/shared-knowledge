@@ -227,6 +227,22 @@
       - [👀 Shoulder Surfing](#-shoulder-surfing)
       - [🚪 Tailgating](#-tailgating)
     - [🦠 Malware](#-malware)
+  - [4.3 Given a scenario, apply network security features, defense techniques, and solutions](#43-given-a-scenario-apply-network-security-features-defense-techniques-and-solutions)
+    - [🧱 Device Hardening](#-device-hardening)
+      - [🔌 Disable Unused Ports and Services](#-disable-unused-ports-and-services)
+      - [🔐 Change Default Passwords](#-change-default-passwords)
+    - [🚪 Network Access Control (NAC)](#-network-access-control-nac)
+      - [🔒 Port Security](#-port-security)
+      - [🔐 802.1X](#-8021x)
+      - [📛 MAC Filtering](#-mac-filtering)
+    - [🔑 Key Management](#-key-management)
+    - [📜 Security Rules](#-security-rules)
+      - [📋 Access Control List (ACL)](#-access-control-list-acl)
+      - [🌐 URL Filtering](#-url-filtering)
+      - [🧹 Content Filtering](#-content-filtering)
+    - [🌍 Network Zones](#-network-zones)
+      - [🟢 Trusted vs. 🔴 Untrusted](#-trusted-vs--untrusted)
+      - [🛡️ Screened Subnet (DMZ)](#️-screened-subnet-dmz)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -1248,3 +1264,48 @@ Cyberattacks can compromise network integrity, availability, and confidentiality
 ### 🦠 Malware
 - **Description**: Malicious software including viruses, worms, ransomware, spyware.
 - **Impact**: Data loss, system compromise, financial damage, network disruption.
+## 4.3 Given a scenario, apply network security features, defense techniques, and solutions
+In real-world scenarios, securing a network involves a layered approach using device-level protections, access controls, and traffic filtering to reduce risk and enforce policy.
+### 🧱 Device Hardening
+Strengthening individual devices to reduce their attack surface.
+#### 🔌 Disable Unused Ports and Services
+- Prevents exploitation of unnecessary services.
+- Reduces entry points for attackers.
+#### 🔐 Change Default Passwords
+- Default credentials are widely known and easily exploited.
+- Use strong, unique passwords for each device.
+### 🚪 Network Access Control (NAC)
+Controls which devices can connect to the network and enforces security policies.
+#### 🔒 Port Security
+- Limits the number of MAC addresses per switch port.
+- Prevents unauthorized devices from connecting.
+#### 🔐 802.1X
+- Authentication protocol for network access.
+- Works with RADIUS to validate user/device credentials before granting access.
+#### 📛 MAC Filtering
+- Allows or denies access based on device MAC addresses.
+- Useful for small networks but less scalable and secure than 802.1X.
+### 🔑 Key Management
+- Ensures secure generation, distribution, storage, and rotation of cryptographic keys.
+- Critical for encryption, authentication, and secure communications.
+- Use centralized key management systems (e.g., HSMs, KMS) for scalability and compliance.
+### 📜 Security Rules
+Used to control traffic and enforce policy at the network perimeter or within zones.
+#### 📋 Access Control List (ACL)
+- Filters traffic based on IP, port, and protocol.
+- Can be applied on routers, firewalls, and switches.
+#### 🌐 URL Filtering
+- Blocks access to specific websites or categories.
+- Helps prevent access to malicious or non-compliant content.
+#### 🧹 Content Filtering
+- Inspects and blocks specific types of content (e.g., malware, adult content).
+- Often used in web proxies and email gateways.
+### 🌍 Network Zones
+Segmenting the network into zones with varying trust levels improves security and control.
+#### 🟢 Trusted vs. 🔴 Untrusted
+- **Trusted Zone**: Internal network with known, secure devices.
+- **Untrusted Zone**: External networks like the internet or guest access.
+#### 🛡️ Screened Subnet (DMZ)
+- Isolated zone between trusted and untrusted networks.
+- Hosts public-facing services (e.g., web servers) while protecting internal systems.
+- Allows controlled access from external users without exposing the internal network.
