@@ -52,6 +52,14 @@
     - [📡 Internet Protocol (IP) Types](#-internet-protocol-ip-types)
       - [🔐 IPSec Components](#-ipsec-components)
     - [🚦 Traffic Types](#-traffic-types)
+  - [1.5 Compare and contrast transmission media and transceivers](#15-compare-and-contrast-transmission-media-and-transceivers)
+    - [📡 Wireless Transmission Media](#-wireless-transmission-media)
+    - [🔌 Wired Transmission Media](#-wired-transmission-media)
+    - [🔄 Transceivers](#-transceivers)
+      - [📡 Protocols](#-protocols)
+      - [📦 Form Factors](#-form-factors)
+    - [🔌 Connector Types](#-connector-types)
+    - [🧠 Summary Comparison Table](#-summary-comparison-table-2)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -279,3 +287,52 @@ Understanding networking protocols and traffic types is essential for configurin
 | **Multicast** | One-to-many communication to a specific group of recipients.             |
 | **Anycast** | One-to-nearest communication; data is sent to the closest node in a group. |
 | **Broadcast** | One-to-all communication within a network segment.                        |
+## 1.5 Compare and contrast transmission media and transceivers
+Transmission media and transceivers are essential components in networking, determining how data is physically transmitted and received across devices. Below is a comparison of key types and technologies.
+### 📡 Wireless Transmission Media
+| Type        | Description                                                                 | Standards/Notes                      |
+|-------------|-----------------------------------------------------------------------------|--------------------------------------|
+| **802.11**  | Wireless LAN standards (Wi-Fi) for short-range communication.               | Includes 802.11a/b/g/n/ac/ax         |
+| **Cellular**| Mobile network communication using LTE, 5G, etc.                            | Used for mobile data and IoT         |
+| **Satellite**| Long-range communication via orbiting satellites.                          | High latency, global coverage        |
+### 🔌 Wired Transmission Media
+| Type                        | Description                                                                 | Notes                               |
+|-----------------------------|-----------------------------------------------------------------------------|-------------------------------------|
+| **802.3 (Ethernet)**        | Standard for wired LAN communication.                                       | Includes 10BASE-T, 100BASE-TX, etc. |
+| **Single-mode Fiber**       | Uses a single light path; ideal for long distances.                         | Higher cost, longer reach           |
+| **Multimode Fiber**         | Uses multiple light paths; suitable for short distances.                    | Lower cost, shorter reach           |
+| **Direct Attach Copper (DAC)** | Twinax cable with integrated transceivers; used for short-range data center links. | Cost-effective, low latency         |
+| **Twinaxial Cable**         | Shielded twisted pair; used in high-speed data transmission.               | Common in DAC assemblies            |
+| **Coaxial Cable**           | Single conductor with shielding; used for cable TV, broadband.             | Durable, moderate bandwidth         |
+| **Cable Speeds**            | Vary by type: Ethernet (1 Gbps to 100 Gbps), Fiber (up to Tbps).           | Depends on medium and protocol      |
+| **Plenum vs. Non-Plenum**   | Plenum-rated cables have fire-resistant jackets for air ducts.             | Required by building codes          |
+### 🔄 Transceivers
+#### 📡 Protocols
+| Protocol         | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| **Ethernet**     | Standard for LAN communication; supports copper and fiber media.            |
+| **Fibre Channel (FC)** | High-speed protocol for storage area networks (SANs).                 |
+#### 📦 Form Factors
+| Form Factor      | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| **SFP (Small Form-Factor Pluggable)** | Compact transceiver for Ethernet and FC.               |
+| **QSFP (Quad Small Form-Factor Pluggable)** | Supports 4 channels; used for high-speed links. |
+### 🔌 Connector Types
+| Connector Type   | Description                                                                 | Common Use                          |
+|------------------|-----------------------------------------------------------------------------|-------------------------------------|
+| **SC (Subscriber Connector)** | Square-shaped fiber connector.                              | Fiber optic networks                |
+| **LC (Local Connector)**       | Small form fiber connector with latch.                      | High-density fiber applications     |
+| **ST (Straight Tip)**          | Bayonet-style fiber connector.                              | Legacy fiber systems                |
+| **MPO (Multi-fiber Push On)**  | Connects multiple fibers in one interface.                  | High-bandwidth fiber trunks         |
+| **RJ11 (Registered Jack 11)**  | 2–6 pin connector for telephone lines.                      | Analog voice communication          |
+| **RJ45**                       | 8-pin connector for Ethernet.                               | LAN and internet connections        |
+| **F-type**                     | Screw-on coaxial connector.                                 | Cable TV, broadband                 |
+| **BNC (Bayonet Neill–Concelman)** | Twist-lock coaxial connector.                          | Video, RF, legacy networks          |
+### 🧠 Summary Comparison Table
+| Category           | Example                          | Use Case                          |
+|--------------------|----------------------------------|-----------------------------------|
+| Wireless Media     | 802.11, Cellular, Satellite      | Wi-Fi, mobile data, remote access |
+| Wired Media        | Ethernet, Fiber, Coaxial         | LAN, WAN, data centers            |
+| Transceiver Protocols | Ethernet, Fibre Channel       | Network and storage connectivity  |
+| Form Factors       | SFP, QSFP                        | Modular transceiver deployment    |
+| Connector Types    | RJ45, LC, SC, MPO, BNC           | Physical cable termination        |
