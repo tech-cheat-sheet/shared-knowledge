@@ -103,6 +103,12 @@
       - [🧠 Virtual IP (VIP)](#-virtual-ip-vip)
       - [🧩 Subinterfaces](#-subinterfaces)
     - [🧠 Summary Table](#-summary-table)
+  - [2.2 Given a scenario, configure switching technologies and features](#22-given-a-scenario-configure-switching-technologies-and-features)
+    - [🧱 Virtual Local Area Network (VLAN)](#-virtual-local-area-network-vlan)
+    - [⚙️ Interface Configuration](#️-interface-configuration)
+    - [🌲 Spanning Tree Protocol (STP)](#-spanning-tree-protocol-stp)
+    - [📦 Maximum Transmission Unit (MTU)](#-maximum-transmission-unit-mtu)
+    - [🧠 Summary Configuration Table](#-summary-configuration-table)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -578,3 +584,49 @@ Routing technologies determine how data moves across networks. They include stat
 | FHRP                    | Gateway redundancy               | High availability                    |
 | VIP                     | Shared IP for failover/load bal. | Seamless failover                    |
 | Subinterfaces           | VLAN routing                     | Logical segmentation                 |
+## 2.2 Given a scenario, configure switching technologies and features
+Switching technologies enable efficient data forwarding within local networks. Proper configuration ensures segmentation, performance, and redundancy.
+### 🧱 Virtual Local Area Network (VLAN)
+| Feature             | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| **VLAN**            | Logical segmentation of a network at Layer 2.                              |
+| **VLAN Database**   | Stores VLAN IDs and names on a switch.                                     |
+| **Switch Virtual Interface (SVI)** | Layer 3 interface for routing between VLANs.              |
+
+> **Scenario**: Segmenting a network into VLANs for departments (e.g., VLAN 10 for HR, VLAN 20 for IT).
+### ⚙️ Interface Configuration
+| Feature             | Description                                                                 | Use Case                          |
+|---------------------|-----------------------------------------------------------------------------|-----------------------------------|
+| **Native VLAN**     | Untagged VLAN on a trunk port.                                              | Backward compatibility            |
+| **Voice VLAN**      | Dedicated VLAN for VoIP traffic.                                            | Prioritizes voice quality         |
+| **802.1Q Tagging**  | Adds VLAN ID to Ethernet frames for trunking.                              | VLAN communication across switches|
+| **Link Aggregation**| Combines multiple physical links into one logical link (e.g., LACP).        | Increased bandwidth, redundancy   |
+| **Speed**           | Sets interface speed (e.g., 100 Mbps, 1 Gbps).                              | Performance tuning                |
+| **Duplex**          | Full or half duplex mode.                                                   | Avoids collisions, improves throughput|
+
+> **Scenario**: Configure trunk ports with 802.1Q tagging and set voice VLAN for IP phones.
+### 🌲 Spanning Tree Protocol (STP)
+- **Function**: Prevents Layer 2 loops by blocking redundant paths.
+- **Variants**: STP, RSTP, MSTP.
+- **Use Case**: Redundant switch connections without broadcast storms.
+
+> **Scenario**: Connect multiple switches with redundant links and enable STP to maintain loop-free topology.
+### 📦 Maximum Transmission Unit (MTU)
+| Feature             | Description                                                                 | Use Case                          |
+|---------------------|-----------------------------------------------------------------------------|-----------------------------------|
+| **MTU**             | Maximum size of a packet that can be transmitted.                          | Default is 1500 bytes             |
+| **Jumbo Frames**    | Packets larger than standard MTU (e.g., 9000 bytes).                        | Used in storage and high-speed networks|
+
+> **Scenario**: Enable jumbo frames on interfaces for SAN traffic to reduce overhead.
+### 🧠 Summary Configuration Table
+| Feature             | Purpose                          | Configuration Example               |
+|---------------------|----------------------------------|-------------------------------------|
+| VLAN                | Network segmentation             | `vlan 10` → `name HR`               |
+| SVI                 | Inter-VLAN routing               | `interface vlan 10` → `ip address`  |
+| Native VLAN         | Untagged VLAN on trunk           | `switchport trunk native vlan 99`   |
+| Voice VLAN          | VoIP traffic prioritization      | `switchport voice vlan 200`         |
+| 802.1Q Tagging      | VLAN trunking                    | `encapsulation dot1q 10`            |
+| Link Aggregation    | Bandwidth/redundancy             | `channel-group 1 mode active`       |
+| Speed/Duplex        | Interface performance            | `speed 1000` / `duplex full`        |
+| STP                 | Loop prevention                  | `spanning-tree mode rapid-pvst`     |
+| MTU/Jumbo Frames    | Large packet support             | `mtu 9000`                          |
