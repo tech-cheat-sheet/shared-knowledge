@@ -109,6 +109,17 @@
     - [🌲 Spanning Tree Protocol (STP)](#-spanning-tree-protocol-stp)
     - [📦 Maximum Transmission Unit (MTU)](#-maximum-transmission-unit-mtu)
     - [🧠 Summary Configuration Table](#-summary-configuration-table)
+  - [2.3 Given a scenario, select and configure wireless devices and technologies](#23-given-a-scenario-select-and-configure-wireless-devices-and-technologies)
+    - [📡 Channels and Channel Width](#-channels-and-channel-width)
+    - [📶 Frequency Options](#-frequency-options)
+      - [🔀 Band Steering](#-band-steering)
+    - [🆔 SSID and Identifiers](#-ssid-and-identifiers)
+    - [🌐 Wireless Network Types](#-wireless-network-types)
+    - [🔐 Encryption and Authentication](#-encryption-and-authentication)
+      - [🔑 Authentication Methods](#-authentication-methods)
+    - [📡 Antennas](#-antennas)
+    - [🧠 Access Point Modes](#-access-point-modes)
+    - [🧠 Summary Configuration Table](#-summary-configuration-table-1)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -630,3 +641,71 @@ Switching technologies enable efficient data forwarding within local networks. P
 | Speed/Duplex        | Interface performance            | `speed 1000` / `duplex full`        |
 | STP                 | Loop prevention                  | `spanning-tree mode rapid-pvst`     |
 | MTU/Jumbo Frames    | Large packet support             | `mtu 9000`                          |
+## 2.3 Given a scenario, select and configure wireless devices and technologies
+Wireless networks require careful planning around frequency, security, topology, and device roles to ensure performance, coverage, and security.
+### 📡 Channels and Channel Width
+| Feature                  | Description                                                                 | Use Case                          |
+|--------------------------|-----------------------------------------------------------------------------|-----------------------------------|
+| **Channel Width**        | Determines bandwidth (e.g., 20/40/80/160 MHz).                             | Wider channels = more throughput  |
+| **Non-Overlapping Channels** | Avoids interference in 2.4GHz (e.g., channels 1, 6, 11).              | Dense environments                |
+| **Regulatory Impacts**   | Compliance with regional rules (e.g., DFS channels).                       | 802.11h manages dynamic frequency |
+
+> **Scenario**: Configure APs on non-overlapping channels in a school to reduce interference.
+### 📶 Frequency Options
+| Band     | Description                          | Pros                        | Cons                        |
+|----------|--------------------------------------|-----------------------------|-----------------------------|
+| **2.4GHz** | Longer range, better wall penetration | More interference, fewer channels |
+| **5GHz**   | Higher throughput, more channels     | Shorter range               |
+| **6GHz**   | Newer band with minimal interference | Requires newer devices      |
+#### 🔀 Band Steering
+- **Function**: Encourages dual-band clients to use 5GHz or 6GHz for better performance.
+
+> **Scenario**: Enable band steering in an office to optimize device distribution across bands.
+### 🆔 SSID and Identifiers
+| Term       | Description                                                                 |
+|------------|-----------------------------------------------------------------------------|
+| **SSID**   | Network name broadcasted by APs.                                            |
+| **BSSID**  | MAC address of the AP's radio interface.                                    |
+| **ESSID**  | Group of APs sharing the same SSID across a network.                        |
+
+> **Scenario**: Configure multiple APs with same SSID and unique BSSIDs for seamless roaming.
+### 🌐 Wireless Network Types
+| Type           | Description                                                                 | Use Case                          |
+|----------------|-----------------------------------------------------------------------------|-----------------------------------|
+| **Mesh**       | APs relay traffic between each other.                                       | Large areas without cabling       |
+| **Ad Hoc**     | Peer-to-peer communication without APs.                                     | Temporary networks                |
+| **Point to Point** | Direct link between two locations.                                   | Building-to-building connectivity |
+| **Infrastructure** | Devices connect through APs.                                         | Standard enterprise/home Wi-Fi    |
+### 🔐 Encryption and Authentication
+| Feature       | Description                                                                 | Notes                              |
+|---------------|-----------------------------------------------------------------------------|-------------------------------------|
+| **WPA2**      | Strong encryption using AES.                                                | Still widely used                  |
+| **WPA3**      | Enhanced security, resistant to brute-force attacks.                        | Requires newer hardware            |
+| **Guest Networks** | Isolated access for visitors.                                        | Often paired with captive portals  |
+| **Captive Portals** | Redirect users to login or accept terms.                           | Common in public Wi-Fi             |
+#### 🔑 Authentication Methods
+| Method        | Description                                                                 | Use Case                          |
+|---------------|-----------------------------------------------------------------------------|-----------------------------------|
+| **PSK**       | Shared password for all users.                                              | Home/small office                 |
+| **Enterprise**| Uses RADIUS server for individual credentials.                              | Corporate environments            |
+### 📡 Antennas
+| Type             | Description                                                                 | Use Case                          |
+|------------------|-----------------------------------------------------------------------------|-----------------------------------|
+| **Omnidirectional** | Radiates signal in all directions.                                     | General coverage                  |
+| **Directional**     | Focuses signal in one direction.                                       | Point-to-point links              |
+### 🧠 Access Point Modes
+| Mode             | Description                                                                 | Use Case                          |
+|------------------|-----------------------------------------------------------------------------|-----------------------------------|
+| **Autonomous**    | Standalone AP with full control.                                           | Small networks                    |
+| **Lightweight**   | Managed by a wireless controller.                                          | Enterprise deployments            |
+### 🧠 Summary Configuration Table
+| Feature/Technology     | Purpose                          | Configuration Tip                  |
+|------------------------|----------------------------------|------------------------------------|
+| Channels               | Avoid interference               | Use 1, 6, 11 in 2.4GHz              |
+| Band Steering          | Optimize performance             | Enable on dual-band APs            |
+| SSID/ESSID             | Seamless roaming                 | Use same SSID across APs           |
+| WPA2/WPA3              | Secure access                    | Prefer WPA3 if supported           |
+| Guest Network          | Visitor access                   | Isolate from internal LAN          |
+| PSK vs. Enterprise     | Authentication                   | Use Enterprise for user tracking   |
+| Antennas               | Coverage control                 | Match antenna type to layout       |
+| Autonomous vs. Lightweight | Management model            | Use lightweight with controllers   |
