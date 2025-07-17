@@ -10,7 +10,7 @@
     - [6. Presentation Layer](#6-presentation-layer)
     - [7. Application Layer](#7-application-layer)
     - [🧠 Why It Matters](#-why-it-matters)
-  - [1.2 Compare and contrast networking appliances, applications, and functions.](#12-compare-and-contrast-networking-appliances-applications-and-functions)
+  - [1.2 Compare and contrast networking appliances, applications, and functions](#12-compare-and-contrast-networking-appliances-applications-and-functions)
     - [🧱 Physical vs. Virtual Appliances](#-physical-vs-virtual-appliances)
     - [🔌 Core Networking Appliances](#-core-networking-appliances)
       - [🔁 Router](#-router)
@@ -346,7 +346,7 @@ The **OSI model** is a conceptual framework developed by the **International Org
 - **Modularity**: Each layer can evolve independently.
 - **Interoperability**: Devices from different vendors can communicate.
 - **Troubleshooting**: Helps isolate network issues by layer.
-## 1.2 Compare and contrast networking appliances, applications, and functions.
+## 1.2 Compare and contrast networking appliances, applications, and functions
 Networking components can be deployed as **physical hardware** or **virtual software-based solutions**. Each serves a specific role in managing, securing, and optimizing network traffic and resources.
 ### 🧱 Physical vs. Virtual Appliances
 | Type         | Description                                                                 | Pros                                                  | Cons                                                  |
