@@ -140,6 +140,17 @@
     - [🔁 Change Management](#-change-management)
     - [⚙️ Configuration Management](#️-configuration-management)
     - [🧠 Summary Table](#-summary-table-1)
+  - [3.2 Given a scenario, use network monitoring technologies](#32-given-a-scenario-use-network-monitoring-technologies)
+    - [🧪 Monitoring Methods](#-monitoring-methods)
+      - [📊 SNMP (Simple Network Management Protocol)](#-snmp-simple-network-management-protocol)
+      - [🔁 Flow Data](#-flow-data)
+      - [📦 Packet Capture](#-packet-capture)
+      - [📈 Baseline Metrics](#-baseline-metrics)
+      - [📥 Log Aggregation](#-log-aggregation)
+      - [🔌 API Integration](#-api-integration)
+      - [🪞 Port Mirroring](#-port-mirroring)
+    - [🛠️ Monitoring Solutions](#️-monitoring-solutions)
+    - [🧠 Summary Table](#-summary-table-2)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -846,3 +857,66 @@ Effective network operations rely on structured processes and documentation to e
 | Life-Cycle Management| Plan upgrades and replacements    | Security and performance           |
 | Change Management    | Control infrastructure changes    | Risk mitigation                    |
 | Configuration Mgmt   | Maintain consistent settings      | Fast recovery and auditing         |
+## 3.2 Given a scenario, use network monitoring technologies
+Network monitoring is essential for maintaining performance, security, and availability. It involves collecting, analyzing, and responding to data from network devices and traffic.
+### 🧪 Monitoring Methods
+#### 📊 SNMP (Simple Network Management Protocol)
+| Feature               | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| **Traps**              | Alerts sent from devices to monitoring systems.                             |
+| **MIB (Management Information Base)** | Database of SNMP objects and values.                  |
+| **Versions**           | SNMPv2c (community-based), SNMPv3 (secure with authentication/encryption). |
+| **Community Strings**  | Password-like identifiers for SNMPv1/v2c.                                   |
+| **Authentication**     | SNMPv3 supports user-based authentication and encryption.                   |
+
+> **Scenario**: Use SNMPv3 with encrypted credentials to monitor switch health and receive traps on link failure.
+#### 🔁 Flow Data
+- **Definition**: Summarized traffic data (e.g., NetFlow, sFlow).
+- **Use Case**: Bandwidth usage, traffic patterns, top talkers.
+#### 📦 Packet Capture
+- **Definition**: Captures raw packets for deep analysis.
+- **Tools**: Wireshark, tcpdump.
+- **Use Case**: Troubleshooting, protocol analysis, security forensics.
+#### 📈 Baseline Metrics
+- **Purpose**: Establish normal performance levels.
+- **Anomaly Alerting**: Detect deviations from baseline and notify admins.
+
+> **Scenario**: Set CPU usage baseline on routers and trigger alerts if usage spikes unexpectedly.
+#### 📥 Log Aggregation
+| Feature               | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| **Syslog Collector**   | Centralized logging from network devices.                                  |
+| **SIEM (Security Information and Event Management)** | Aggregates, correlates, and analyzes logs for security insights. |
+
+> **Scenario**: Use a SIEM to detect unauthorized access attempts across multiple firewalls.
+#### 🔌 API Integration
+- **Definition**: Allows monitoring tools to interact with devices and cloud platforms programmatically.
+- **Use Case**: Automate data collection, integrate with dashboards.
+#### 🪞 Port Mirroring
+- **Definition**: Copies traffic from one port to another for monitoring.
+- **Use Case**: Real-time packet inspection without affecting live traffic.
+### 🛠️ Monitoring Solutions
+| Solution Type           | Description                                                                 | Use Case                          |
+|--------------------------|-----------------------------------------------------------------------------|-----------------------------------|
+| **Network Discovery**    | Identifies devices and topology.                                            | Initial setup, asset tracking     |
+| - Ad Hoc                 | Manual scans for quick insights.                                            | Spot checks                       |
+| - Scheduled              | Automated scans at intervals.                                               | Continuous visibility             |
+| **Traffic Analysis**     | Examines flow data and packet captures.                                     | Bandwidth planning, threat detection |
+| **Performance Monitoring** | Tracks metrics like latency, jitter, throughput.                        | SLA compliance, user experience   |
+| **Availability Monitoring** | Checks device/service uptime.                                          | Alerting on outages               |
+| **Configuration Monitoring** | Tracks changes to device settings.                                  | Compliance, rollback readiness    |
+### 🧠 Summary Table
+| Method/Solution         | Purpose                          | Tool Example                       |
+|--------------------------|----------------------------------|------------------------------------|
+| SNMP                    | Device health/status             | SolarWinds, PRTG                   |
+| Flow Data               | Traffic summary                  | NetFlow Analyzer                   |
+| Packet Capture          | Deep traffic inspection          | Wireshark                          |
+| Baseline Metrics        | Anomaly detection                | Zabbix, Nagios                     |
+| Log Aggregation         | Centralized logging              | Graylog, Splunk                    |
+| SIEM                    | Security event analysis          | IBM QRadar, Azure Sentinel         |
+| API Integration         | Automation and extensibility     | REST APIs, Python scripts          |
+| Port Mirroring          | Passive traffic monitoring       | Switch configuration               |
+| Network Discovery       | Asset and topology mapping       | Nmap, Lansweeper                   |
+| Performance Monitoring  | SLA and QoS tracking             | ThousandEyes, AppNeta              |
+| Availability Monitoring | Uptime checks                    | Pingdom, Uptime Robot              |
+| Configuration Monitoring| Change tracking                  | RANCID, NetBox                     |
