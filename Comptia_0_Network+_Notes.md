@@ -243,6 +243,21 @@
     - [🌍 Network Zones](#-network-zones)
       - [🟢 Trusted vs. 🔴 Untrusted](#-trusted-vs--untrusted)
       - [🛡️ Screened Subnet (DMZ)](#️-screened-subnet-dmz)
+- [5.0 Network Troubleshooting](#50-network-troubleshooting)
+  - [5.1 Explain the troubleshooting methodology](#51-explain-the-troubleshooting-methodology)
+    - [🔍 1. Identify the Problem](#-1-identify-the-problem)
+      - [📋 Steps:](#-steps)
+    - [💡 2. Establish a Theory of Probable Cause](#-2-establish-a-theory-of-probable-cause)
+      - [🧠 Techniques:](#-techniques)
+    - [🧪 3. Test the Theory to Determine the Cause](#-3-test-the-theory-to-determine-the-cause)
+      - [✅ Outcomes:](#-outcomes)
+    - [📝 4. Establish a Plan of Action](#-4-establish-a-plan-of-action)
+      - [⚠️ Consider:](#️-consider)
+    - [🚀 5. Implement the Solution or Escalate](#-5-implement-the-solution-or-escalate)
+    - [🔄 6. Verify Full System Functionality](#-6-verify-full-system-functionality)
+      - [🛡️ Preventive Measures:](#️-preventive-measures)
+    - [🗂️ 7. Document Findings, Actions, and Outcomes](#️-7-document-findings-actions-and-outcomes)
+      - [📚 Include:](#-include)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -1309,3 +1324,48 @@ Segmenting the network into zones with varying trust levels improves security an
 - Isolated zone between trusted and untrusted networks.
 - Hosts public-facing services (e.g., web servers) while protecting internal systems.
 - Allows controlled access from external users without exposing the internal network.
+# 5.0 Network Troubleshooting
+## 5.1 Explain the troubleshooting methodology
+Effective troubleshooting follows a structured approach to identify, isolate, and resolve technical issues while minimizing impact and ensuring long-term stability.
+### 🔍 1. Identify the Problem
+Start by understanding the issue clearly.
+#### 📋 Steps:
+- **Gather Information**: Collect logs, error messages, and system data.
+- **Question Users**: Ask affected users about what they experienced.
+- **Identify Symptoms**: Determine what is and isn’t working.
+- **Determine Changes**: Check for recent updates, configuration changes, or new hardware/software.
+- **Duplicate the Problem**: Reproduce the issue in a controlled environment if possible.
+- **Approach Multiple Problems Individually**: Treat each issue separately to avoid confusion.
+### 💡 2. Establish a Theory of Probable Cause
+Form hypotheses based on the symptoms and context.
+#### 🧠 Techniques:
+- **Question the Obvious**: Start with simple, common causes.
+- **Consider Multiple Approaches**:
+  - **Top-to-Bottom / Bottom-to-Top OSI Model**: Analyze each layer of the network stack.
+  - **Divide and Conquer**: Isolate components to narrow down the source.
+### 🧪 3. Test the Theory to Determine the Cause
+Validate your hypothesis through testing.
+#### ✅ Outcomes:
+- **If Confirmed**: Proceed to resolution planning.
+- **If Not Confirmed**: Reassess and form a new theory or escalate to higher support tiers.
+### 📝 4. Establish a Plan of Action
+Create a strategy to fix the issue while minimizing disruption.
+#### ⚠️ Consider:
+- Potential side effects.
+- Impact on users and systems.
+- Rollback procedures if needed.
+### 🚀 5. Implement the Solution or Escalate
+Apply the fix or escalate to specialized support if the issue is beyond your scope.
+### 🔄 6. Verify Full System Functionality
+Ensure the problem is resolved and systems are operating normally.
+#### 🛡️ Preventive Measures:
+- Apply patches.
+- Update configurations.
+- Educate users if applicable.
+### 🗂️ 7. Document Findings, Actions, and Outcomes
+Maintain records for future reference and continuous improvement.
+#### 📚 Include:
+- Problem description.
+- Steps taken.
+- Final resolution.
+- Lessons learned.
