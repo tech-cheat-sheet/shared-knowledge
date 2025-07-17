@@ -123,6 +123,7 @@
     - [🧠 Why You Need a Deployment First](#-why-you-need-a-deployment-first)
     - [❌ Why You Can’t Just Create a Service Alone](#-why-you-cant-just-create-a-service-alone)
 - [Working with Ingress in Minikube](#working-with-ingress-in-minikube)
+- [🌐 Comparison: NodePort vs Ingress](#-comparison-nodeport-vs-ingress)
 - [Working with Port-Forwarding in Minikube](#working-with-port-forwarding-in-minikube)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
@@ -1499,8 +1500,6 @@ spec:
             port:
               number: 8080
 ```
-
-
 ```shell
 # 🧪 Step 3: Test the Ingress
 ## Validate that our ingress has the same IP as minikube
@@ -1512,6 +1511,21 @@ sudo gedit /etc/hosts
 curl http://hello-world.example
 ## Or open http://hello-world.example in your browser.
 ```
+
+
+# 🌐 Comparison: NodePort vs Ingress
+| Feature                     | `Service.type=NodePort`                                | `Ingress`                                           |
+|----------------------------|---------------------------------------------------------|-----------------------------------------------------|
+| 🔧 Purpose                 | Exposes a service on a static port on each node         | Routes external HTTP/S traffic to services          |
+| 🌍 External Access         | Via `<NodeIP>:<NodePort>`                               | Via domain name (e.g., `example.com`)               |
+| 📦 Protocol Support        | Any TCP/UDP (typically HTTP)                            | HTTP/HTTPS only                                     |
+| 🧠 Routing Logic           | One service per port                                    | Can route multiple paths and hosts to different services |
+| 🔐 TLS Support             | Manual setup required                                   | Built-in TLS support via Ingress controller         |
+| 🧱 Load Balancing          | Basic (depends on cloud provider or external LB)        | Advanced path-based and host-based routing          |
+| 🛠️ Configuration Simplicity | Simple to set up                                        | Requires Ingress controller and domain setup        |
+| 📜 Resource Type           | `Service`                                               | `Ingress`                                           |
+| 📶 Port Exposure           | Static port (e.g., `30000–32767`)                       | No port exposure; uses standard HTTP ports (80/443) |
+| 🧪 Use Case                | Quick testing, local access                             | Production-grade routing, multiple services/domains |
 
 
 # Working with Port-Forwarding in Minikube
