@@ -138,6 +138,7 @@
   - [⚙️ Default Behavior](#️-default-behavior)
   - [🌐 Exposing to a Specific IP](#-exposing-to-a-specific-ip)
   - [To expose it on a specific IP (e.g., your machine’s NIC):](#to-expose-it-on-a-specific-ip-eg-your-machines-nic)
+- [🗂️ Comparison: Pod Storage vs PersistentVolume vs PersistentVolumeClaim](#️-comparison-pod-storage-vs-persistentvolume-vs-persistentvolumeclaim)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -1770,3 +1771,17 @@ kubectl port-forward svc/nginxsvc 8888:80
 kubectl port-forward svc/nginxsvc --address=192.168.29.110 8888:80
 ```
 This makes the service accessible at `192.168.29.110:8888`.
+
+
+# 🗂️ Comparison: Pod Storage vs PersistentVolume vs PersistentVolumeClaim
+| Feature                        | Pod Storage (`emptyDir`, `ephemeral`)                  | PersistentVolume (PV)                                | PersistentVolumeClaim (PVC)                          |
+|-------------------------------|---------------------------------------------------------|------------------------------------------------------|------------------------------------------------------|
+| 🧠 Scope                       | Tied to the lifecycle of a specific pod                 | Cluster-wide resource                                | Namespaced request for storage                       |
+| 🔄 Persistence                 | Data lost when pod is deleted                          | Data persists across pod restarts                    | Data persists as long as PV is bound                 |
+| 📦 Volume Type                 | `emptyDir`, `configMap`, `secret`                      | `hostPath`, `nfs`, `awsEBS`, etc.                    | Abstracts storage request from pod                   |
+| 🔗 Binding                     | Defined directly in pod spec                           | Bound to PVC                                         | Binds to PV based on request                         |
+| 🧱 Storage Class Support       | ❌ Not supported                                         | ✅ Supports dynamic provisioning                      | ✅ Supports dynamic provisioning                      |
+| 📶 Sharing Between Pods        | ❌ Not shareable across pods                            | ✅ If access mode allows (`ReadWriteMany`)           | ✅ If access mode allows                              |
+| 🛠️ Use Case                   | Temporary scratch space, cache                         | Persistent cluster storage                           | Requesting persistent storage for pods               |
+| 🔐 Data Durability             | Volatile                                                | Durable and reliable                                 | Durable and reliable                                 |
+| 🧪 Example                     | `emptyDir`, `configMap`, `secret`                      | Admin-defined storage volumes                        | Developer-defined storage requests                   |
