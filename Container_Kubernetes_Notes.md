@@ -98,7 +98,7 @@
     - [1. Run a One-Time Job](#1-run-a-one-time-job)
     - [2. Create a Deployment That Runs a Shell](#2-create-a-deployment-that-runs-a-shell)
   - [🧪 Check What Was Created](#-check-what-was-created)
-- [📦 Demo: Managing Applications in Namespaces](#-demo-managing-applications-in-namespaces)
+- [Managing Applications in Namespaces Demo](#managing-applications-in-namespaces-demo)
   - [🔧 Commands Used](#-commands-used)
   - [🧠 Purpose](#-purpose)
   - [Note `kubectl get all --all-namespaces`](#note-kubectl-get-all---all-namespaces)
@@ -107,7 +107,7 @@
   - [📊 Comparison: `default` vs `kube-system` Namespace](#-comparison-default-vs-kube-system-namespace)
   - [🧠 Summary](#-summary-4)
   - [✅ Aliases in `kubectl`](#-aliases-in-kubectl)
-- [Scaling Applications Examples](#scaling-applications-examples)
+- [Scaling Applications Example](#scaling-applications-example)
 - [Deployment Update \& Rollback Demo](#deployment-update--rollback-demo)
 - [Label Management Demo](#label-management-demo)
 - [🌐 Kubernetes Networking Flow Diagram](#-kubernetes-networking-flow-diagram)
@@ -1040,7 +1040,12 @@ kubectl delete job my-job
 ```
 
 
-# 📦 Demo: Managing Applications in Namespaces
+<!-- 
+###################################################################################################
+# Managing Applications in Namespaces Demo (BEGIN)
+###################################################################################################
+-->
+# Managing Applications in Namespaces Demo
 This demo showcases how to manage Kubernetes applications using namespaces via `kubectl` commands.
 ## 🔧 Commands Used
 ```bash
@@ -1073,6 +1078,11 @@ kubectl get pods
 # Reset context back to the 'default' namespace
 kubectl config set-context --current --namespace default
 ```
+<!-- 
+###################################################################################################
+# Managing Applications in Namespaces Demo (END)
+###################################################################################################
+-->
 ## 🧠 Purpose
 These commands help you:
 - Create and switch between namespaces
@@ -1125,7 +1135,12 @@ kubectl api-resources | awk '{printf "%-35s %-20s\n", $1, $2}'
 ```
 
 
-# Scaling Applications Examples
+<!-- 
+###################################################################################################
+# Scaling Applications Example (BEGIN)
+###################################################################################################
+-->
+# Scaling Applications Example
 ```shell
 # List all default resources in the current namespace (pods, services, deployments, etc.)
 kubectl get all
@@ -1139,8 +1154,18 @@ kubectl get all
 # Scale down the deployment to 1 replica (reduce the number of running pods)
 kubectl scale deployment my-web-app-deployment --replicas=1
 ```
+<!-- 
+###################################################################################################
+# Scaling Applications Example (END)
+###################################################################################################
+-->
 
 
+<!-- 
+###################################################################################################
+# Deployment Update & Rollback Demo (BEGIN)
+###################################################################################################
+-->
 # Deployment Update & Rollback Demo
 This walkthrough demonstrates how to manage application updates and rollbacks using `kubectl` commands with a deployment named `rollingnginx`.
 ```shell
@@ -1168,8 +1193,18 @@ kubectl rollout history deployment rollingnginx --revision=1
 # 8. Roll back to revision 1
 kubectl rollout undo deployment rollingnginx --to-revision=1
 ```
+<!-- 
+###################################################################################################
+# Deployment Update & Rollback Demo (END)
+###################################################################################################
+-->
 
 
+<!-- 
+###################################################################################################
+# Label Management Demo (BEGIN)
+###################################################################################################
+-->
 # Label Management Demo
 This demo illustrates how to use `kubectl` commands to manage labels on Kubernetes resources, which is crucial for organizing, filtering, and selecting workloads.
 ```shell
@@ -1188,6 +1223,11 @@ kubectl label deploy rollingnginx app-
 # 5. View all pods and their labels
 kubectl get pods --show-labels
 ```
+<!-- 
+###################################################################################################
+# Label Management Demo (END)
+###################################################################################################
+-->
 
 
 # 🌐 Kubernetes Networking Flow Diagram
@@ -1240,6 +1280,11 @@ Kubernetes offers multiple service types to expose applications based on differe
 - Use services without selectors for static IP/port routing.
 
 
+<!-- 
+###################################################################################################
+# Networking and Service Demo with Minikube - Manual Editing Example (BEGIN)
+###################################################################################################
+-->
 # Networking and Service Demo with Minikube - Manual Editing Example
 This demo walks through deploying an Nginx application, exposing it as a service, and accessing it both internally and externally using Minikube.
 ```shell
@@ -1297,8 +1342,18 @@ curl $(minikube ip):<TCP_PORT> # Example: curl $(minikube ip):31991
 # or in one line:
 curl $(minikube ip):$(kubectl get service my-nginx-service --output=jsonpath='{.spec.ports[0].nodePort}')
 ```
+<!-- 
+###################################################################################################
+# Networking and Service Demo with Minikube - Manual Editing Example (END)
+###################################################################################################
+-->
 
 
+<!-- 
+###################################################################################################
+# Networking and Service Demo with Minikube - Automatic Example (BEGIN)
+###################################################################################################
+-->
 # Networking and Service Demo with Minikube - Automatic Example
 ```shell
 # 0. Start from clean state
@@ -1344,6 +1399,11 @@ curl <CLUSTER-IP>:PORT ; exit # Example: curl 10.101.222.52:80 -> worked!
 # 8. Access the service externally using Minikube's IP and NodePort
 curl $(minikube ip):$(kubectl get service my-nginx-service --output=jsonpath='{.spec.ports[0].nodePort}')
 ```
+<!-- 
+###################################################################################################
+# Networking and Service Demo with Minikube - Automatic Example (END)
+###################################################################################################
+-->
 
 
 ## Deployment vs Service
