@@ -129,6 +129,17 @@
     - [⚡ Power Considerations](#-power-considerations)
     - [🌡️ Environmental Factors](#️-environmental-factors)
     - [🧠 Summary Checklist](#-summary-checklist)
+- [3.0 Network Operations](#30-network-operations)
+  - [3.1 Explain the purpose of organizational processes and procedures](#31-explain-the-purpose-of-organizational-processes-and-procedures)
+    - [📄 Documentation](#-documentation)
+      - [📦 Asset Inventory](#-asset-inventory)
+      - [🌐 IP Address Management (IPAM)](#-ip-address-management-ipam)
+      - [📈 Service-Level Agreement (SLA)](#-service-level-agreement-sla)
+      - [📶 Wireless Survey / Heat Map](#-wireless-survey--heat-map)
+    - [🔄 Life-Cycle Management](#-life-cycle-management)
+    - [🔁 Change Management](#-change-management)
+    - [⚙️ Configuration Management](#️-configuration-management)
+    - [🧠 Summary Table](#-summary-table-1)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -767,3 +778,71 @@ Proper physical installation of networking equipment is essential for performanc
 | Cabling        | Patch/fiber panels              | Label, secure, organize             |
 | Power          | UPS, PDU, load, voltage         | Redundant, monitored, compliant     |
 | Environment    | Humidity, fire, temperature     | Controlled and monitored            |
+# 3.0 Network Operations
+## 3.1 Explain the purpose of organizational processes and procedures
+Effective network operations rely on structured processes and documentation to ensure consistency, reliability, and accountability across the infrastructure.
+### 📄 Documentation
+| Type                     | Description                                                                 | Use Case                          |
+|--------------------------|-----------------------------------------------------------------------------|-----------------------------------|
+| **Physical Diagrams**    | Show physical layout of devices, racks, and cabling.                        | Data center planning              |
+| **Logical Diagrams**     | Represent network flow, IP schemes, and VLANs.                              | Troubleshooting, design           |
+| **Rack Diagrams**        | Visualize equipment placement in racks.                                     | Installation and maintenance      |
+| **Cable Maps/Diagrams**  | Track cable paths and connections.                                          | Cable management                  |
+| **Network Diagrams**     | Layered views of network architecture:                                      |                                   |
+| - Layer 1 (Physical)     | Cables, ports, devices.                                                     | Installation and cabling          |
+| - Layer 2 (Data Link)    | MAC addresses, VLANs, switches.                                             | VLAN planning                     |
+| - Layer 3 (Network)      | IP addressing, routing, firewalls.                                          | Routing and IP design             |
+#### 📦 Asset Inventory
+| Category     | Description                                                                 |
+|--------------|-----------------------------------------------------------------------------|
+| **Hardware** | Track devices (e.g., switches, routers, servers).                          |
+| **Software** | Includes OS, applications, and firmware.                                   |
+| **Licensing**| Ensures compliance with vendor agreements.                                 |
+| **Warranty Support** | Tracks coverage and expiration dates.                          |
+#### 🌐 IP Address Management (IPAM)
+- **Purpose**: Organize and track IP address allocation.
+- **Benefit**: Prevent conflicts, improve visibility.
+#### 📈 Service-Level Agreement (SLA)
+- **Definition**: Contractual performance expectations (e.g., uptime, response time).
+- **Use Case**: Vendor accountability and service quality.
+#### 📶 Wireless Survey / Heat Map
+- **Purpose**: Visualize wireless coverage and signal strength.
+- **Use Case**: Optimize AP placement and eliminate dead zones.
+### 🔄 Life-Cycle Management
+| Stage           | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| **End-of-Life (EOL)** | Product no longer sold or developed.                              |
+| **End-of-Support (EOS)** | Vendor stops providing updates or support.                   |
+| **Software Management** | Includes patches, OS updates, and firmware upgrades.           |
+| - **Patches/Bug Fixes** | Address vulnerabilities and issues.                          |
+| - **Operating System (OS)** | Ensure compatibility and security.                      |
+| - **Firmware** | Update hardware-level software for performance and stability.           |
+| **Decommissioning** | Safely remove and dispose of outdated equipment.                    |
+
+> **Scenario**: Replace EOL switches and update firmware to maintain security compliance.
+### 🔁 Change Management
+| Component               | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| **Request Process Tracking** | Logs and monitors change requests.                              |
+| **Service Request**     | Formal submission for changes or support.                                 |
+
+> **Benefit**: Reduces risk, ensures accountability, enables rollback if needed.
+### ⚙️ Configuration Management
+| Type                     | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| **Production Configuration** | Active settings on live devices.                                 |
+| **Backup Configuration**     | Stored copies for recovery.                                       |
+| **Baseline/Golden Configuration** | Approved, validated configuration for reference.         |
+
+> **Scenario**: Restore a switch to its golden config after a failed update.
+### 🧠 Summary Table
+| Category             | Purpose                          | Benefit                            |
+|----------------------|----------------------------------|------------------------------------|
+| Documentation        | Visualize and track infrastructure | Easier troubleshooting and planning|
+| Asset Inventory      | Track hardware/software/licensing | Budgeting and compliance           |
+| IPAM                 | Manage IP addresses               | Prevent conflicts, improve visibility|
+| SLA                  | Define service expectations       | Vendor accountability              |
+| Wireless Survey      | Optimize Wi-Fi coverage           | Better user experience             |
+| Life-Cycle Management| Plan upgrades and replacements    | Security and performance           |
+| Change Management    | Control infrastructure changes    | Risk mitigation                    |
+| Configuration Mgmt   | Maintain consistent settings      | Fast recovery and auditing         |
