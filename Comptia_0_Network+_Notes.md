@@ -298,6 +298,15 @@
       - [📍 Insufficient Wireless Coverage](#-insufficient-wireless-coverage)
       - [🔄 Client Disassociation Issues](#-client-disassociation-issues)
       - [🚶 Roaming Misconfiguration](#-roaming-misconfiguration)
+  - [5.5 Given a scenario, use the appropriate tool or protocol to solve networking issues](#55-given-a-scenario-use-the-appropriate-tool-or-protocol-to-solve-networking-issues)
+    - [💻 Software Tools](#-software-tools)
+      - [📊 Protocol Analyzer](#-protocol-analyzer)
+      - [🖥️ Command Line Tools](#️-command-line-tools)
+      - [🔍 Nmap](#-nmap)
+      - [🔗 LLDP / CDP](#-lldp--cdp)
+      - [🚀 Speed Tester](#-speed-tester)
+    - [🔧 Hardware Tools](#-hardware-tools)
+    - [🖥️ Basic Networking Device Commands](#️-basic-networking-device-commands)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -1565,3 +1574,50 @@ Performance issues can degrade user experience and disrupt business operations. 
 - **Description**: Devices fail to switch to stronger APs when moving.
 - **Impact**: Poor performance, dropped connections.
 - **Causes**: Inconsistent SSIDs, lack of fast roaming support, AP placement.
+## 5.5 Given a scenario, use the appropriate tool or protocol to solve networking issues
+Troubleshooting network problems effectively requires the right combination of software tools, hardware instruments, and device-level commands. Each tool serves a specific purpose in diagnosing and resolving issues.
+### 💻 Software Tools
+#### 📊 Protocol Analyzer
+- **Example**: Wireshark
+- **Purpose**: Captures and analyzes network traffic.
+- **Use Case**: Diagnosing packet loss, latency, and protocol errors.
+#### 🖥️ Command Line Tools
+| Tool | Description | Use Case |
+|------|-------------|----------|
+| `ping` | Tests connectivity and latency | Check if a host is reachable |
+| `traceroute` / `tracert` | Traces route to destination | Identify routing path and delays |
+| `nslookup` | Queries DNS records | Diagnose name resolution issues |
+| `tcpdump` | Captures packets from CLI | Deep packet inspection |
+| `dig` | Advanced DNS query tool | Troubleshoot DNS records |
+| `netstat` | Displays network connections | Monitor active sessions and ports |
+| `ip` / `ifconfig` / `ipconfig` | Shows IP configuration | Verify IP, gateway, and subnet mask |
+| `arp` | Displays ARP cache | Diagnose MAC-IP mapping issues |
+#### 🔍 Nmap
+- **Purpose**: Network scanning and host discovery.
+- **Use Case**: Identify open ports, services, and vulnerabilities.
+#### 🔗 LLDP / CDP
+- **Purpose**: Discover neighboring devices.
+- **Use Case**: Map network topology and identify misconnected devices.
+#### 🚀 Speed Tester
+- **Purpose**: Measures upload/download speeds and latency.
+- **Use Case**: Validate bandwidth performance.
+### 🔧 Hardware Tools
+| Tool | Description | Use Case |
+|------|-------------|----------|
+| Toner | Sends signal through cable | Identify and trace cable paths |
+| Cable Tester | Tests cable integrity | Detect shorts, opens, and miswires |
+| Taps | Passive traffic monitoring | Capture traffic without disrupting flow |
+| Wi-Fi Analyzer | Scans wireless environment | Detect interference, signal strength, and channel usage |
+| Visual Fault Locator | Emits visible light in fiber | Identify breaks or bends in fiber optic cables |
+### 🖥️ Basic Networking Device Commands
+Used on switches, routers, and firewalls to inspect and manage configurations.
+
+| Command | Description |
+|---------|-------------|
+| `show mac-address-table` | Displays MAC addresses learned by switch |
+| `show route` | Shows routing table entries |
+| `show interface` | Displays interface status and statistics |
+| `show config` | Shows current device configuration |
+| `show arp` | Displays ARP table mappings |
+| `show vlan` | Lists VLANs and associated ports |
+| `show power` | Displays PoE status and power usage |
