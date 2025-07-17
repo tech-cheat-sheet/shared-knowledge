@@ -127,6 +127,8 @@
 - [🧠 Why a Service Is Required Before Ingress](#-why-a-service-is-required-before-ingress)
   - [🔗 Ingress → Service → Pod](#-ingress--service--pod)
   - [✅ Typical Workflow](#-typical-workflow)
+  - [📊 Ingress: CLI vs YAML Manifest](#-ingress-cli-vs-yaml-manifest)
+  - [🌐 Kubernetes Ingress YAML Explained](#-kubernetes-ingress-yaml-explained)
   - [⚠️ What Happens If You Skip the Service?](#️-what-happens-if-you-skip-the-service)
 - [🌐 Comparison: NodePort vs Ingress](#-comparison-nodeport-vs-ingress)
 - [❓ Should You Use NodePort with Ingress?](#-should-you-use-nodeport-with-ingress)
@@ -1709,12 +1711,44 @@ kubectl expose deployment web --port=80 [--type=ClusterIP||--type=NodePort]
 # 3A. Create an Ingress that points to the Service - CLI
 kubectl create ingress example-ingress --class=nginx --rule="hello-world.example/=web:80"
 # 3B. Create an Ingress that points to the Service - YAML
-backend:
-  service:
-    name: web
-    port:
-      number: 80
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  rules:
+  - host: hello-world.example
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: web
+            port:
+              number: 80
 ```
+## 📊 Ingress: CLI vs YAML Manifest
+| **Aspect**               | **CLI (`kubectl create ingress`)**                          | **YAML Manifest**                                      |
+|--------------------------|--------------------------------------------------------------|--------------------------------------------------------|
+| 🧠 Flexibility           | Limited to basic rules (single host/path/service)            | Full control over all fields and advanced configs      |
+| 🔧 Ingress Class         | Must be passed via `--class` flag                            | Can be set via `ingressClassName` or annotations       |
+| 🛠️ Advanced Features     | ❌ Cannot define TLS, annotations, multiple paths             | ✅ Supports TLS, annotations, multiple rules/paths      |
+| 📜 Readability & Reuse   | One-liner, quick setup                                       | Declarative, version-controlled, reusable              |
+| 🧪 Path Type             | Defaults to `Prefix` (in most cases)                         | Explicitly defined (`pathType: Prefix`)                |
+## 🌐 Kubernetes Ingress YAML Explained
+| **Field**                          | **Description**                                                       |
+|-----------------------------------|------------------------------------------------------------------------|
+| `apiVersion: networking.k8s.io/v1` | Specifies the API version for Ingress resources.                      |
+| `kind: Ingress`                   | Declares that this resource is an Ingress.                            |
+| `metadata.name: example-ingress`  | Names the Ingress resource.                                           |
+| `spec.rules`                      | Defines routing rules for incoming traffic.                           |
+| `host: hello-world.example`       | Specifies the domain name this rule applies to.                       |
+| `http.paths`                      | Lists path-based routing rules.                                       |
+| `path: /`                         | Matches requests to the root path.                                    |
+| `pathType: Prefix`                | Matches any path that starts with `/`.                                |
+| `backend.service.name: web`       | Routes traffic to the Kubernetes Service named `web`.                 |
+| `backend.service.port.number: 80` | Sends traffic to port 80 of the `web` service.                        |
 ## ⚠️ What Happens If You Skip the Service?
 If you create an Ingress pointing to a non-existent service:
 - The Ingress controller will fail to route traffic.
