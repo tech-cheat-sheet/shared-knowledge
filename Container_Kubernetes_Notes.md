@@ -1386,8 +1386,11 @@ spec:
     - port: 80
 ```
 It will exist, but won’t route traffic anywhere — because no pods match the selector.
-
-
+<!-- 
+###################################################################################################
+# INGRESS DEMO
+###################################################################################################
+-->
 # Working with Ingress in Minikube
 This example shows how to expose a web app using an Ingress resource in Minikube.
 ```bash
@@ -1526,7 +1529,8 @@ curl http://hello-world.example
 | 📜 Resource Type           | `Service`                                               | `Ingress`                                           |
 | 📶 Port Exposure           | Static port (e.g., `30000–32767`)                       | No port exposure; uses standard HTTP ports (80/443) |
 | 🧪 Use Case                | Quick testing, local access                             | Production-grade routing, multiple services/domains |
-
+- Use NodePort for quick access or local development.
+- Use Ingress for scalable, domain-based routing with TLS and advanced rules.
 
 # Working with Port-Forwarding in Minikube
 PLACEHOLDER
