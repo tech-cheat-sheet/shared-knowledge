@@ -210,6 +210,23 @@
     - [🧩 Network Segmentation Enforcement](#-network-segmentation-enforcement)
       - [🧠 Specialized Systems](#-specialized-systems)
       - [👥 User-Based Segmentation](#-user-based-segmentation)
+  - [4.2 Summarize various types of attacks and their impact to the network](#42-summarize-various-types-of-attacks-and-their-impact-to-the-network)
+    - [🛑 Denial-of-Service (DoS) / Distributed Denial-of-Service (DDoS)](#-denial-of-service-dos--distributed-denial-of-service-ddos)
+    - [🔀 VLAN Hopping](#-vlan-hopping)
+    - [📥 MAC Flooding](#-mac-flooding)
+    - [🔄 ARP Poisoning / ARP Spoofing](#-arp-poisoning--arp-spoofing)
+    - [🌐 DNS Poisoning / DNS Spoofing](#-dns-poisoning--dns-spoofing)
+    - [🦠 Rogue Devices and Services](#-rogue-devices-and-services)
+      - [🧪 Rogue DHCP Server](#-rogue-dhcp-server)
+      - [📡 Rogue Access Point (AP)](#-rogue-access-point-ap)
+    - [👿 Evil Twin](#-evil-twin)
+    - [🕵️ On-Path Attack (Man-in-the-Middle)](#️-on-path-attack-man-in-the-middle)
+    - [🎭 Social Engineering](#-social-engineering)
+      - [📧 Phishing](#-phishing)
+      - [🗑️ Dumpster Diving](#️-dumpster-diving)
+      - [👀 Shoulder Surfing](#-shoulder-surfing)
+      - [🚪 Tailgating](#-tailgating)
+    - [🦠 Malware](#-malware)
 # CompTIA Network+ Exam N10-009
 # 1.0 Networking Concepts
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
@@ -1182,3 +1199,52 @@ Network security is essential for protecting data, systems, and users from unaut
 #### 👥 User-Based Segmentation
 - **Guest**: Isolated network access for visitors.
 - **BYOD (Bring Your Own Device)**: Personal devices must be segmented and monitored to reduce risk.
+## 4.2 Summarize various types of attacks and their impact to the network
+Cyberattacks can compromise network integrity, availability, and confidentiality. Understanding these threats helps in designing effective defenses.
+### 🛑 Denial-of-Service (DoS) / Distributed Denial-of-Service (DDoS)
+- **DoS**: Overwhelms a system with traffic to make it unavailable.
+- **DDoS**: Uses multiple compromised systems to launch a coordinated attack.
+- **Impact**: Service outages, degraded performance, financial loss.
+### 🔀 VLAN Hopping
+- **Description**: Attacker sends packets to a different VLAN than intended.
+- **Impact**: Unauthorized access to restricted network segments.
+### 📥 MAC Flooding
+- **Description**: Overloads a switch's MAC address table with bogus entries.
+- **Impact**: Switch enters fail-open mode, broadcasting traffic to all ports (sniffing opportunity).
+### 🔄 ARP Poisoning / ARP Spoofing
+- **ARP Poisoning**: Corrupts ARP cache with false MAC-IP mappings.
+- **ARP Spoofing**: Impersonates another device on the network.
+- **Impact**: Enables on-path attacks, data interception, and redirection.
+### 🌐 DNS Poisoning / DNS Spoofing
+- **DNS Poisoning**: Injects false DNS records into a resolver's cache.
+- **DNS Spoofing**: Fakes DNS responses to redirect users.
+- **Impact**: Users are sent to malicious sites, enabling phishing and malware delivery.
+### 🦠 Rogue Devices and Services
+#### 🧪 Rogue DHCP Server
+- **Description**: Unauthorized DHCP server assigns incorrect IP settings.
+- **Impact**: Network disruption, traffic interception.
+#### 📡 Rogue Access Point (AP)
+- **Description**: Unauthorized wireless AP mimics legitimate network.
+- **Impact**: Data theft, unauthorized access.
+### 👿 Evil Twin
+- **Description**: Malicious AP mimics a legitimate one to lure users.
+- **Impact**: Captures credentials and sensitive data.
+### 🕵️ On-Path Attack (Man-in-the-Middle)
+- **Description**: Attacker intercepts and possibly alters communication between two parties.
+- **Impact**: Data theft, session hijacking, credential compromise.
+### 🎭 Social Engineering
+#### 📧 Phishing
+- **Description**: Fraudulent emails trick users into revealing sensitive info.
+- **Impact**: Credential theft, malware infection.
+#### 🗑️ Dumpster Diving
+- **Description**: Retrieving sensitive information from discarded materials.
+- **Impact**: Data leakage, identity theft.
+#### 👀 Shoulder Surfing
+- **Description**: Observing someone entering credentials or sensitive data.
+- **Impact**: Unauthorized access.
+#### 🚪 Tailgating
+- **Description**: Following authorized personnel into restricted areas.
+- **Impact**: Physical security breach.
+### 🦠 Malware
+- **Description**: Malicious software including viruses, worms, ransomware, spyware.
+- **Impact**: Data loss, system compromise, financial damage, network disruption.
