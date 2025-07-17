@@ -134,6 +134,10 @@
   - [Why?](#why)
   - [Example:](#example-2)
 - [Working with Port-Forwarding in Minikube](#working-with-port-forwarding-in-minikube)
+  - [🧠 Key Concepts](#-key-concepts)
+  - [⚙️ Default Behavior](#️-default-behavior)
+  - [🌐 Exposing to a Specific IP](#-exposing-to-a-specific-ip)
+  - [To expose it on a specific IP (e.g., your machine’s NIC):](#to-expose-it-on-a-specific-ip-eg-your-machines-nic)
 # Kubernetes (K8S)
 Kubernetes (often abbreviated as K8s) is an open-source platform designed to automate the deployment, scaling, and management of containerized applications2. Think of it as the operating system for your data center — orchestrating containers like a conductor leading an orchestra.
 ## 📊 Container Orchestration Comparison Table
@@ -1746,4 +1750,23 @@ kubectl expose deployment web --port=80 # ClusterIP is sufficient
 
 
 # Working with Port-Forwarding in Minikube
-PLACEHOLDER
+Port-forwarding is a useful tool for accessing and troubleshooting applications running inside a Kubernetes cluster — especially when Services or Ingress are not yet configured or available.
+## 🧠 Key Concepts
+- **Services and Ingress** are the standard ways to expose applications.
+- **Port-forwarding** is a quick alternative for:
+  - Debugging
+  - Local testing
+  - Temporary access
+## ⚙️ Default Behavior
+- By default, `kubectl port-forward` binds to the **loopback address** (`127.0.0.1`) of the machine running the command.
+- This means the forwarded port is only accessible **locally**.
+## 🌐 Exposing to a Specific IP
+To make the forwarded port accessible on a specific network interface:
+```bash
+kubectl port-forward svc/nginxsvc 8888:80
+```
+## To expose it on a specific IP (e.g., your machine’s NIC):
+```shell
+kubectl port-forward svc/nginxsvc --address=192.168.29.110 8888:80
+```
+This makes the service accessible at `192.168.29.110:8888`.
