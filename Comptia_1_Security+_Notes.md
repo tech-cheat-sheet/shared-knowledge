@@ -216,6 +216,17 @@
     - [📄 Log Data](#-log-data)
     - [📊 Data Sources](#-data-sources)
     - [🧠 Summary](#-summary-17)
+- [5.0 Security Program Management and Oversight](#50-security-program-management-and-oversight)
+  - [5.1 Summarize elements of effective security governance](#51-summarize-elements-of-effective-security-governance)
+    - [📘 Guidelines](#-guidelines)
+    - [📜 Policies](#-policies)
+    - [📏 Standards](#-standards)
+    - [🛠️ Procedures](#️-procedures)
+    - [🌍 External Considerations](#-external-considerations)
+    - [🔄 Monitoring and Revision](#-monitoring-and-revision)
+    - [🏢 Types of Governance Structures](#-types-of-governance-structures)
+    - [👤 Roles and Responsibilities for Systems and Data](#-roles-and-responsibilities-for-systems-and-data)
+    - [🧠 Summary](#-summary-18)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -1371,3 +1382,64 @@ During a security investigation, diverse data sources provide critical insights 
 - **Scans and reports** highlight vulnerabilities and system status.
 - **Packet captures** offer forensic-level insight into network activity.
 - Effective investigations rely on **correlating multiple data sources** to validate findings and trace attacker actions.
+# 5.0 Security Program Management and Oversight
+## 5.1 Summarize elements of effective security governance
+Security governance defines the framework for managing and directing an organization’s security strategy. It ensures alignment with business goals, regulatory requirements, and risk tolerance through structured policies, roles, and oversight.
+### 📘 Guidelines
+- High-level recommendations that shape security behavior and decision-making.
+- Provide flexibility while promoting best practices.
+### 📜 Policies
+| Policy Type                  | Purpose |
+|------------------------------|---------|
+| **Acceptable Use Policy (AUP)** | Defines appropriate use of systems and data |
+| **Information Security Policies** | Establishes rules for protecting data and systems |
+| **Business Continuity**         | Ensures operations during disruptions |
+| **Disaster Recovery**          | Plans for restoring systems after major incidents |
+| **Incident Response**          | Guides detection, containment, and recovery from threats |
+| **Software Development Lifecycle (SDLC)** | Embeds security into development processes |
+| **Change Management**          | Controls modifications to systems and infrastructure |
+### 📏 Standards
+| Standard Type       | Description |
+|---------------------|-------------|
+| **Password**         | Defines complexity, length, and rotation requirements |
+| **Access Control**   | Specifies authentication and authorization mechanisms |
+| **Physical Security**| Outlines protection of facilities and hardware |
+| **Encryption**       | Sets expectations for data protection in transit and at rest |
+### 🛠️ Procedures
+| Procedure Type         | Description |
+|------------------------|-------------|
+| **Change Management**   | Steps for requesting, approving, and implementing changes |
+| **Onboarding/Offboarding** | Securely adds or removes user access and roles |
+| **Playbooks**           | Detailed guides for responding to specific incidents or threats |
+### 🌍 External Considerations
+| Domain         | Influence |
+|----------------|-----------|
+| **Regulatory** | Compliance with laws (e.g., GDPR, HIPAA) |
+| **Legal**      | Adherence to contracts and liability standards |
+| **Industry**   | Sector-specific requirements (e.g., PCI-DSS for finance) |
+| **Local/Regional** | Jurisdictional laws and cultural norms |
+| **National**   | Country-level mandates and cybersecurity frameworks |
+| **Global**     | International standards and cross-border data handling |
+### 🔄 Monitoring and Revision
+- Regular reviews ensure policies and controls remain effective and relevant.
+- Includes audits, metrics, and feedback loops for continuous improvement.
+### 🏢 Types of Governance Structures
+| Structure Type         | Role |
+|------------------------|------|
+| **Boards**              | Strategic oversight and accountability |
+| **Committees**          | Specialized groups for risk, compliance, and security |
+| **Government Entities** | Regulatory enforcement and guidance |
+| **Centralized**         | Unified control and decision-making |
+| **Decentralized**       | Distributed authority across departments or regions |
+### 👤 Roles and Responsibilities for Systems and Data
+| Role            | Responsibility |
+|------------------|----------------|
+| **Owners**        | Define data purpose and access policies |
+| **Controllers**   | Manage data processing and compliance |
+| **Processors**    | Handle data on behalf of controllers |
+| **Custodians/Stewards** | Maintain and protect data integrity and availability |
+### 🧠 Summary
+- Effective governance integrates **policies, standards, procedures**, and **roles**.
+- It balances **internal controls** with **external compliance**.
+- Ongoing **monitoring and revision** ensure adaptability to evolving threats and regulations.
+- Clear **structures and responsibilities** foster accountability and strategic alignment.
