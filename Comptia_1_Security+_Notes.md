@@ -92,6 +92,23 @@
     - [🗑️ Decommissioning](#️-decommissioning)
     - [🛠️ Hardening Techniques](#️-hardening-techniques)
     - [🧠 Summary](#-summary-5)
+- [3.0 Security Architecture](#30-security-architecture)
+  - [3.1 Compare and contrast security implications of different architecture models](#31-compare-and-contrast-security-implications-of-different-architecture-models)
+    - [☁️ Cloud Architecture](#️-cloud-architecture)
+    - [🧾 Infrastructure as Code (IaC)](#-infrastructure-as-code-iac)
+    - [🧠 Serverless Architecture](#-serverless-architecture)
+    - [🧩 Microservices](#-microservices)
+    - [🌐 Network Infrastructure](#-network-infrastructure)
+    - [🏢 On-Premises](#-on-premises)
+    - [🧭 Centralized vs. Decentralized](#-centralized-vs-decentralized)
+    - [📦 Containerization](#-containerization)
+    - [🖥️ Virtualization](#️-virtualization)
+    - [📡 Internet of Things (IoT)](#-internet-of-things-iot)
+    - [🏭 ICS / SCADA Systems](#-ics--scada-systems)
+    - [⏱️ Real-Time Operating System (RTOS)](#️-real-time-operating-system-rtos)
+    - [🔧 Embedded Systems](#-embedded-systems)
+    - [🛠️ High Availability](#️-high-availability)
+    - [📊 Key Considerations Across Architectures](#-key-considerations-across-architectures)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -572,3 +589,71 @@ Mitigation techniques are proactive and reactive measures designed to reduce ris
 - Mitigation techniques work best when layered and tailored to the enterprise environment.
 - Regular audits, automation, and user training enhance effectiveness.
 - A proactive approach reduces risk and improves resilience against evolving threats.
+# 3.0 Security Architecture
+## 3.1 Compare and contrast security implications of different architecture models
+Different architecture models introduce unique security challenges and benefits. Understanding these implications helps organizations design resilient, scalable, and secure environments.
+### ☁️ Cloud Architecture
+| Aspect                  | Security Implication |
+|-------------------------|----------------------|
+| **Responsibility Matrix** | Shared responsibility between provider and customer; misalignment can lead to gaps |
+| **Hybrid Considerations** | Complexity increases risk; requires consistent policies across environments |
+| **Third-Party Vendors**   | Introduces supply chain risk; requires vendor risk management and contract controls |
+### 🧾 Infrastructure as Code (IaC)
+- **Security Implication**: Misconfigured templates can propagate vulnerabilities at scale.
+- **Benefit**: Enables consistent, auditable deployments with version control.
+### 🧠 Serverless Architecture
+- **Security Implication**: Limited visibility into runtime; relies heavily on provider security.
+- **Benefit**: Reduces attack surface by abstracting infrastructure.
+### 🧩 Microservices
+- **Security Implication**: Increases complexity; requires secure APIs and inter-service communication.
+- **Benefit**: Isolates functionality, improving fault tolerance and scalability.
+### 🌐 Network Infrastructure
+| Type                     | Security Implication |
+|--------------------------|----------------------|
+| **Physical Isolation (Air-Gapped)** | Strong protection against external threats; limited usability |
+| **Logical Segmentation** | Reduces lateral movement; requires proper configuration |
+| **Software-Defined Networking (SDN)** | Centralized control; risk if controller is compromised |
+### 🏢 On-Premises
+- **Security Implication**: Full control over security; higher responsibility and cost.
+- **Benefit**: Customizable and compliant with strict data locality requirements.
+### 🧭 Centralized vs. Decentralized
+| Model         | Security Implication |
+|---------------|----------------------|
+| **Centralized** | Easier to manage; single point of failure |
+| **Decentralized** | More resilient; harder to secure uniformly |
+### 📦 Containerization
+- **Security Implication**: Requires isolation and runtime protection; vulnerable to escape and misconfiguration.
+- **Benefit**: Lightweight, scalable, and portable.
+### 🖥️ Virtualization
+- **Security Implication**: VM escape and hypervisor attacks; requires patching and isolation.
+- **Benefit**: Efficient resource use and flexible deployment.
+### 📡 Internet of Things (IoT)
+- **Security Implication**: Often lacks built-in security; vulnerable to botnets and data leaks.
+- **Benefit**: Enhances automation and data collection.
+### 🏭 ICS / SCADA Systems
+- **Security Implication**: Legacy systems with limited patching; critical infrastructure risk.
+- **Benefit**: Enables industrial automation and control.
+### ⏱️ Real-Time Operating System (RTOS)
+- **Security Implication**: Prioritizes timing over security; limited resources for protection.
+- **Benefit**: Essential for time-sensitive applications.
+### 🔧 Embedded Systems
+- **Security Implication**: Hard to patch; often lacks encryption and authentication.
+- **Benefit**: Specialized functionality in constrained environments.
+### 🛠️ High Availability
+- **Security Implication**: Requires redundancy and failover security; complexity can introduce risk.
+- **Benefit**: Ensures uptime and resilience against outages.
+### 📊 Key Considerations Across Architectures
+| Consideration         | Impact on Security |
+|-----------------------|--------------------|
+| **Availability**       | High availability reduces downtime but requires secure failover mechanisms |
+| **Resilience**         | Systems must recover securely from failures or attacks |
+| **Cost**               | Budget constraints may limit security investments |
+| **Responsiveness**     | Fast systems must balance performance with secure processing |
+| **Scalability**        | Growth must not outpace security controls |
+| **Ease of Deployment** | Rapid deployment can lead to misconfigurations |
+| **Risk Transference**  | Outsourcing shifts risk but requires strong contracts and oversight |
+| **Ease of Recovery**   | Backup and restore processes must be secure and tested |
+| **Patch Availability** | Timely updates are critical for vulnerability management |
+| **Inability to Patch** | Legacy or embedded systems may require compensating controls |
+| **Power**              | Power loss can disrupt security systems and logging |
+| **Compute**            | Resource constraints may limit encryption and monitoring capabilities |
