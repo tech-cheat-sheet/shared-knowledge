@@ -390,6 +390,9 @@ Networking components can be deployed as **physical hardware** or **virtual soft
 | 🔍 Example Users      | Enterprise users, students, internal networks | Web hosting services, cloud platforms         |
 | 🔑 Authentication     | Typically requires client authentication      | Can require authentication for incoming users |
 | 💬 Common Protocols   | HTTP, HTTPS, SOCKS                            | HTTP, HTTPS                                   |
+
+- A forward proxy helps users access content out there, often with privacy or filtering controls.
+- A reverse proxy helps external users interact with services inside the network, typically for scalability and security.
 ### 💾 Storage Appliances
 #### 📦 Network-Attached Storage (NAS)
 - **Function**: File-level storage accessible over a network.
