@@ -31,6 +31,17 @@
       - [👤 User Behavior Analysis](#-user-behavior-analysis)
     - [🔤 Useful Scripting \& Parsing Languages](#-useful-scripting--parsing-languages)
     - [🧠 Summary](#-summary-2)
+  - [1.4 Compare and contrast threat-intelligence and threat-hunting concepts](#14-compare-and-contrast-threat-intelligence-and-threat-hunting-concepts)
+    - [🧠 Core Differences](#-core-differences)
+    - [👤 Threat Actors Analysis](#-threat-actors-analysis)
+    - [🧪 Tactics, Techniques, and Procedures (TTPs)](#-tactics-techniques-and-procedures-ttps)
+    - [📊 Confidence Levels](#-confidence-levels)
+    - [🔍 Collection Methods \& Sources](#-collection-methods--sources)
+    - [🔄 Threat Intelligence Sharing Use Cases](#-threat-intelligence-sharing-use-cases)
+    - [🎯 Threat Hunting Methodologies](#-threat-hunting-methodologies)
+      - [🧪 Focus Areas for Threat Hunters](#-focus-areas-for-threat-hunters)
+      - [🛡️ Active Defense Techniques](#️-active-defense-techniques)
+    - [🧠 Summary](#-summary-3)
 # CompTIA CySA+ Exam CSO-003
 # 1.0 Security Operations
 ## 1.1 Explain the importance of system and network architecture concepts in security operations
@@ -204,3 +215,66 @@ Malicious activity often hides in plain sight—within scripts, logs, traffic, a
 - **Correlated behavioral insights**
 
 Security teams must maintain a toolkit that's both broad and deep—capable of tracing threats across hosts, networks, and applications.
+## 1.4 Compare and contrast threat-intelligence and threat-hunting concepts
+Threat intelligence and threat hunting are complementary practices in cybersecurity. One focuses on gathering and analyzing external data to inform defenses; the other actively searches internal systems for evidence of compromise.
+### 🧠 Core Differences
+| Aspect                  | Threat Intelligence                            | Threat Hunting                                    |
+|-------------------------|------------------------------------------------|--------------------------------------------------|
+| **Objective**           | Collect, analyze, and share information about threats | Proactively search for hidden threats or breaches |
+| **Nature**              | Strategic, often external and data-driven      | Tactical, internal, and investigation-focused     |
+| **Trigger**             | Reacts to threats seen in external landscape   | Initiated by hypothesis or suspicious indicators  |
+| **Timing**              | Often pre-attack for preparation and situational awareness | Often during/post-attack for detection and response |
+### 👤 Threat Actors Analysis
+Both practices identify threat actors, but with different goals:
+
+| Threat Actor            | Intelligence Focus                  | Hunting Focus                          |
+|-------------------------|-------------------------------------|----------------------------------------|
+| **APT & Nation-State**   | Tracking long-term campaigns, geopolitical motives | Discovering footholds, lateral movement |
+| **Hacktivists / Script Kiddies** | Evaluating intent and capabilities        | Spotting noisy or accidental artifacts |
+| **Organized Crime**      | Identifying TTPs and monetization strategies | Tracing ransomware, credential theft |
+| **Insider Threats**      | Profiling behaviors and motivations        | Detecting privilege abuse or data exfiltration |
+| **Supply Chain**         | Mapping vulnerabilities in third-party ecosystems | Monitoring dependencies and external integrations |
+### 🧪 Tactics, Techniques, and Procedures (TTPs)
+- **Threat Intelligence** aggregates TTPs across adversaries and campaigns.
+- **Threat Hunting** uses those TTPs to develop search queries, detection logic, and hypotheses.
+### 📊 Confidence Levels
+| Metric         | Threat Intelligence Use                      | Threat Hunting Use |
+|----------------|-----------------------------------------------|---------------------|
+| **Timeliness**  | Must be recent to remain relevant             | Used for refining hypotheses and search windows |
+| **Relevancy**   | Determines how applicable it is to org assets | Filters noise during investigation |
+| **Accuracy**    | Critical for avoiding false positives         | Drives validation steps with IoCs or behavior matches |
+### 🔍 Collection Methods & Sources
+| Source Type      | Threat Intelligence                          | Threat Hunting                         |
+|------------------|-----------------------------------------------|----------------------------------------|
+| **Open Source**   | Social media, blogs, CERT bulletins, dark web | Contextual enrichment, pattern discovery |
+| **Closed Source** | Paid feeds, ISACs, internal telemetry         | Ground truth correlation, forensic comparison |
+### 🔄 Threat Intelligence Sharing Use Cases
+| Domain                     | Application of Threat Intel |
+|----------------------------|-----------------------------|
+| **Incident Response**       | Speeds up triage and containment decisions |
+| **Vulnerability Management**| Prioritizes patching based on threat landscape |
+| **Risk Management**         | Enhances strategic decision making |
+| **Security Engineering**    | Refines rule sets and infrastructure defenses |
+| **Detection & Monitoring**  | Powers alerts and enriches logs with IoCs |
+### 🎯 Threat Hunting Methodologies
+| Element                    | Role in Hunting |
+|----------------------------|-----------------|
+| **IoCs: Collection**        | Gather hashes, IPs, domains from threat feeds |
+| **IoCs: Analysis**          | Verify legitimacy and behavioral matches |
+| **IoCs: Application**       | Scan environments for presence of indicators |
+#### 🧪 Focus Areas for Threat Hunters
+| Target                      | Purpose |
+|-----------------------------|---------|
+| **Configurations**          | Detect misconfigurations, default credentials |
+| **Isolated Networks**       | Probe overlooked or siloed environments |
+| **Business-Critical Assets**| Monitor crown jewels for abnormal access or drift |
+#### 🛡️ Active Defense Techniques
+| Technique       | Description |
+|------------------|-------------|
+| **Honeypots**     | Lure adversaries for behavioral study and early detection |
+| **Canary Accounts** | Act as bait for insider threat detection |
+| **Deception Tech**| Plant fake assets or credentials to monitor attacker interaction |
+### 🧠 Summary
+- **Threat Intelligence** is the "what and who"—external knowledge that shapes security posture.
+- **Threat Hunting** is the "where and how"—active investigation driven by internal patterns and threat hypotheses.
+- Together, they form a cycle: intel inspires hunts, and hunts generate new intel.
