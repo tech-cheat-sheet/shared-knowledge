@@ -19,6 +19,11 @@
     - [🏢 Physical Security](#-physical-security)
       - [🔍 Sensor Types](#-sensor-types)
     - [🕵️ Deception and Disruption Technologies](#️-deception-and-disruption-technologies)
+  - [1.3 Explain the importance of change management processes and the impact to security](#13-explain-the-importance-of-change-management-processes-and-the-impact-to-security)
+    - [🏢 Business Processes Impacting Security Operations](#-business-processes-impacting-security-operations)
+    - [⚙️ Technical Implications](#️-technical-implications)
+    - [📚 Documentation](#-documentation)
+    - [🔐 Security Impact Summary](#-security-impact-summary)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -112,3 +117,41 @@ Security model that assumes no implicit trust, even within the network perimeter
 | **Honeynet**   | Network of honeypots simulating a full environment |
 | **Honeyfile**  | Fake file used to detect unauthorized access |
 | **Honeytoken** | Embedded data that triggers alerts when accessed |
+## 1.3 Explain the importance of change management processes and the impact to security
+Change management ensures that modifications to systems, applications, and infrastructure are planned, tested, and documented to minimize risk and maintain security posture.
+### 🏢 Business Processes Impacting Security Operations
+Effective change management aligns technical changes with business goals while safeguarding operations.
+| Element              | Description |
+|----------------------|-------------|
+| **Approval Process** | Ensures changes are reviewed and authorized by appropriate personnel |
+| **Ownership**        | Assigns responsibility for implementing and maintaining changes |
+| **Stakeholders**     | Involves relevant parties (e.g., IT, security, compliance) in decision-making |
+| **Impact Analysis**  | Assesses potential effects on systems, users, and security |
+| **Test Results**     | Validates that changes work as intended without introducing vulnerabilities |
+| **Backout Plan**     | Provides a rollback strategy in case of failure |
+| **Maintenance Window** | Schedules changes during low-impact periods to reduce disruption |
+| **Standard Operating Procedure (SOP)** | Ensures consistency and repeatability in change execution |
+### ⚙️ Technical Implications
+Changes can affect system behavior, security controls, and service availability.
+
+| Element              | Description |
+|----------------------|-------------|
+| **Allow Lists / Deny Lists** | Must be updated to reflect new services or restrictions |
+| **Restricted Activities** | May need to be redefined based on new configurations |
+| **Downtime**         | Planned outages must be communicated and secured |
+| **Service Restart**  | Can impact availability and session persistence |
+| **Application Restart** | May affect user access and data integrity |
+| **Legacy Applications** | Often fragile and may not support modern security controls |
+| **Dependencies**     | Changes to one system may affect others; must be mapped and tested |
+### 📚 Documentation
+Accurate documentation ensures traceability, accountability, and future readiness.
+
+| Element              | Description |
+|----------------------|-------------|
+| **Updating Diagrams** | Reflects new architecture, connections, and security zones |
+| **Updating Policies/Procedures** | Aligns operational practices with current configurations |
+| **Version Control**  | Tracks changes to configurations, code, and documentation for audit and rollback purposes |
+### 🔐 Security Impact Summary
+- Poorly managed changes can introduce vulnerabilities, misconfigurations, and downtime.
+- Proper change management enhances visibility, accountability, and resilience.
+- Security teams must be involved in every stage—from planning to post-implementation review.
