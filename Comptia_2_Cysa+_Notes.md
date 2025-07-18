@@ -75,6 +75,24 @@
     - [💼 Asset Value](#-asset-value)
     - [🕳️ Zero-Day Vulnerabilities](#️-zero-day-vulnerabilities)
     - [🧠 Summary](#-summary-6)
+  - [2.4 Given a scenario, recommend controls to mitigate attacks and software vulnerabilities](#24-given-a-scenario-recommend-controls-to-mitigate-attacks-and-software-vulnerabilities)
+    - [🔐 Cross-Site Scripting (XSS)](#-cross-site-scripting-xss)
+    - [💥 Overflow Vulnerabilities](#-overflow-vulnerabilities)
+    - [🧪 Data Poisoning](#-data-poisoning)
+    - [🚫 Broken Access Control](#-broken-access-control)
+    - [🔐 Cryptographic Failures](#-cryptographic-failures)
+    - [🩺 Injection Flaws](#-injection-flaws)
+    - [🌐 Cross-Site Request Forgery (CSRF)](#-cross-site-request-forgery-csrf)
+    - [📁 Directory Traversal](#-directory-traversal)
+    - [🛠️ Insecure Design](#️-insecure-design)
+    - [⚙️ Security Misconfiguration](#️-security-misconfiguration)
+    - [🧓 End-of-Life or Outdated Components](#-end-of-life-or-outdated-components)
+    - [🆔 Identification \& Authentication Failures](#-identification--authentication-failures)
+    - [🖥️ Server-Side Request Forgery (SSRF)](#️-server-side-request-forgery-ssrf)
+    - [💻 Remote Code Execution (RCE)](#-remote-code-execution-rce)
+    - [🧍 Privilege Escalation](#-privilege-escalation)
+    - [📂 Local/Remote File Inclusion (LFI/RFI)](#-localremote-file-inclusion-lfirfi)
+    - [🧠 Summary](#-summary-7)
 # CompTIA CySA+ Exam CSO-003
 # 1.0 Security Operations
 ## 1.1 Explain the importance of system and network architecture concepts in security operations
@@ -544,3 +562,81 @@ Effective prioritization combines:
 - **Validation of scan accuracy**
 
 A well-prioritized list leads to efficient patching, minimized risk, and maximum business continuity.
+## 2.4 Given a scenario, recommend controls to mitigate attacks and software vulnerabilities
+Mitigating software vulnerabilities requires a layered defense strategy combining secure coding, configuration management, runtime protections, and policy enforcement. Below is a breakdown of common attack types and recommended controls.
+### 🔐 Cross-Site Scripting (XSS)
+| Type         | Mitigation Controls |
+|--------------|---------------------|
+| **Reflected** | Input validation, context-aware output encoding, Content Security Policy (CSP) |
+| **Persistent**| Sanitize stored inputs, encode data before rendering, use CSP and HTTP-only cookies |
+### 💥 Overflow Vulnerabilities
+| Type           | Mitigation Controls |
+|----------------|---------------------|
+| **Buffer**      | Bounds checking, use of safe languages (e.g., Rust), compiler protections (ASLR, DEP) |
+| **Integer**     | Sanitize numeric inputs, enforce proper data types and value ranges |
+| **Heap**        | Heap integrity checks, memory-safe languages, hardened memory allocators |
+| **Stack**       | Stack canaries, non-executable stack, safe libraries, ASLR |
+### 🧪 Data Poisoning
+| Attack Vector | Controls |
+|----------------|----------|
+| **Poisoned training/input data** | Validate source integrity, isolate training environments, monitor for outliers |
+### 🚫 Broken Access Control
+| Threat Scenario | Controls |
+|-----------------|----------|
+| Unauthorized access to resources | Role-Based Access Control (RBAC), Attribute-Based Access Control (ABAC), deny-by-default policies, secure session handling, authorization checks server-side |
+### 🔐 Cryptographic Failures
+| Weakness Type | Controls |
+|---------------|----------|
+| Weak/insecure encryption, improper key handling | Use modern algorithms (AES-256, RSA-2048+), enforce TLS 1.2+, HSMs for key storage, periodic key rotation |
+### 🩺 Injection Flaws
+| Type         | Controls |
+|--------------|----------|
+| SQL, LDAP, OS commands | Use parameterized queries/prepared statements, input validation, ORM frameworks, avoid dynamic query concatenation |
+### 🌐 Cross-Site Request Forgery (CSRF)
+| Risk | Controls |
+|------|----------|
+| Unauthorized actions via authenticated sessions | CSRF tokens, SameSite cookie attributes, double-submit cookies, checking referer headers |
+### 📁 Directory Traversal
+| Attack Vector | Controls |
+|---------------|----------|
+| Accessing unauthorized file paths | Normalize and validate file paths, sandbox user input, avoid direct filesystem access from input data |
+### 🛠️ Insecure Design
+| Weakness | Controls |
+|----------|----------|
+| Lack of threat modeling, excessive trust assumptions | Incorporate secure design lifecycle, threat modeling, STRIDE analysis, security reviews at architecture phase |
+### ⚙️ Security Misconfiguration
+| Common Issues | Controls |
+|---------------|----------|
+| Default settings, exposed error messages | Harden configurations, remove unused services, enforce configuration management via templates or IaC, secure logging policies |
+### 🧓 End-of-Life or Outdated Components
+| Risk | Controls |
+|------|----------|
+| Unsupported software with known CVEs | Track asset inventory, deprecate unsupported software, patch regularly, implement virtual patching via WAF if immediate upgrade isn't feasible |
+### 🆔 Identification & Authentication Failures
+| Issues | Controls |
+|--------|----------|
+| Weak passwords, session fixation, improper MFA | Enforce strong password policies, session expiration, MFA for high-privilege actions, secure token storage, lockout policies |
+### 🖥️ Server-Side Request Forgery (SSRF)
+| Threat Vector | Controls |
+|---------------|----------|
+| Unauthorized internal requests | Validate input URLs, restrict outbound traffic, deny access to internal metadata endpoints, use allowlists, proxy scanning |
+### 💻 Remote Code Execution (RCE)
+| Risk Scenario | Controls |
+|----------------|----------|
+| Input triggers arbitrary code execution | Sanitize inputs, use sandboxing, enforce code integrity checks, patch known vulnerabilities, disable unsafe modules (e.g., `eval`) |
+### 🧍 Privilege Escalation
+| Attack Path | Controls |
+|-------------|----------|
+| Gaining elevated access via local/system flaws | Principle of least privilege, secure boot, process isolation, audit trail logging, restrict sudo/root access, patch privilege escalation vulnerabilities |
+### 📂 Local/Remote File Inclusion (LFI/RFI)
+| Exploit Type | Controls |
+|--------------|----------|
+| File path injection or remote file execution | Validate and sanitize file paths, avoid direct inclusion based on user input, use secure APIs, enforce content-type validation |
+### 🧠 Summary
+Mitigation success relies on combining:
+- ✍️ Secure development practices
+- 🔄 Continuous scanning and code reviews
+- 🧱 Defense-in-depth across infrastructure
+- 📦 Automated configuration and baseline enforcement
+
+Applying these controls proactively helps prevent exploitation and preserves operational integrity.
