@@ -19,6 +19,7 @@
       - [🛡️ IDS/IPS (Intrusion Detection/Prevention System)](#️-idsips-intrusion-detectionprevention-system)
       - [⚖️ Load Balancer](#️-load-balancer)
       - [🕵️ Proxy](#️-proxy)
+        - [🔁 Forward Proxy vs. Reverse Proxy](#-forward-proxy-vs-reverse-proxy)
     - [💾 Storage Appliances](#-storage-appliances)
       - [📦 Network-Attached Storage (NAS)](#-network-attached-storage-nas)
       - [🧮 Storage Area Network (SAN)](#-storage-area-network-san)
@@ -378,6 +379,17 @@ Networking components can be deployed as **physical hardware** or **virtual soft
 - **Function**: Intermediary for requests between clients and servers; used for filtering, caching, anonymity.
 - **Physical**: Proxy servers in secure networks.
 - **Virtual**: Software proxies (e.g., Squid, HAProxy).
+##### 🔁 Forward Proxy vs. Reverse Proxy
+| Feature               | Forward Proxy                                | Reverse Proxy                                 |
+|-----------------------|-----------------------------------------------|-----------------------------------------------|
+| 🧭 Purpose            | Acts on behalf of the **client** to access external resources | Acts on behalf of the **server** to handle incoming requests |
+| 📍 Location           | Positioned **in front of client**             | Positioned **in front of server**             |
+| 🕵️ Identity Masking  | Hides **client’s** IP from destination server | Hides **server’s** IP from the client         |
+| 📡 Traffic Direction  | Outbound (client → internet)                  | Inbound (internet → server)                   |
+| 🔐 Use Cases          | Content filtering, access control, anonymity  | Load balancing, caching, SSL termination      |
+| 🔍 Example Users      | Enterprise users, students, internal networks | Web hosting services, cloud platforms         |
+| 🔑 Authentication     | Typically requires client authentication      | Can require authentication for incoming users |
+| 💬 Common Protocols   | HTTP, HTTPS, SOCKS                            | HTTP, HTTPS                                   |
 ### 💾 Storage Appliances
 #### 📦 Network-Attached Storage (NAS)
 - **Function**: File-level storage accessible over a network.
