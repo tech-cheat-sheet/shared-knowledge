@@ -158,6 +158,13 @@
     - [📊 Monitoring / Asset Tracking](#-monitoring--asset-tracking)
     - [🗑️ Disposal / Decommissioning](#️-disposal--decommissioning)
     - [🧠 Summary](#-summary-10)
+  - [4.3 Explain various activities associated with vulnerability management](#43-explain-various-activities-associated-with-vulnerability-management)
+    - [🔍 Identification Methods](#-identification-methods)
+    - [📊 Analysis](#-analysis)
+    - [🛡️ Vulnerability Response and Remediation](#️-vulnerability-response-and-remediation)
+    - [✅ Validation of Remediation](#-validation-of-remediation)
+    - [📝 Reporting](#-reporting)
+    - [🧠 Summary](#-summary-11)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -974,3 +981,63 @@ Effective asset management ensures that hardware, software, and data are securel
 - **Lifecycle controls** ensure assets are secure from acquisition to disposal.
 - **Classification and tracking** enable tailored security policies.
 - **Secure disposal** prevents data leakage and supports regulatory compliance.
+## 4.3 Explain various activities associated with vulnerability management
+Vulnerability management is a continuous process of identifying, analyzing, responding to, and validating security weaknesses in systems, applications, and infrastructure. It helps reduce risk and maintain a strong security posture.
+### 🔍 Identification Methods
+| Method                     | Description |
+|----------------------------|-------------|
+| **Vulnerability Scan**     | Automated scanning tools to detect known issues |
+| **Application Security**   | Focused on software flaws and coding errors |
+| - **Static Analysis**      | Examines source code without executing it |
+| - **Dynamic Analysis**     | Tests running applications for vulnerabilities |
+| - **Package Monitoring**   | Tracks third-party libraries for known issues |
+| **Threat Feed**            | External intelligence sources for emerging threats |
+| - **OSINT**                | Publicly available data (e.g., blogs, forums) |
+| - **Proprietary/Third-Party** | Commercial threat intelligence services |
+| - **Information-Sharing Organization** | Industry groups sharing threat data (e.g., ISACs) |
+| - **Dark Web**             | Monitors underground forums for exploit chatter |
+| **Penetration Testing**    | Simulated attacks to uncover real-world vulnerabilities |
+| **Responsible Disclosure Program** | Encourages ethical reporting of vulnerabilities |
+| - **Bug Bounty Program**   | Rewards external researchers for valid findings |
+| **System/Process Audit**   | Reviews configurations, policies, and procedures for weaknesses |
+### 📊 Analysis
+| Activity                  | Description |
+|---------------------------|-------------|
+| **Confirmation**          | Validates whether a vulnerability is real |
+| - **False Positive**      | Incorrectly flagged as vulnerable |
+| - **False Negative**      | Missed actual vulnerability |
+| **Prioritize**            | Rank vulnerabilities based on risk and impact |
+| **CVSS (Common Vulnerability Scoring System)** | Standardized scoring for severity |
+| **CVE (Common Vulnerability Enumeration)** | Unique identifiers for known vulnerabilities |
+| **Vulnerability Classification** | Categorizes by type (e.g., injection, buffer overflow) |
+| **Exposure Factor**       | Likelihood of exploitation |
+| **Environmental Variables** | Contextual factors (e.g., asset value, location) |
+| **Industry/Organizational Impact** | Sector-specific consequences |
+| **Risk Tolerance**        | Organization’s willingness to accept risk |
+### 🛡️ Vulnerability Response and Remediation
+| Method                  | Description |
+|-------------------------|-------------|
+| **Patching**            | Applying updates to fix vulnerabilities |
+| **Insurance**           | Financial protection against breach consequences |
+| **Segmentation**        | Isolates vulnerable systems to limit exposure |
+| **Compensating Controls** | Alternative measures when direct remediation isn’t possible |
+| **Exceptions/Exemptions** | Documented decisions to defer or skip remediation under specific conditions |
+### ✅ Validation of Remediation
+| Method        | Description |
+|---------------|-------------|
+| **Rescanning** | Re-run scans to confirm vulnerability is resolved |
+| **Audit**      | Independent review of remediation actions |
+| **Verification** | Manual or automated checks to ensure effectiveness |
+### 📝 Reporting
+- **Purpose**: Communicates findings, actions, and outcomes to stakeholders.
+- **Includes**:
+  - Vulnerability details
+  - Risk ratings
+  - Remediation status
+  - Metrics and trends
+  - Compliance alignment
+### 🧠 Summary
+- **Vulnerability management** is proactive and cyclical.
+- **Identification and analysis** guide prioritization.
+- **Remediation and validation** ensure issues are resolved.
+- **Reporting** supports transparency, accountability, and strategic planning.
