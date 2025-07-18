@@ -16,13 +16,14 @@ I am also planning to add contents from other CompTIA certifications:
 - ...
 ## My Recommended Learning Path (For now)
 0. CompTIA Tech+ (formerly IT+)
-1. CompTIA Network+
-2. CompTIA Linux+
-3. CompTIA Server+
-4. CompTIA Security+
-5. CompTIA CySA+
-6. CompTIA Pentest+
-7. CompTIA SecurityX (formerly CASP+)
+1. CompTIA A+
+2. CompTIA Network+
+3. CompTIA Linux+
+4. CompTIA Server+
+5. CompTIA Security+
+6. CompTIA CySA+
+7. CompTIA Pentest+
+8. CompTIA SecurityX (formerly CASP+)
 
 See [CompTIA Certifications comparison table](Comptia_Notes.md)
 
