@@ -44,7 +44,10 @@
 - [Minikube](#minikube)
   - [🚀 Minikube Main Commands Cheat Sheet](#-minikube-main-commands-cheat-sheet)
   - [Launching Minikube with multiple Nodes](#launching-minikube-with-multiple-nodes)
-- [Start with a clean state](#start-with-a-clean-state)
+    - [🧾 Breakdown of kubectl get nodes Output](#-breakdown-of-kubectl-get-nodes-output)
+    - [✅ What You’ve Achieved](#-what-youve-achieved)
+    - [🧠 Why This Matters](#-why-this-matters)
+  - [Super command](#super-command)
 - [🧰 kubectl Main Commands Cheat Sheet](#-kubectl-main-commands-cheat-sheet)
   - [⚔️ `kubectl create` vs `kubectl apply` – Comparison Table](#️-kubectl-create-vs-kubectl-apply--comparison-table)
     - [✅ Validity in Latest Kubernetes Version](#-validity-in-latest-kubernetes-version-2)
@@ -646,9 +649,11 @@ microk8s status --wait-ready
 | `minikube update-check`           | Checks for Minikube updates                               |
 | `minikube ssh`                     | SSH into the Minikube VM/container which will allow you to use ``crictl``|
 ## Launching Minikube with multiple Nodes
-```shell`
+```shell
 # Start with a clean state
 minikube stop && minikube delete --all --purge
+
+# Start minikube with 3 nodes
 minikube start --driver=docker --nodes=3
 kubectl get nodes
 ```
