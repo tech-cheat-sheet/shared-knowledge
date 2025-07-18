@@ -19,6 +19,7 @@
       - [🛡️ IDS/IPS (Intrusion Detection/Prevention System)](#️-idsips-intrusion-detectionprevention-system)
       - [⚖️ Load Balancer](#️-load-balancer)
       - [🕵️ Proxy](#️-proxy)
+        - [🔀 Load Balancer vs Proxy](#-load-balancer-vs-proxy)
         - [🔁 Forward Proxy vs. Reverse Proxy](#-forward-proxy-vs-reverse-proxy)
     - [💾 Storage Appliances](#-storage-appliances)
       - [📦 Network-Attached Storage (NAS)](#-network-attached-storage-nas)
@@ -379,6 +380,18 @@ Networking components can be deployed as **physical hardware** or **virtual soft
 - **Function**: Intermediary for requests between clients and servers; used for filtering, caching, anonymity.
 - **Physical**: Proxy servers in secure networks.
 - **Virtual**: Software proxies (e.g., Squid, HAProxy).
+##### 🔀 Load Balancer vs Proxy
+| Feature               | Load Balancer                                       | Proxy                                             |
+|-----------------------|----------------------------------------------------|--------------------------------------------------|
+| 🧭 Primary Role        | Distributes client requests across multiple servers | Intermediates traffic between client and server   |
+| 🚦 Traffic Direction   | Typically inbound (client → multiple backend servers) | Can be inbound (reverse proxy) or outbound (forward proxy) |
+| 🖥️ Backend Awareness   | Fully aware of backend servers for load distribution | May or may not be aware of backend infrastructure |
+| ⚖️ Functionality       | Optimizes performance, reliability, and scalability | Offers anonymity, access control, and content filtering |
+| 🧩 Common Types        | Round-robin, least connections, IP hash, etc.       | Forward Proxy, Reverse Proxy                     |
+| 🔐 Security Features   | Can handle SSL termination, DoS mitigation          | Can restrict content, hide IP addresses, anonymize users |
+| ⚙️ Common Deployment   | Data centers, cloud environments, web applications  | Enterprise networks, public web access           |
+| 🔁 Session Persistence | Supports sticky sessions                            | Typically session agnostic (depends on proxy type) |
+| 🛠️ Popular Tools       | HAProxy, NGINX (LB mode), AWS ELB, F5               | Squid (forward), NGINX (reverse), Apache, Envoy  |
 ##### 🔁 Forward Proxy vs. Reverse Proxy
 | Feature               | Forward Proxy                                | Reverse Proxy                                 |
 |-----------------------|-----------------------------------------------|-----------------------------------------------|
