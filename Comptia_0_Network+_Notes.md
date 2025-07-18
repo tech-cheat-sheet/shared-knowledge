@@ -312,15 +312,15 @@
 ## 1.1 Explain concepts related to the Open Systems Interconnection (OSI) reference model
 The **OSI model** is a conceptual framework developed by the **International Organization for Standardization (ISO)** to standardize networking protocols and promote interoperability between systems. It divides network communication into **seven distinct layers**, each with specific responsibilities.
 ### 🧱 The Seven Layers of the OSI Model
-| Layer | Name               | Function Summary                                      | Example Protocols/Technologies          |
-|-------|--------------------|--------------------------------------------------------|-----------------------------------------|
-| 7     | Application        | Interfaces directly with user applications             | HTTP, FTP, SMTP, DNS                    |
-| 6     | Presentation       | Translates data formats, encryption, compression       | SSL/TLS, JPEG, MPEG                     |
-| 5     | Session            | Manages sessions between applications                  | NetBIOS, RPC                            |
-| 4     | Transport          | Ensures reliable data transfer, error recovery         | TCP, UDP                                |
-| 3     | Network            | Routes data between devices across networks            | IP, ICMP, IPsec                         |
-| 2     | Data Link          | Handles error detection/correction in physical transfer| Ethernet, PPP, MAC                      |
-| 1     | Physical           | Transmits raw bit stream over physical medium          | Cables, Hubs, Modems, Fiber optics      |
+| Layer | Name         | Function Summary                                        | Example Protocols/Technologies             | Data Transfer Unit (DTU) | Devices/Hardware Examples            |
+|-------|--------------|---------------------------------------------------------|--------------------------------------------|---------------------------|--------------------------------------|
+| 7     | Application  | Interfaces directly with user applications              | HTTP, FTP, SMTP, DNS                        | Data                      | User Devices (PCs, Laptops), Servers |
+| 6     | Presentation | Formats, encrypts, and compresses data for the session  | SSL/TLS, JPEG, MPEG                         | Data                      | Gateways                             |
+| 5     | Session      | Manages sessions and dialog control between applications| NetBIOS, RPC                                | Data                      | Gateways, API Managers               |
+| 4     | Transport    | Provides reliable data transfer, flow and error control | TCP, UDP                                    | Segments                  | Load Balancers, Routers              |
+| 3     | Network      | Handles routing and addressing across networks          | IP, ICMP, IPSec, ARP                        | Packets                   | Routers, Layer 3 Switches            |
+| 2     | Data Link    | Transfers frames between nodes and handles MAC addressing| Ethernet, PPP, MAC, VLAN                    | Frames                    | Switches, Bridges, Network Cards     |
+| 1     | Physical     | Transmits raw bits over a physical medium               | Cables, Hubs, Fiber Optics, Modems          | Bits                      | Hubs, Repeaters, NICs, Modems        |
 ### 1. Physical Layer
 - Deals with **hardware transmission** of raw bits.
 - Includes cables, connectors, voltage levels, and timing.
