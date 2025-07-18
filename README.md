@@ -26,7 +26,7 @@ I am also planning to add contents from other CompTIA certifications:
 7. [CompTIA Pentest+](https://partners.comptia.org/docs/default-source/resources/comptia-pentest-pt0-002-exam-objectives-(4-0))
 8. [CompTIA SecurityX (formerly CASP+)](https://lecbyo.files.cmp.optimizely.com/download/35cf5f02b73211efa0ca8e42e80f1a8f)
 ## Extra Resources
-- See all [CompTIA Certifications](https://partners.comptia.org/docs/default-source/resources/it-certification-roadmap-8-5x11-print0c3c382c09d76fc19da8ff0a002c2329)
+- See all [CompTIA Certifications Roadmap](https://partners.comptia.org/docs/default-source/resources/it-certification-roadmap-8-5x11-print0c3c382c09d76fc19da8ff0a002c2329)
 - See [CompTIA Certifications comparison table](Comptia_Notes.md)
 
 # CompTIA Certification Career Pathway
