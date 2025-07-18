@@ -24,6 +24,19 @@
     - [⚙️ Technical Implications](#️-technical-implications)
     - [📚 Documentation](#-documentation)
     - [🔐 Security Impact Summary](#-security-impact-summary)
+  - [1.4 Explain the importance of using appropriate cryptographic solutions](#14-explain-the-importance-of-using-appropriate-cryptographic-solutions)
+    - [🏛️ Public Key Infrastructure (PKI)](#️-public-key-infrastructure-pki)
+    - [🔒 Encryption](#-encryption)
+      - [📦 Levels of Encryption](#-levels-of-encryption)
+      - [📡 Transport/Communication Encryption](#-transportcommunication-encryption)
+      - [🔐 Encryption Types](#-encryption-types)
+      - [🧮 Algorithms and Key Length](#-algorithms-and-key-length)
+    - [🛠️ Cryptographic Tools](#️-cryptographic-tools)
+    - [🧩 Obfuscation Techniques](#-obfuscation-techniques)
+    - [🔁 Hashing and Integrity](#-hashing-and-integrity)
+    - [✍️ Digital Signatures](#️-digital-signatures)
+    - [⛓️ Blockchain and Ledgers](#️-blockchain-and-ledgers)
+    - [📜 Certificates](#-certificates)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -155,3 +168,73 @@ Accurate documentation ensures traceability, accountability, and future readines
 - Poorly managed changes can introduce vulnerabilities, misconfigurations, and downtime.
 - Proper change management enhances visibility, accountability, and resilience.
 - Security teams must be involved in every stage—from planning to post-implementation review.
+## 1.4 Explain the importance of using appropriate cryptographic solutions
+Cryptography is essential for securing data, verifying identities, and ensuring trust in digital systems. Choosing the right cryptographic tools and techniques helps protect confidentiality, integrity, and authenticity.
+### 🏛️ Public Key Infrastructure (PKI)
+PKI enables secure communication and identity verification through asymmetric encryption.
+
+| Component     | Description |
+|---------------|-------------|
+| **Public Key** | Shared openly; used to encrypt or verify data |
+| **Private Key**| Kept secret; used to decrypt or sign data |
+| **Key Escrow** | Third-party storage of keys for recovery or compliance |
+### 🔒 Encryption
+Encryption transforms readable data into unreadable format to prevent unauthorized access.
+#### 📦 Levels of Encryption
+| Level        | Description |
+|--------------|-------------|
+| **Full-Disk** | Encrypts entire storage device |
+| **Partition** | Encrypts specific disk partitions |
+| **File**      | Encrypts individual files |
+| **Volume**    | Encrypts logical storage volumes |
+| **Database**  | Encrypts entire databases or tables |
+| **Record**    | Encrypts individual rows or entries in a database |
+#### 📡 Transport/Communication Encryption
+- Protects data in transit (e.g., TLS, VPN).
+- Ensures secure communication between endpoints.
+#### 🔐 Encryption Types
+| Type        | Description |
+|-------------|-------------|
+| **Symmetric** | Same key used for encryption and decryption (e.g., AES) |
+| **Asymmetric**| Uses public/private key pair (e.g., RSA) |
+| **Key Exchange** | Securely shares keys (e.g., Diffie-Hellman, ECDH) |
+#### 🧮 Algorithms and Key Length
+- **Algorithms**: AES, RSA, ECC, ChaCha20, Blowfish.
+- **Key Length**: Longer keys = stronger security (e.g., 256-bit AES).
+### 🛠️ Cryptographic Tools
+| Tool                     | Description |
+|--------------------------|-------------|
+| **Trusted Platform Module (TPM)** | Hardware chip for secure key storage and device integrity |
+| **Hardware Security Module (HSM)** | Dedicated hardware for managing and protecting cryptographic keys |
+| **Key Management System (KMS)** | Centralized solution for generating, storing, and rotating keys |
+| **Secure Enclave**       | Isolated environment for secure processing and key storage (e.g., Apple Secure Enclave) |
+### 🧩 Obfuscation Techniques
+| Technique     | Description |
+|---------------|-------------|
+| **Steganography** | Hides data within other media (e.g., images, audio) |
+| **Tokenization**  | Replaces sensitive data with non-sensitive tokens |
+| **Data Masking**  | Obscures data to protect privacy during testing or sharing |
+### 🔁 Hashing and Integrity
+- **Hashing**: Converts data into fixed-length digest (e.g., SHA-256).
+- **Salting**: Adds random data to input before hashing to prevent dictionary attacks.
+- **Key Stretching**: Strengthens weak passwords using algorithms like PBKDF2, bcrypt, scrypt.
+### ✍️ Digital Signatures
+- Verifies authenticity and integrity of data.
+- Uses private key to sign and public key to verify.
+### ⛓️ Blockchain and Ledgers
+| Concept              | Description |
+|----------------------|-------------|
+| **Blockchain**       | Distributed ledger using cryptographic hashes |
+| **Open Public Ledger** | Transparent record of transactions, often used in cryptocurrency |
+### 📜 Certificates
+Used to verify identities and establish trust in PKI systems.
+| Component                     | Description |
+|------------------------------|-------------|
+| **Certificate Authorities (CAs)** | Trusted entities that issue digital certificates |
+| **Certificate Revocation Lists (CRLs)** | Lists of invalidated certificates |
+| **Online Certificate Status Protocol (OCSP)** | Real-time certificate validation |
+| **Self-Signed**              | Issued by the entity itself; less trusted |
+| **Third-Party**              | Issued by a recognized CA |
+| **Root of Trust**            | Foundation of trust in a certificate chain |
+| **Certificate Signing Request (CSR)** | Request to a CA for certificate issuance |
+| **Wildcard Certificate**     | Secures multiple subdomains under one certificate (e.g., `*.example.com`) |
