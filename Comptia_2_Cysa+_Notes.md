@@ -107,6 +107,14 @@
     - [🔁 Secure Software Development Lifecycle (SDLC)](#-secure-software-development-lifecycle-sdlc)
     - [🧠 Threat Modeling](#-threat-modeling)
     - [🧠 Summary](#-summary-8)
+- [3.0 Incident Response and Management](#30-incident-response-and-management)
+  - [3.1 Explain concepts related to attack methodology frameworks](#31-explain-concepts-related-to-attack-methodology-frameworks)
+    - [🔗 Cyber Kill Chain](#-cyber-kill-chain)
+    - [💎 Diamond Model of Intrusion Analysis](#-diamond-model-of-intrusion-analysis)
+    - [🧬 MITRE ATT\&CK Framework](#-mitre-attck-framework)
+    - [📘 Open Source Security Testing Methodology Manual (OSSTMM)](#-open-source-security-testing-methodology-manual-osstmm)
+    - [🌐 OWASP Testing Guide](#-owasp-testing-guide)
+    - [🧠 Summary](#-summary-9)
 # CompTIA CySA+ Exam CSO-003
 # 1.0 Security Operations
 ## 1.1 Explain the importance of system and network architecture concepts in security operations
@@ -731,3 +739,74 @@ Vulnerability management is more than patching—it's about:
 - Aligning technical fixes with **governance**
 - Understanding **risk in context**
 - Supporting prevention with **secure development**
+# 3.0 Incident Response and Management
+## 3.1 Explain concepts related to attack methodology frameworks
+These frameworks provide structure for understanding, testing, and defending against cyber threats. They guide analysts, testers, and defenders through attacker behavior, tactics, and techniques.
+### 🔗 Cyber Kill Chain
+| Phase             | Description |
+|-------------------|-------------|
+| **Reconnaissance** | Gather target info (e.g., open ports, employee details) |
+| **Weaponization**  | Build exploit with payload (e.g., malicious document) |
+| **Delivery**       | Transmit payload to target (e.g., phishing, USB drop) |
+| **Exploitation**   | Execute exploit to trigger malware or control |
+| **Installation**   | Install malware for persistent access |
+| **Command & Control** | Establish remote communication with attacker infrastructure |
+| **Actions on Objectives** | Perform goal-oriented tasks (e.g., data theft, sabotage) |
+
+- **Created by**: Lockheed Martin
+- **Focus**: Lifecycle of targeted attacks; helps defenders disrupt early phases
+### 💎 Diamond Model of Intrusion Analysis
+| Component         | Description |
+|-------------------|-------------|
+| **Adversary**      | Who is behind the attack? (identity, motivation) |
+| **Capability**     | What tools or exploits are used? |
+| **Infrastructure** | Where is the attack launched from? (e.g., domains, IPs) |
+| **Victim**         | Who or what is being targeted? |
+
+- Highlights **interrelationships** and **pivot points** between actors, targets, and attack tools
+- Useful for mapping campaigns and understanding attack origins
+### 🧬 MITRE ATT&CK Framework
+| Element             | Description |
+|----------------------|-------------|
+| **Tactics**          | High-level attacker goals (e.g., Privilege Escalation, Defense Evasion) |
+| **Techniques**       | Specific methods used (e.g., credential dumping, DLL injection) |
+| **Sub-techniques**   | Granular implementations of techniques |
+| **Mitigations & Detection** | Guidance to block or identify each behavior |
+
+- **Extensively used by**: threat hunters, SOCs, red teams
+- **Coverage**: Windows, macOS, Linux, mobile, cloud, ICS
+- Promotes **behavior-based detection** and **attack mapping**
+### 📘 Open Source Security Testing Methodology Manual (OSSTMM)
+| Area                     | Description |
+|--------------------------|-------------|
+| **Operational security testing** | Tests for access controls, trust boundaries |
+| **Verification**         | Confirms proper implementation of controls |
+| **Security metrics**     | Quantifies risk exposure, attack surface, and resistance levels |
+| **Trust analysis**       | Evaluates communications, processes, and relationships based on trust parameters |
+
+- Focuses on **audit rigor, measurable results**, and **repeatable methods**
+- Used primarily in **penetration testing and ethical hacking**
+### 🌐 OWASP Testing Guide
+| Scope                   | Description |
+|--------------------------|-------------|
+| **Web application security** | Framework for testing apps against OWASP Top 10 risks |
+| **Manual and automated guidance** | Includes checklists and tool suggestions |
+| **Phases of testing**       | Includes planning, testing, reporting, remediation |
+
+- Addresses **real-world web application risks** like:
+  - Injection
+  - Broken authentication
+  - Security misconfiguration
+  - XSS and CSRF
+
+- Frequently updated to reflect modern attack vectors
+### 🧠 Summary
+| Framework           | Best For |
+|---------------------|----------|
+| **Cyber Kill Chain**| Understanding attacker lifecycle |
+| **Diamond Model**   | Linking adversaries to infrastructure and victims |
+| **MITRE ATT&CK**    | Mapping techniques, improving detection and response |
+| **OSSTMM**          | Rigorous, repeatable security testing |
+| **OWASP Guide**     | Securing and testing web applications |
+
+These methodologies provide both strategic and tactical insight into cybersecurity — whether you're defending, auditing, or analyzing threats.
