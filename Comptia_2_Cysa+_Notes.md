@@ -59,6 +59,14 @@
     - [✅ Security Baseline Scanning](#-security-baseline-scanning)
     - [📜 Industry Frameworks \& Benchmarks](#-industry-frameworks--benchmarks)
     - [🧠 Summary](#-summary-5)
+  - [2.2 Given a scenario, analyze output from vulnerability assessment tools](#22-given-a-scenario-analyze-output-from-vulnerability-assessment-tools)
+    - [🌐 Network Scanning \& Mapping](#-network-scanning--mapping)
+    - [🧪 Web Application Scanners](#-web-application-scanners)
+    - [🛡️ Vulnerability Scanners](#️-vulnerability-scanners)
+    - [🐛 Debuggers](#-debuggers)
+    - [🧰 Multipurpose Frameworks](#-multipurpose-frameworks)
+    - [☁️ Cloud Infrastructure Scanners](#️-cloud-infrastructure-scanners)
+    - [🧠 Summary: Output Interpretation Strategy](#-summary-output-interpretation-strategy)
 # CompTIA CySA+ Exam CSO-003
 # 1.0 Security Operations
 ## 1.1 Explain the importance of system and network architecture concepts in security operations
@@ -409,3 +417,53 @@ Effective vulnerability scanning combines:
 - Diverse analysis techniques (e.g., credentialed, dynamic, passive)
 
 A successful program prioritizes **accuracy, visibility, and minimal disruption**, tailored to organizational needs.
+## 2.2 Given a scenario, analyze output from vulnerability assessment tools
+Effective security assessments rely on interpreting tool output to identify exploitable weaknesses. The context (cloud, network, app) shapes how results are triaged, prioritized, and acted upon.
+### 🌐 Network Scanning & Mapping
+| Tool               | Output Type                       | Analysis Focus |
+|--------------------|-----------------------------------|----------------|
+| **Angry IP Scanner** | Responsive hosts and open ports  | Identify unexpected services or shadow IT |
+| **Maltego**         | Entity relationships, OSINT links | Spot social engineering risks, exposed metadata, infrastructure enumeration |
+### 🧪 Web Application Scanners
+| Tool               | Output Insights                            | Use Case |
+|--------------------|---------------------------------------------|----------|
+| **Burp Suite**     | SQLi, XSS, authentication bypass, parameter tampering | Deep inspection of user input handling and session behavior |
+| **ZAP**            | OWASP vulnerabilities, automated fuzzing    | Lightweight testing and report generation |
+| **Arachni**        | XSS, broken auth, security misconfigurations | Framework-level vulnerability hunting |
+| **Nikto**          | Misconfigured headers, outdated software    | Surface-level HTTP server issues and CVEs |
+
+- Look for **severity scores**, **proof-of-concept URLs**, and **remediation tips** in output.
+### 🛡️ Vulnerability Scanners
+| Tool               | Output Details                            | Analysis Focus |
+|--------------------|--------------------------------------------|----------------|
+| **Nessus**         | CVE details, risk rankings, exploitability | Patch prioritization and exposure analysis |
+| **OpenVAS**        | Detailed vulnerability taxonomy            | Detection of OS-level and service-level issues |
+
+- Focus on **high/critical findings**, affected asset lists, and **remediation timelines**.
+### 🐛 Debuggers
+| Tool               | Output Type                              | Use Case |
+|--------------------|-------------------------------------------|----------|
+| **Immunity Debugger** | Assembly-level tracing, exploit crafting | Manual validation of exploit paths |
+| **GDB**               | Stack inspection, breakpoints, syscall analysis | Reverse engineering and vulnerability proofing |
+
+- Ideal for validating buffer overflows or analyzing crash dumps.
+### 🧰 Multipurpose Frameworks
+| Tool               | Output and Use                            | Analysis Value |
+|--------------------|--------------------------------------------|----------------|
+| **Nmap**           | Port status, service banners, OS fingerprint | Identify attack surface and service anomalies |
+| **Metasploit (MSF)** | Exploit success, post-exploitation results | Confirmed vulnerability with proof-of-access |
+| **Recon-ng**       | Passive data mining and profiling          | Background enrichment for threat context |
+### ☁️ Cloud Infrastructure Scanners
+| Tool               | Output Description                            | Use Case |
+|--------------------|------------------------------------------------|----------|
+| **Scout Suite**    | Misconfigured IAM roles, public buckets       | CSP-specific security scorecard |
+| **Prowler**        | CIS benchmark violations, AWS policy gaps     | Compliance validation and posture hardening |
+| **Pacu**           | Exploitable paths in AWS                      | Red-team focused misconfiguration hunting |
+
+- Look for **over-permissioned roles**, **lack of encryption**, and **public exposure indicators**.
+### 🧠 Summary: Output Interpretation Strategy
+- **Categorize** findings by severity and exploitability
+- **Correlate** across tools (e.g., Nmap open ports vs. Nessus CVEs)
+- **Validate** using manual checks or debuggers
+- **Prioritize** fixes based on business impact and regulatory need
+- **Document** affected systems, risk level, and resolution path
