@@ -115,6 +115,18 @@
     - [📘 Open Source Security Testing Methodology Manual (OSSTMM)](#-open-source-security-testing-methodology-manual-osstmm)
     - [🌐 OWASP Testing Guide](#-owasp-testing-guide)
     - [🧠 Summary](#-summary-9)
+  - [3.2 Given a scenario, perform incident response activities](#32-given-a-scenario-perform-incident-response-activities)
+    - [🧭 Detection and Analysis](#-detection-and-analysis)
+      - [🧪 Indicators of Compromise (IoCs)](#-indicators-of-compromise-iocs)
+      - [📦 Evidence Acquisition](#-evidence-acquisition)
+      - [📊 Data and Log Analysis](#-data-and-log-analysis)
+    - [🔒 Containment, Eradication, and Recovery](#-containment-eradication-and-recovery)
+      - [📌 Scope \& Impact](#-scope--impact)
+      - [🛑 Isolation](#-isolation)
+      - [🧹 Remediation](#-remediation)
+      - [💻 Re-Imaging](#-re-imaging)
+      - [🛡️ Compensating Controls](#️-compensating-controls)
+    - [🧠 Summary](#-summary-10)
 # CompTIA CySA+ Exam CSO-003
 # 1.0 Security Operations
 ## 1.1 Explain the importance of system and network architecture concepts in security operations
@@ -810,3 +822,56 @@ These frameworks provide structure for understanding, testing, and defending aga
 | **OWASP Guide**     | Securing and testing web applications |
 
 These methodologies provide both strategic and tactical insight into cybersecurity — whether you're defending, auditing, or analyzing threats.
+## 3.2 Given a scenario, perform incident response activities
+Effective incident response requires structured steps to detect, analyze, contain, and recover from security incidents. Below is a breakdown of actionable tasks performed by IR teams across detection and recovery stages.
+### 🧭 Detection and Analysis
+#### 🧪 Indicators of Compromise (IoCs)
+- Identify malicious IPs, hashes, domains, email artifacts, or file paths.
+- Source from threat intelligence platforms, SIEM alerts, or third-party reports.
+- Use IoCs to pivot across logs and data sources for correlation.
+#### 📦 Evidence Acquisition
+| Component             | Purpose |
+|------------------------|--------|
+| **Chain of Custody**   | Tracks possession of evidence to ensure integrity and legal admissibility |
+| **Validating Data Integrity** | Applies hashing (e.g., SHA256) before and after acquisition |
+| **Preservation**       | Avoids alteration by duplicating evidence to forensic-safe media |
+| **Legal Hold**         | Preserves relevant data due to legal or regulatory obligation; restricts deletion or overwriting |
+#### 📊 Data and Log Analysis
+- Use SIEM or log management tools to review:
+  - Authentication events
+  - File/system changes
+  - Network activity
+- Look for anomalies such as:
+  - Unusual login times
+  - Multiple failed attempts
+  - Sudden traffic spikes
+  - Executions of suspicious processes
+### 🔒 Containment, Eradication, and Recovery
+#### 📌 Scope & Impact
+| Element      | Description |
+|--------------|-------------|
+| **Scope**     | Determines affected users, systems, and networks |
+| **Impact**    | Evaluates business disruption, data loss, regulatory exposure |
+#### 🛑 Isolation
+- Disconnect infected systems or segments.
+- Block compromised credentials or IP addresses.
+- Prevent lateral movement across the environment.
+#### 🧹 Remediation
+- Remove malware, malicious scripts, or compromised accounts.
+- Patch vulnerabilities or misconfigurations exploited during attack.
+- Revoke unauthorized changes.
+#### 💻 Re-Imaging
+- Wipe and reinstall system OS and applications to ensure clean state.
+- Restore from verified backups (free of malware or corruption).
+#### 🛡️ Compensating Controls
+- Temporary security measures applied when full remediation isn’t immediately possible.
+- Examples:
+  - Network segmentation
+  - Firewall rule updates
+  - Application whitelisting
+### 🧠 Summary
+Effective incident response requires:
+- 🎯 Precise detection through IoCs and evidence
+- 🧪 Careful analysis to maintain legal and forensic integrity
+- 🧱 Structured containment and restoration to minimize impact
+- 🔄 Application of controls and lessons learned for future resilience
