@@ -49,6 +49,16 @@
     - [🔌 Technology and Tool Integration](#-technology-and-tool-integration)
     - [🖥️ Single Pane of Glass](#️-single-pane-of-glass)
     - [🧠 Summary](#-summary-4)
+- [2.0 Vulnerability Management](#20-vulnerability-management)
+  - [2.1 Given a scenario, implement vulnerability scanning methods and concepts](#21-given-a-scenario-implement-vulnerability-scanning-methods-and-concepts)
+    - [🔍 Asset Discovery](#-asset-discovery)
+    - [⚠️ Special Considerations](#️-special-considerations)
+    - [🔁 Scanning Approaches](#-scanning-approaches)
+      - [🧪 Specialized Techniques](#-specialized-techniques)
+    - [🏭 Critical Infrastructure Considerations](#-critical-infrastructure-considerations)
+    - [✅ Security Baseline Scanning](#-security-baseline-scanning)
+    - [📜 Industry Frameworks \& Benchmarks](#-industry-frameworks--benchmarks)
+    - [🧠 Summary](#-summary-5)
 # CompTIA CySA+ Exam CSO-003
 # 1.0 Security Operations
 ## 1.1 Explain the importance of system and network architecture concepts in security operations
@@ -326,3 +336,76 @@ Efficiency and process improvement in security operations enhance:
 - 🧩 Integration and collaboration across teams
 
 By embracing automation, orchestration, and unified visibility, security teams can evolve from reactive defenders to proactive strategists.
+# 2.0 Vulnerability Management
+## 2.1 Given a scenario, implement vulnerability scanning methods and concepts
+Vulnerability scanning is a proactive approach to identify weaknesses across systems, networks, applications, and critical infrastructure. Effective implementation depends on the asset landscape, operational goals, and compliance obligations.
+### 🔍 Asset Discovery
+| Technique            | Description |
+|----------------------|-------------|
+| **Map Scans**        | Network sweeps to identify active hosts and open ports |
+| **Device Fingerprinting** | Collects metadata like OS type, software version, and device roles |
+
+- Accurate discovery prevents blind spots and ensures thorough vulnerability assessments.
+### ⚠️ Special Considerations
+| Factor              | Importance |
+|---------------------|------------|
+| **Scheduling**       | Avoid scanning during peak hours to reduce system strain |
+| **Operations**       | Coordinate with IT to prevent service disruption |
+| **Performance**      | Balance scan depth and duration with system capabilities |
+| **Sensitivity Levels** | Tune scans to avoid false positives or overly intrusive techniques |
+| **Segmentation**     | Account for network isolation; scanning across zones may require special routing or credentials |
+| **Regulatory Requirements** | Align scanning scope and reporting with mandates (e.g., PCI DSS, HIPAA) |
+### 🔁 Scanning Approaches
+| Type                   | Description |
+|------------------------|-------------|
+| **Internal Scanning**   | Targets assets inside the network; useful for insider threats and patch validation |
+| **External Scanning**   | Simulates attacker perspective from outside the perimeter; identifies exposed vulnerabilities |
+
+| Method                 | Description |
+|------------------------|-------------|
+| **Agent-Based**        | Installed on endpoints; deeper visibility and real-time updates |
+| **Agentless**          | Uses network access and credentials; easier deployment but less granularity |
+
+| Credential Usage       | Description |
+|------------------------|-------------|
+| **Credentialed**       | Authenticated scans that detect misconfigurations and missing patches |
+| **Non-Credentialed**   | Lightweight, surface-level scans; limited access to internal vulnerability details |
+
+| Scan Technique         | Description |
+|------------------------|-------------|
+| **Passive**            | Monitors network traffic to infer vulnerabilities without direct probing |
+| **Active**             | Actively interrogates systems to test for vulnerabilities; higher fidelity but more impact |
+
+| Analysis Type          | Description |
+|------------------------|-------------|
+| **Static**             | Reviews code or binaries without execution (e.g., reverse engineering) |
+| **Dynamic**            | Tests software during execution; includes fuzzing and runtime analysis |
+#### 🧪 Specialized Techniques
+| Technique         | Description |
+|-------------------|-------------|
+| **Reverse Engineering** | Dissects binaries to uncover hidden flaws or embedded logic |
+| **Fuzzing**             | Sends malformed inputs to trigger crashes or reveal exploitable behaviors |
+### 🏭 Critical Infrastructure Considerations
+| System Type                     | Vulnerability Scanning Notes |
+|----------------------------------|------------------------------|
+| **Operational Technology (OT)**  | Often fragile; requires non-disruptive techniques |
+| **Industrial Control Systems (ICS)** | May need vendor-approved scanners to avoid downtime |
+| **SCADA (Supervisory Control)** | Segment scans and coordinate with engineering teams; real-time operations must remain unaffected |
+### ✅ Security Baseline Scanning
+- Verifies systems meet established configuration standards (e.g., firewall rules, patch levels).
+- Helps maintain consistent security posture across environments.
+### 📜 Industry Frameworks & Benchmarks
+| Framework                  | Purpose |
+|----------------------------|---------|
+| **PCI DSS**                | Scanning required to ensure cardholder data protection |
+| **CIS Benchmarks**         | Provides configuration standards for OS, applications, and devices |
+| **OWASP**                  | Highlights top vulnerabilities in web applications |
+| **ISO 27000 Series**       | Offers best practices for ISMS, including vulnerability management guidelines |
+### 🧠 Summary
+Effective vulnerability scanning combines:
+- Comprehensive asset discovery
+- Contextual scan configurations
+- Regulatory alignment
+- Diverse analysis techniques (e.g., credentialed, dynamic, passive)
+
+A successful program prioritizes **accuracy, visibility, and minimal disruption**, tailored to organizational needs.
