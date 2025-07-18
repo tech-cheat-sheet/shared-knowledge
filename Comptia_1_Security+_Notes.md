@@ -212,6 +212,10 @@
     - [🕵️ Threat Hunting](#️-threat-hunting)
     - [🧬 Digital Forensics](#-digital-forensics)
     - [🧠 Summary](#-summary-16)
+  - [4.9 Given a scenario, use data sources to support an investigation](#49-given-a-scenario-use-data-sources-to-support-an-investigation)
+    - [📄 Log Data](#-log-data)
+    - [📊 Data Sources](#-data-sources)
+    - [🧠 Summary](#-summary-17)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -1343,3 +1347,27 @@ Incident response (IR) is a structured approach to managing and mitigating secur
 - Preparation, training, and testing are essential for readiness.
 - Forensics and root cause analysis support accountability and long-term resilience.
 - Continuous improvement through lessons learned strengthens future defenses.
+## 4.9 Given a scenario, use data sources to support an investigation
+During a security investigation, diverse data sources provide critical insights into the scope, origin, and impact of an incident. Correlating logs, scans, and captures helps build a timeline and identify root causes.
+### 📄 Log Data
+| Log Type                  | Description | Investigative Value |
+|---------------------------|-------------|----------------------|
+| **Firewall Logs**         | Records allowed/blocked traffic | Reveals unauthorized access attempts and port scans |
+| **Application Logs**      | Tracks user actions and errors | Identifies misuse, injection attempts, and anomalies |
+| **Endpoint Logs**         | Captures activity on user devices | Detects malware, unauthorized software, and file access |
+| **OS-Specific Security Logs** | Includes login attempts, privilege changes | Helps trace account compromise and privilege escalation |
+| **IPS/IDS Logs**          | Alerts on suspicious traffic patterns | Detects known attack signatures and policy violations |
+| **Network Logs**          | Records traffic flow and connections | Maps lateral movement and data exfiltration paths |
+| **Metadata**              | Includes timestamps, IPs, user IDs | Supports timeline reconstruction and correlation across systems |
+### 📊 Data Sources
+| Source               | Description | Investigative Use |
+|----------------------|-------------|-------------------|
+| **Vulnerability Scans** | Identifies known weaknesses in systems | Helps determine if exploited vulnerabilities were present |
+| **Automated Reports**   | Summarizes system health, alerts, and compliance | Provides quick overview of affected assets and trends |
+| **Dashboards**          | Visualizes real-time and historical data | Aids in spotting anomalies and tracking incident progression |
+| **Packet Captures (PCAP)** | Raw network traffic data | Enables deep analysis of communications, payloads, and protocols |
+### 🧠 Summary
+- **Log data** provides granular visibility into system and user behavior.
+- **Scans and reports** highlight vulnerabilities and system status.
+- **Packet captures** offer forensic-level insight into network activity.
+- Effective investigations rely on **correlating multiple data sources** to validate findings and trace attacker actions.
