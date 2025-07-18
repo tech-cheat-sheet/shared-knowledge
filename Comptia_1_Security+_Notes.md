@@ -37,6 +37,12 @@
     - [✍️ Digital Signatures](#️-digital-signatures)
     - [⛓️ Blockchain and Ledgers](#️-blockchain-and-ledgers)
     - [📜 Certificates](#-certificates)
+- [2.0 Threats, Vulnerabilities, and Mitigations](#20-threats-vulnerabilities-and-mitigations)
+  - [2.1 Compare and contrast common threat actors and motivations](#21-compare-and-contrast-common-threat-actors-and-motivations)
+    - [👥 Common Threat Actors](#-common-threat-actors)
+    - [🧬 Attributes of Threat Actors](#-attributes-of-threat-actors)
+    - [🎯 Motivations Behind Attacks](#-motivations-behind-attacks)
+    - [🧠 Summary](#-summary-1)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -238,3 +244,42 @@ Used to verify identities and establish trust in PKI systems.
 | **Root of Trust**            | Foundation of trust in a certificate chain |
 | **Certificate Signing Request (CSR)** | Request to a CA for certificate issuance |
 | **Wildcard Certificate**     | Secures multiple subdomains under one certificate (e.g., `*.example.com`) |
+# 2.0 Threats, Vulnerabilities, and Mitigations
+## 2.1 Compare and contrast common threat actors and motivations
+Understanding threat actors—their capabilities, resources, and motivations—is essential for building effective defense strategies and risk assessments.
+### 👥 Common Threat Actors
+| Threat Actor      | Description | Typical Motivation |
+|-------------------|-------------|---------------------|
+| **Nation-State**  | Government-sponsored groups targeting other nations or corporations | Espionage, disruption, warfare |
+| **Unskilled Attacker** | Individuals with limited knowledge using readily available tools | Curiosity, chaos, bragging rights |
+| **Hacktivist**    | Ideologically driven attackers promoting political or social causes | Disruption, awareness, protest |
+| **Insider Threat**| Employees or contractors with authorized access who misuse it | Revenge, financial gain, espionage |
+| **Organized Crime**| Sophisticated criminal groups targeting financial assets | Financial gain, blackmail |
+| **Shadow IT**     | Unauthorized systems or applications deployed by employees | Convenience, bypassing restrictions |
+### 🧬 Attributes of Threat Actors
+| Attribute               | Internal vs. External | Resources/Funding | Sophistication |
+|------------------------|-----------------------|-------------------|----------------|
+| **Nation-State**        | External              | High              | Advanced       |
+| **Unskilled Attacker**  | External              | Low               | Low            |
+| **Hacktivist**          | External              | Variable          | Moderate       |
+| **Insider Threat**      | Internal              | Variable          | Moderate–High  |
+| **Organized Crime**     | External              | High              | Advanced       |
+| **Shadow IT**           | Internal              | Low               | Low–Moderate   |
+### 🎯 Motivations Behind Attacks
+| Motivation                  | Description |
+|----------------------------|-------------|
+| **Data Exfiltration**      | Stealing sensitive or proprietary data |
+| **Espionage**              | Gathering intelligence for political or economic advantage |
+| **Service Disruption**     | Interrupting operations (e.g., DDoS, ransomware) |
+| **Blackmail**              | Demanding ransom or leverage through threats |
+| **Financial Gain**         | Theft, fraud, or extortion for profit |
+| **Philosophical/Political Beliefs** | Driven by ideology or activism |
+| **Ethical**                | "White hat" actions to expose vulnerabilities |
+| **Revenge**                | Personal retaliation against an organization |
+| **Disruption/Chaos**       | Causing instability for entertainment or ideology |
+| **War**                    | Cyber warfare as part of military strategy |
+### 🧠 Summary
+- **Nation-states and organized crime** are the most well-funded and sophisticated.
+- **Insider threats and shadow IT** pose unique risks due to their internal access.
+- **Hacktivists and ethical hackers** may not seek financial gain but can still cause disruption.
+- Understanding the **motivation** helps tailor defenses and incident response strategies.
