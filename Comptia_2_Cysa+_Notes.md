@@ -93,6 +93,20 @@
     - [🧍 Privilege Escalation](#-privilege-escalation)
     - [📂 Local/Remote File Inclusion (LFI/RFI)](#-localremote-file-inclusion-lfirfi)
     - [🧠 Summary](#-summary-7)
+  - [2.5 Explain concepts related to vulnerability response, handling, and management](#25-explain-concepts-related-to-vulnerability-response-handling-and-management)
+    - [🔒 Compensating Control](#-compensating-control)
+    - [🧩 Control Types](#-control-types)
+    - [🔁 Patching \& Configuration Management](#-patching--configuration-management)
+    - [⏱️ Maintenance Windows](#️-maintenance-windows)
+    - [🚨 Exceptions](#-exceptions)
+    - [⚖️ Risk Management Principles](#️-risk-management-principles)
+    - [🗂️ Policies, Governance \& SLOs](#️-policies-governance--slos)
+    - [⬆️ Prioritization \& Escalation](#️-prioritization--escalation)
+    - [🧭 Attack Surface Management](#-attack-surface-management)
+    - [🧼 Secure Coding Best Practices](#-secure-coding-best-practices)
+    - [🔁 Secure Software Development Lifecycle (SDLC)](#-secure-software-development-lifecycle-sdlc)
+    - [🧠 Threat Modeling](#-threat-modeling)
+    - [🧠 Summary](#-summary-8)
 # CompTIA CySA+ Exam CSO-003
 # 1.0 Security Operations
 ## 1.1 Explain the importance of system and network architecture concepts in security operations
@@ -640,3 +654,80 @@ Mitigation success relies on combining:
 - 📦 Automated configuration and baseline enforcement
 
 Applying these controls proactively helps prevent exploitation and preserves operational integrity.
+## 2.5 Explain concepts related to vulnerability response, handling, and management
+Proactively identifying and addressing software and infrastructure vulnerabilities is key to reducing security risk, maintaining compliance, and protecting organizational assets. These concepts form the operational framework for prioritization, remediation, and prevention.
+### 🔒 Compensating Control
+- A **security measure used in place of a recommended control** when it’s not feasible.
+- Must provide equivalent or greater protection.
+- Example: Using network segmentation when encryption isn’t feasible for legacy systems.
+### 🧩 Control Types
+| Control Category      | Function |
+|------------------------|---------|
+| **Managerial**         | Governance, policy-setting, and procedural oversight (e.g., risk assessment) |
+| **Operational**        | Human-centric actions like awareness training and physical access restrictions |
+| **Technical**          | Enforced by systems or software (e.g., firewalls, antivirus, MFA) |
+
+| Control Intent         | Purpose |
+|------------------------|---------|
+| **Preventative**       | Stops threats before they occur (e.g., input validation, access control) |
+| **Detective**          | Identifies ongoing or past threats (e.g., IDS, logs) |
+| **Responsive**         | Facilitates action upon detection (e.g., alerting systems, incident playbooks) |
+| **Corrective**         | Restores affected systems or mitigates vulnerabilities (e.g., patches, backup recovery) |
+### 🔁 Patching & Configuration Management
+| Phase           | Description |
+|------------------|-------------|
+| **Testing**       | Verifies patch safety and compatibility |
+| **Implementation**| Applies patches and config updates across systems |
+| **Rollback**      | Reverts updates if problems occur |
+| **Validation**    | Confirms fixes are effective and systems remain functional post-deployment |
+### ⏱️ Maintenance Windows
+- Scheduled periods for applying updates, patching, and performing risk-free changes.
+- Minimizes impact on productivity and ensures rollback readiness.
+### 🚨 Exceptions
+- Temporary **exemptions from policies or standard controls**.
+- Must be **documented**, **justified**, and accompanied by **compensating controls or expiration dates**.
+### ⚖️ Risk Management Principles
+| Strategy     | Description |
+|--------------|-------------|
+| **Accept**    | Tolerate risk when impact is low or mitigation isn’t practical |
+| **Transfer**  | Shift risk through third parties (e.g., insurance) |
+| **Avoid**     | Eliminate risk by changing behavior or removing vulnerable processes |
+| **Mitigate**  | Implement controls to reduce likelihood or impact |
+### 🗂️ Policies, Governance & SLOs
+- **Policies**: Define rules for secure operation and expected behavior
+- **Governance**: Ensures compliance, accountability, and strategic alignment
+- **Service-Level Objectives (SLOs)**: Measurable targets for response times, uptime, and recovery expectations
+### ⬆️ Prioritization & Escalation
+- Use CVSS scores, exploitability, business impact, and asset criticality to **prioritize vulnerabilities**.
+- **Escalate** high-severity findings to decision-makers or technical leads based on urgency and scope.
+### 🧭 Attack Surface Management
+| Activity                      | Role |
+|------------------------------|------|
+| **Edge Discovery**            | Identifies external entry points and exposed assets |
+| **Passive Discovery**         | Gathers asset data from logs, DNS, traffic without direct probing |
+| **Security Controls Testing** | Validates firewall rules, access policies, segmentation |
+| **Penetration Testing / Adversary Emulation** | Simulates attacker behavior to uncover weaknesses |
+| **Bug Bounty Programs**       | Leverage ethical hackers to find real-world vulnerabilities |
+| **Attack Surface Reduction**  | Disable unused services, restrict access, minimize externally available features |
+### 🧼 Secure Coding Best Practices
+| Practice              | Benefit |
+|------------------------|--------|
+| **Input Validation**    | Prevents injection and malformed inputs |
+| **Output Encoding**     | Blocks XSS and data leakage |
+| **Session Management**  | Secures user sessions against hijacking |
+| **Authentication**      | Verifies user identity reliably |
+| **Data Protection**     | Uses encryption and access controls for sensitive data |
+| **Parameterized Queries**| Mitigates SQL injection attacks by avoiding dynamic input in queries |
+### 🔁 Secure Software Development Lifecycle (SDLC)
+- Embeds security **at each stage** of development:
+  - Requirements → Design → Coding → Testing → Deployment → Maintenance
+- Includes **code reviews, threat modeling, and automated scanning**.
+### 🧠 Threat Modeling
+- Method for analyzing **potential threats**, system **entry points**, and **security flaws** before exploitation occurs.
+- Frameworks: **STRIDE**, **DREAD**, **Kill Chain**, **MITRE ATT&CK**
+### 🧠 Summary
+Vulnerability management is more than patching—it's about:
+- Building **resilient architecture**
+- Aligning technical fixes with **governance**
+- Understanding **risk in context**
+- Supporting prevention with **secure development**
