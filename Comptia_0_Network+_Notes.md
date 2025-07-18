@@ -392,6 +392,10 @@ Networking components can be deployed as **physical hardware** or **virtual soft
 | ⚙️ Common Deployment   | Data centers, cloud environments, web applications  | Enterprise networks, public web access           |
 | 🔁 Session Persistence | Supports sticky sessions                            | Typically session agnostic (depends on proxy type) |
 | 🛠️ Popular Tools       | HAProxy, NGINX (LB mode), AWS ELB, F5               | Squid (forward), NGINX (reverse), Apache, Envoy  |
+
+- A Load Balancer ensures system scalability and fault tolerance by distributing traffic.
+- A Proxy acts as a mediator — either protecting the client’s identity (forward proxy) or shielding backend servers (reverse proxy).
+- Some systems (like NGINX) can act as both, depending on configuration.
 ##### 🔁 Forward Proxy vs. Reverse Proxy
 | Feature               | Forward Proxy                                | Reverse Proxy                                 |
 |-----------------------|-----------------------------------------------|-----------------------------------------------|
