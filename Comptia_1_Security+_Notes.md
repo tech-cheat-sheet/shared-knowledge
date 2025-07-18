@@ -240,6 +240,14 @@
     - [📣 Risk Reporting](#-risk-reporting)
     - [🧮 Business Impact Analysis (BIA)](#-business-impact-analysis-bia)
     - [🧠 Summary](#-summary-19)
+  - [5.3 Explain the processes associated with third-party risk assessment and management](#53-explain-the-processes-associated-with-third-party-risk-assessment-and-management)
+    - [🧪 Vendor Assessment](#-vendor-assessment)
+    - [🧠 Vendor Selection](#-vendor-selection)
+    - [📄 Agreement Types](#-agreement-types)
+    - [📈 Vendor Monitoring](#-vendor-monitoring)
+    - [📝 Questionnaires](#-questionnaires)
+    - [⚔️ Rules of Engagement](#️-rules-of-engagement)
+    - [🧠 Summary](#-summary-20)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -1522,3 +1530,42 @@ Risk management is the structured approach to identifying, assessing, analyzing,
 - It balances **quantitative and qualitative analysis** to guide decisions.
 - Effective strategies align with **organizational risk appetite and tolerance**.
 - **BIA and reporting** ensure risks are understood and mitigated in context.
+## 5.3 Explain the processes associated with third-party risk assessment and management
+Third-party relationships introduce potential risks to security, compliance, and operations. A structured approach to assessing, selecting, and monitoring vendors ensures that external partnerships align with organizational standards and risk tolerance.
+### 🧪 Vendor Assessment
+| Activity                  | Description |
+|---------------------------|-------------|
+| **Penetration Testing**   | Evaluates vendor systems for exploitable vulnerabilities |
+| **Right-to-Audit Clause** | Grants the organization authority to audit vendor practices |
+| **Evidence of Internal Audits** | Demonstrates vendor’s commitment to self-assessment and compliance |
+| **Independent Assessments** | Third-party evaluations of vendor security posture |
+| **Supply Chain Analysis** | Identifies risks from vendor’s own suppliers and dependencies |
+### 🧠 Vendor Selection
+| Activity             | Description |
+|----------------------|-------------|
+| **Due Diligence**     | Researches vendor history, reputation, and compliance record |
+| **Conflict of Interest** | Ensures impartiality and avoids relationships that could compromise integrity |
+### 📄 Agreement Types
+| Agreement Type               | Purpose |
+|------------------------------|---------|
+| **Service-Level Agreement (SLA)** | Defines performance metrics and uptime guarantees |
+| **Memorandum of Agreement (MOA)** | Formalizes mutual responsibilities between parties |
+| **Memorandum of Understanding (MOU)** | Non-binding outline of shared intentions |
+| **Master Service Agreement (MSA)** | Governs overarching terms for multiple engagements |
+| **Work Order (WO) / Statement of Work (SOW)** | Details specific deliverables, timelines, and scope |
+| **Non-Disclosure Agreement (NDA)** | Protects confidential information shared between parties |
+| **Business Partners Agreement (BPA)** | Defines roles and responsibilities in joint ventures or collaborations |
+### 📈 Vendor Monitoring
+- Ongoing evaluation of vendor performance, compliance, and risk posture.
+- Includes periodic reviews, audits, and reassessments based on changes in scope or threat landscape.
+### 📝 Questionnaires
+- Used to gather information about vendor security practices, compliance, and risk management.
+- Often aligned with frameworks like NIST, ISO 27001, or SOC 2.
+### ⚔️ Rules of Engagement
+- Defines acceptable boundaries and procedures for testing, auditing, and communication.
+- Ensures mutual understanding and legal protection during assessments.
+### 🧠 Summary
+- Third-party risk management is essential for **protecting data, systems, and reputation**.
+- It involves **rigorous assessment, clear agreements, and continuous oversight**.
+- Effective governance includes **legal safeguards, performance metrics, and transparency**.
+- Organizations must treat vendors as **extensions of their own security ecosystem**.
