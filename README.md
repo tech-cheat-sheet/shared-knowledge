@@ -1,6 +1,7 @@
 - [My Personal Cheat Sheet (Notes Summary) Repo](#my-personal-cheat-sheet-notes-summary-repo)
   - [Comptia Security+ SY0-701](#comptia-security-sy0-701)
   - [My Recommended Learning Path (For now)](#my-recommended-learning-path-for-now)
+  - [Extra Resources](#extra-resources)
 - [CompTIA Certification Career Pathway](#comptia-certification-career-pathway)
   - [🟢 Beginner / Novice](#-beginner--novice)
   - [🔵 Intermediate](#-intermediate)
@@ -24,8 +25,9 @@ I am also planning to add contents from other CompTIA certifications:
 6. [CompTIA CySA+](https://partners.comptia.org/docs/default-source/resources/comptia-cysa-cs0-003-exam-objectives-2-0)
 7. [CompTIA Pentest+](https://partners.comptia.org/docs/default-source/resources/comptia-pentest-pt0-002-exam-objectives-(4-0))
 8. [CompTIA SecurityX (formerly CASP+)](https://lecbyo.files.cmp.optimizely.com/download/35cf5f02b73211efa0ca8e42e80f1a8f)
-
-See [CompTIA Certifications comparison table](Comptia_Notes.md)
+## Extra Resources
+- See all [CompTIA Certifications](https://www.comptia.org/en/certifications/)
+- See [CompTIA Certifications comparison table](Comptia_Notes.md)
 
 # CompTIA Certification Career Pathway
 ## 🟢 Beginner / Novice
