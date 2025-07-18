@@ -70,6 +70,15 @@
     - [📱 Mobile Device Vulnerabilities](#-mobile-device-vulnerabilities)
     - [🕳️ Zero-Day Vulnerabilities](#️-zero-day-vulnerabilities)
     - [🧠 Summary](#-summary-3)
+  - [2.4 Given a scenario, analyze indicators of malicious activity](#24-given-a-scenario-analyze-indicators-of-malicious-activity)
+    - [🦠 Malware Attacks](#-malware-attacks)
+    - [🔐 Physical Attacks](#-physical-attacks)
+    - [🌐 Network Attacks](#-network-attacks)
+    - [🧩 Application Attacks](#-application-attacks)
+    - [🔐 Cryptographic Attacks](#-cryptographic-attacks)
+    - [🔑 Password Attacks](#-password-attacks)
+    - [🚨 Indicators of Malicious Activity](#-indicators-of-malicious-activity)
+    - [🧠 Summary](#-summary-4)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -430,3 +439,70 @@ Vulnerabilities are weaknesses in systems, applications, or configurations that 
 - Vulnerabilities span across software, hardware, and human factors.
 - Regular patching, secure coding, and configuration audits are essential.
 - Threat actors often chain multiple vulnerabilities for deeper compromise.
+## 2.4 Given a scenario, analyze indicators of malicious activity
+Malicious activity can manifest across systems, networks, applications, and user behavior. Recognizing indicators helps detect, respond to, and mitigate threats effectively.
+### 🦠 Malware Attacks
+| Type         | Description |
+|--------------|-------------|
+| **Ransomware** | Encrypts data and demands payment |
+| **Trojan**     | Disguised as legitimate software to deliver payloads |
+| **Worm**       | Self-replicates across systems without user action |
+| **Spyware**    | Secretly monitors user activity |
+| **Bloatware**  | Unnecessary software that degrades performance |
+| **Virus**      | Infects files and spreads through user actions |
+| **Keylogger**  | Records keystrokes to steal credentials |
+| **Logic Bomb** | Malicious code triggered by specific conditions |
+| **Rootkit**    | Hides malicious processes and grants privileged access |
+### 🔐 Physical Attacks
+| Type         | Description |
+|--------------|-------------|
+| **Brute Force** | Repeated attempts to guess credentials |
+| **RFID Cloning** | Duplicating access cards or tags |
+| **Environmental** | Damage or disruption due to temperature, humidity, or power issues |
+### 🌐 Network Attacks
+| Type         | Description |
+|--------------|-------------|
+| **DDoS (Distributed Denial-of-Service)** | Overwhelms systems with traffic |
+| - **Amplified** | Uses vulnerable services to multiply traffic |
+| - **Reflected** | Spoofs source IP to redirect responses |
+| **DNS Attacks** | Poisoning, spoofing, or hijacking DNS queries |
+| **Wireless**    | Rogue APs, evil twins, deauthentication attacks |
+| **On-Path**     | Intercepts and alters communication between parties |
+| **Credential Replay** | Reuses stolen credentials to gain access |
+| **Malicious Code** | Injected into network traffic or endpoints |
+### 🧩 Application Attacks
+| Type               | Description |
+|--------------------|-------------|
+| **Injection**       | SQL, command, or code injection via input fields |
+| **Buffer Overflow** | Overwrites memory to execute arbitrary code |
+| **Replay**          | Reuses valid data transmissions for unauthorized access |
+| **Privilege Escalation** | Gains higher access than intended |
+| **Forgery**         | Fakes requests or data (e.g., CSRF) |
+| **Directory Traversal** | Accesses restricted directories via path manipulation |
+### 🔐 Cryptographic Attacks
+| Type         | Description |
+|--------------|-------------|
+| **Downgrade** | Forces use of weaker encryption protocols |
+| **Collision** | Two inputs produce the same hash output |
+| **Birthday**  | Exploits probability of hash collisions in large datasets |
+### 🔑 Password Attacks
+| Type         | Description |
+|--------------|-------------|
+| **Spraying**   | Tries common passwords across many accounts |
+| **Brute Force**| Tries all possible combinations for one account |
+### 🚨 Indicators of Malicious Activity
+| Indicator                  | Description |
+|----------------------------|-------------|
+| **Account Lockout**        | Multiple failed login attempts |
+| **Concurrent Session Usage** | Same account used in multiple locations simultaneously |
+| **Blocked Content**        | Access to known malicious domains or files |
+| **Impossible Travel**      | Logins from geographically distant locations in short time |
+| **Resource Consumption**   | Unusual CPU, memory, or bandwidth usage |
+| **Resource Inaccessibility** | Services or files suddenly unavailable |
+| **Out-of-Cycle Logging**   | Log entries outside normal operational hours |
+| **Published/Documented**   | Known indicators from threat intelligence feeds |
+| **Missing Logs**           | Gaps in logging may indicate tampering or compromise |
+### 🧠 Summary
+- **Indicators** are clues, not proof—correlation and context are key.
+- **Early detection** relies on monitoring, baselining, and anomaly analysis.
+- **Response** should be swift, documented, and aligned with incident handling procedures.
