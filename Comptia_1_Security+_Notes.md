@@ -79,6 +79,19 @@
     - [🔑 Password Attacks](#-password-attacks)
     - [🚨 Indicators of Malicious Activity](#-indicators-of-malicious-activity)
     - [🧠 Summary](#-summary-4)
+  - [2.5 Explain the purpose of mitigation techniques used to secure the enterprise](#25-explain-the-purpose-of-mitigation-techniques-used-to-secure-the-enterprise)
+    - [🧩 Segmentation](#-segmentation)
+    - [🔐 Access Control](#-access-control)
+    - [✅ Application Allow List](#-application-allow-list)
+    - [🧱 Isolation](#-isolation)
+    - [🔧 Patching](#-patching)
+    - [🔒 Encryption](#-encryption-1)
+    - [📈 Monitoring](#-monitoring)
+    - [🧑‍💼 Least Privilege](#-least-privilege)
+    - [⚙️ Configuration Enforcement](#️-configuration-enforcement)
+    - [🗑️ Decommissioning](#️-decommissioning)
+    - [🛠️ Hardening Techniques](#️-hardening-techniques)
+    - [🧠 Summary](#-summary-5)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -506,3 +519,56 @@ Malicious activity can manifest across systems, networks, applications, and user
 - **Indicators** are clues, not proof—correlation and context are key.
 - **Early detection** relies on monitoring, baselining, and anomaly analysis.
 - **Response** should be swift, documented, and aligned with incident handling procedures.
+## 2.5 Explain the purpose of mitigation techniques used to secure the enterprise
+Mitigation techniques are proactive and reactive measures designed to reduce risk, prevent exploitation, and maintain the confidentiality, integrity, and availability of enterprise systems.
+### 🧩 Segmentation
+- **Purpose**: Divides the network into isolated zones to limit lateral movement.
+- **Benefits**: Contains breaches, improves traffic control, and enhances security posture.
+### 🔐 Access Control
+| Technique       | Description |
+|----------------|-------------|
+| **Access Control List (ACL)** | Filters traffic based on IP, port, or protocol |
+| **Permissions**              | Defines user or group access to resources (files, systems, apps) |
+
+- **Purpose**: Ensures only authorized users and systems can access sensitive data or services.
+### ✅ Application Allow List
+- **Purpose**: Permits only approved applications to run on systems.
+- **Benefits**: Blocks unauthorized or malicious software execution.
+### 🧱 Isolation
+- **Purpose**: Separates systems or processes to prevent cross-contamination.
+- **Examples**: Sandboxing, virtual machines, quarantined networks.
+### 🔧 Patching
+- **Purpose**: Fixes known vulnerabilities in software and firmware.
+- **Benefits**: Reduces exposure to exploits and zero-day attacks.
+### 🔒 Encryption
+- **Purpose**: Protects data at rest and in transit from unauthorized access.
+- **Benefits**: Ensures confidentiality and compliance with data protection regulations.
+### 📈 Monitoring
+- **Purpose**: Continuously observes systems and networks for anomalies.
+- **Tools**: SIEM, IDS/IPS, log analysis platforms.
+- **Benefits**: Enables early detection and rapid response to threats.
+### 🧑‍💼 Least Privilege
+- **Purpose**: Grants users and systems only the access necessary to perform their tasks.
+- **Benefits**: Minimizes potential damage from compromised accounts.
+### ⚙️ Configuration Enforcement
+- **Purpose**: Ensures systems adhere to security baselines and policies.
+- **Tools**: Configuration management systems, compliance scanners.
+- **Benefits**: Prevents drift and maintains consistent security posture.
+### 🗑️ Decommissioning
+- **Purpose**: Securely retires outdated or unused systems.
+- **Steps**: Data wiping, hardware destruction, access revocation.
+- **Benefits**: Eliminates unnecessary attack surfaces.
+### 🛠️ Hardening Techniques
+| Technique                        | Description |
+|----------------------------------|-------------|
+| **Encryption**                   | Secures data and communications |
+| **Installation of Endpoint Protection** | Detects and blocks malware |
+| **Host-Based Firewall**          | Controls inbound/outbound traffic at the device level |
+| **Host-Based Intrusion Prevention System (HIPS)** | Monitors and blocks suspicious activity locally |
+| **Disabling Ports/Protocols**    | Reduces exposure by turning off unused services |
+| **Default Password Changes**     | Prevents exploitation of known credentials |
+| **Removal of Unnecessary Software** | Minimizes attack surface and resource usage |
+### 🧠 Summary
+- Mitigation techniques work best when layered and tailored to the enterprise environment.
+- Regular audits, automation, and user training enhance effectiveness.
+- A proactive approach reduces risk and improves resilience against evolving threats.
