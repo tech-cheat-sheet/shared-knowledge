@@ -15,6 +15,22 @@
     - [🧩 Application-Related Indicators](#-application-related-indicators)
     - [🧠 Other Indicators](#-other-indicators)
     - [🧠 Summary](#-summary-1)
+  - [1.3 Given a scenario, use appropriate tools or techniques to determine malicious activity](#13-given-a-scenario-use-appropriate-tools-or-techniques-to-determine-malicious-activity)
+    - [🧰 Key Tools for Investigation](#-key-tools-for-investigation)
+      - [📶 Packet Capture](#-packet-capture)
+      - [📑 Log Analysis \& Correlation](#-log-analysis--correlation)
+      - [🖥️ Endpoint Security](#️-endpoint-security)
+      - [🌐 DNS/IP Reputation](#-dnsip-reputation)
+      - [🧾 File Analysis](#-file-analysis)
+      - [🧪 Sandboxing](#-sandboxing)
+    - [🔎 Common Analytical Techniques](#-common-analytical-techniques)
+      - [🎯 Pattern Recognition](#-pattern-recognition)
+      - [🧠 Interpreting Suspicious Commands](#-interpreting-suspicious-commands)
+      - [📧 Email Analysis](#-email-analysis)
+      - [🗃️ File Analysis](#️-file-analysis)
+      - [👤 User Behavior Analysis](#-user-behavior-analysis)
+    - [🔤 Useful Scripting \& Parsing Languages](#-useful-scripting--parsing-languages)
+    - [🧠 Summary](#-summary-2)
 # CompTIA CySA+ Exam CSO-003
 # 1.0 Security Operations
 ## 1.1 Explain the importance of system and network architecture concepts in security operations
@@ -122,3 +138,69 @@ Early detection of malicious activity requires attention to:
 - Logging inconsistencies and unexplained configurations
 
 Analysts should **correlate multiple indicators**, apply **contextual intelligence**, and prioritize according to **risk and impact**.
+## 1.3 Given a scenario, use appropriate tools or techniques to determine malicious activity
+Identifying threats in real-world scenarios requires a blend of security tools, analytic techniques, and contextual understanding. Below is a categorized approach to selecting the right methods based on suspicious behaviors or alerts.
+### 🧰 Key Tools for Investigation
+#### 📶 Packet Capture
+| Tool         | Use |
+|--------------|-----|
+| **Wireshark**| Deep packet inspection; protocol decoding; traffic analysis |
+| **tcpdump**  | Lightweight CLI packet capture; ideal for scripting and automation |
+#### 📑 Log Analysis & Correlation
+| Tool         | Use |
+|--------------|-----|
+| **SIEM** (e.g., Splunk, QRadar) | Aggregates and correlates logs across platforms to detect anomalies |
+| **SOAR**      | Automates response workflows based on SIEM alerts; accelerates remediation |
+#### 🖥️ Endpoint Security
+| Tool          | Use |
+|---------------|-----|
+| **EDR** (e.g., CrowdStrike, SentinelOne) | Monitors and isolates host activity; detects suspicious files and processes |
+#### 🌐 DNS/IP Reputation
+| Tool         | Use |
+|--------------|-----|
+| **WHOIS**     | Identifies ownership and registration details of domains |
+| **AbuseIPDB** | Flags known malicious IP addresses based on community reports |
+#### 🧾 File Analysis
+| Tool         | Use |
+|--------------|-----|
+| **Strings**   | Extracts readable ASCII from binaries; useful for identifying embedded commands |
+| **VirusTotal**| Aggregates AV scans and behavioral analysis for files and URLs |
+#### 🧪 Sandboxing
+| Tool         | Use |
+|--------------|-----|
+| **Joe Sandbox** | Executes suspicious files in isolated environment for behavior tracking |
+| **Cuckoo Sandbox** | Open-source alternative for malware detonation and dynamic analysis |
+### 🔎 Common Analytical Techniques
+#### 🎯 Pattern Recognition
+- Detect signs of **command-and-control (C2)** behavior: regular beaconing, encrypted outbound traffic, suspicious DNS requests.
+#### 🧠 Interpreting Suspicious Commands
+- Examine CLI or PowerShell history for encoded payloads, lateral movement scripts, or privilege escalation attempts.
+#### 📧 Email Analysis
+| Element       | Description |
+|---------------|-------------|
+| **Header**     | Reveals source IP, mail server path, timestamp anomalies |
+| **Impersonation**| Misspelled domains, name spoofing |
+| **DKIM / DMARC / SPF** | Verifies sender authenticity and mitigates spoofing |
+| **Embedded Links** | Check for obfuscated URLs or redirection chains leading to phishing sites |
+#### 🗃️ File Analysis
+- Use **hashing** algorithms (SHA256, MD5) to validate integrity, identify known malware, and group artifacts.
+#### 👤 User Behavior Analysis
+| Indicator               | Description |
+|--------------------------|-------------|
+| **Abnormal Account Activity** | Sudden permission changes, after-hours access, disabled MFA logs |
+| **Impossible Travel**        | Login attempts from geographically distant locations within short timeframes |
+### 🔤 Useful Scripting & Parsing Languages
+| Language/Format | Use Case |
+|------------------|----------|
+| **JSON / XML**   | Parsing logs, SIEM data feeds, config files |
+| **Python**       | Writing detection logic, automation, API integration |
+| **PowerShell**   | Host-level script analysis, command history review |
+| **Shell Script** | Linux-based log handling, automation tasks |
+| **Regular Expressions** | Pattern matching in log searches, email parsing, malicious URLs detection |
+### 🧠 Summary
+Malicious activity often hides in plain sight—within scripts, logs, traffic, and behaviors. A robust investigation combines:
+- **Active capture and analysis tools**
+- **Contextual anomaly detection**
+- **Correlated behavioral insights**
+
+Security teams must maintain a toolkit that's both broad and deep—capable of tracing threats across hosts, networks, and applications.
