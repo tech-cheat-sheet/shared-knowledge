@@ -109,6 +109,15 @@
     - [🔧 Embedded Systems](#-embedded-systems)
     - [🛠️ High Availability](#️-high-availability)
     - [📊 Key Considerations Across Architectures](#-key-considerations-across-architectures)
+  - [3.2 Given a scenario, apply security principles to secure enterprise infrastructure](#32-given-a-scenario-apply-security-principles-to-secure-enterprise-infrastructure)
+    - [🏗️ Infrastructure Considerations](#️-infrastructure-considerations)
+    - [⚙️ Device Attributes](#️-device-attributes)
+    - [🧱 Network Appliances](#-network-appliances)
+    - [🔌 Port Security](#-port-security)
+    - [🔥 Firewall Types](#-firewall-types)
+    - [🔐 Secure Communication and Access](#-secure-communication-and-access)
+    - [✅ Selection of Effective Controls](#-selection-of-effective-controls)
+    - [🧠 Summary](#-summary-6)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -657,3 +666,66 @@ Different architecture models introduce unique security challenges and benefits.
 | **Inability to Patch** | Legacy or embedded systems may require compensating controls |
 | **Power**              | Power loss can disrupt security systems and logging |
 | **Compute**            | Resource constraints may limit encryption and monitoring capabilities |
+## 3.2 Given a scenario, apply security principles to secure enterprise infrastructure
+Securing enterprise infrastructure requires strategic placement of devices, segmentation of networks, and implementation of layered controls to reduce risk and maintain operational integrity.
+### 🏗️ Infrastructure Considerations
+| Element            | Description |
+|--------------------|-------------|
+| **Device Placement** | Positioning devices to optimize performance and security (e.g., DMZ for public-facing servers) |
+| **Security Zones**   | Segregating networks by trust level (e.g., internal, external, DMZ) |
+| **Attack Surface**   | Minimizing exposed services, ports, and interfaces |
+| **Connectivity**     | Ensuring secure and controlled communication between zones |
+| **Failure Modes**    | Behavior of systems during failure |
+| - **Fail-Open**      | Continues operation without restriction (less secure) |
+| - **Fail-Closed**    | Shuts down access to prevent compromise (more secure) |
+### ⚙️ Device Attributes
+| Attribute         | Description |
+|-------------------|-------------|
+| **Active**         | Actively processes and filters traffic (e.g., firewall) |
+| **Passive**        | Monitors traffic without altering flow (e.g., IDS) |
+| **Inline**         | Positioned directly in traffic path; can block threats |
+| **Tap/Monitor**    | Observes traffic via mirrored ports or taps; used for analysis |
+### 🧱 Network Appliances
+| Appliance         | Purpose |
+|-------------------|---------|
+| **Jump Server**    | Secure intermediary for accessing sensitive systems |
+| **Proxy Server**   | Mediates requests between clients and external servers |
+| **IPS/IDS**        | Detects and/or blocks malicious traffic |
+| **Load Balancer**  | Distributes traffic across multiple servers for availability |
+| **Sensors**        | Collects data for monitoring and threat detection |
+### 🔌 Port Security
+| Protocol          | Description |
+|-------------------|-------------|
+| **802.1X**         | Port-based network access control using authentication |
+| **EAP (Extensible Authentication Protocol)** | Framework for various authentication methods over 802.1X |
+### 🔥 Firewall Types
+| Type                      | Description |
+|---------------------------|-------------|
+| **Web Application Firewall (WAF)** | Protects web apps from attacks like XSS and SQLi |
+| **Unified Threat Management (UTM)** | Combines multiple security functions (e.g., firewall, antivirus, VPN) |
+| **Next-Generation Firewall (NGFW)** | Deep packet inspection, application awareness, and threat intelligence |
+| **Layer 4/Layer 7**        | Filters traffic based on transport (L4) or application (L7) layers |
+### 🔐 Secure Communication and Access
+| Method                    | Description |
+|---------------------------|-------------|
+| **VPN (Virtual Private Network)** | Encrypts traffic between remote users and internal network |
+| **Remote Access**         | Secure connection for offsite users |
+| **Tunneling Protocols**   | Encapsulates data for secure transmission |
+| - **TLS (Transport Layer Security)** | Encrypts application-level traffic (e.g., HTTPS) |
+| - **IPSec (Internet Protocol Security)** | Encrypts network-level traffic |
+| **SD-WAN (Software-Defined WAN)** | Secure, flexible WAN routing with centralized control |
+| **SASE (Secure Access Service Edge)** | Combines networking and security functions in the cloud |
+### ✅ Selection of Effective Controls
+| Principle                | Application |
+|--------------------------|-------------|
+| **Least Privilege**       | Restrict access to only what's necessary |
+| **Defense in Depth**      | Layered controls across endpoints, networks, and applications |
+| **Segmentation**          | Isolate sensitive systems to limit exposure |
+| **Monitoring and Logging**| Enable visibility and forensic capabilities |
+| **Patch Management**      | Regular updates to fix vulnerabilities |
+| **Encryption**            | Protect data in transit and at rest |
+| **Access Control**        | Enforce identity verification and role-based permissions |
+### 🧠 Summary
+- Security must be embedded at every layer—from physical placement to cloud access.
+- Effective controls are context-dependent and should align with business needs and risk tolerance.
+- Continuous monitoring, adaptive policies, and secure design principles are key to resilient infrastructure.
