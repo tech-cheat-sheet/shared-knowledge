@@ -171,6 +171,20 @@
       - [🛡️ Response Techniques](#️-response-techniques)
     - [🧰 Security Monitoring Tools](#-security-monitoring-tools)
     - [🧠 Summary](#-summary-12)
+  - [4.5 Given a scenario, modify enterprise capabilities to enhance security](#45-given-a-scenario-modify-enterprise-capabilities-to-enhance-security)
+    - [🔥 Firewall Enhancements](#-firewall-enhancements)
+    - [🛡️ IDS/IPS Tuning](#️-idsips-tuning)
+    - [🌐 Web Filtering](#-web-filtering)
+    - [🖥️ Operating System Security](#️-operating-system-security)
+    - [🔐 Secure Protocol Implementation](#-secure-protocol-implementation)
+    - [🌍 DNS Filtering](#-dns-filtering)
+    - [📧 Email Security](#-email-security)
+    - [📁 File Integrity Monitoring](#-file-integrity-monitoring)
+    - [🛑 Data Loss Prevention (DLP)](#-data-loss-prevention-dlp)
+    - [🔌 Network Access Control (NAC)](#-network-access-control-nac)
+    - [🖥️ Endpoint Detection and Response (EDR) / Extended Detection and Response (XDR)](#️-endpoint-detection-and-response-edr--extended-detection-and-response-xdr)
+    - [👤 User Behavior Analytics (UBA)](#-user-behavior-analytics-uba)
+    - [🧠 Summary](#-summary-13)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -1086,3 +1100,68 @@ Security monitoring is essential for detecting threats, maintaining visibility, 
 - **Alerting and response** are critical for timely threat mitigation.
 - **Tools** must be integrated and tuned to reduce noise and improve visibility.
 - **Archiving and reporting** support compliance, auditing, and incident investigation.
+## 4.5 Given a scenario, modify enterprise capabilities to enhance security
+Modifying enterprise systems and configurations strengthens defenses against evolving threats. This involves tuning firewalls, deploying secure protocols, and integrating advanced detection and response tools.
+### 🔥 Firewall Enhancements
+| Feature              | Description |
+|----------------------|-------------|
+| **Rules**            | Define traffic filtering based on IP, port, and protocol |
+| **Access Lists**     | Control who can access specific resources |
+| **Ports/Protocols**  | Close unused ports and restrict risky protocols |
+| **Screened Subnets** | Isolate sensitive zones (e.g., DMZ) from internal networks |
+### 🛡️ IDS/IPS Tuning
+| Feature     | Description |
+|-------------|-------------|
+| **Trends**   | Analyze historical data to identify patterns and anomalies |
+| **Signatures** | Update and customize to detect known threats and reduce false positives |
+### 🌐 Web Filtering
+| Technique              | Description |
+|------------------------|-------------|
+| **Agent-Based**         | Installed on endpoints for local filtering |
+| **Centralized Proxy**   | Routes traffic through a secure gateway for inspection |
+| **URL Scanning**        | Checks links for malicious content or phishing |
+| **Content Categorization** | Blocks access to risky or non-business sites |
+| **Block Rules**         | Manually defined restrictions for specific domains or keywords |
+| **Reputation Filtering**| Uses threat intelligence to block known malicious sites |
+### 🖥️ Operating System Security
+| Feature     | Description |
+|-------------|-------------|
+| **Group Policy (Windows)** | Enforces security settings across users and devices |
+| **SELinux (Linux)**        | Mandatory access control for enforcing strict policies |
+### 🔐 Secure Protocol Implementation
+| Element         | Description |
+|-----------------|-------------|
+| **Protocol Selection** | Use secure alternatives (e.g., HTTPS over HTTP, SFTP over FTP) |
+| **Port Selection**     | Avoid default ports when possible to reduce scanning risk |
+| **Transport Method**   | Use encrypted channels (e.g., TLS, IPSec) for data transmission |
+### 🌍 DNS Filtering
+- Blocks access to malicious domains at the DNS resolution level.
+- Prevents phishing, malware, and command-and-control callbacks.
+### 📧 Email Security
+| Standard/Tool | Description |
+|----------------|-------------|
+| **DMARC**      | Validates sender identity and enforces email policies |
+| **DKIM**       | Uses cryptographic signatures to verify message integrity |
+| **SPF**        | Specifies authorized mail servers for a domain |
+| **Gateway**    | Filters spam, malware, and phishing at the perimeter |
+### 📁 File Integrity Monitoring
+- Detects unauthorized changes to critical files.
+- Alerts on tampering, deletion, or unexpected modifications.
+### 🛑 Data Loss Prevention (DLP)
+- Monitors and controls data movement to prevent leaks.
+- Enforces policies on sensitive data usage, storage, and transmission.
+### 🔌 Network Access Control (NAC)
+- Restricts network access based on device posture and identity.
+- Enforces compliance before granting connectivity.
+### 🖥️ Endpoint Detection and Response (EDR) / Extended Detection and Response (XDR)
+| Tool | Description |
+|------|-------------|
+| **EDR** | Monitors and responds to threats on endpoints |
+| **XDR** | Integrates data across endpoints, networks, and cloud for unified detection and response |
+### 👤 User Behavior Analytics (UBA)
+- Uses machine learning to detect anomalies in user activity.
+- Identifies insider threats, compromised accounts, and risky behavior.
+### 🧠 Summary
+- Enhancing security requires **continuous tuning** and **integration** of tools across the enterprise.
+- **Layered defenses** and **behavioral analysis** improve detection and reduce response time.
+- **Secure configurations**, **protocols**, and **access controls** form the foundation of a resilient architecture.
