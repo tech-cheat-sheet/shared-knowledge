@@ -43,6 +43,20 @@
     - [🧬 Attributes of Threat Actors](#-attributes-of-threat-actors)
     - [🎯 Motivations Behind Attacks](#-motivations-behind-attacks)
     - [🧠 Summary](#-summary-1)
+  - [2.2 Explain common threat vectors and attack surfaces](#22-explain-common-threat-vectors-and-attack-surfaces)
+    - [✉️ Message-Based Vectors](#️-message-based-vectors)
+    - [🖼️ Image-Based Vectors](#️-image-based-vectors)
+    - [📁 File-Based Vectors](#-file-based-vectors)
+    - [📞 Voice Call Vectors](#-voice-call-vectors)
+    - [💾 Removable Device Vectors](#-removable-device-vectors)
+    - [🧱 Vulnerable Software](#-vulnerable-software)
+    - [🧟 Unsupported Systems and Applications](#-unsupported-systems-and-applications)
+    - [🌐 Unsecure Networks](#-unsecure-networks)
+    - [🔓 Open Service Ports](#-open-service-ports)
+    - [🔑 Default Credentials](#-default-credentials)
+    - [🔗 Supply Chain Vectors](#-supply-chain-vectors)
+    - [🧠 Human Vectors / Social Engineering](#-human-vectors--social-engineering)
+    - [🧠 Summary](#-summary-2)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -283,3 +297,66 @@ Understanding threat actors—their capabilities, resources, and motivations—i
 - **Insider threats and shadow IT** pose unique risks due to their internal access.
 - **Hacktivists and ethical hackers** may not seek financial gain but can still cause disruption.
 - Understanding the **motivation** helps tailor defenses and incident response strategies.
+## 2.2 Explain common threat vectors and attack surfaces
+Threat vectors are pathways attackers use to infiltrate systems, while attack surfaces are the sum of all possible entry points. Understanding both is essential for reducing exposure and strengthening defenses.
+### ✉️ Message-Based Vectors
+| Medium         | Description | Risk |
+|----------------|-------------|------|
+| **Email**      | Used for phishing, malware delivery, and scams | High |
+| **SMS**        | Smishing attacks via text messages | Moderate |
+| **Instant Messaging (IM)** | Social engineering via chat platforms | Moderate |
+### 🖼️ Image-Based Vectors
+- **Description**: Malicious code embedded in image files (e.g., steganography).
+- **Risk**: Can bypass filters and exploit vulnerabilities in image processing software.
+### 📁 File-Based Vectors
+- **Description**: Malware hidden in documents, executables, or compressed files.
+- **Risk**: Common in phishing and drive-by download attacks.
+### 📞 Voice Call Vectors
+- **Description**: Vishing (voice phishing) to trick users into revealing sensitive info.
+- **Risk**: Exploits trust and urgency over phone calls.
+### 💾 Removable Device Vectors
+- **Description**: USB drives or external media used to deliver malware.
+- **Risk**: Bypasses network defenses; often used in insider or physical attacks.
+### 🧱 Vulnerable Software
+| Type           | Description | Risk |
+|----------------|-------------|------|
+| **Client-Based** | Requires installation; may have exploitable flaws | High |
+| **Agentless**   | Web-based or remote access tools; may lack robust security | Moderate |
+### 🧟 Unsupported Systems and Applications
+- **Description**: Legacy systems no longer receiving updates or patches.
+- **Risk**: High vulnerability to known exploits.
+### 🌐 Unsecure Networks
+| Type         | Description | Risk |
+|--------------|-------------|------|
+| **Wireless** | Susceptible to eavesdropping, rogue APs | High |
+| **Wired**    | Vulnerable to physical tapping and MAC flooding | Moderate |
+| **Bluetooth**| Exploitable via proximity-based attacks | Moderate |
+### 🔓 Open Service Ports
+- **Description**: Unused or misconfigured ports left open.
+- **Risk**: Entry points for scanning, exploitation, and unauthorized access.
+### 🔑 Default Credentials
+- **Description**: Factory-set usernames/passwords not changed.
+- **Risk**: Easily exploited by attackers using known credentials.
+### 🔗 Supply Chain Vectors
+| Entity                    | Description | Risk |
+|---------------------------|-------------|------|
+| **Managed Service Providers (MSPs)** | Third-party IT support | High |
+| **Vendors**               | Software or hardware providers | Moderate |
+| **Suppliers**             | External partners with access | Moderate |
+### 🧠 Human Vectors / Social Engineering
+| Technique                  | Description |
+|----------------------------|-------------|
+| **Phishing**               | Fraudulent emails to steal credentials |
+| **Vishing**                | Voice-based phishing |
+| **Smishing**               | SMS-based phishing |
+| **Misinformation/Disinformation** | False info to manipulate behavior |
+| **Impersonation**          | Pretending to be someone trusted |
+| **Business Email Compromise (BEC)** | Hijacking or spoofing executive emails |
+| **Pretexting**             | Creating a fabricated scenario to gain trust |
+| **Watering Hole**          | Compromising websites frequented by targets |
+| **Brand Impersonation**    | Mimicking trusted brands to deceive users |
+| **Typosquatting**          | Registering misspelled domains to trick users |
+### 🧠 Summary
+- **Attack surfaces** grow with complexity, connectivity, and user behavior.
+- **Threat vectors** exploit both technical and human vulnerabilities.
+- Mitigation requires layered defenses, user education, and continuous monitoring.
