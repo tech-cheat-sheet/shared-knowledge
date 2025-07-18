@@ -67,6 +67,14 @@
     - [🧰 Multipurpose Frameworks](#-multipurpose-frameworks)
     - [☁️ Cloud Infrastructure Scanners](#️-cloud-infrastructure-scanners)
     - [🧠 Summary: Output Interpretation Strategy](#-summary-output-interpretation-strategy)
+  - [2.3 Given a scenario, analyze data to prioritize vulnerabilities](#23-given-a-scenario-analyze-data-to-prioritize-vulnerabilities)
+    - [🧮 CVSS Interpretation](#-cvss-interpretation)
+    - [✔️ Validation of Findings](#️-validation-of-findings)
+    - [🌍 Context Awareness](#-context-awareness)
+    - [💣 Exploitability \& Weaponization](#-exploitability--weaponization)
+    - [💼 Asset Value](#-asset-value)
+    - [🕳️ Zero-Day Vulnerabilities](#️-zero-day-vulnerabilities)
+    - [🧠 Summary](#-summary-6)
 # CompTIA CySA+ Exam CSO-003
 # 1.0 Security Operations
 ## 1.1 Explain the importance of system and network architecture concepts in security operations
@@ -467,3 +475,72 @@ Effective security assessments rely on interpreting tool output to identify expl
 - **Validate** using manual checks or debuggers
 - **Prioritize** fixes based on business impact and regulatory need
 - **Document** affected systems, risk level, and resolution path
+## 2.3 Given a scenario, analyze data to prioritize vulnerabilities
+Analyzing and triaging vulnerabilities requires an understanding of risk context, system exposure, and exploitability. The goal is to prioritize remediation based on impact, likelihood, and organizational relevance.
+### 🧮 CVSS Interpretation
+The Common Vulnerability Scoring System (CVSS) helps quantify vulnerability severity. Key vectors include:
+
+| Vector              | Description |
+|---------------------|-------------|
+| **Attack Vector (AV)**      | Exploit scope: local, adjacent, network, or physical |
+| **Attack Complexity (AC)**  | Required conditions (low vs. high complexity) |
+| **Privileges Required (PR)**| Level of access needed to exploit |
+| **User Interaction (UI)**   | Whether user involvement is necessary |
+| **Scope (S)**               | Whether vulnerability affects additional system components |
+| **Impact Metrics**          | Measures of compromise: |
+| - **Confidentiality (C)**   | Data exposure |
+| - **Integrity (I)**         | Data tampering |
+| - **Availability (A)**      | Denial of service or system unresponsiveness |
+
+- CVSS scores range from 0.0 (low) to 10.0 (critical). Prioritize higher scores **with low complexity and high impact**.
+### ✔️ Validation of Findings
+| Type                    | Importance |
+|-------------------------|------------|
+| **True Positive**        | Confirmed vulnerability; requires action |
+| **False Positive**       | Inaccurate detection; avoid wasting resources |
+| **True Negative**        | Accurate no-vulnerability result |
+| **False Negative**       | Missed threat; critical blind spot |
+
+- Validation ensures scanning reliability and prevents misplaced prioritization.
+### 🌍 Context Awareness
+| Context     | Explanation |
+|-------------|-------------|
+| **Internal**| Vulnerabilities affecting private/internal networks; generally less exposed but high business impact |
+| **External**| Internet-facing issues; higher risk due to exposure |
+| **Isolated**| Systems in sandboxed or segmented networks; potential lower priority unless connected to critical paths |
+
+- Vulnerabilities in **high-value internal assets** (e.g., finance, identity systems) may outrank externally exposed but low-impact ones.
+### 💣 Exploitability & Weaponization
+- Determine if the vulnerability has:
+  - Known exploit kits
+  - Active use in malware campaigns
+  - Public proof-of-concept (PoC)
+- Resources: Exploit DB, MITRE, Metasploit Modules
+
+- Vulnerabilities with **active exploitation** should take precedence even with a medium CVSS score.
+### 💼 Asset Value
+| Asset Type           | Prioritization Influence |
+|-----------------------|--------------------------|
+| **High-Value Assets** | Sensitive data, regulated systems, mission-critical apps |
+| **Low-Value Assets**  | Non-production, testing environments, legacy systems |
+
+- Even a low-severity vulnerability can pose risk if it's on a high-value asset.
+### 🕳️ Zero-Day Vulnerabilities
+- Vulnerabilities with no official patch or mitigation.
+- Often **prioritized immediately** due to:
+  - Unknown behavior
+  - High risk of exploitation
+  - Lack of vendor support
+
+- Organizations should:
+  - Monitor threat feeds
+  - Isolate affected systems
+  - Apply virtual patching (WAF rules, firewall tweaks)
+### 🧠 Summary
+Effective prioritization combines:
+- **Technical scoring (CVSS)**
+- **Operational context (asset exposure & value)**
+- **Real-world exploitability**
+- **Validation of scan accuracy**
+
+A well-prioritized list leads to efficient patching, minimized risk, and maximum business continuity.
