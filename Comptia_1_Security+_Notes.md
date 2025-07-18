@@ -118,6 +118,14 @@
     - [🔐 Secure Communication and Access](#-secure-communication-and-access)
     - [✅ Selection of Effective Controls](#-selection-of-effective-controls)
     - [🧠 Summary](#-summary-6)
+  - [3.3 Compare and contrast concepts and strategies to protect data](#33-compare-and-contrast-concepts-and-strategies-to-protect-data)
+    - [📂 Data Types](#-data-types)
+    - [🏷️ Data Classifications](#️-data-classifications)
+    - [📊 General Data Considerations](#-general-data-considerations)
+      - [📌 Data States](#-data-states)
+      - [🌍 Data Sovereignty \& Geolocation](#-data-sovereignty--geolocation)
+    - [🛠️ Methods to Secure Data](#️-methods-to-secure-data)
+    - [🧠 Summary](#-summary-7)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -729,3 +737,50 @@ Securing enterprise infrastructure requires strategic placement of devices, segm
 - Security must be embedded at every layer—from physical placement to cloud access.
 - Effective controls are context-dependent and should align with business needs and risk tolerance.
 - Continuous monitoring, adaptive policies, and secure design principles are key to resilient infrastructure.
+## 3.3 Compare and contrast concepts and strategies to protect data
+Protecting data requires understanding its type, classification, state, and applying appropriate security controls. These strategies help ensure confidentiality, integrity, and availability while meeting legal and business requirements.
+### 📂 Data Types
+| Type                  | Description | Protection Needs |
+|-----------------------|-------------|------------------|
+| **Regulated**         | Governed by laws (e.g., HIPAA, GDPR) | High compliance and encryption |
+| **Trade Secret**      | Proprietary business knowledge | Strong access control and monitoring |
+| **Intellectual Property** | Patents, designs, source code | Legal protection and secure storage |
+| **Legal Information** | Contracts, case files | Confidentiality and integrity |
+| **Financial Information** | Banking, payroll, transactions | Encryption and fraud detection |
+| **Human-Readable**    | Easily interpreted by users (e.g., text, reports) | Masking and access control |
+| **Non-Human-Readable**| Machine data (e.g., logs, binaries) | Integrity and secure parsing |
+### 🏷️ Data Classifications
+| Classification | Description | Example |
+|----------------|-------------|---------|
+| **Sensitive**   | Could cause harm if exposed | PII, credentials |
+| **Confidential**| Internal use only | Business plans |
+| **Public**      | No harm if disclosed | Marketing materials |
+| **Restricted**  | Limited access due to risk | Source code |
+| **Private**     | Personal or internal data | Employee records |
+| **Critical**    | Essential to operations | Financial systems, backups |
+### 📊 General Data Considerations
+#### 📌 Data States
+| State           | Description | Protection Strategy |
+|-----------------|-------------|---------------------|
+| **Data at Rest** | Stored data (e.g., databases, files) | Full-disk encryption, access control |
+| **Data in Transit** | Moving across networks | TLS, VPN, IPSec |
+| **Data in Use** | Actively processed by applications | Memory protection, secure coding |
+#### 🌍 Data Sovereignty & Geolocation
+- **Data Sovereignty**: Data must comply with laws of the country where it's stored.
+- **Geolocation**: Physical location affects latency, compliance, and risk exposure.
+### 🛠️ Methods to Secure Data
+| Method               | Description |
+|----------------------|-------------|
+| **Geographic Restrictions** | Limits access based on location to enforce compliance |
+| **Encryption**            | Converts data into unreadable format without a key |
+| **Hashing**               | One-way transformation for integrity checks |
+| **Masking**               | Obscures data for testing or display |
+| **Tokenization**          | Replaces sensitive data with non-sensitive tokens |
+| **Obfuscation**           | Makes data harder to interpret (e.g., code obfuscation) |
+| **Segmentation**          | Isolates data by type or sensitivity level |
+| **Permission Restrictions** | Limits access based on roles and policies |
+### 🧠 Summary
+- **Data protection** must align with its classification, type, and state.
+- **Layered strategies** such as encryption, access control, and segmentation enhance security.
+- **Compliance** with legal and geographic requirements is essential for regulated data.
+- **Visibility and control** over data flow and access are key to preventing breaches.
