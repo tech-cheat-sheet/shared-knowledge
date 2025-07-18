@@ -137,6 +137,21 @@
     - [💾 Backup Strategies](#-backup-strategies)
     - [⚡ Power Resilience](#-power-resilience)
     - [🧠 Summary](#-summary-8)
+- [4.0 Security Operations](#40-security-operations)
+  - [4.1 Given a scenario, apply common security techniques to computing resources](#41-given-a-scenario-apply-common-security-techniques-to-computing-resources)
+    - [📏 Secure Baselines](#-secure-baselines)
+    - [🔧 Hardening Targets](#-hardening-targets)
+    - [📡 Wireless Devices](#-wireless-devices)
+      - [🏗️ Installation Considerations](#️-installation-considerations)
+    - [📱 Mobile Solutions](#-mobile-solutions)
+      - [🔐 Mobile Device Management (MDM)](#-mobile-device-management-mdm)
+      - [📦 Deployment Models](#-deployment-models)
+      - [🔌 Connection Methods](#-connection-methods)
+    - [🔐 Wireless Security Settings](#-wireless-security-settings)
+    - [🧪 Application Security](#-application-security)
+    - [🧱 Sandboxing](#-sandboxing)
+    - [📈 Monitoring](#-monitoring-1)
+    - [🧠 Summary](#-summary-9)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -851,3 +866,72 @@ Resilience and recovery ensure that systems can withstand disruptions and restor
 - **Recovery** enables rapid restoration of services and data.
 - **Testing and planning** are critical to validate readiness and reduce impact.
 - **Layered strategies** across infrastructure, cloud, and personnel provide robust protection.
+# 4.0 Security Operations
+## 4.1 Given a scenario, apply common security techniques to computing resources
+Securing computing resources involves establishing secure configurations, hardening devices, managing mobile and wireless environments, and enforcing application-level protections.
+### 📏 Secure Baselines
+| Phase       | Description |
+|-------------|-------------|
+| **Establish** | Define minimum security configurations for systems (e.g., OS settings, services) |
+| **Deploy**    | Apply baselines during provisioning or updates |
+| **Maintain**  | Continuously monitor and enforce baseline compliance through automation and audits |
+### 🔧 Hardening Targets
+| Resource             | Security Focus |
+|----------------------|----------------|
+| **Mobile Devices**    | MDM, encryption, app control |
+| **Workstations**      | Patch management, endpoint protection |
+| **Switches**          | Disable unused ports, enable port security |
+| **Routers**           | Secure routing protocols, ACLs, firmware updates |
+| **Cloud Infrastructure** | IAM, encryption, secure APIs |
+| **Servers**           | Role-based access, logging, patching |
+| **ICS/SCADA**         | Network segmentation, protocol filtering |
+| **Embedded Systems**  | Minimal services, secure boot |
+| **RTOS**              | Real-time constraints with secure coding |
+| **IoT Devices**       | Firmware updates, network isolation, secure onboarding |
+### 📡 Wireless Devices
+#### 🏗️ Installation Considerations
+| Technique     | Purpose |
+|---------------|---------|
+| **Site Surveys** | Identify optimal AP placement and coverage gaps |
+| **Heat Maps**    | Visualize signal strength and interference zones |
+### 📱 Mobile Solutions
+#### 🔐 Mobile Device Management (MDM)
+- Enforces policies, remote wipe, app control, and encryption.
+#### 📦 Deployment Models
+| Model       | Description |
+|-------------|-------------|
+| **BYOD**     | Personal device used for work; high flexibility, high risk |
+| **COPE**     | Company-owned device with personal use allowed; balanced control |
+| **CYOD**     | User selects from approved devices; moderate flexibility and control |
+#### 🔌 Connection Methods
+| Method     | Security Consideration |
+|------------|------------------------|
+| **Cellular** | Encrypted by carrier; less control |
+| **Wi-Fi**    | Requires WPA3, segmentation |
+| **Bluetooth**| Vulnerable to proximity attacks; disable when unused |
+### 🔐 Wireless Security Settings
+| Setting                  | Description |
+|--------------------------|-------------|
+| **WPA3**                 | Strong encryption and protection against brute force |
+| **AAA/RADIUS**           | Centralized authentication for wireless access |
+| **Cryptographic Protocols** | TLS, IPSec for secure communication |
+| **Authentication Protocols** | EAP variants (e.g., EAP-TLS) for secure identity verification |
+### 🧪 Application Security
+| Technique          | Purpose |
+|--------------------|---------|
+| **Input Validation** | Prevents injection and malformed data |
+| **Secure Cookies**   | Protects session data from theft |
+| **Static Code Analysis** | Identifies vulnerabilities in source code before deployment |
+| **Code Signing**     | Verifies integrity and origin of software |
+### 🧱 Sandboxing
+- Isolates applications or processes to prevent system-wide impact.
+- Used in browsers, mobile apps, and malware analysis environments.
+### 📈 Monitoring
+- Continuous observation of systems, applications, and networks.
+- Enables detection of anomalies, policy violations, and threats.
+- Tools include SIEM, endpoint detection and response (EDR), and network sensors.
+### 🧠 Summary
+- Security must be tailored to the resource type and usage context.
+- Baselines and hardening reduce attack surface.
+- Wireless and mobile environments require specialized controls.
+- Application security and monitoring provide defense at runtime and development stages.
