@@ -9,6 +9,12 @@
     - [🔐 Encryption and Secure Communications](#-encryption-and-secure-communications)
     - [🛡️ Sensitive Data Protection](#️-sensitive-data-protection)
     - [🧠 Summary](#-summary)
+  - [1.2 Given a scenario, analyze indicators of potentially malicious activity](#12-given-a-scenario-analyze-indicators-of-potentially-malicious-activity)
+    - [🌐 Network-Related Indicators](#-network-related-indicators)
+    - [💻 Host-Related Indicators](#-host-related-indicators)
+    - [🧩 Application-Related Indicators](#-application-related-indicators)
+    - [🧠 Other Indicators](#-other-indicators)
+    - [🧠 Summary](#-summary-1)
 # CompTIA CySA+ Exam CSO-003
 # 1.0 Security Operations
 ## 1.1 Explain the importance of system and network architecture concepts in security operations
@@ -68,3 +74,51 @@ Well-architected systems and networks form the backbone of effective security op
 - From **logs to identity**, each layer introduces controls and risks.
 - Strategic architecture choices—like **Zero Trust** and **SDN**—enable scalable, policy-driven security.
 - Proper integration of OS, infrastructure, and network elements is essential for robust threat defense.
+## 1.2 Given a scenario, analyze indicators of potentially malicious activity
+Recognizing suspicious patterns is critical for detecting cyberattacks early. These indicators help analysts triage alerts, initiate investigation, and coordinate response actions.
+### 🌐 Network-Related Indicators
+| Indicator                    | Significance |
+|------------------------------|--------------|
+| **Bandwidth Consumption**     | Excessive usage may signal data exfiltration or DoS attempts |
+| **Beaconing**                 | Periodic traffic to external IPs may indicate C2 (Command & Control) behavior |
+| **Irregular Peer-to-Peer Communication** | Can be used to bypass centralized monitoring and spread malware |
+| **Rogue Devices on Network**  | Unauthenticated endpoints pose serious risk to network hygiene |
+| **Scans/Sweeps**              | Repeated probing can signify reconnaissance or vulnerability scanning |
+| **Unusual Traffic Spikes**    | May align with botnet activation, ransomware deployment, or service abuse |
+| **Activity on Unexpected Ports** | Indicative of protocol tunneling, port hijacking, or policy violations |
+### 💻 Host-Related Indicators
+| Indicator                    | Significance |
+|------------------------------|--------------|
+| **Processor Consumption**     | Unusual CPU spikes may result from mining software or malware execution |
+| **Memory Consumption**        | Memory leaks or spikes may accompany malicious processes |
+| **Drive Capacity Consumption**| Full storage can hide logs or result from data staging for exfiltration |
+| **Unauthorized Software**     | Unapproved apps could be remote tools or malicious payloads |
+| **Malicious Processes**       | Unknown or obfuscated processes often operate in background silently |
+| **Unauthorized Changes**      | Config tampering may reduce system security or enable persistence |
+| **Unauthorized Privileges**   | Privilege escalation attempts for lateral movement or control |
+| **Data Exfiltration**         | Evidence of outgoing sensitive data beyond expected patterns |
+| **Abnormal OS Process Behavior** | E.g., `svchost.exe` spawning unexpected network connections |
+| **File System Changes**       | New or modified files (especially executables or scripts) may signal compromise |
+| **Registry Anomalies**        | Registry manipulation can embed persistence mechanisms or disable security tools |
+| **Unauthorized Scheduled Tasks** | Can enable time-triggered malicious activity (e.g., script execution) |
+### 🧩 Application-Related Indicators
+| Indicator                    | Description |
+|------------------------------|-------------|
+| **Anomalous Activity**        | E.g., excessive logins, API misuse, account hopping |
+| **Introduction of New Accounts** | May indicate an attacker creating persistence pathways |
+| **Unexpected Output**         | Apps generating corrupted files, strange logs, or unexpected errors |
+| **Unexpected Outbound Communication** | Applications transmitting data to unknown or foreign hosts |
+| **Service Interruption**      | May result from targeted DoS or internal sabotage |
+| **Application Logs**          | Reveal unauthorized access, errors, or behavior anomalies during compromise |
+### 🧠 Other Indicators
+| Indicator                    | Analysis |
+|------------------------------|----------|
+| **Social Engineering Attacks** | Phishing, pretexting, baiting — often precursors to deeper system infiltration |
+| **Obfuscated Links**           | Masked URLs may redirect users to malicious payloads or phishing sites |
+### 🧠 Summary
+Early detection of malicious activity requires attention to:
+- Behavioral anomalies across endpoints and network flows
+- Discrepancies between expected and observed resource usage
+- Logging inconsistencies and unexplained configurations
+
+Analysts should **correlate multiple indicators**, apply **contextual intelligence**, and prioritize according to **risk and impact**.
