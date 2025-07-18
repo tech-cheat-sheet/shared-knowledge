@@ -265,6 +265,13 @@
       - [🧠 Testing Environments](#-testing-environments)
       - [🔍 Reconnaissance Techniques](#-reconnaissance-techniques)
     - [🧠 Summary](#-summary-22)
+  - [5.6 Given a scenario, implement security awareness practices](#56-given-a-scenario-implement-security-awareness-practices)
+    - [🎣 Phishing Awareness](#-phishing-awareness)
+    - [🔍 Anomalous Behavior Recognition](#-anomalous-behavior-recognition)
+    - [📘 User Guidance and Training](#-user-guidance-and-training)
+    - [📈 Reporting and Monitoring](#-reporting-and-monitoring)
+    - [🛠️ Program Development and Execution](#️-program-development-and-execution)
+    - [🧠 Summary](#-summary-23)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -1676,3 +1683,48 @@ Penetration testing simulates real-world attacks to evaluate the effectiveness o
 - Internal audits foster **continuous improvement**, while external audits provide **objective assurance**.
 - Penetration testing reveals **real-world vulnerabilities** and strengthens **incident response** capabilities.
 - A balanced approach combining **attestation, testing, and governance** ensures a resilient security posture.
+## 5.6 Given a scenario, implement security awareness practices
+Security awareness empowers users to recognize and respond to threats, reducing human error and strengthening the organization's overall security posture. A successful program combines education, engagement, and continuous improvement.
+### 🎣 Phishing Awareness
+| Activity                        | Description |
+|---------------------------------|-------------|
+| **Phishing Campaigns**          | Simulated attacks to test and train users on email threats |
+| **Recognizing a Phishing Attempt** | Identifying suspicious links, sender addresses, and urgent language |
+| **Responding to Suspicious Messages** | Reporting to IT/security, avoiding clicks, and deleting the message |
+### 🔍 Anomalous Behavior Recognition
+| Behavior Type     | Description |
+|-------------------|-------------|
+| **Risky**          | Actions that expose systems to threats (e.g., installing unauthorized software) |
+| **Unexpected**     | Deviations from normal patterns (e.g., login from unusual location) |
+| **Unintentional**  | Mistakes like sending sensitive data to the wrong recipient |
+
+- **Purpose**: Train users to spot and report unusual activity that may indicate compromise or misuse.
+### 📘 User Guidance and Training
+| Topic                        | Description |
+|------------------------------|-------------|
+| **Policy/Handbooks**         | Provide clear rules and expectations for secure behavior |
+| **Situational Awareness**    | Teach users to assess risk in real-world scenarios |
+| **Insider Threat**           | Educate on risks from internal actors and how to report concerns |
+| **Password Management**      | Promote strong passwords, password managers, and MFA use |
+| **Removable Media and Cables** | Warn against using unknown USBs or insecure connections |
+| **Social Engineering**       | Train users to resist manipulation and deception tactics |
+| **Operational Security (OpSec)** | Encourage discretion in handling sensitive information |
+| **Hybrid/Remote Work Environments** | Address risks of working outside secure office settings (e.g., VPN use, screen privacy) |
+### 📈 Reporting and Monitoring
+| Type         | Description |
+|--------------|-------------|
+| **Initial Reporting** | Mechanism for users to report incidents or suspicious activity (e.g., phishing button, helpdesk) |
+| **Recurring Monitoring** | Tracks trends, participation, and effectiveness of awareness efforts |
+### 🛠️ Program Development and Execution
+| Phase         | Description |
+|---------------|-------------|
+| **Development** | Design curriculum, select tools, and align with organizational risk profile |
+| **Execution**   | Deliver training, run simulations, and engage users through interactive content |
+
+- Include metrics for success (e.g., click rates on phishing tests, training completion).
+- Use feedback to refine content and delivery methods.
+### 🧠 Summary
+- Security awareness is a **critical human-layer defense**.
+- Effective programs combine **education, simulation, and reporting**.
+- Tailored training improves **recognition of threats** and **response behavior**.
+- Ongoing development ensures relevance in **evolving threat landscapes**.
