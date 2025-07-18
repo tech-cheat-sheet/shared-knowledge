@@ -204,6 +204,14 @@
     - [🚀 Benefits of Automation and Orchestration](#-benefits-of-automation-and-orchestration)
     - [⚠️ Other Considerations](#️-other-considerations)
     - [🧠 Summary](#-summary-15)
+  - [4.8 Explain appropriate incident response activities](#48-explain-appropriate-incident-response-activities)
+    - [🔄 Incident Response Process](#-incident-response-process)
+    - [🧑‍🏫 Training](#-training)
+    - [🧪 Testing](#-testing)
+    - [🔍 Root Cause Analysis](#-root-cause-analysis)
+    - [🕵️ Threat Hunting](#️-threat-hunting)
+    - [🧬 Digital Forensics](#-digital-forensics)
+    - [🧠 Summary](#-summary-16)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -1295,3 +1303,43 @@ Automation and orchestration streamline security tasks, reduce human error, and 
 - **Orchestration** coordinates multiple automated tasks across systems and teams.
 - Strategic implementation reduces risk, improves response, and empowers security teams.
 - Success depends on thoughtful design, continuous improvement, and cross-functional collaboration.
+## 4.8 Explain appropriate incident response activities
+Incident response (IR) is a structured approach to managing and mitigating security incidents. It ensures rapid containment, recovery, and continuous improvement to protect enterprise assets and reputation.
+### 🔄 Incident Response Process
+| Phase           | Description |
+|-----------------|-------------|
+| **Preparation** | Develop policies, tools, and training to handle incidents effectively |
+| **Detection**   | Identify potential incidents through alerts, logs, and user reports |
+| **Analysis**    | Investigate scope, impact, and nature of the incident |
+| **Containment** | Limit the spread of the threat to prevent further damage |
+| **Eradication** | Remove the threat from affected systems and environments |
+| **Recovery**    | Restore systems to normal operations and validate integrity |
+| **Lessons Learned** | Review the incident to improve future response and security posture |
+### 🧑‍🏫 Training
+- Regular training ensures that staff understand their roles in incident response.
+- Includes technical drills, communication protocols, and escalation procedures.
+### 🧪 Testing
+| Method              | Description |
+|---------------------|-------------|
+| **Tabletop Exercise** | Simulated discussion-based scenario to test response plans |
+| **Simulation**         | Live-fire or emulated attack scenarios to test technical and operational readiness |
+### 🔍 Root Cause Analysis
+- Identifies the underlying cause of the incident.
+- Prevents recurrence by addressing systemic vulnerabilities or process gaps.
+### 🕵️ Threat Hunting
+- Proactive search for hidden threats within the environment.
+- Uses behavioral analytics, threat intelligence, and anomaly detection.
+### 🧬 Digital Forensics
+| Activity         | Description |
+|------------------|-------------|
+| **Legal Hold**    | Preserves data for legal or regulatory investigation |
+| **Chain of Custody** | Documents handling of evidence to maintain integrity and admissibility |
+| **Acquisition**   | Collects data from systems, devices, and logs for analysis |
+| **Reporting**     | Documents findings, timelines, and actions taken during investigation |
+| **Preservation**  | Ensures data remains unchanged and accessible for future review |
+| **E-Discovery**   | Identifies and retrieves electronically stored information for legal proceedings |
+### 🧠 Summary
+- Effective incident response minimizes damage and accelerates recovery.
+- Preparation, training, and testing are essential for readiness.
+- Forensics and root cause analysis support accountability and long-term resilience.
+- Continuous improvement through lessons learned strengthens future defenses.
