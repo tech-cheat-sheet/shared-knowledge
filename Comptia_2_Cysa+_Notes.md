@@ -127,6 +127,19 @@
       - [💻 Re-Imaging](#-re-imaging)
       - [🛡️ Compensating Controls](#️-compensating-controls)
     - [🧠 Summary](#-summary-10)
+  - [3.3 Explain the preparation and post-incident activity phases of the incident management life cycle](#33-explain-the-preparation-and-post-incident-activity-phases-of-the-incident-management-life-cycle)
+    - [🧰 Preparation Phase](#-preparation-phase)
+      - [📄 Incident Response Plan (IRP)](#-incident-response-plan-irp)
+      - [🛠️ Tools](#️-tools)
+      - [📚 Playbooks](#-playbooks)
+      - [🧪 Tabletop Exercises](#-tabletop-exercises)
+      - [🎓 Training](#-training)
+      - [🔄 Business Continuity (BC) \& Disaster Recovery (DR)](#-business-continuity-bc--disaster-recovery-dr)
+    - [📈 Post-Incident Activity Phase](#-post-incident-activity-phase)
+      - [🕵️ Forensic Analysis](#️-forensic-analysis)
+      - [🔍 Root Cause Analysis](#-root-cause-analysis)
+      - [📘 Lessons Learned](#-lessons-learned)
+    - [🧠 Summary](#-summary-11)
 # CompTIA CySA+ Exam CSO-003
 # 1.0 Security Operations
 ## 1.1 Explain the importance of system and network architecture concepts in security operations
@@ -875,3 +888,51 @@ Effective incident response requires:
 - 🧪 Careful analysis to maintain legal and forensic integrity
 - 🧱 Structured containment and restoration to minimize impact
 - 🔄 Application of controls and lessons learned for future resilience
+## 3.3 Explain the preparation and post-incident activity phases of the incident management life cycle
+Effective incident management depends on thorough planning before an incident occurs and thoughtful analysis afterward. These phases build organizational resilience and continuous improvement.
+### 🧰 Preparation Phase
+Focused on **readiness**, the preparation phase equips teams with the policies, tools, and knowledge required to respond to incidents swiftly and effectively.
+#### 📄 Incident Response Plan (IRP)
+- Documents processes and responsibilities for identifying, managing, and resolving security incidents.
+- Defines communication flows, escalation paths, and regulatory reporting requirements.
+#### 🛠️ Tools
+- Includes SIEM, SOAR, forensic utilities, network monitoring, and endpoint detection.
+- Should be tested, tuned, and ready for live incident handling.
+#### 📚 Playbooks
+- Step-by-step guides for responding to specific incident types (e.g., phishing, ransomware).
+- Enable consistent and coordinated actions across teams.
+#### 🧪 Tabletop Exercises
+- Scenario-based discussions simulate incident response workflows without impacting operations.
+- Strengthens collaboration and reveals gaps in planning or process.
+#### 🎓 Training
+- Ongoing education for technical staff and stakeholders.
+- Covers identification of threats, reporting protocols, and containment procedures.
+#### 🔄 Business Continuity (BC) & Disaster Recovery (DR)
+| Element        | Purpose |
+|----------------|---------|
+| **BC Plans**   | Ensure continuity of critical business functions during a disruption |
+| **DR Plans**   | Guide recovery of IT infrastructure and data following significant outages or attacks |
+
+- These strategies support broader recovery efforts beyond incident containment.
+### 📈 Post-Incident Activity Phase
+After resolution, post-incident actions focus on analysis, improvement, and knowledge sharing.
+#### 🕵️ Forensic Analysis
+- Gathers and reviews digital evidence from logs, memory, file systems, and network captures.
+- Determines actions taken by attackers and assesses impact.
+#### 🔍 Root Cause Analysis
+- Identifies the initial vulnerability, misconfiguration, or behavior that allowed the incident.
+- Enables corrective actions to prevent recurrence.
+#### 📘 Lessons Learned
+- Facilitated review of the incident response:
+  - What worked well?
+  - What failed or delayed response?
+  - What changes are needed to processes, technology, or training?
+
+- Results in **policy updates**, **playbook revisions**, and **team alignment** for future scenarios.
+### 🧠 Summary
+| Phase          | Goal |
+|----------------|------|
+| **Preparation**| Build capacity to detect, respond, and recover effectively |
+| **Post-Incident** | Analyze and refine practices to improve future security posture |
+
+Security teams that **invest in preparation** and **learn from incidents** can evolve into proactive, resilient defenders.
