@@ -8,7 +8,7 @@
   - [🔴 Expert](#-expert)
 # My Personal Cheat Sheet (Notes Summary) Repo
 ## Comptia Security+ SY0-701
-I was studying and creating pesonal notes for the Comptia Security+. This repo contains all the summary I was able to write along the way.
+I was studying and creating personal notes for the Comptia Security+. This repo contains all the summary I was able to write along the way (continuously updating).
 
 I am also planning to add contents from other CompTIA certifications:
 - Comptia CySA+
