@@ -126,6 +126,17 @@
       - [🌍 Data Sovereignty \& Geolocation](#-data-sovereignty--geolocation)
     - [🛠️ Methods to Secure Data](#️-methods-to-secure-data)
     - [🧠 Summary](#-summary-7)
+  - [3.4 Explain the importance of resilience and recovery in security architecture](#34-explain-the-importance-of-resilience-and-recovery-in-security-architecture)
+    - [⚙️ High Availability](#️-high-availability-1)
+    - [🏢 Site Considerations](#-site-considerations)
+    - [🧬 Platform Diversity](#-platform-diversity)
+    - [☁️ Multi-Cloud Systems](#️-multi-cloud-systems)
+    - [🔄 Continuity of Operations](#-continuity-of-operations)
+    - [📊 Capacity Planning](#-capacity-planning)
+    - [🧪 Testing Strategies](#-testing-strategies)
+    - [💾 Backup Strategies](#-backup-strategies)
+    - [⚡ Power Resilience](#-power-resilience)
+    - [🧠 Summary](#-summary-8)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -784,3 +795,59 @@ Protecting data requires understanding its type, classification, state, and appl
 - **Layered strategies** such as encryption, access control, and segmentation enhance security.
 - **Compliance** with legal and geographic requirements is essential for regulated data.
 - **Visibility and control** over data flow and access are key to preventing breaches.
+## 3.4 Explain the importance of resilience and recovery in security architecture
+Resilience and recovery ensure that systems can withstand disruptions and restore operations quickly. These principles are essential for maintaining business continuity, minimizing downtime, and protecting data integrity.
+### ⚙️ High Availability
+| Strategy         | Description | Benefit |
+|------------------|-------------|---------|
+| **Load Balancing** | Distributes traffic across multiple servers | Improves performance and fault tolerance |
+| **Clustering**     | Links servers to act as a single system | Enhances redundancy and failover capability |
+### 🏢 Site Considerations
+| Site Type     | Description | Recovery Speed | Cost |
+|---------------|-------------|----------------|------|
+| **Hot Site**   | Fully operational replica | Fast | High |
+| **Warm Site**  | Partially configured with some data | Moderate | Medium |
+| **Cold Site**  | Basic infrastructure only | Slow | Low |
+| **Geographic Dispersion** | Sites located in different regions | Protects against regional disasters | Variable |
+### 🧬 Platform Diversity
+- **Description**: Using varied operating systems, hardware, and software.
+- **Benefit**: Reduces risk of single point of failure or platform-specific vulnerabilities.
+### ☁️ Multi-Cloud Systems
+- **Description**: Leveraging multiple cloud providers.
+- **Benefit**: Enhances redundancy, avoids vendor lock-in, and improves availability.
+### 🔄 Continuity of Operations
+- **Purpose**: Ensures critical functions continue during and after a disruption.
+- **Includes**: Alternate work sites, emergency communication plans, and prioritized recovery.
+### 📊 Capacity Planning
+| Resource     | Consideration |
+|--------------|---------------|
+| **People**    | Staffing for recovery and support roles |
+| **Technology**| Sufficient hardware/software to handle failover |
+| **Infrastructure** | Network, power, and physical space to support operations |
+### 🧪 Testing Strategies
+| Method              | Description |
+|---------------------|-------------|
+| **Tabletop Exercises** | Simulated discussions to walk through scenarios |
+| **Failover Testing**   | Validates automatic switch to backup systems |
+| **Simulation**         | Mimics real-world disaster conditions |
+| **Parallel Processing**| Runs backup systems alongside production for comparison |
+### 💾 Backup Strategies
+| Element         | Description |
+|-----------------|-------------|
+| **Onsite/Offsite** | Local vs. remote storage for redundancy |
+| **Frequency**       | Determines recovery point objective (RPO) |
+| **Encryption**      | Secures backup data from unauthorized access |
+| **Snapshots**       | Point-in-time copies of systems or data |
+| **Recovery**        | Ability to restore systems and data |
+| **Replication**     | Real-time or scheduled duplication of data |
+| **Journaling**      | Logs changes for granular recovery and auditing |
+### ⚡ Power Resilience
+| Component                  | Description |
+|----------------------------|-------------|
+| **Generators**             | Backup power for extended outages |
+| **Uninterruptible Power Supply (UPS)** | Immediate power during short-term outages or transitions |
+### 🧠 Summary
+- **Resilience** ensures systems stay operational under stress.
+- **Recovery** enables rapid restoration of services and data.
+- **Testing and planning** are critical to validate readiness and reduce impact.
+- **Layered strategies** across infrastructure, cloud, and personnel provide robust protection.
