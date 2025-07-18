@@ -15,15 +15,15 @@ I am also planning to add contents from other CompTIA certifications:
 - Comptia SecurityX (formerly CASP+)
 - ...
 ## My Recommended Learning Path (For now)
-0. CompTIA Tech+ (formerly IT+)
-1. CompTIA A+
-2. CompTIA Network+
-3. CompTIA Linux+
-4. CompTIA Server+
-5. CompTIA Security+
-6. CompTIA CySA+
-7. CompTIA Pentest+
-8. CompTIA SecurityX (formerly CASP+)
+0. [CompTIA Tech+ (formerly IT+)](https://partners.comptia.org/docs/default-source/resources/comptia-tech-fc0-u71-exam-objectives-(1-2)022f382c09d76fc19da8ff0a002c2329)
+1. CompTIA A+ [Core 1](https://partners.comptia.org/docs/default-source/resources/comptia-a-220-1101-exam-objectives-(3-0)) followed by [Core 2](https://partners.comptia.org/docs/default-source/resources/comptia-a-220-1102-exam-objectives-(3-0))
+2. [CompTIA Network+](https://partners.comptia.org/docs/default-source/resources/comptia-network-n10-009-exam-objectives-(4-0))
+3. [CompTIA Linux+](https://partners.comptia.org/docs/default-source/resources/comptia-linux-xk0-005-exam-objectives-(1-0))
+4. [CompTIA Server+](https://partners.comptia.org/docs/default-source/resources/comptia-server-sk0-005-exam-objectives)
+5. [CompTIA Security+](https://assets.ctfassets.net/82ripq7fjls2/6TYWUym0Nudqa8nGEnegjG/0f9b974d3b1837fe85ab8e6553f4d623/CompTIA-Security-Plus-SY0-701-Exam-Objectives.pdf)
+6. [CompTIA CySA+](https://partners.comptia.org/docs/default-source/resources/comptia-cysa-cs0-003-exam-objectives-2-0)
+7. [CompTIA Pentest+](https://partners.comptia.org/docs/default-source/resources/comptia-pentest-pt0-002-exam-objectives-(4-0))
+8. [CompTIA SecurityX (formerly CASP+)](https://lecbyo.files.cmp.optimizely.com/download/35cf5f02b73211efa0ca8e42e80f1a8f)
 
 See [CompTIA Certifications comparison table](Comptia_Notes.md)
 
