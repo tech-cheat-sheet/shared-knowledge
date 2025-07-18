@@ -227,6 +227,19 @@
     - [🏢 Types of Governance Structures](#-types-of-governance-structures)
     - [👤 Roles and Responsibilities for Systems and Data](#-roles-and-responsibilities-for-systems-and-data)
     - [🧠 Summary](#-summary-18)
+  - [5.2 Explain elements of the risk management process](#52-explain-elements-of-the-risk-management-process)
+    - [🔍 Risk Identification](#-risk-identification)
+    - [📊 Risk Assessment](#-risk-assessment)
+    - [📈 Risk Analysis](#-risk-analysis)
+      - [🧮 Quantitative Metrics](#-quantitative-metrics)
+      - [📊 Qualitative Analysis](#-qualitative-analysis)
+    - [📋 Risk Register](#-risk-register)
+    - [⚖️ Risk Tolerance vs. Risk Appetite](#️-risk-tolerance-vs-risk-appetite)
+      - [🧭 Appetite Categories](#-appetite-categories)
+    - [🛡️ Risk Management Strategies](#️-risk-management-strategies)
+    - [📣 Risk Reporting](#-risk-reporting)
+    - [🧮 Business Impact Analysis (BIA)](#-business-impact-analysis-bia)
+    - [🧠 Summary](#-summary-19)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -1443,3 +1456,69 @@ Security governance defines the framework for managing and directing an organiza
 - It balances **internal controls** with **external compliance**.
 - Ongoing **monitoring and revision** ensure adaptability to evolving threats and regulations.
 - Clear **structures and responsibilities** foster accountability and strategic alignment.
+## 5.2 Explain elements of the risk management process
+Risk management is the structured approach to identifying, assessing, analyzing, and responding to risks that could impact an organization’s operations, assets, or reputation. It ensures informed decision-making and resilience.
+### 🔍 Risk Identification
+- The process of discovering potential threats and vulnerabilities.
+- Includes internal and external sources such as technology, personnel, compliance, and environment.
+### 📊 Risk Assessment
+| Type         | Description |
+|--------------|-------------|
+| **Ad Hoc**    | Performed as needed, often in response to specific events |
+| **Recurring** | Scheduled assessments (e.g., quarterly, annually) |
+| **One-Time**  | Conducted for specific projects or changes |
+| **Continuous**| Ongoing monitoring and evaluation of risk posture |
+### 📈 Risk Analysis
+#### 🧮 Quantitative Metrics
+| Metric                     | Description |
+|----------------------------|-------------|
+| **Single Loss Expectancy (SLE)** | Expected monetary loss from a single event |
+| **Annualized Rate of Occurrence (ARO)** | Estimated frequency of an event per year |
+| **Annualized Loss Expectancy (ALE)** | SLE × ARO; total expected annual loss |
+| **Exposure Factor**        | Percentage of asset loss due to an incident |
+| **Probability / Likelihood** | Chance of a risk materializing |
+| **Impact**                 | Severity of consequences if the risk occurs |
+#### 📊 Qualitative Analysis
+- Uses descriptive scales (e.g., low, medium, high) to evaluate risk.
+- Often based on expert judgment and scenario modeling.
+### 📋 Risk Register
+| Element              | Description |
+|----------------------|-------------|
+| **Key Risk Indicators (KRIs)** | Metrics that signal increasing risk levels |
+| **Risk Owners**       | Individuals responsible for managing specific risks |
+| **Risk Threshold**    | Defined limits for acceptable risk levels before action is required |
+### ⚖️ Risk Tolerance vs. Risk Appetite
+| Concept        | Description |
+|----------------|-------------|
+| **Risk Tolerance** | The acceptable level of risk an organization can withstand |
+| **Risk Appetite**  | The strategic stance toward risk-taking |
+#### 🧭 Appetite Categories
+| Type           | Description |
+|----------------|-------------|
+| **Expansionary** | Willing to take higher risks for growth |
+| **Conservative** | Prioritizes stability and low risk |
+| **Neutral**      | Balanced approach to risk and opportunity |
+### 🛡️ Risk Management Strategies
+| Strategy       | Description |
+|----------------|-------------|
+| **Transfer**    | Shift risk to a third party (e.g., insurance, outsourcing) |
+| **Accept**      | Acknowledge and tolerate the risk |
+| - **Exemption** | Formal decision to exclude specific risks from controls |
+| - **Exception** | Temporary deviation from standard controls |
+| **Avoid**       | Eliminate the risk by removing the source or activity |
+| **Mitigate**    | Reduce the likelihood or impact through controls and safeguards |
+### 📣 Risk Reporting
+- Communicates risk status, trends, and decisions to stakeholders.
+- Supports transparency, accountability, and strategic alignment.
+### 🧮 Business Impact Analysis (BIA)
+| Metric                     | Description |
+|----------------------------|-------------|
+| **Recovery Time Objective (RTO)** | Maximum acceptable downtime for a system or process |
+| **Recovery Point Objective (RPO)** | Maximum acceptable data loss measured in time |
+| **Mean Time to Repair (MTTR)** | Average time to fix a failed component |
+| **Mean Time Between Failures (MTBF)** | Average time between system failures |
+### 🧠 Summary
+- Risk management is a **continuous and dynamic process**.
+- It balances **quantitative and qualitative analysis** to guide decisions.
+- Effective strategies align with **organizational risk appetite and tolerance**.
+- **BIA and reporting** ensure risks are understood and mitigated in context.
