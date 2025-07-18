@@ -57,6 +57,19 @@
     - [🔗 Supply Chain Vectors](#-supply-chain-vectors)
     - [🧠 Human Vectors / Social Engineering](#-human-vectors--social-engineering)
     - [🧠 Summary](#-summary-2)
+  - [2.3 Explain various types of vulnerabilities](#23-explain-various-types-of-vulnerabilities)
+    - [🖥️ Application Vulnerabilities](#️-application-vulnerabilities)
+    - [🧩 Operating System (OS)-Based Vulnerabilities](#-operating-system-os-based-vulnerabilities)
+    - [🌐 Web-Based Vulnerabilities](#-web-based-vulnerabilities)
+    - [🧱 Hardware Vulnerabilities](#-hardware-vulnerabilities)
+    - [🧮 Virtualization Vulnerabilities](#-virtualization-vulnerabilities)
+    - [☁️ Cloud-Specific Vulnerabilities](#️-cloud-specific-vulnerabilities)
+    - [🔗 Supply Chain Vulnerabilities](#-supply-chain-vulnerabilities)
+    - [🔐 Cryptographic Vulnerabilities](#-cryptographic-vulnerabilities)
+    - [⚙️ Misconfiguration Vulnerabilities](#️-misconfiguration-vulnerabilities)
+    - [📱 Mobile Device Vulnerabilities](#-mobile-device-vulnerabilities)
+    - [🕳️ Zero-Day Vulnerabilities](#️-zero-day-vulnerabilities)
+    - [🧠 Summary](#-summary-3)
 # CompTIA Security+ Exam SY0-701
 # 1.0 General Security Concepts
 ## 1.1 Compare and contrast various types of security controls
@@ -360,3 +373,60 @@ Threat vectors are pathways attackers use to infiltrate systems, while attack su
 - **Attack surfaces** grow with complexity, connectivity, and user behavior.
 - **Threat vectors** exploit both technical and human vulnerabilities.
 - Mitigation requires layered defenses, user education, and continuous monitoring.
+## 2.3 Explain various types of vulnerabilities
+Vulnerabilities are weaknesses in systems, applications, or configurations that can be exploited to compromise security. Understanding their types helps in prioritizing mitigation and defense strategies.
+### 🖥️ Application Vulnerabilities
+| Type                  | Description |
+|-----------------------|-------------|
+| **Memory Injection**  | Injecting malicious code into memory space |
+| **Buffer Overflow**   | Writing beyond buffer limits to execute arbitrary code |
+| **Race Conditions**   | Exploiting timing flaws in concurrent processes |
+| - **TOC (Time-of-Check)** | Check occurs before state changes |
+| - **TOU (Time-of-Use)**   | Use occurs after state changes |
+| **Malicious Update**  | Compromised or spoofed software updates |
+### 🧩 Operating System (OS)-Based Vulnerabilities
+- **Description**: Flaws in OS components or services.
+- **Examples**: Privilege escalation, kernel exploits, unpatched services.
+### 🌐 Web-Based Vulnerabilities
+| Type                  | Description |
+|-----------------------|-------------|
+| **SQL Injection (SQLi)** | Injecting SQL commands via input fields |
+| **Cross-Site Scripting (XSS)** | Injecting scripts into web pages viewed by others |
+### 🧱 Hardware Vulnerabilities
+| Type            | Description |
+|-----------------|-------------|
+| **Firmware**     | Exploitable code embedded in hardware devices |
+| **End-of-Life**  | Unsupported hardware with no security updates |
+| **Legacy**       | Old systems incompatible with modern security controls |
+### 🧮 Virtualization Vulnerabilities
+| Type              | Description |
+|-------------------|-------------|
+| **VM Escape**      | Attacker breaks out of VM to access host system |
+| **Resource Reuse** | Improper isolation allows access to residual data |
+### ☁️ Cloud-Specific Vulnerabilities
+- **Description**: Risks unique to cloud environments.
+- **Examples**: Misconfigured storage buckets, insecure APIs, tenant isolation failures.
+### 🔗 Supply Chain Vulnerabilities
+| Source             | Description |
+|--------------------|-------------|
+| **Service Provider** | Third-party services with weak security |
+| **Hardware Provider**| Compromised components or firmware |
+| **Software Provider**| Vulnerable or malicious code in dependencies |
+### 🔐 Cryptographic Vulnerabilities
+- **Description**: Weak or broken encryption algorithms, poor key management.
+- **Examples**: Deprecated ciphers, short key lengths, flawed implementations.
+### ⚙️ Misconfiguration Vulnerabilities
+- **Description**: Incorrect settings that expose systems to risk.
+- **Examples**: Open ports, default credentials, excessive permissions.
+### 📱 Mobile Device Vulnerabilities
+| Type          | Description |
+|---------------|-------------|
+| **Side Loading** | Installing apps from unofficial sources |
+| **Jailbreaking** | Removing OS restrictions, increasing exposure |
+### 🕳️ Zero-Day Vulnerabilities
+- **Description**: Unknown or unpatched flaws actively exploited before discovery.
+- **Impact**: High risk due to lack of defenses or fixes.
+### 🧠 Summary
+- Vulnerabilities span across software, hardware, and human factors.
+- Regular patching, secure coding, and configuration audits are essential.
+- Threat actors often chain multiple vulnerabilities for deeper compromise.
