@@ -24,6 +24,16 @@
     - [🔁 Inspecting RAID](#-inspecting-raid)
     - [🌐 SAN/NAS and Network Filesystems](#-sannas-and-network-filesystems)
     - [🔍 Storage Hardware Inspection](#-storage-hardware-inspection)
+  - [1.4 Given a scenario, configure and use the appropriate processes and services](#14-given-a-scenario-configure-and-use-the-appropriate-processes-and-services)
+    - [🛎️ System Services with `systemctl`](#️-system-services-with-systemctl)
+    - [⏰ Scheduling Services](#-scheduling-services)
+    - [🧠 Process Management](#-process-management)
+      - [💥 Kill Signals](#-kill-signals)
+      - [📋 Listing Processes and Open Files](#-listing-processes-and-open-files)
+      - [📌 Setting Process Priorities](#-setting-process-priorities)
+      - [🌡️ Process States](#️-process-states)
+      - [🎮 Job Control (Terminal Jobs)](#-job-control-terminal-jobs)
+      - [🔍 Searching \& Terminating Processes](#-searching--terminating-processes)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -217,3 +227,83 @@ Tools to probe attached devices:
 - `lsblk` – Tree view of block devices.
 - `blkid` – Identify block device UUIDs and filesystem types.
 - `fcstat` – Fibre Channel status tool for SAN diagnostics.
+## 1.4 Given a scenario, configure and use the appropriate processes and services
+This section covers managing system processes and services using built-in Linux utilities and scheduling tools.
+### 🛎️ System Services with `systemctl`
+Manage services on systems using `systemd`:
+- `systemctl stop service` – Stop a service
+- `systemctl start service` – Start a service
+- `systemctl restart service` – Restart a service
+- `systemctl status service` – View service status
+- `systemctl enable service` – Enable at boot
+- `systemctl disable service` – Disable from boot
+- `systemctl mask service` – Prevent service from starting at all
+
+Example:
+```bash
+systemctl start nginx
+systemctl enable sshd
+```
+### ⏰ Scheduling Services
+Automate tasks with time-based execution:
+- `cron` – Daemon for recurring tasks (minute/hour/day/month/week)
+- `crontab` – Per-user cron schedule editor:
+  ```shell
+  crontab -e  # Edit your schedule
+  ```
+- `at` – Schedule one-time tasks:
+  ```shell
+  echo "reboot" | at now + 1 hour
+  ```
+### 🧠 Process Management
+Control and inspect running processes.
+#### 💥 Kill Signals
+Signals sent to running processes:
+- `SIGTERM` – Graceful termination (default)
+- `SIGKILL` – Forceful kill; process can't ignore
+- `SIGHUP` – Hangup signal; often used to reload configuration
+```shell
+kill -SIGTERM <PID>
+kill -9 <PID>         # Sends SIGKILL
+```
+#### 📋 Listing Processes and Open Files
+- `ps aux` – Full list of running processes
+- `top / htop` – Dynamic live monitoring (htop is more interactive)
+- `lsof` – List open files and associated processes
+#### 📌 Setting Process Priorities
+Control how much CPU a process gets:
+- `nice` – Start a process with a priority:
+  ```shell
+  nice -n 10 command
+  ```
+- `renice` – Change priority of an existing process:
+  ```shell
+  renice -n -5 -p <PID>
+  ```
+#### 🌡️ Process States
+Linux process lifecycle stages:
+- Running – Actively executing
+- Sleeping – Waiting for I/O or event
+- Stopped – Halted by signal
+- Zombie – Completed, waiting for parent to acknowledge exit
+#### 🎮 Job Control (Terminal Jobs)
+Manage background and foreground tasks in the shell:
+- `Ctrl+Z` – Suspend process
+- `bg` – Resume in background
+- `fg` – Bring job to foreground
+- `jobs` – List background jobs
+- `Ctrl+C` – Kill foreground job
+- `Ctrl+D` – End input (often logs out or closes terminal)
+#### 🔍 Searching & Terminating Processes
+- `pgrep` – Find processes by name:
+  ```shell
+  pgrep apache2
+  ```
+- `pkill` – Kill processes by name:
+  ```shell
+  pkill -9 firefox
+  ```
+- `pidof` – Get PID of a running program:
+  ```shell
+  pidof sshd
+  ```
