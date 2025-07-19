@@ -34,6 +34,17 @@
       - [🌡️ Process States](#️-process-states)
       - [🎮 Job Control (Terminal Jobs)](#-job-control-terminal-jobs)
       - [🔍 Searching \& Terminating Processes](#-searching--terminating-processes)
+  - [1.5 Given a scenario, use the appropriate networking tools or configuration files](#15-given-a-scenario-use-the-appropriate-networking-tools-or-configuration-files)
+    - [🔌 Interface Management](#-interface-management)
+      - [🧰 iproute2 Tools](#-iproute2-tools)
+      - [📡 NetworkManager](#-networkmanager)
+      - [🔧 Legacy Net-Tools](#-legacy-net-tools)
+      - [🗂️ Configuration Files](#️-configuration-files)
+    - [📛 Name Resolution](#-name-resolution)
+      - [🔍 DNS Tools (Bind-utils)](#-dns-tools-bind-utils)
+      - [🌎 WHOIS](#-whois)
+    - [📊 Network Monitoring](#-network-monitoring)
+    - [📡 Remote Networking Tools](#-remote-networking-tools)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -306,4 +317,106 @@ Manage background and foreground tasks in the shell:
 - `pidof` – Get PID of a running program:
   ```shell
   pidof sshd
+  ```
+## 1.5 Given a scenario, use the appropriate networking tools or configuration files
+This guide outlines how to configure and manage networking using the most relevant Linux tools and files.
+### 🔌 Interface Management
+Configure IP addresses, view interfaces, and routes:
+#### 🧰 iproute2 Tools
+- `ip` – Manage interfaces, addresses, routes:
+  ```bash
+  ip addr show
+  ip route add default via 192.168.1.1
+  ```
+- `ss` – View socket connections and listening ports:
+  ```shell
+  ss -tunlp
+  ```
+#### 📡 NetworkManager
+- `nmcli` – Manage connections interactively or via script:
+  ```shell
+  nmcli dev show
+  nmcli con up eth0
+  ```
+#### 🔧 Legacy Net-Tools
+- `ifconfig` – View or configure interfaces (older systems)
+- `ifcfg-*` – Interface configuration files for Red Hat systems
+- `hostname` – Set or view system hostname
+- `arp` – View or manipulate ARP table
+- `route` – View or modify routing table
+#### 🗂️ Configuration Files
+- `/etc/sysconfig/network-scripts/` – Interface and routing configs (used by `ifcfg-*`)
+### 📛 Name Resolution
+Translate hostnames into IP addresses:
+- `/etc/nsswitch.conf` – Configures name service lookup order.
+- `/etc/resolv.conf` – DNS servers defined here.
+- `hostnamectl` – Set persistent hostname.
+- `resolvectl` – Query and manage DNS using systemd-resolved.
+#### 🔍 DNS Tools (Bind-utils)
+- `dig` – Detailed DNS queries:
+  ```bash
+  dig www.example.com
+  ```
+- `nslookup` – Simple DNS lookup:
+  ```shell
+  nslookup example.com
+  ```
+- `host` – Hostname-to-IP resolution:
+  ```shell
+  host example.com
+  ```
+#### 🌎 WHOIS
+- `whois` – Fetch domain registration info:
+  ```shell
+  whois example.com
+  ```
+### 📊 Network Monitoring
+Capture packets, analyze traffic, and trace connectivity:
+- `tcpdump` – Lightweight packet sniffer:
+  ```bash
+  tcpdump -i eth0 port 80
+  ```
+- `wireshark / tshark` – Detailed protocol analysis (GUI and CLI).
+- `netstat` – Show network connections and routing info (deprecated in favor of `ss`)
+- `traceroute` – Display path to a host across the network:
+  ```shell
+  traceroute example.com
+  ```
+- `ping` – Test reachability and latency:
+  ```shell
+  ping -c 4 example.com
+  ```
+- `mtr` – Real-time traceroute and ping hybrid:
+  ```shell
+  mtr example.com
+  ```
+### 📡 Remote Networking Tools
+Transfer files, retrieve data, and connect to remote hosts:
+- `ssh` – Secure shell remote login:
+  ```shell
+  ssh user@host
+  ```
+- `curl` – Transfer data using protocols (HTTP, FTP):
+  ```shell
+  curl https://example.com
+  ```
+- `wget` – Download files from web sources:
+  ```shell
+  wget https://example.com/file.zip
+  ```
+- `nc` (netcat) – Versatile TCP/UDP utility (debugging or transfers):
+  ```shell
+  nc -l -p 1234 > received_file
+  ```
+- `rsync` – Remote synchronization with compression and delta support:
+  ```shell
+  rsync -avz /data user@host:/backup
+  ```
+- `scp` – Secure copy via SSH:
+  ```shell
+  scp file.txt user@host:/target/path/
+  ```
+- `sftp` – Interactive secure file transfer session:
+  ```shell
+  sftp user@host
   ```
