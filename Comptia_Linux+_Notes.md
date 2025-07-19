@@ -45,6 +45,12 @@
       - [🌎 WHOIS](#-whois)
     - [📊 Network Monitoring](#-network-monitoring)
     - [📡 Remote Networking Tools](#-remote-networking-tools)
+  - [1.6 Given a scenario, build and install software](#16-given-a-scenario-build-and-install-software)
+    - [📦 Package Management](#-package-management)
+    - [🧪 Sandboxed Applications](#-sandboxed-applications)
+    - [🔄 System Updates](#-system-updates)
+      - [🔧 Kernel Updates](#-kernel-updates)
+      - [📥 Package Updates](#-package-updates)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -420,3 +426,52 @@ Transfer files, retrieve data, and connect to remote hosts:
   ```shell
   sftp user@host
   ```
+## 1.6 Given a scenario, build and install software
+This section outlines essential tools and methods to manage software—from package managers to sandboxed apps and system updates.
+### 📦 Package Management
+Each Linux distribution uses a different package manager for installing and updating software:
+| Manager | Distro(s) | Commands |
+|--------|------------|----------|
+| `dnf`  | Fedora, RHEL, CentOS (new) | `dnf install <package>` |
+| `yum`  | RHEL, CentOS (legacy) | `yum install <package>` |
+| `apt`  | Debian, Ubuntu | `apt install <package>` |
+| `rpm`  | RHEL-based | `rpm -ivh <package>.rpm` |
+| `dpkg` | Debian-based | `dpkg -i <package>.deb` |
+| `ZYpp` | openSUSE | `zypper install <package>` |
+
+For example, to install nginx on Ubuntu:
+```bash
+sudo apt update
+sudo apt install nginx
+```
+### 🧪 Sandboxed Applications
+Portable or containerized app formats with isolated dependencies:
+- `snapd` – Snap packages (auto-update & confinement):
+  ```shell
+  sudo snap install <app>
+  ```
+- `Flatpak` – Decentralized packaging with permission control:
+  ```shell
+  flatpak install flathub org.gimp.GIMP
+  ```
+- AppImage – Executable format; no installation:
+  ```shell
+  chmod +x <AppImage>.AppImage
+  ./<AppImage>.AppImage
+  ```
+### 🔄 System Updates
+Keep your system secure and up-to-date:
+#### 🔧 Kernel Updates
+Most distros update the kernel via package managers:
+```shell
+sudo dnf update kernel
+sudo apt upgrade linux-image
+```
+Reboot after updating to activate the new kernel.
+#### 📥 Package Updates
+Update all installed packages:
+```shell
+sudo apt update && sudo apt upgrade
+sudo dnf upgrade
+sudo zypper update
+```
