@@ -51,6 +51,16 @@
     - [🔄 System Updates](#-system-updates)
       - [🔧 Kernel Updates](#-kernel-updates)
       - [📥 Package Updates](#-package-updates)
+  - [1.7 Given a scenario, manage software configurations](#17-given-a-scenario-manage-software-configurations)
+    - [🔧 Updating Configuration Files](#-updating-configuration-files)
+      - [🔄 Procedures](#-procedures)
+      - [🗂️ RPM-based Config File Management](#️-rpm-based-config-file-management)
+      - [📁 Repository Configuration Files](#-repository-configuration-files)
+    - [🧪 Configure Kernel Options](#-configure-kernel-options)
+      - [⚙️ Kernel Parameters](#️-kernel-parameters)
+      - [🧩 Kernel Modules](#-kernel-modules)
+    - [🛠️ Configure Common System Services](#️-configure-common-system-services)
+    - [🌍 Localization Tools](#-localization-tools)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -474,4 +484,82 @@ Update all installed packages:
 sudo apt update && sudo apt upgrade
 sudo dnf upgrade
 sudo zypper update
+```
+## 1.7 Given a scenario, manage software configurations
+This guide walks through updating system settings, managing configuration files, kernel parameters, and common services.
+### 🔧 Updating Configuration Files
+#### 🔄 Procedures
+After editing a config file, apply changes using:
+- **Restart the service** – Full stop/start cycle:
+  ```bash
+  systemctl restart <service>
+  ```
+- **Reload the service** – Reloads config without full restart (if supported):
+  ```shell
+  systemctl reload <service>
+  ```
+#### 🗂️ RPM-based Config File Management
+When updating packages:
+- `.rpmnew` – New version of config file delivered; original untouched
+- `.rpmsave` – Original config saved before update replaces it
+Check and compare these files manually:
+```shell
+diff /etc/example.conf /etc/example.conf.rpmnew
+```
+#### 📁 Repository Configuration Files
+Manage repository sources and behavior:
+- `/etc/apt.conf` – Global APT settings (Ubuntu/Debian)
+- `/etc/apt/sources.list.d/` – Repo definitions
+- `/etc/yum.conf` – YUM configuration
+- `/etc/dnf/dnf.conf` – DNF settings
+- `/etc/yum.repos.d/` – Repo definitions in .repo files
+### 🧪 Configure Kernel Options
+#### ⚙️ Kernel Parameters
+Used for tuning system behavior:
+- View parameters:
+```shell
+sysctl -a
+```
+- Set a parameter:
+```shell
+sudo sysctl net.ipv4.ip_forward=1
+```
+- Make permanent in `/etc/sysctl.conf`
+#### 🧩 Kernel Modules
+Manage loadable kernel extensions:
+| Command   | Description                           |
+|-----------|---------------------------------------|
+| `lsmod`   | List loaded modules                   |
+| `modinfo` | Show module details                   |
+| `insmod`  | Insert module manually                |
+| `rmmod`   | Remove a module                       |
+| `modprobe`| Load module with dependencies         |
+| `imsmod`  | Deprecated variant of `insmod`        |
+
+Example:
+```shell
+modprobe usb-storage
+```
+### 🛠️ Configure Common System Services
+| Service | Configuration Path or Tool                              |
+|---------|---------------------------------------------------------|
+| SSH     | `/etc/ssh/sshd_config`                                  |
+| NTP     | `/etc/ntp.conf` or via `ntpd`                           |
+| chrony  | `/etc/chrony.conf` (modern NTP alternative)             |
+| Syslog  | `/etc/rsyslog.conf` or journald settings                |
+
+After updates:
+```shell
+systemctl restart sshd
+systemctl reload rsyslog
+```
+### 🌍 Localization Tools
+Set system locale, time zone, and language preferences:
+- `timedatectl` – Set time, timezone, NTP:
+```shell
+timedatectl set-timezone America/Montreal
+```
+- `localectl` – Configure language and keyboard layout:
+```shell
+localectl set-locale LANG=en_CA.UTF-8
 ```
