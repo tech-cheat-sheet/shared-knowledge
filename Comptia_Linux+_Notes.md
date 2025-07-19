@@ -8,6 +8,13 @@
       - [💥 Kernel Panic](#-kernel-panic)
     - [⚙️ /dev Device Types](#️-dev-device-types)
     - [🔨 Package Compilation (from Source)](#-package-compilation-from-source)
+  - [1.2 Given a scenario, manage files and directories](#12-given-a-scenario-manage-files-and-directories)
+    - [✏️ File Editing](#️-file-editing)
+    - [📦 File Compression, Archiving, and Backup](#-file-compression-archiving-and-backup)
+    - [🗃️ File Metadata](#️-file-metadata)
+    - [🔗 Soft and Hard Links](#-soft-and-hard-links)
+    - [🌐 Copying Files Between Systems](#-copying-files-between-systems)
+    - [🧱 File \& Directory Operations](#-file--directory-operations)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -56,3 +63,76 @@ Typical 3-step build:
 ./configure
 make
 make install
+```
+## 1.2 Given a scenario, manage files and directories
+This section outlines key Linux tools and commands for working with files and directories across various scenarios.
+### ✏️ File Editing
+Efficient tools to inspect or manipulate file contents:
+- `sed` – Stream editor; perform substitutions and transformations:
+  ```shell
+  sed 's/old/new/g' file.txt
+  ```
+- `awk` – Pattern scanning and processing (great for structured text):
+  ```shell
+  awk – Pattern scanning and processing (great for structured text):
+  ```
+- `printf` – Format and output text:
+  ```shell
+  printf "Name: %s\n" "$USER"
+  ```
+- `nano` – Simple terminal-based text editor.
+- `vi / vim` – Powerful modal editor with extensive navigation & editing capabilities.
+### 📦 File Compression, Archiving, and Backup
+Tools to reduce size and create archives:
+- `gzip, bzip2, xz, zip` – Compress files:
+  ```shell
+  gzip file.txt
+  ```
+- `tar` – Archive files:
+  ```shell
+  tar -cvf archive.tar folder/
+  ``
+- `cpio` – Archive and extract, often used with `find`.
+- `dd` – Disk clone or backup tool:
+  ```shell
+  dd if=/dev/sda of=/backup.img bs=4M
+  ```
+### 🗃️ File Metadata
+View file type and attributes:
+- `stat` – Shows detailed file info (size, access time, etc.)
+- `file` – Detects file type based on content.
+### 🔗 Soft and Hard Links
+- Soft link (symbolic):
+  ```shell
+  ln -s original.txt shortcut.txt
+  ```
+- Hard link:
+  ```shell
+  ln original.txt link.txt
+  ```
+### 🌐 Copying Files Between Systems
+Used for remote syncing and file transfer:
+- `rsync` – Efficient sync across systems or drives:
+  ```shell
+  rsync -avz src/ user@host:/dest/
+  ```
+- `scp` – Secure copy over SSH:
+  ```shell
+  scp file.txt user@host:/path/
+  ```
+- `nc` (netcat) – Raw network data transfer (advanced use cases).
+### 🧱 File & Directory Operations
+General navigation and management:
+- `mv` – Move or rename files
+- `cp` – Copy files
+- `mkdir / rmdir` – Create or remove directories
+- `ls` – List directory contents
+- `pwd` – Show current working directory
+- `rm` – Remove files or directories
+- `cd` – Change directory
+- `.` – Current directory
+- `..` – Parent directory
+- `~` – Home directory
+- `tree` – Graphical directory structure
+- `cat` – Display file contents
+- `touch` – Create empty files or update timestamps
