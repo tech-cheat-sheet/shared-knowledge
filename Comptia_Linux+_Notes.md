@@ -15,6 +15,15 @@
     - [🔗 Soft and Hard Links](#-soft-and-hard-links)
     - [🌐 Copying Files Between Systems](#-copying-files-between-systems)
     - [🧱 File \& Directory Operations](#-file--directory-operations)
+  - [1.3 Given a scenario, configure and manage storage using the appropriate tools](#13-given-a-scenario-configure-and-manage-storage-using-the-appropriate-tools)
+    - [🔧 Disk Partitioning](#-disk-partitioning)
+    - [📂 Mounting Local and Remote Devices](#-mounting-local-and-remote-devices)
+    - [🧮 Filesystem Management](#-filesystem-management)
+    - [📊 Monitoring Storage and Usage](#-monitoring-storage-and-usage)
+    - [🧱 Logical Volume Manager (LVM)](#-logical-volume-manager-lvm)
+    - [🔁 Inspecting RAID](#-inspecting-raid)
+    - [🌐 SAN/NAS and Network Filesystems](#-sannas-and-network-filesystems)
+    - [🔍 Storage Hardware Inspection](#-storage-hardware-inspection)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -136,3 +145,75 @@ General navigation and management:
 - `tree` – Graphical directory structure
 - `cat` – Display file contents
 - `touch` – Create empty files or update timestamps
+## 1.3 Given a scenario, configure and manage storage using the appropriate tools
+Efficient storage setup in Linux often requires understanding disks, filesystems, logical volumes, and network storage.
+### 🔧 Disk Partitioning
+Tools to define disk layout:
+- `fdisk` – Manage MBR partitions on block devices.
+- `parted` – Flexible tool for GPT and MBR partitioning:
+  ```bash
+  parted /dev/sda mkpart primary ext4 1MiB 1000MiB
+  ```
+- `partprobe` – Inform kernel of partition table changes.
+### 📂 Mounting Local and Remote Devices
+Enabling access to storage volumes:
+- `mount` – Mount a device or filesystem:
+  ```shell
+  mount /dev/sdb1 /mnt/data
+  ```
+- `systemd.mount` – Auto-mount via systemd unit file.
+- `/etc/fstab` – Persistent mount definitions at boot.
+- External Devices – USBs, external drives auto-detected at /media or via manual mount.
+- LUKS – Encrypt disk partitions using:
+  ```shell
+  cryptsetup luksFormat /dev/sdX
+  ```
+### 🧮 Filesystem Management
+Native filesystem tools:
+- XFS – Use `xfsprogs` (e.g. `xfs_repair`, `xfs_info`)
+- Ext4 – Use `e2fsprogs` (e.g. `e2fsck`, `resize2fs`)
+- Btrfs – Use `btrfs` CLI tool for snapshots, compression, and balancing.
+### 📊 Monitoring Storage and Usage
+Disk space and file size tracking:
+- `df -h` – View filesystem disk usage (human-readable).
+- `du -sh folder/` – Show size of directory recursively.
+### 🧱 Logical Volume Manager (LVM)
+Flexible disk abstraction and resizing:
+- Physical Volumes:
+  - `pvcreate` – Initialize a disk for LVM.
+  - `pvs` – List physical volumes.
+- Volume Groups:
+  - `vgcreate` – Create a group of physical volumes.
+  - `vgextend` – Add physical volume to a group.
+  - `vgs` – Display volume groups.
+- Logical Volumes:
+  - `lvcreate` – Make a logical volume:
+    ```shell
+    lvcreate -L 10G -n mylv myvg
+    ```
+  - `lvresize / lvchange` – Modify volume size or attributes.
+  - `lvs` – List logical volumes.
+### 🔁 Inspecting RAID
+For software-based RAID arrays:
+- `mdadm` – Configure and monitor RAID devices:
+  ```shell
+  mdadm --detail /dev/md0
+  ```
+- `/proc/mdstat` – Realtime RAID status overview.
+### 🌐 SAN/NAS and Network Filesystems
+Enterprise-level or remote storage:
+- `multipathd` – Support for multipath I/O (used in SANs).
+- NFS – Mount Unix-style shared directories:
+  ```shell
+  mount -t nfs server:/share /mnt
+  ```
+- SMB/CIFS – Connect to Windows shares:
+  ```shell
+  mount -t cifs -o username=user //server/share /mnt
+  ```
+### 🔍 Storage Hardware Inspection
+Tools to probe attached devices:
+- `lsscsi` – List SCSI devices.
+- `lsblk` – Tree view of block devices.
+- `blkid` – Identify block device UUIDs and filesystem types.
+- `fcstat` – Fibre Channel status tool for SAN diagnostics.
