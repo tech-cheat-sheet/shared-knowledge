@@ -61,6 +61,14 @@
       - [🧩 Kernel Modules](#-kernel-modules)
     - [🛠️ Configure Common System Services](#️-configure-common-system-services)
     - [🌍 Localization Tools](#-localization-tools)
+- [2.0 Security](#20-security)
+  - [2.1 Summarize the purpose and use of security best practices in a Linux environment](#21-summarize-the-purpose-and-use-of-security-best-practices-in-a-linux-environment)
+    - [🛡️ Public Key Infrastructure (PKI) Certificates](#️-public-key-infrastructure-pki-certificates)
+    - [🔒 Certificate Use Cases](#-certificate-use-cases)
+    - [👤 Authentication Technologies](#-authentication-technologies)
+    - [🧱 Linux Hardening](#-linux-hardening)
+      - [🔍 Security Measures](#-security-measures)
+      - [⚙️ System Configuration](#️-system-configuration)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -563,3 +571,47 @@ timedatectl set-timezone America/Montreal
 ```shell
 localectl set-locale LANG=en_CA.UTF-8
 ```
+# 2.0 Security
+## 2.1 Summarize the purpose and use of security best practices in a Linux environment
+In a Linux environment, security involves layered techniques to protect system integrity, confidentiality, and availability. Below is a structured overview.
+### 🛡️ Public Key Infrastructure (PKI) Certificates
+PKI helps secure data exchange using cryptographic keys and certificates:
+| Concept                | Purpose                                              |
+|------------------------|------------------------------------------------------|
+| **Public key**         | Shared openly; encrypts data and verifies signatures |
+| **Private key**        | Kept secret; decrypts data and signs messages        |
+| **Self-signed cert**   | Issued without a CA; used in testing/dev environments|
+| **Digital signature**  | Verifies authenticity of sender using private key    |
+| **Wildcard certificate**| Covers all subdomains (e.g., `*.example.com`)       |
+| **Hashing**            | Ensures data integrity (e.g., SHA256)                |
+| **Certificate authority** | Trusted entity that issues digital certificates   |
+### 🔒 Certificate Use Cases
+Certificates help secure communication and verify identity:
+- **SSL/TLS** – Encrypted communication via HTTPS or secure email.
+- **Authentication** – Verifies server identity and prevents impersonation.
+- **Encryption** – Ensures sensitive data (e.g., login credentials) stays private.
+### 👤 Authentication Technologies
+Secure access control and identity validation:
+| Method                         | Description                                    |
+|--------------------------------|------------------------------------------------|
+| **Tokens**                     | Time-based or hardware-generated access codes  |
+| **Multifactor Authentication (MFA)** | Combines password + token, fingerprint, etc. |
+| **PAM**                        | Modular system for flexible authentication     |
+| **SSSD**                       | Provides access to remote identity/data sources|
+| **LDAP**                       | Centralized directory for users & permissions  |
+| **Single Sign-On (SSO)**       | Login once, access multiple systems/services   |
+### 🧱 Linux Hardening
+Strengthen system configuration to reduce vulnerabilities:
+#### 🔍 Security Measures
+- **Security scanning** – Detect known vulnerabilities (e.g., with `lynis`, `clamav`, or `OpenSCAP`)
+- **Secure boot** – Ensure only trusted software loads at boot
+- **UEFI** – Modern firmware with Secure Boot support
+#### ⚙️ System Configuration
+- **System logging** – Configure `rsyslog` or `journald` to monitor activity
+- **Default umask** – Sets file permission defaults to prevent overexposure
+- **Disable insecure services** – Remove legacy or unused daemons (e.g., telnet)
+- **Enforce password strength** – Use `pam_pwquality` or `passwdqc`
+- **Remove unused packages** – Reduce attack surface and dependencies
+- **Tune kernel parameters** – Via `sysctl.conf` for performance and security
+- **Secure service accounts** – Restrict permissions and access
+- **Host firewall** – Use `iptables`, `firewalld`, or `nftables` to manage traffic
