@@ -69,6 +69,11 @@
     - [🧱 Linux Hardening](#-linux-hardening)
       - [🔍 Security Measures](#-security-measures)
       - [⚙️ System Configuration](#️-system-configuration)
+  - [2.2 Given a scenario, implement identity management](#22-given-a-scenario-implement-identity-management)
+    - [👤 Account Creation and Deletion](#-account-creation-and-deletion)
+    - [🐚 Default Shell and Skeleton Files](#-default-shell-and-skeleton-files)
+    - [🗄️ Configuration Files](#️-configuration-files-1)
+    - [🔐 Account Management Tools](#-account-management-tools)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -615,3 +620,49 @@ Strengthen system configuration to reduce vulnerabilities:
 - **Tune kernel parameters** – Via `sysctl.conf` for performance and security
 - **Secure service accounts** – Restrict permissions and access
 - **Host firewall** – Use `iptables`, `firewalld`, or `nftables` to manage traffic
+## 2.2 Given a scenario, implement identity management
+Managing user and group identities ensures secure, organized access control in multi-user systems. Here's a breakdown of key tools, files, and practices.
+### 👤 Account Creation and Deletion
+Create or remove user and group identities:
+| Command      | Description                              |
+|--------------|------------------------------------------|
+| `useradd`    | Add a new user                           |
+| `groupadd`   | Create a new group                       |
+| `userdel`    | Remove a user and their account          |
+| `groupdel`   | Remove a group                           |
+| `usermod`    | Modify a user (e.g. group, shell)        |
+| `groupmod`   | Modify group info                        |
+| `id`         | Show user ID, group ID, and group info   |
+| `who`        | List logged-in users                     |
+| `w`          | Show who’s logged in and what they’re doing
+
+Example:
+```bash
+useradd -m -s /bin/bash arthur
+passwd arthur
+```
+### 🐚 Default Shell and Skeleton Files
+Set user environment defaults:
+- **Default shell** is defined using `-s` with `useradd` or via `/etc/default/useradd`.
+- Skeleton files are copied to new users from:
+  - `/etc/skel/` – Template files placed into a new user's home directory.
+  - `.bash_profile`, `.bashrc` – Shell-specific initialization and environment settings.
+### 🗄️ Configuration Files
+Linux stores identity details in structured text files:
+| File              | Purpose                                         |
+|-------------------|-------------------------------------------------|
+| `/etc/passwd`     | Username, UID, shell, home directory            |
+| `/etc/group`      | Group names and memberships                     |
+| `/etc/shadow`     | Encrypted user passwords and aging info         |
+| `/etc/profile`    | Global environment variables and shell settings |
+| `/etc/skel/`      | Default content copied to new home directories  |
+### 🔐 Account Management Tools
+Control passwords, expiration, and failed login behavior:
+- `passwd` – Set or change user password.
+- `chage` – Configure password aging policies:
+  ```bash
+  chage -E 2025-12-31 arthur
+  ```
+- `pam_tally2` – Monitor failed login attempts (Debian/Ubuntu).
+- `faillock` – Lock account after consecutive failed attempts (RHEL/Fedora).
+- `/etc/login.defs` – Set global defaults (UID ranges, aging policies).
