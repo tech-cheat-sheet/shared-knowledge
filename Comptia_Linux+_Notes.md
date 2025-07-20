@@ -74,6 +74,14 @@
     - [🐚 Default Shell and Skeleton Files](#-default-shell-and-skeleton-files)
     - [🗄️ Configuration Files](#️-configuration-files-1)
     - [🔐 Account Management Tools](#-account-management-tools)
+  - [2.3 Given a scenario, implement and configure firewalls](#23-given-a-scenario-implement-and-configure-firewalls)
+    - [🎯 Firewall Use Cases](#-firewall-use-cases)
+    - [🛠️ Common Firewall Technologies](#️-common-firewall-technologies)
+      - [🔹 firewalld](#-firewalld)
+      - [🔹 iptables](#-iptables)
+      - [🔹 nftables](#-nftables)
+      - [🔹 UFW (Uncomplicated Firewall)](#-ufw-uncomplicated-firewall)
+      - [🔐 Key Firewall Features](#-key-firewall-features)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -666,3 +674,61 @@ Control passwords, expiration, and failed login behavior:
 - `pam_tally2` – Monitor failed login attempts (Debian/Ubuntu).
 - `faillock` – Lock account after consecutive failed attempts (RHEL/Fedora).
 - `/etc/login.defs` – Set global defaults (UID ranges, aging policies).
+## 2.3 Given a scenario, implement and configure firewalls
+Firewalls are vital for securing your system by controlling incoming and outgoing traffic based on defined rules. Below is a structured overview of tools and concepts to guide firewall implementation.
+### 🎯 Firewall Use Cases
+| Task                           | Command Example                                     |
+|--------------------------------|-----------------------------------------------------|
+| **Open a port**               | `firewall-cmd --add-port=443/tcp --permanent`      |
+| **Close a port**              | `iptables -D INPUT -p tcp --dport 22 -j ACCEPT`     |
+| **Check firewall config**     | `firewall-cmd --list-all` or `iptables -L -n`       |
+| **Enable IP forwarding**      | `sysctl -w net.ipv4.ip_forward=1`                   |
+| **Disable IP forwarding**     | `sysctl -w net.ipv4.ip_forward=0`                   |
+
+To persist IP forwarding changes, update `/etc/sysctl.conf`:
+```bash
+net.ipv4.ip_forward = 1
+```
+### 🛠️ Common Firewall Technologies
+Linux offers several powerful tools for managing network traffic:
+#### 🔹 firewalld
+- Dynamic and zone-based firewall manager.
+- Supports runtime and permanent configuration.
+- Common commands:
+```bash
+firewall-cmd --get-active-zones
+firewall-cmd --add-service=http --permanent
+firewall-cmd --reload
+```
+#### 🔹 iptables
+- Legacy tool for packet filtering.
+- Rule-based syntax and highly scriptable.
+Example usage:
+```shell
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+iptables -L -n
+```
+#### 🔹 nftables
+- Modern replacement for iptables.
+- Unified framework for IPv4/IPv6 and better syntax.
+Example usage:
+```shell
+nft list ruleset
+nft add rule inet filter input tcp dport 22 accept
+```
+#### 🔹 UFW (Uncomplicated Firewall)
+- Simpler interface for iptables (common on Ubuntu).
+- Ideal for beginner and quick setups.
+Commands:
+```shell
+ufw allow 22/tcp
+ufw enable
+ufw status
+```
+#### 🔐 Key Firewall Features
+| Feature   | Description                                                                 |
+|-----------|-----------------------------------------------------------------------------|
+| **Zones**     | Isolated contexts for defining access levels (`firewalld`)                  |
+| **Services**  | Grouped definitions of ports and protocols (e.g., SSH, HTTP)                |
+| **Stateful**  | Tracks and remembers connection states for intelligent filtering            |
+| **Stateless** | Treats each packet independently; rules applied without context             |
