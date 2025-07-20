@@ -128,6 +128,13 @@
     - [🏷️ Tagging Releases](#️-tagging-releases)
     - [🚫 Ignoring Files](#-ignoring-files)
       - [Sample `.gitignore`](#sample-gitignore)
+  - [3.4 Summarize common infrastructure as code technologies](#34-summarize-common-infrastructure-as-code-technologies)
+    - [📄 File Formats](#-file-formats)
+    - [🔧 IaC Utilities](#-iac-utilities)
+    - [🚀 CI/CD Integration](#-cicd-integration)
+      - [🔄 Common Use Cases](#-common-use-cases)
+    - [🧠 Advanced Git Topics](#-advanced-git-topics)
+      - [Merge vs. Rebase:](#merge-vs-rebase)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -1159,3 +1166,59 @@ pycache/ *.pyc
 # Docker files
 *.env docker-compose.override.yml
 ```
+## 3.4 Summarize common infrastructure as code technologies
+Infrastructure as Code allows system configurations, environments, and deployments to be automated, versioned, and treated like code. Here's a concise breakdown of common components.
+### 📄 File Formats
+IaC tools use structured, human-readable files to define infrastructure:
+| Format | Description                                                         |
+|--------|---------------------------------------------------------------------|
+| **YAML** | "YAML Ain’t Markup Language" – popular for Ansible, CI/CD pipelines |
+| **JSON** | Lightweight data format used by Terraform and other APIs           |
+
+Example YAML:
+```yaml
+name: Deploy Webserver
+hosts: web
+tasks:
+  - name: Install nginx
+    apt:
+      name: nginx
+      state: present
+```
+### 🔧 IaC Utilities
+Infrastructure as Code tools help automate configuration, provisioning, and deployment tasks across environments.
+| Tool          | Description                                                                |
+|---------------|----------------------------------------------------------------------------|
+| **Ansible**   | Agentless; uses SSH and YAML playbooks to define roles and tasks           |
+| **Puppet**    | Declarative; uses its own DSL and a master-agent architecture              |
+| **Chef**      | Ruby-based DSL; suitable for complex workflows and infrastructure changes  |
+| **SaltStack** | Event-driven; supports remote execution and state enforcement              |
+| **Terraform** | Declarative; cloud-agnostic provisioning using `.tf` configuration files   |
+### 🚀 CI/CD Integration
+Continuous Integration and Continuous Deployment (CI/CD) streamline delivery by automating build, test, and release workflows.
+#### 🔄 Common Use Cases
+- Automatically apply Terraform plans after code changes
+- Run Ansible playbooks upon successful merge
+- Enforce config drift detection via scheduled pipelines
+- Integrate with GitHub Actions, GitLab CI/CD, Jenkins, etc.
+
+Example (GitHub Actions + Terraform):
+```yaml
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy with Terraform
+        run: terraform apply -auto-approve
+```
+### 🧠 Advanced Git Topics
+Mastering advanced Git workflows helps improve collaboration, maintain cleaner commit histories, and streamline reviews—especially in infrastructure projects and CI/CD pipelines.
+| Concept        | Description                                                  | Example Command                    |
+|----------------|--------------------------------------------------------------|------------------------------------|
+| **merge**      | Integrate changes from one branch into another, preserving history | `git merge feature-branch`     |
+| **rebase**     | Move or replay commits from one branch onto another for a cleaner history | `git rebase main`          |
+| **pull request** | Request to merge changes via code review, typically in platforms like GitHub, GitLab, Bitbucket | Managed via web UI or CLI tools like `gh pr create` |
+#### Merge vs. Rebase:
+- **Merge** keeps full commit history and shows branches were combined.
+- **Rebase** flattens commit history, making it linear and tidy—but can overwrite history if misused.
