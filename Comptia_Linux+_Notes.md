@@ -172,6 +172,29 @@
     - [🧱 Mount Option Problems](#-mount-option-problems)
       - [🚩 Common Mount Options and Their Impacts](#-common-mount-options-and-their-impacts)
       - [🔍 Diagnosing Mount Problems](#-diagnosing-mount-problems)
+  - [4.2 Given a scenario, analyze and troubleshoot network resource issues](#42-given-a-scenario-analyze-and-troubleshoot-network-resource-issues)
+    - [⚙️ Network Configuration Issues](#️-network-configuration-issues)
+      - [Subnet Problems](#subnet-problems)
+      - [Routing Issues](#routing-issues)
+      - [🔍 Example:](#-example)
+    - [🔥 Firewall Issues](#-firewall-issues)
+      - [🔍 Diagnosis and Tools](#-diagnosis-and-tools)
+      - [🧪 Troubleshooting Steps](#-troubleshooting-steps)
+    - [🖧 Interface Errors](#-interface-errors)
+      - [➤ Dropped Packets](#-dropped-packets)
+      - [➤ Collisions](#-collisions)
+      - [➤ Link Status](#-link-status)
+      - [📋 Common Interface Issues](#-common-interface-issues)
+      - [🔍 Diagnostic Examples](#-diagnostic-examples)
+    - [📉 Bandwidth Limitations \& High Latency](#-bandwidth-limitations--high-latency)
+      - [➤ High Latency](#-high-latency-1)
+      - [⚠️ Common Causes](#️-common-causes)
+      - [🧪 Diagnostic Tools and Usage](#-diagnostic-tools-and-usage)
+    - [🌐 Name Resolution Issues](#-name-resolution-issues)
+      - [➤ DNS](#-dns)
+    - [🧪 Testing Remote Systems](#-testing-remote-systems)
+      - [➤ Nmap](#-nmap)
+      - [➤ openssl s\_client](#-openssl-s_client)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -1492,3 +1515,120 @@ cat /etc/fstab
 sudo mount -o remount,rw /mnt/data
 ```
 Watch for mismatched or overly restrictive options that might cause apps to fail writing, trigger permission errors, or reduce performance.
+## 4.2 Given a scenario, analyze and troubleshoot network resource issues
+When analyzing network issues, it’s essential to break down problems by category—covering configuration, hardware, software, and communication paths.
+### ⚙️ Network Configuration Issues
+Misconfigurations can block traffic, confuse routing, or isolate devices.
+#### Subnet Problems
+- Incorrect subnet masks may prevent proper device communication
+- Use `ip addr`, `ipcalc`, or `ifconfig` to verify subnet configuration
+- Verify subnet masks across devices to ensure consistency.
+- Check if devices are on the correct subnet range to avoid routing mishaps.
+- Use tools like `ipconfig / ifconfig` or `ip addr` to inspect subnet settings.
+#### Routing Issues
+- Missing or incorrect routes lead to unreachable networks
+- Check routing table: `ip route` or `netstat -rn`
+- Run `traceroute` or `tracert` to spot unreachable hops.
+- Use `netstat -r` or `ip route` to inspect route tables.
+- Ensure default gateways are properly configured.
+#### 🔍 Example:
+```bash
+# Display IP and route info
+ip addr
+ip route
+```
+### 🔥 Firewall Issues
+Firewalls are vital for securing systems, but misconfigurations can block legitimate network traffic or hinder troubleshooting.
+- Check firewall rules to confirm required ports and IPs aren’t being blocked.
+- Inspect connection logs for denied traffic.
+- Temporarily disable firewalls to confirm if they are the root cause (with caution and authorization).
+#### 🔍 Diagnosis and Tools
+| Tool/Command          | Purpose                                          |
+|------------------------|--------------------------------------------------|
+| `iptables -L`          | List active rules in iptables                   |
+| `ufw status`           | Show status and rules in Uncomplicated Firewall (Ubuntu) |
+| `firewall-cmd --list-all` | List settings for `firewalld` zones (Red Hat-based systems) |
+#### 🧪 Troubleshooting Steps
+```bash
+# Temporarily disable firewall (use with caution)
+sudo ufw disable        # Ubuntu
+sudo iptables -F        # Flush iptables rules
+
+# Check if port is being blocked
+sudo iptables -L -n | grep DROP
+```
+- Verify that required ports (e.g. 22 for SSH, 80/443 for web) are allowed
+- Use `nmap` or `telnet` to test remote connectivity
+- Check logs: `journalctl`, `/var/log/syslog`, or firewall-specific logs
+### 🖧 Interface Errors
+Network interfaces can exhibit errors due to physical faults, driver issues, or traffic congestion. Monitoring their health is vital for diagnosing degraded connectivity.
+#### ➤ Dropped Packets
+- Use `netstat -s` or interface monitoring tools to check packet loss stats.
+- Monitor traffic flow using Wireshark or tcpdump.
+#### ➤ Collisions
+- Collisions are common in half-duplex setups—ensure full-duplex configuration.
+- Analyze switch port statistics via SNMP or dashboard tools.
+#### ➤ Link Status
+- Check physical cabling and link lights on NICs and switches.
+- Run `ethtool ethX` or check interface status (`ip link show`).
+#### 📋 Common Interface Issues
+| Issue            | Description                                       | Diagnostic Tool        |
+|------------------|---------------------------------------------------|------------------------|
+| **Dropped Packets** | Packets discarded due to buffer overflows or congestion | `ip -s link`, `netstat -i` |
+| **Collisions**   | Frame collisions (rare in full-duplex networks)   | `ifconfig`, `ethtool` |
+| **Link Status**  | Physical interface up/down, speed mismatches      | `ethtool`, `dmesg`     |
+#### 🔍 Diagnostic Examples
+```bash
+# Check interface statistics
+ip -s link
+
+# Get detailed link info including speed and duplex
+ethtool eth0
+
+# View recent hardware-related messages
+dmesg | grep eth
+```
+### 📉 Bandwidth Limitations & High Latency
+Network slowness and lag often stem from bandwidth congestion, inefficient routing, or hardware constraints.
+#### ➤ High Latency
+- Ping targets multiple times and compare response times.
+- Run continuous `ping` or `mtr` to analyze jitter and delay.
+- Check for congestion using bandwidth monitoring tools like `iftop`, `nload`, or NetFlow.
+#### ⚠️ Common Causes
+| Issue             | Description                                             | Detection Tools          |
+|-------------------|---------------------------------------------------------|--------------------------|
+| High latency      | Delayed packet delivery across network paths            | `ping`, `mtr`            |
+| Bandwidth caps    | Provider or hardware-enforced speed limits              | `iperf3`, `bmon`         |
+| Congestion        | Excessive simultaneous traffic on interfaces            | `iftop`, `nload`         |
+#### 🧪 Diagnostic Tools and Usage
+```bash
+# Measure latency and packet loss
+ping -c 10 example.com
+
+# Run real-time traceroute with latency metrics
+mtr -rw example.com
+
+# Benchmark actual bandwidth between hosts
+iperf3 -s          # Run as server on remote host
+iperf3 -c remote-IP  # Run client test
+
+# Monitor live bandwidth usage
+sudo apt install bmon
+bmon
+```
+Latency can also fluctuate based on routing paths or physical distance between nodes. Use traceroute-style tools like mtr to inspect hops and delays.
+### 🌐 Name Resolution Issues
+#### ➤ DNS
+- Use `nslookup` or `dig` to test resolution of internal and external domains.
+- Confirm DNS server configuration and availability.
+- Try alternate DNS servers (Google: 8.8.8.8, Cloudflare: 1.1.1.1) to isolate problems.
+### 🧪 Testing Remote Systems
+#### ➤ Nmap
+- Scan ports/services using `nmap -Pn <host>` for reachability.
+- Use `nmap -sV` to identify running services and versions.
+#### ➤ openssl s_client
+- Test SSL connectivity with:
+```shell
+openssl s_client -connect <host>:443
+```
+- Review certificate validity, supported cipher suites, and TLS handshake.
