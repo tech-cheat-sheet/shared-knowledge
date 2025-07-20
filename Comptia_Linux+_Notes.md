@@ -82,6 +82,15 @@
       - [🔹 nftables](#-nftables)
       - [🔹 UFW (Uncomplicated Firewall)](#-ufw-uncomplicated-firewall)
       - [🔐 Key Firewall Features](#-key-firewall-features)
+  - [2.4 Given a scenario, configure and execute remote connectivity for system management](#24-given-a-scenario-configure-and-execute-remote-connectivity-for-system-management)
+    - [🔐 SSH Configuration Files](#-ssh-configuration-files)
+    - [🔑 SSH Commands](#-ssh-commands)
+      - [Example Workflow:](#example-workflow)
+    - [🔀 SSH Tunneling Techniques](#-ssh-tunneling-techniques)
+      - [👥 Executing Commands as Another User](#-executing-commands-as-another-user)
+      - [🔧 Configuration Files](#-configuration-files)
+      - [🛠️ Common Privilege-Elevation Commands](#️-common-privilege-elevation-commands)
+      - [Example Usage:](#example-usage)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -732,3 +741,69 @@ ufw status
 | **Services**  | Grouped definitions of ports and protocols (e.g., SSH, HTTP)                |
 | **Stateful**  | Tracks and remembers connection states for intelligent filtering            |
 | **Stateless** | Treats each packet independently; rules applied without context             |
+## 2.4 Given a scenario, configure and execute remote connectivity for system management
+SSH (Secure Shell) is the foundation of secure remote administration in Linux. It allows encrypted access, tunneling, and command execution across systems. Here's a practical breakdown.
+### 🔐 SSH Configuration Files
+| File                        | Purpose                                              |
+|-----------------------------|------------------------------------------------------|
+| `/etc/ssh/sshd_config`      | Server-side SSH daemon settings                     |
+| `/etc/ssh/ssh_config`       | Client-side default settings                        |
+| `~/.ssh/known_hosts`        | Tracks trusted remote hosts                         |
+| `~/.ssh/authorized_keys`    | Lists public keys allowed for key-based login       |
+| `~/.ssh/config`             | User-specific client settings (hosts, keys, ports)  |
+
+Example `~/.ssh/config` entry:
+```ini
+Host webserver
+    HostName 192.168.1.10
+    User arthur
+    IdentityFile ~/.ssh/id_rsa
+```
+### 🔑 SSH Commands
+SSH utilities streamline authentication, secure key handling, and remote access:
+| Command        | Purpose                                               |
+|----------------|--------------------------------------------------------|
+| `ssh-keygen`   | Generate SSH key pair (e.g., RSA, ED25519)             |
+| `ssh-copy-id`  | Copy your public key to a remote server for key-based login |
+| `ssh-add`      | Add key to SSH agent for automatic authentication      |
+#### Example Workflow:
+```bash
+# Generate a key pair
+ssh-keygen -t ed25519
+
+# Transfer your public key to another system
+ssh-copy-id user@remotehost
+
+# Use the key to connect
+ssh user@remotehost
+```
+### 🔀 SSH Tunneling Techniques
+Securely forward traffic or enable remote GUI sessions:
+| Method              | Description                                        | Example Command                                  |
+|---------------------|----------------------------------------------------|--------------------------------------------------|
+| **X11 Forwarding**  | Run graphical applications remotely                | `ssh -X user@host`                               |
+| **Port Forwarding** | Redirect a local port to a remote service          | `ssh -L 8080:localhost:80 user@host`             |
+| **Dynamic Forwarding** | Create a SOCKS proxy for multiple destinations | `ssh -D 1080 user@host`                          |
+#### 👥 Executing Commands as Another User
+Switch users or elevate privileges securely.
+#### 🔧 Configuration Files
+- `/etc/sudoers` – Central file defining sudo permissions
+- **PolicyKit Rules** – Used by `pkexec` for GUI/service access controls
+#### 🛠️ Common Privilege-Elevation Commands
+| Command   | Purpose                                                 |
+|-----------|----------------------------------------------------------|
+| `sudo`    | Run commands with superuser privileges                  |
+| `visudo`  | Safely edit `/etc/sudoers` with syntax validation       |
+| `su -`    | Start a login shell as another user (commonly root)     |
+| `pkexec`  | Prompt for elevated access to run graphical tools       |
+#### Example Usage:
+```bash
+# Update packages with root privileges
+sudo apt update
+
+# Switch to root account
+su -
+
+# Launch GUI text editor as root
+pkexec gedit /etc/ssh/sshd_config
+```
