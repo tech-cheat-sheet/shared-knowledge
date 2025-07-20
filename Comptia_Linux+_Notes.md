@@ -155,6 +155,23 @@
       - [🔐 Securing Registries](#-securing-registries)
         - [🔒 Security Practices](#-security-practices)
         - [🔐 Example: Authenticating and Pushing Securely](#-example-authenticating-and-pushing-securely)
+- [4.0 Troubleshooting](#40-troubleshooting)
+  - [4.1 Given a scenario, analyze and troubleshoot storage issues](#41-given-a-scenario-analyze-and-troubleshoot-storage-issues)
+    - [🐢 High Latency](#-high-latency)
+      - [Suggested Actions](#suggested-actions)
+    - [📉 Low Throughput](#-low-throughput)
+      - [Suggested Actions](#suggested-actions-1)
+    - [🧮 IOPS Issues](#-iops-issues)
+      - [Suggested Actions](#suggested-actions-2)
+    - [💾 Capacity Issues](#-capacity-issues)
+    - [📁 Filesystem Issues](#-filesystem-issues)
+    - [⏱️ I/O Scheduler](#️-io-scheduler)
+    - [🔧 Device-Level Issues](#-device-level-issues)
+      - [📘 Common Devices and Diagnostics](#-common-devices-and-diagnostics)
+      - [🔍 Sample Troubleshooting](#-sample-troubleshooting)
+    - [🧱 Mount Option Problems](#-mount-option-problems)
+      - [🚩 Common Mount Options and Their Impacts](#-common-mount-options-and-their-impacts)
+      - [🔍 Diagnosing Mount Problems](#-diagnosing-mount-problems)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -1382,3 +1399,96 @@ docker login ghcr.io
 # Push signed and scanned image
 docker push ghcr.io/username/myapp:v1
 ```
+# 4.0 Troubleshooting
+## 4.1 Given a scenario, analyze and troubleshoot storage issues
+Analyzing storage performance and reliability requires understanding latency, capacity, hardware behaviors, and filesystem integrity.
+### 🐢 High Latency
+| Symptom      | Diagnostic Tool       | Potential Cause                         |
+|--------------|------------------------|------------------------------------------|
+| High I/O wait| `iostat`, `vmstat`, `top` | Disk under load, slow media response    |
+#### Suggested Actions
+- Check disk speed with `hdparm`
+- Investigate running processes causing bottlenecks
+- Ensure proper disk scheduling (`noop` for SSDs)
+### 📉 Low Throughput
+| Symptom         | Tools                  | Common Causes                    |
+|------------------|------------------------|----------------------------------|
+| Slow read/write speeds | `dd`, `fio`, `iostat`  | Bandwidth saturation, RAID misconfig, filesystem overhead |
+#### Suggested Actions
+- Run benchmark: `dd if=/dev/zero of=testfile bs=1M count=1024 oflag=direct`
+- Check RAID health and caching
+- Use appropriate filesystem for workload (e.g., XFS for large files)
+### 🧮 IOPS Issues
+| Symptom   | Diagnostic Tools     | Likely Causes                         |
+|-----------|----------------------|----------------------------------------|
+| Low IOPS  | `iostat -x`, `fio`   | SSD aging, controller limits, scheduler choice |
+#### Suggested Actions
+- Switch to `noop` or `deadline` scheduler for SSD
+- Monitor trim usage with `fstrim` and check support
+- Use RAID 10 for better IOPS if applicable
+### 💾 Capacity Issues
+| Issue           | Diagnosis                      | Fix                                      |
+|------------------|-------------------------------|------------------------------------------|
+| Low disk space   | `df -h`, `du -sh /*`           | Delete unused files, increase disk size  |
+| Inode exhaustion | `df -i`, `find / -xdev`        | Remove excessive tiny files, change inode density |
+### 📁 Filesystem Issues
+| Type         | Symptom                              | Diagnostic Tool        | Resolution                          |
+|--------------|----------------------------------------|------------------------|--------------------------------------|
+| Corruption   | Read errors, failed mounts            | `fsck`, `dmesg`        | Repair with `fsck`, restore from backup |
+| Mismatch     | Mount errors, missing files           | `/etc/fstab`, `blkid` | Correct labels/UUIDs and `fstab` entries |
+### ⏱️ I/O Scheduler
+Schedulers affect disk access efficiency. View and change using:
+```bash
+cat /sys/block/sdX/queue/scheduler
+echo deadline > /sys/block/sdX/queue/scheduler
+```
+- `noop`: Best for SSDs (no reordering)
+- `deadline`: Reduces latency
+- `cfq`: Fair scheduler for mixed workloads
+### 🔧 Device-Level Issues
+Storage hardware can exhibit performance degradation, data integrity issues, or complete failure. Regular diagnostics and maintenance are key to avoiding surprises.
+#### 📘 Common Devices and Diagnostics
+| Device Type         | Tools/Commands                            | Issue Examples                        |
+|---------------------|-------------------------------------------|----------------------------------------|
+| **NVMe / SSD**      | `smartctl -a`, `nvme list`                | High wear level, overheating, bad blocks |
+| **SSD Trim**        | `fstrim -v /`                              | Inefficient space reuse, slow writes    |
+| **RAID Arrays**     | `cat /proc/mdstat`, `mdadm --detail`      | Rebuild errors, degraded state          |
+| **LVM (Logical Volumes)** | `lvdisplay`, `vgdisplay`, `pvscan`       | Volume full, metadata errors           |
+| **I/O Errors**      | `dmesg`, `smartctl`, `journalctl`         | Read/write failures, device disconnects |
+#### 🔍 Sample Troubleshooting
+```bash
+# Check NVMe health
+nvme smart-log /dev/nvme0
+
+# Display RAID array status
+cat /proc/mdstat
+
+# Run a quick SMART check on disk
+smartctl -H /dev/sda
+
+# View recent I/O errors from kernel messages
+dmesg | grep -i error
+```
+### 🧱 Mount Option Problems
+Mount options determine how filesystems behave during read/write operations, directly influencing performance, reliability, and system behavior.
+#### 🚩 Common Mount Options and Their Impacts
+| Option     | Effect                                              | Recommendation                                  |
+|------------|-----------------------------------------------------|-------------------------------------------------|
+| `noatime`  | Disables access time updates for read operations    | Improves performance for frequent reads         |
+| `sync`     | Forces synchronous writes to disk                   | Can slow performance; use `async` if safe       |
+| `ro`       | Mounts filesystem as read-only                      | Intended for recovery or strict protection      |
+| `rw`       | Enables read and write                              | Needed for most interactive data applications   |
+| `relatime` | Updates access time less frequently                 | Balance between `noatime` and `atime` overhead  |
+#### 🔍 Diagnosing Mount Problems
+You can investigate current mount options and correct misconfigurations:
+```bash
+# View current mount points and options
+mount | grep /dev/sd
+
+# Check filesystem entries
+cat /etc/fstab
+
+# Remount with updated options
+sudo mount -o remount,rw /mnt/data
+```
+Watch for mismatched or overly restrictive options that might cause apps to fail writing, trigger permission errors, or reduce performance.
