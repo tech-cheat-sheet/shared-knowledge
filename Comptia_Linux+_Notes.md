@@ -116,6 +116,10 @@
       - [🌍 Environment Variables](#-environment-variables)
         - [Example Usage:](#example-usage-1)
       - [🗂️ File Path Types](#️-file-path-types)
+  - [3.2 Given a scenario, perform basic container operations](#32-given-a-scenario-perform-basic-container-operations)
+    - [🛠️ Container Management](#️-container-management)
+    - [🖼️ Container Image Operations](#️-container-image-operations)
+    - [🧪 Example Workflow: Simple Web Container](#-example-workflow-simple-web-container)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -1021,3 +1025,43 @@ Understanding file path types ensures scripts reliably locate and access resourc
 | **Absolute**  | Full path from the root of the filesystem                 | `/home/arthur/scripts/cleanup.sh`       |
 
 Relative paths are flexible within a directory structure, while absolute paths guarantee location consistency across environments.
+## 3.2 Given a scenario, perform basic container operations
+Containers allow lightweight and portable application environments. Here’s how to perform essential container and image tasks using Docker.
+### 🛠️ Container Management
+| Operation         | Command Example                                       |
+|-------------------|--------------------------------------------------------|
+| **Start a container**     | `docker start mycontainer`                             |
+| **Stop a container**      | `docker stop mycontainer`                              |
+| **List running containers** | `docker ps`                                           |
+| **List all containers**     | `docker ps -a`                                        |
+| **Inspect container details** | `docker inspect mycontainer`                       |
+| **Deploy existing image**     | `docker run -d --name webapp nginx`                |
+| **Connect to container shell** | `docker exec -it mycontainer bash`               |
+| **View container logs**       | `docker logs mycontainer`                         |
+| **Expose ports**             | `docker run -p 8080:80 nginx`                      |
+### 🖼️ Container Image Operations
+| Operation        | Command Example                                      |
+|------------------|------------------------------------------------------|
+| **Build image from Dockerfile** | `docker build -t myimage .`                    |
+| **Push image to registry**      | `docker push username/myimage`                 |
+| **Pull image from registry**    | `docker pull alpine`                           |
+| **List local images**           | `docker images`                                |
+| **Remove image**                | `docker rmi myimage`                           |
+### 🧪 Example Workflow: Simple Web Container
+```bash
+# Pull nginx image
+docker pull nginx
+
+# Run container and expose port 8080
+docker run -d --name webserver -p 8080:80 nginx
+
+# View logs
+docker logs webserver
+
+# Connect to container
+docker exec -it webserver bash
+
+# Stop and remove container
+docker stop webserver
+docker rm webserver
+```
