@@ -195,6 +195,23 @@
     - [🧪 Testing Remote Systems](#-testing-remote-systems)
       - [➤ Nmap](#-nmap)
       - [➤ openssl s\_client](#-openssl-s_client)
+  - [4.3 Given a scenario, analyze and troubleshoot central processing unit (CPU) and memory issues](#43-given-a-scenario-analyze-and-troubleshoot-central-processing-unit-cpu-and-memory-issues)
+    - [🧵 Process-Related Issues](#-process-related-issues)
+      - [➤ Runaway Processes](#-runaway-processes)
+      - [➤ Zombie Processes](#-zombie-processes)
+    - [📈 CPU Load \& Utilization](#-cpu-load--utilization)
+      - [➤ High CPU Utilization](#-high-cpu-utilization)
+      - [➤ High Load Average](#-high-load-average)
+      - [➤ High Run Queues](#-high-run-queues)
+    - [⏱ CPU Time Metrics](#-cpu-time-metrics)
+    - [🎚 CPU Priorities](#-cpu-priorities)
+      - [➤ nice / renice](#-nice--renice)
+    - [🧠 Memory Management](#-memory-management)
+      - [➤ Memory Exhaustion](#-memory-exhaustion)
+      - [➤ Out Of Memory (OOM)](#-out-of-memory-oom)
+      - [➤ Memory Leaks](#-memory-leaks)
+    - [🔄 Swapping](#-swapping)
+    - [🔧 Hardware Inspection](#-hardware-inspection)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -1632,3 +1649,61 @@ Latency can also fluctuate based on routing paths or physical distance between n
 openssl s_client -connect <host>:443
 ```
 - Review certificate validity, supported cipher suites, and TLS handshake.
+## 4.3 Given a scenario, analyze and troubleshoot central processing unit (CPU) and memory issues
+### 🧵 Process-Related Issues
+#### ➤ Runaway Processes
+- Identify with `top`, `htop`, or `ps aux --sort=-%cpu`.
+- Look for abnormally high CPU/memory usage and investigate the command/process logic.
+- Kill or restart the offending process using `kill -9 <pid>` or `systemctl`.
+#### ➤ Zombie Processes
+- Use `ps aux | grep Z` or check `STAT` column in `top`.
+- Usually harmless unless excessive—reboot or fix parent process to collect zombie status.
+### 📈 CPU Load & Utilization
+#### ➤ High CPU Utilization
+- Analyze using `top` or `mpstat`.
+- Identify real-time CPU hogs and validate whether it’s expected workload.
+#### ➤ High Load Average
+- Check using `uptime` or `top`.
+- Compare load against available cores (e.g., 4-core system should keep under ~4.0).
+- Assess whether it's CPU-bound or IO-bound using `iostat`, `vmstat`.
+#### ➤ High Run Queues
+- Use `vmstat 1` and examine the `r` column.
+- Indicates how many processes are waiting for CPU time—may signal contention.
+### ⏱ CPU Time Metrics
+| Time    | Meaning                                 |
+|---------|-----------------------------------------|
+| user    | Time spent on user-level processes      |
+| system  | Time in kernel space                    |
+| idle    | CPU not being used                      |
+| iowait  | CPU waiting on I/O                      |
+| steal   | Time stolen by hypervisor (VMs)         |
+
+- Use `mpstat -P ALL` or `sar` to visualize these stats per core.
+### 🎚 CPU Priorities
+#### ➤ nice / renice
+- Control scheduling priority with `nice -n <level> <command>` (lower = higher priority).
+- Adjust running processes with `renice -n <level> -p <pid>`.
+### 🧠 Memory Management
+#### ➤ Memory Exhaustion
+- Use `free -m`, `vmstat`, or `top` to compare free memory vs. file cache.
+- Linux may show low "free" memory but high cache—this is normal unless swap kicks in.
+#### ➤ Out Of Memory (OOM)
+- Look in `/var/log/syslog` or `dmesg | grep -i 'killed process'`.
+- Linux OOM killer terminates low-priority/high-consuming processes.
+- Investigate with tools like `smem` or `ps_mem`.
+#### ➤ Memory Leaks
+- Spot long-lived processes gradually consuming more memory (e.g., via `top`, `ps`).
+- Use tools like `valgrind` or language-specific profilers (Python: `objgraph`, Java: `VisualVM`).
+### 🔄 Swapping
+- Excessive swap usage = performance hit.
+- Check with `swapon -s`, `vmstat`, `free -m`.
+- Consider tuning vm.swappiness in `/etc/sysctl.conf`.
+### 🔧 Hardware Inspection
+| Command          | Function                        |
+|------------------|---------------------------------|
+| `lscpu`          | CPU architecture & specs        |
+| `lsmem`          | Detailed memory info            |
+| `/proc/cpuinfo`  | Raw CPU details per core        |
+| `/proc/meminfo`  | Memory usage breakdown          |
+
+These give a full view of hardware topology, helpful for identifying limits and misconfiguration.
