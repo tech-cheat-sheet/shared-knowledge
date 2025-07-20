@@ -135,6 +135,26 @@
       - [🔄 Common Use Cases](#-common-use-cases)
     - [🧠 Advanced Git Topics](#-advanced-git-topics)
       - [Merge vs. Rebase:](#merge-vs-rebase)
+  - [3.5 Summarize container, cloud, and orchestration concepts](#35-summarize-container-cloud-and-orchestration-concepts)
+    - [⚙️ Kubernetes Overview](#️-kubernetes-overview)
+      - [✅ Benefits](#-benefits)
+      - [🧩 Key Components](#-key-components)
+    - [🖥️ Single-Node \& Multicontainer Use Cases](#️-single-node--multicontainer-use-cases)
+    - [💾 Container Persistent Storage](#-container-persistent-storage)
+      - [Docker Example:](#docker-example)
+    - [🌐 Container Networking](#-container-networking)
+      - [Example: Exposing a Web App](#example-exposing-a-web-app)
+    - [🔄 Service Mesh](#-service-mesh)
+      - [✨ Key Features](#-key-features)
+    - [🚀 Bootstrapping with Cloud-Init](#-bootstrapping-with-cloud-init)
+      - [🧰 Common Tasks](#-common-tasks)
+      - [Example:](#example-2)
+    - [📥 Container Registries](#-container-registries)
+      - [🗃️ Types of Registries](#️-types-of-registries)
+      - [🔁 Image Lifecycle Workflow](#-image-lifecycle-workflow)
+      - [🔐 Securing Registries](#-securing-registries)
+        - [🔒 Security Practices](#-security-practices)
+        - [🔐 Example: Authenticating and Pushing Securely](#-example-authenticating-and-pushing-securely)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -1222,3 +1242,143 @@ Mastering advanced Git workflows helps improve collaboration, maintain cleaner c
 #### Merge vs. Rebase:
 - **Merge** keeps full commit history and shows branches were combined.
 - **Rebase** flattens commit history, making it linear and tidy—but can overwrite history if misused.
+## 3.5 Summarize container, cloud, and orchestration concepts
+This overview highlights essential technologies that support scalable infrastructure, efficient deployments, and cloud-native applications.
+### ⚙️ Kubernetes Overview
+Kubernetes (K8s) automates deployment, scaling, and management of containerized applications.
+#### ✅ Benefits
+- Self-healing: Automatically restarts failed containers
+- Scaling: Dynamically adjusts replicas based on demand
+- Rolling updates: Zero downtime deployments
+- Declarative configuration: YAML manifests define desired state
+#### 🧩 Key Components
+| Component             | Description                                                |
+|----------------------|------------------------------------------------------------|
+| **Pod**              | Smallest deployable unit; can contain one or more containers |
+| **Sidecar**          | Helper container that shares context (e.g., logging proxy, data sync) |
+| **Ambassador container** | Acts as an API gateway or proxy to external systems         |
+### 🖥️ Single-Node & Multicontainer Use Cases
+**Docker Compose** is ideal for local development and simple deployments:
+
+```yaml
+version: "3"
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: example
+```
+- Compose defines multiple services in one YAML file
+- Supports linking, shared volumes, and environment variables
+### 💾 Container Persistent Storage
+Containerized applications often need persistent storage to retain data beyond container lifecycle events (e.g., restarts, deletions).
+| Method               | Description                                                      |
+|----------------------|------------------------------------------------------------------|
+| **Volumes**          | Managed by the container runtime; decoupled from containers      |
+| **Bind Mounts**      | Direct mapping to a host directory for more control              |
+| **Persistent Volumes (PV)** | Kubernetes abstraction for durable, shared storage resources |
+#### Docker Example:
+```bash
+# Create a named volume
+docker volume create mydata
+
+# Use the volume in a container
+docker run -v mydata:/app/data myimage
+```
+### 🌐 Container Networking
+Containers require virtualized networking to communicate internally and externally. Different models offer varying levels of isolation and flexibility.
+| Network Type           | Description                                                       |
+|------------------------|--------------------------------------------------------------------|
+| **Overlay Network**    | Creates a virtual network that spans multiple hosts (used in orchestration tools like Docker Swarm and Kubernetes) |
+| **Bridge Network**     | Default Docker network that connects containers on the same host via an internal subnet |
+| **NAT (Port Mapping)** | Maps a host port to a container port, enabling external access      |
+| **Host Network**       | Shares the host’s network stack; can improve performance but reduces isolation |
+#### Example: Exposing a Web App
+```bash
+# Run a container with NAT port mapping
+docker run -d -p 8080:80 nginx
+
+# Create a custom bridge network and attach a container
+docker network create mybridge
+docker run -d --name webapp --network mybridge nginx
+```
+### 🔄 Service Mesh
+A service mesh is a dedicated infrastructure layer that manages service-to-service communication in microservice architectures.
+#### ✨ Key Features
+| Feature            | Function                                                       |
+|--------------------|----------------------------------------------------------------|
+| **Traffic Routing**| Advanced control with load balancing, retries, timeouts        |
+| **Security**       | Mutual TLS for encrypted connections between services          |
+| **Observability**  | Metrics, distributed tracing, and logging                      |
+| **Resilience**     | Circuit breaking, failovers, and retry policies                |
+
+Popular service mesh technologies include:
+- **Istio** – Full-featured mesh with advanced traffic policies and integrations
+- **Linkerd** – Lightweight and performance-focused
+- **Consul Connect** – Integrates with HashiCorp stack; service discovery + mesh
+### 🚀 Bootstrapping with Cloud-Init
+**Cloud-init** automates configuration tasks when a cloud instance first boots. Supported by major cloud platforms (e.g., AWS, Azure, OpenStack).
+#### 🧰 Common Tasks
+- Set hostname and timezone
+- Add users and SSH keys
+- Install packages and enable services
+- Configure disks and networking
+#### Example:
+```yaml
+#cloud-config
+users:
+  - name: deployer
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3Nza...
+packages:
+  - docker
+runcmd:
+  - systemctl enable docker
+  - systemctl start docker
+```
+### 📥 Container Registries
+Container registries act as centralized hubs for storing, sharing, and distributing container images. These registries enable teams to version, test, and deploy containerized applications seamlessly across environments.
+#### 🗃️ Types of Registries
+| Registry                     | Description                                        |
+|------------------------------|----------------------------------------------------|
+| **Docker Hub**               | Default public registry for Docker, widely supported |
+| **GitHub Container Registry**| Integrates with GitHub repositories and workflows  |
+| **Private Registries**       | Self-hosted or cloud-managed; used for internal images and access control |
+#### 🔁 Image Lifecycle Workflow
+Common tasks to manage images with registries:
+```bash
+# Build an image from a Dockerfile
+docker build -t myapp:v1 .
+
+# Tag image for a specific registry
+docker tag myapp:v1 ghcr.io/username/myapp:v1
+
+# Push image to the registry
+docker push ghcr.io/username/myapp:v1
+
+# Pull an image from the registry
+docker pull nginx
+```
+#### 🔐 Securing Registries
+Container registries must be secured to protect image integrity, control access, and prevent unauthorized usage or tampering.
+##### 🔒 Security Practices
+| Practice                     | Description                                               |
+|------------------------------|-----------------------------------------------------------|
+| **Authentication**          | Require login credentials or access tokens                |
+| **TLS Encryption**          | Use HTTPS to encrypt image transfers                      |
+| **Access Control Lists (ACLs)** | Restrict who can push/pull/tag images                |
+| **Image Scanning**          | Detect vulnerabilities using tools like Trivy or Clair    |
+| **Signing and Verification**| Ensure image integrity using tools like Cosign or Notary  |
+##### 🔐 Example: Authenticating and Pushing Securely
+```bash
+# Log in to container registry
+docker login ghcr.io
+
+# Push signed and scanned image
+docker push ghcr.io/username/myapp:v1
+```
