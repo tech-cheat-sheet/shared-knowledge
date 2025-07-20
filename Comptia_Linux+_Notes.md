@@ -101,6 +101,21 @@
       - [🔁 System Booleans](#-system-booleans)
         - [Example:](#example-1)
       - [🔐 Policy Types](#-policy-types)
+- [3.0 3.0 Scripting, Containers, and Automation](#30-30-scripting-containers-and-automation)
+  - [3.1 Given a scenario, create simple shell scripts to automate common tasks](#31-given-a-scenario-create-simple-shell-scripts-to-automate-common-tasks)
+    - [🔁 Loops](#-loops)
+    - [🔀 Conditionals](#-conditionals)
+    - [🧪 Parameter Expansion \& Patterns](#-parameter-expansion--patterns)
+    - [🔢 Comparisons](#-comparisons)
+    - [📦 Variables \& Input](#-variables--input)
+    - [🔄 Search and Replace](#-search-and-replace)
+    - [📊 Standard Stream Redirection](#-standard-stream-redirection)
+        - [Here Document Example:](#here-document-example)
+      - [🚪 Exit Codes](#-exit-codes)
+      - [🧰 Built-In and Utility Commands](#-built-in-and-utility-commands)
+      - [🌍 Environment Variables](#-environment-variables)
+        - [Example Usage:](#example-usage-1)
+      - [🗂️ File Path Types](#️-file-path-types)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -887,3 +902,122 @@ SELinux supports multiple policy types tailored to different security needs:
 | **Minimum**      | Applies minimal restrictions; useful for testing or lightweight configurations |
 
 These policies define how rigorously SELinux enforces access controls across the system. “Targeted” provides a balance between usability and security, while “Minimum” is helpful for environments where stricter enforcement might interfere with essential services.
+# 3.0 3.0 Scripting, Containers, and Automation
+## 3.1 Given a scenario, create simple shell scripts to automate common tasks
+Shell scripts help automate repetitive tasks like backups, file processing, and system maintenance. Below is an organized reference of key elements used in basic scripting scenarios.
+### 🔁 Loops
+| Type     | Purpose                                      | Example                     |
+|----------|----------------------------------------------|-----------------------------|
+| `while`  | Loop until condition becomes false           | `while [ "$count" -lt 5 ]; do ...; done` |
+| `for`    | Iterate over a list                          | `for file in *.log; do ...; done` |
+| `until`  | Loop until condition becomes true            | `until ping -c1 host; do ...; done` |
+### 🔀 Conditionals
+| Structure      | Example                                               |
+|----------------|-------------------------------------------------------|
+| `if`           | `if [ "$var" -eq 1 ]; then echo "Yes"; fi`           |
+| `case`         | `case "$option" in 1) echo "One";; 2) echo "Two";; esac` |
+### 🧪 Parameter Expansion & Patterns
+| Feature            | Description                                 |
+|--------------------|---------------------------------------------|
+| **Globbing**       | Pattern matching: `*.txt`, `data??.csv`     |
+| **Brace Expansions** | Generate strings: `{01..05}`, `{a,b,c}`    |
+### 🔢 Comparisons
+| Type       | Sample Expression                              |
+|------------|-------------------------------------------------|
+| Arithmetic | `(( x > y ))`                                   |
+| String     | `[ "$a" = "$b" ]`                               |
+| Boolean    | `[[ $x -gt 10 && $y -lt 5 ]]`                   |
+### 📦 Variables & Input
+| Feature      | Example                         |
+|--------------|---------------------------------|
+| Set variable | `name="Arthur"`                 |
+| Read input   | `read username`                 |
+| Expand       | `echo "User: $username"`        |
+| Source       | `source ~/.bash_profile`        |
+### 🔄 Search and Replace
+| Tool   | Usage                                      |
+|--------|---------------------------------------------|
+| `sed`  | `sed 's/foo/bar/g' file.txt`               |
+| `awk`  | `awk '{print $1}' file.txt`                |
+| `grep` | `grep "pattern" file.txt`                  |
+| `find` | `find /path -name "*.log"`                 |
+| `xargs`| `find . -name '*.log' | xargs rm`          |
+### 📊 Standard Stream Redirection
+| Operator  | Description                     |
+|-----------|----------------------------------|
+| `>`       | Redirect stdout (overwrite)      |
+| `>>`      | Redirect stdout (append)         |
+| `<`       | Redirect input from file         |
+| `<<`      | Here document input              |
+| `|`       | Pipe output to another command   |
+| `||`      | OR operator (runs if previous fails) |
+| `&&`      | AND operator (runs if previous succeeds) |
+| `&`       | Run command in background        |
+| `2>`      | Redirect stderr                  |
+| `1>`      | Redirect stdout                  |
+##### Here Document Example:
+```bash
+cat <<EOF
+Hello, $USER
+Welcome to automated scripting!
+EOF
+```
+#### 🚪 Exit Codes
+Exit codes are numeric signals returned by a command or script indicating its result:
+| Code  | Meaning                         |
+|-------|----------------------------------|
+| `0`   | Success                          |
+| `1-255` | Various errors or failures     |
+| `$?`  | Exit code of the last command    |
+
+Example:
+```bash
+some_command
+echo $?   # Display the exit status of 'some_command'
+```
+#### 🧰 Built-In and Utility Commands
+Linux scripts can leverage built-in shell commands and external utilities for automation and data processing:
+| Category            | Examples                                                    |
+|---------------------|-------------------------------------------------------------|
+| **Shell Built-ins** | `echo`, `read`, `source`, `exit`, `test`                    |
+| **Text Processing** | `awk`, `sed`, `tr`, `cut`, `wc`, `tee`, `head`, `tail`      |
+| **Search & Filter** | `grep`, `egrep`, `find`, `xargs`                            |
+
+Common usage:
+```bash
+# Read user input
+read name
+echo "Hello, $name"
+
+# Filter lines containing "error"
+grep "error" logfile.txt | tee errors.log
+
+# Extract first column
+cut -d',' -f1 data.csv | sort | uniq
+```
+#### 🌍 Environment Variables
+Environment variables provide dynamic values used by the shell and scripts. They influence behavior and access to system-specific data.
+| Variable   | Description                                      |
+|------------|--------------------------------------------------|
+| `$PATH`    | List of directories the shell searches for executables |
+| `$SHELL`   | The user's default shell interpreter             |
+| `$?`       | Exit status of the most recently executed command |
+##### Example Usage:
+```bash
+echo "Shell in use: $SHELL"
+
+# Check if previous command succeeded
+if [ $? -eq 0 ]; then
+  echo "Command executed successfully!"
+else
+  echo "There was an error."
+fi
+```
+#### 🗂️ File Path Types
+Understanding file path types ensures scripts reliably locate and access resources.
+| Path Type     | Description                                               | Example                                 |
+|---------------|-----------------------------------------------------------|-----------------------------------------|
+| **Relative**  | Based on the current working directory                    | `../scripts/cleanup.sh`                 |
+| **Absolute**  | Full path from the root of the filesystem                 | `/home/arthur/scripts/cleanup.sh`       |
+
+Relative paths are flexible within a directory structure, while absolute paths guarantee location consistency across environments.
