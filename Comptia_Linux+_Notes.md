@@ -91,6 +91,16 @@
       - [🔧 Configuration Files](#-configuration-files)
       - [🛠️ Common Privilege-Elevation Commands](#️-common-privilege-elevation-commands)
       - [Example Usage:](#example-usage)
+  - [2.5 Given a scenario, apply the appropriate access controls](#25-given-a-scenario-apply-the-appropriate-access-controls)
+    - [📁 File Permissions](#-file-permissions)
+      - [🔧 Extended Attributes](#-extended-attributes)
+      - [Example:](#example)
+    - [🛡️ SELinux (Security-Enhanced Linux)](#️-selinux-security-enhanced-linux)
+      - [📦 Context \& Label Management](#-context--label-management)
+      - [📋 SELinux States](#-selinux-states)
+      - [🔁 System Booleans](#-system-booleans)
+        - [Example:](#example-1)
+      - [🔐 Policy Types](#-policy-types)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -807,3 +817,73 @@ su -
 # Launch GUI text editor as root
 pkexec gedit /etc/ssh/sshd_config
 ```
+## 2.5 Given a scenario, apply the appropriate access controls
+Access control mechanisms ensure that users, applications, and processes only interact with files and resources they’re authorized to. Here’s how to configure them effectively.
+### 📁 File Permissions
+Traditional Unix permissions involve:
+- **Owner**, **Group**, and **Other**
+- `r` (read), `w` (write), `x` (execute)
+#### 🔧 Extended Attributes
+| Feature          | Description                                                         |
+|------------------|---------------------------------------------------------------------|
+| **ACL (Access Control List)** | Fine-grained permissions beyond owner/group: `getfacl`, `setfacl` |
+| **SUID (Set User ID)**        | Executed file runs with owner's privileges             |
+| **SGID (Set Group ID)**       | Directory: new files inherit group. File: runs with group privileges |
+| **Sticky Bit**                | Prevents file deletion except by file owner (e.g. `/tmp`) |
+#### Example:
+```bash
+chmod 4755 /usr/bin/example   # Sets SUID
+chmod 2770 /data              # SGID for group inheritance
+chmod +t /shared              # Sticky bit
+```
+### 🛡️ SELinux (Security-Enhanced Linux)
+SELinux provides Mandatory Access Control (MAC) for enhanced system protection. It enforces policies using file and process labels, managing access based on roles and types.
+#### 📦 Context & Label Management
+| Tool/Command    | Purpose                                             |
+|-----------------|-----------------------------------------------------|
+| `ls -Z`         | View SELinux context labels                        |
+| `chcon`         | Change security context of a file temporarily      |
+| `restorecon`    | Restore default SELinux context from policy        |
+| `semanage`      | Persistent context and port modifications          |
+
+- **Autorelabel** – Forces a full system relabel at reboot:
+```bash
+touch /.autorelabel && reboot
+```
+#### 📋 SELinux States
+SELinux can operate in three modes, each affecting how policies are enforced:
+| Mode         | Behavior                                               |
+|--------------|--------------------------------------------------------|
+| **Enforcing**  | Actively blocks unauthorized access according to SELinux policy |
+| **Permissive** | Logs policy violations without enforcing restrictions |
+| **Disabled**   | Completely disables SELinux enforcement and logging   |
+
+Check current SELinux mode:
+```bash
+getenforce
+```
+Switch mode temporarily (until reboot):
+```shell
+setenforce 0   # Permissive
+setenforce 1   # Enforcing
+```
+#### 🔁 System Booleans
+SELinux booleans allow you to toggle specific access controls without rewriting policy definitions.
+| Command                        | Function                                                   |
+|--------------------------------|------------------------------------------------------------|
+| `getsebool <boolean>`          | View the current value of a boolean setting               |
+| `setsebool <boolean> on|off`   | Set a boolean temporarily until next reboot               |
+| `setsebool -P <boolean> on|off`| Apply the change persistently across reboots              |
+##### Example:
+```bash
+getsebool httpd_can_network_connect
+setsebool -P httpd_can_network_connect on
+```
+#### 🔐 Policy Types
+SELinux supports multiple policy types tailored to different security needs:
+| Policy Type     | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| **Targeted**     | Applies policies only to selected critical services (default in most systems) |
+| **Minimum**      | Applies minimal restrictions; useful for testing or lightweight configurations |
+
+These policies define how rigorously SELinux enforces access controls across the system. “Targeted” provides a balance between usability and security, while “Minimum” is helpful for environments where stricter enforcement might interfere with essential services.
