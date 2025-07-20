@@ -120,6 +120,14 @@
     - [🛠️ Container Management](#️-container-management)
     - [🖼️ Container Image Operations](#️-container-image-operations)
     - [🧪 Example Workflow: Simple Web Container](#-example-workflow-simple-web-container)
+  - [3.3 Given a scenario, perform basic version control using Git](#33-given-a-scenario-perform-basic-version-control-using-git)
+    - [🔃 Cloning Repositories](#-cloning-repositories)
+    - [📤 Pushing and 📥 Pulling Changes](#-pushing-and--pulling-changes)
+    - [✍️ Staging and Committing Changes](#️-staging-and-committing-changes)
+    - [🚀 Branching and Switching](#-branching-and-switching)
+    - [🏷️ Tagging Releases](#️-tagging-releases)
+    - [🚫 Ignoring Files](#-ignoring-files)
+      - [Sample `.gitignore`](#sample-gitignore)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -1064,4 +1072,90 @@ docker exec -it webserver bash
 # Stop and remove container
 docker stop webserver
 docker rm webserver
+```
+## 3.3 Given a scenario, perform basic version control using Git
+Git helps track changes, collaborate efficiently, and manage project versions. Here's a concise guide to key Git operations using Markdown format.
+### 🔃 Cloning Repositories
+Download a remote Git repository to your local machine:
+```bash
+git clone https://github.com/user/project.git
+```
+### 📤 Pushing and 📥 Pulling Changes
+Manage syncing between local and remote repositories:
+- **Push** – Upload your local commits to a remote branch:
+```bash
+git push origin main
+```
+- **Pull** – Fetch and merge remote changes into your local branch:
+```shell
+git pull origin main
+```
+### ✍️ Staging and Committing Changes
+Prepare and record updates in your Git repository:
+- **Add files to staging:**
+```bash
+git add file.txt         # Stage a specific file
+git add .                # Stage all changes
+```
+- **Commit staged changes with a message:**
+```shell
+git commit -m "Add feature to login page"
+```
+You can also amend the last commit:
+```shell
+git commit --amend -m "Updated login feature with validation"
+```
+### 🚀 Branching and Switching
+Branches allow you to work on isolated features, fixes, or experiments without affecting the main codebase.
+- **Create a new branch:**
+```bash
+git branch feature-auth
+```
+- **Switch to an existing branch:**
+```shell
+git checkout feature-auth
+git checkout main
+```
+- **Create and switch in one step:**
+```shell
+git checkout -b feature-auth
+```
+### 🏷️ Tagging Releases
+Tags identify specific points in a repository’s history—ideal for marking stable versions, releases, or milestones.
+- **Create a lightweight tag:**
+```bash
+git tag v1.0.0
+```
+- **Create an annotated tag (recommended for releases):**
+```shell
+git tag -a v1.1.0 -m "First stable release"
+```
+- **List all tags in the repository:**
+```shell
+git tag
+```
+### 🚫 Ignoring Files
+Using a `.gitignore` file helps keep your Git repository clean by excluding files and directories that shouldn't be tracked—such as temporary files, build artifacts, and dependencies.
+#### Sample `.gitignore`
+```shell
+# Logs and temporary files
+*.log
+*.tmp
+
+# Build artifacts
+dist/
+*.out
+
+# IDE and OS files
+.DS_Store
+*.swp
+
+# Dependency folders
+node_modules/
+
+# Python cache
+pycache/ *.pyc
+
+# Docker files
+*.env docker-compose.override.yml
 ```
