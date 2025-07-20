@@ -212,6 +212,18 @@
       - [➤ Memory Leaks](#-memory-leaks)
     - [🔄 Swapping](#-swapping)
     - [🔧 Hardware Inspection](#-hardware-inspection)
+  - [4.4 Given a scenario, analyze and troubleshoot user access and file permissions](#44-given-a-scenario-analyze-and-troubleshoot-user-access-and-file-permissions)
+    - [🔑 User Login Issues](#-user-login-issues)
+    - [🗂️ User File Access Issues](#️-user-file-access-issues)
+      - [➤ Group](#-group)
+      - [➤ Context (SELinux/AppArmor)](#-context-selinuxapparmor)
+      - [➤ Permission](#-permission)
+      - [➤ ACL (Access Control Lists)](#-acl-access-control-lists)
+      - [➤ Attribute](#-attribute)
+      - [➤ Policy vs. Non-Policy](#-policy-vs-non-policy)
+    - [🔐 Password Issues](#-password-issues)
+    - [🧰 Privilege Elevation](#-privilege-elevation)
+    - [📊 Quota Issues](#-quota-issues)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -1707,3 +1719,43 @@ openssl s_client -connect <host>:443
 | `/proc/meminfo`  | Memory usage breakdown          |
 
 These give a full view of hardware topology, helpful for identifying limits and misconfiguration.
+## 4.4 Given a scenario, analyze and troubleshoot user access and file permissions
+### 🔑 User Login Issues
+- Check authentication method: Local, LDAP, Kerberos, etc.
+- Inspect logs: `/var/log/auth.log` or `/var/log/secure` for failed logins.
+- Use `last` and `who` to verify login activity.
+- Validate home directory, shell access, and account status (`passwd -S <user>`).
+### 🗂️ User File Access Issues
+#### ➤ Group
+- Confirm user group membership via `groups <username>` or `id`
+- Check file group ownership with `ls -l`.
+- Add users to groups using `usermod -aG <group> <user>`.
+#### ➤ Context (SELinux/AppArmor)
+- In SELinux environments, inspect with `ls -Z`, and manage with `chcon`.
+- For AppArmor, check profile enforcement and logs in `/var/log/syslog`.
+#### ➤ Permission
+- Use `ls -l` for standard permissions (rwx).
+- Correct with `chmod` (e.g., `chmod 644 file.txt`).
+- Ensure the effective UID/GID can access the file.
+#### ➤ ACL (Access Control Lists)
+- View ACLs with `getfacl file.txt`.
+- Set granular permissions with `setfacl -m u:username:rwx file.txt`.
+- Remove with `setfacl -x u:username file.txt`.
+#### ➤ Attribute
+- Immutable or append-only files can be checked via `lsattr`.
+- Use `chattr -i` or `chattr -a` to modify if access denied.
+#### ➤ Policy vs. Non-Policy
+- Review system-wide policies via PAM, audit rules, or security frameworks.
+- Confirm no conflicting policies that override expected behavior.
+### 🔐 Password Issues
+- Force reset with `passwd <user>`.
+- Check password aging and expiration via `chage -l <user>`.
+- Inspect PAM configuration (`/etc/pam.d/`) for policy enforcement.
+### 🧰 Privilege Elevation
+- Confirm sudo privileges: `sudo -l` or examine `/etc/sudoers`.
+- Use `visudo` for safe edits.
+- For temporary elevation: `su - <user>` or sudoers configuration.
+### 📊 Quota Issues
+- Check quotas with `quota -u <user>` and `repquota -a`.
+- Inspect disk usage: `du -sh ~` or `df -h`.
+- Configure quotas via `edquota` and verify with mount options (`usrquota`, `grpquota`).
