@@ -224,6 +224,24 @@
     - [🔐 Password Issues](#-password-issues)
     - [🧰 Privilege Elevation](#-privilege-elevation)
     - [📊 Quota Issues](#-quota-issues)
+  - [4.5 Given a scenario, use systemd to diagnose and resolve common problems with a Linux system](#45-given-a-scenario-use-systemd-to-diagnose-and-resolve-common-problems-with-a-linux-system)
+    - [🧩 Unit Files: Anatomy \& Behavior](#-unit-files-anatomy--behavior)
+      - [➤ Service Units](#-service-units)
+    - [🌐 Networking Services](#-networking-services)
+    - [⏲️ Timers](#️-timers)
+      - [➤ Timer Unit vs. Service Unit](#-timer-unit-vs-service-unit)
+      - [➤ Time Expressions](#-time-expressions)
+    - [📦 Mount Units](#-mount-units)
+      - [➤ Naming Conventions](#-naming-conventions)
+      - [➤ Components](#-components)
+    - [🎯 Target Units (Grouping Services)](#-target-units-grouping-services)
+    - [🛠️ Diagnosing Common Problems](#️-diagnosing-common-problems)
+      - [➤ Name Resolution Failure](#-name-resolution-failure)
+      - [➤ Application Crash](#-application-crash)
+      - [➤ Time-Zone Configuration](#-time-zone-configuration)
+      - [➤ Boot Issues](#-boot-issues)
+      - [➤ Journal Issues](#-journal-issues)
+      - [➤ Services Not Starting on Time](#-services-not-starting-on-time)
 # CompTIA Linux+ Exam XK0-005
 # 1.0 System Management
 ## 1.1 Summarize Linux fundamentals
@@ -1759,3 +1777,89 @@ These give a full view of hardware topology, helpful for identifying limits and 
 - Check quotas with `quota -u <user>` and `repquota -a`.
 - Inspect disk usage: `du -sh ~` or `df -h`.
 - Configure quotas via `edquota` and verify with mount options (`usrquota`, `grpquota`).
+## 4.5 Given a scenario, use systemd to diagnose and resolve common problems with a Linux system
+### 🧩 Unit Files: Anatomy & Behavior
+#### ➤ Service Units
+- Configuration in `/etc/systemd/system/` or `/lib/systemd/system/`.
+- Key directives:
+  - `ExecStart=` – command to run
+  - `ExecStop=` – stop action
+  - `Type=` – e.g., `simple`, `forking`, `oneshot`, `notify`
+  - `User=` – run as specified non-root user (security context)
+  - `Before=` / `After=` – set ordering rules with other units
+  - `Requires=` / `Wants=` – hard vs. soft dependencies
+```shell
+systemctl status <unit>
+systemctl cat <unit>
+```
+### 🌐 Networking Services
+- Verify services like `network.service` or `NetworkManager.service`.
+- For DNS/network-related units, check ordering with `network-online.target`.
+- Confirm dependencies:
+```shell
+systemctl list-dependencies network-online.target
+```
+### ⏲️ Timers
+#### ➤ Timer Unit vs. Service Unit
+Timer units trigger corresponding service units at defined intervals.
+#### ➤ Time Expressions
+- `OnCalendar=` – e.g., `Mon *-*-* 08:00:00`
+- `OnBootSec=` – delay after boot
+- Check timers with:
+```shell
+systemctl list-timers
+```
+### 📦 Mount Units
+#### ➤ Naming Conventions
+Mount unit: `/etc/systemd/system/mnt-data.mount` → `/mnt/data`
+#### ➤ Components
+- `What=` – source device
+- `Where=` – target mount point
+- `Type=` – filesystem type
+- `Options=` – like `noatime`, `defaults`
+Enable auto-mount:
+```shell
+systemctl enable mnt-data.mount
+```
+### 🎯 Target Units (Grouping Services)
+| Target                   | Purpose                                                                 |
+|--------------------------|-------------------------------------------------------------------------|
+| `default.target`         | Boot target (usually points to `graphical` or `multi-user`)             |
+| `multi-user.target`      | Non-graphical, multi-user setup                                         |
+| `network-online.target`  | Network is up and reachable                                             |
+| `graphical.target`       | Includes GUI (e.g. GDM, KDE)                                            |
+
+Switch targets:
+```shell
+systemctl isolate multi-user.target
+```
+### 🛠️ Diagnosing Common Problems
+#### ➤ Name Resolution Failure
+- Check `systemd-resolved.service` and `resolvectl status`.
+- Ensure DNS is set via `systemd-networkd` or `NetworkManager`.
+#### ➤ Application Crash
+Inspect journal logs:
+```shell
+journalctl -xeu <service-name>
+```
+Look for segfaults, permission issues, or failed `ExecStart`.
+#### ➤ Time-Zone Configuration
+Set system time zone:
+```shell
+timedatectl set-timezone America/Montreal
+```
+#### ➤ Boot Issues
+Analyze boot logs:
+```shell
+journalctl -b
+```
+Use `systemctl default` and `rescue.target` for safe recovery.
+#### ➤ Journal Issues
+- Is `systemd-journald` active?
+- Inspect `/etc/systemd/journald.conf` for storage limits, retention, etc.
+#### ➤ Services Not Starting on Time
+Look at unit dependencies and ordering:
+```shell
+systemctl show <unit> -p After -p Before
+```
+Use `systemd-analyze critical-chain` for boot-time service order.
