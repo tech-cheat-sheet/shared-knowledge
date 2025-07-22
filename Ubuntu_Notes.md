@@ -22,6 +22,17 @@
   - [🆚 Ubuntu Support Comparison](#-ubuntu-support-comparison)
   - [🗂️ Ubuntu Repository Comparison](#️-ubuntu-repository-comparison)
     - [🧠 Quick Summary](#-quick-summary)
+    - [List all installed packages from Universe/Multiverse repo - CLI](#list-all-installed-packages-from-universemultiverse-repo---cli)
+    - [List all installed packages from Universe/Multiverse repo - SCRIPT](#list-all-installed-packages-from-universemultiverse-repo---script)
+    - [Delete/Remove/Uninstall Universe/Multiverse Packages](#deleteremoveuninstall-universemultiverse-packages)
+    - [1. View All Active Repositories](#1-view-all-active-repositories)
+    - [2. Use apt-cache policy for a Detailed View](#2-use-apt-cache-policy-for-a-detailed-view)
+      - [📁 Package Sources Summary (`apt-cache policy`)](#-package-sources-summary-apt-cache-policy)
+      - [🧠 How Priority Works](#-how-priority-works)
+      - [🔍 Repository Sections Explained](#-repository-sections-explained)
+      - [🛡️ Security Updates](#️-security-updates)
+    - [📁 3. List Only External PPAs](#-3-list-only-external-ppas)
+    - [🧪 4. Filter for Specific Repos (e.g., Universe or Multiverse)](#-4-filter-for-specific-repos-eg-universe-or-multiverse)
 <!-- '# Ubuntu - Useful Commands' BEGIN -->
 # Ubuntu - Useful Commands
 ## Check Ubuntu Distribution
@@ -197,3 +208,78 @@ Sources:
 
 Sources:
 - https://ubuntu.com/about/release-cycle
+### List all installed packages from Universe/Multiverse repo - CLI
+Prerequisite
+```shell
+sudo apt install --yes aptitude
+```
+
+```shell
+aptitude search -F "%p" "~i ?section(universe)"
+aptitude search -F "%p" "~i ?section(multiverse)"
+```
+- `~i` filters for installed packages
+- `?section(universe)` limits results to Universe repo
+- `%p` prints package names only
+### List all installed packages from Universe/Multiverse repo - SCRIPT
+```shell
+for pkg in $(dpkg-query -W -f='${Package}\n'); do
+  apt-cache policy "$pkg" | grep -q 'universe' && echo "$pkg"
+  apt-cache policy "$pkg" | grep -q 'multiverse' && echo "$pkg"
+done
+```
+### Delete/Remove/Uninstall Universe/Multiverse Packages
+```shell
+sudo apt purge $(aptitude search -F "%p" "~i ?section(universe)")
+sudo apt purge $(aptitude search -F "%p" "~i ?section(multiverse)")
+```
+### 1. View All Active Repositories
+```shell
+grep -rhE ^deb /etc/apt/sources.list /etc/apt/sources.list.d/
+```
+- This shows all active deb entries (binary package sources).
+- It includes both official Ubuntu repos and any third-party PPAs.
+### 2. Use apt-cache policy for a Detailed View
+```shell
+apt-cache policy
+```
+- Lists all repositories and their priorities.
+- Useful for checking which repo a package will be pulled from.
+#### 📁 Package Sources Summary (`apt-cache policy`)
+This tells you where packages and updates come from, and what priority each source has when installing or updating software.
+| Priority | Source URL                                             | Repository Info                                                                 |
+|----------|--------------------------------------------------------|----------------------------------------------------------------------------------|
+| 500      | http://security.ubuntu.com/...                         | Official Ubuntu security updates: main, universe, restricted, multiverse        |
+| 500      | http://ca.archive.ubuntu.com/...                       | Base Ubuntu repositories: noble main, universe, restricted, multiverse          |
+| 100      | http://ca.archive.ubuntu.com/ubuntu noble-backports/...| Lower-priority backport packages (main and universe)                            |
+| 500      | https://pkgs.k8s.io/...                                | Kubernetes packages from openSUSE Build Service                                 |
+| 500      | https://download.docker.com/...                        | Docker CE stable repository                                                      |
+| 100      | /var/lib/dpkg/status                                   | Locally installed packages not tied to a repository                              |
+
+#### 🧠 How Priority Works
+APT assigns numeric priorities to determine which source wins during installation:
+- `500` is standard for online repositories
+- `100` is typical for backports or manually installed packages
+- Higher numbers override lower ones
+- You could "pin" packages to increase or decrease preference, but your system currently shows no pinned packages
+#### 🔍 Repository Sections Explained
+- `main` → Officially supported software by Canonical
+- `universe` → Community-maintained open-source packages
+- `restricted` → Supported but proprietary packages (e.g. drivers)
+- `multiverse` → Software with licensing restrictions (e.g. codecs, fonts)
+#### 🛡️ Security Updates
+The `noble-security` entries show that your system is set to receive timely security patches from `security.ubuntu.com`, which is great practice.
+### 📁 3. List Only External PPAs
+```shell
+ls /etc/apt/sources.list.d/
+```
+- This directory contains `.list` files for added PPAs and third-party sources.
+To view their contents:
+```shell
+cat /etc/apt/sources.list.d/*.list
+```
+### 🧪 4. Filter for Specific Repos (e.g., Universe or Multiverse)
+```shell
+grep -rhE ^deb /etc/apt/sources.list* | grep universe
+grep -rhE ^deb /etc/apt/sources.list* | grep multiverse
+```
