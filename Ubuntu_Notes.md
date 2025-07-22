@@ -224,8 +224,11 @@ aptitude search -F "%p" "~i ?section(multiverse)"
 - `%p` prints package names only
 ### How to Exclude *lib* packages from results
 ```shell
+# list all installed packages from the Universe repository excluding those with lib in their name
 aptitude search -F "%p" "~i ?section(universe)" | grep -v lib
-aptitude search -F "%p" "~i ?section(multiverse)" | grep -v lib
+
+# exclude packages that start with lib
+aptitude search -F "%p" "~i ?section(universe)" | grep -v '^lib'
 ```
 - `aptitude search -F "%p" "~i ?section(universe)` lists all installed packages from Universe
 - `grep -v lib` filters out any package names that contain the string lib
