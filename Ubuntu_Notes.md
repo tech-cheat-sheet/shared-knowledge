@@ -23,6 +23,7 @@
   - [🗂️ Ubuntu Repository Comparison](#️-ubuntu-repository-comparison)
     - [🧠 Quick Summary](#-quick-summary)
     - [List all installed packages from Universe/Multiverse repo - CLI](#list-all-installed-packages-from-universemultiverse-repo---cli)
+    - [How to Exclude *lib* packages from results](#how-to-exclude-lib-packages-from-results)
     - [List all installed packages from Universe/Multiverse repo - SCRIPT](#list-all-installed-packages-from-universemultiverse-repo---script)
     - [Delete/Remove/Uninstall Universe/Multiverse Packages](#deleteremoveuninstall-universemultiverse-packages)
     - [1. View All Active Repositories](#1-view-all-active-repositories)
@@ -221,6 +222,14 @@ aptitude search -F "%p" "~i ?section(multiverse)"
 - `~i` filters for installed packages
 - `?section(universe)` limits results to Universe repo
 - `%p` prints package names only
+### How to Exclude *lib* packages from results
+```shell
+aptitude search -F "%p" "~i ?section(universe)" | grep -v lib
+aptitude search -F "%p" "~i ?section(multiverse)" | grep -v lib
+```
+- `aptitude search -F "%p" "~i ?section(universe)` lists all installed packages from Universe
+- `grep -v lib` filters out any package names that contain the string lib
+- This is a simple string match, so it will exclude any package with lib anywhere in its name—whether it's a library or not.
 ### List all installed packages from Universe/Multiverse repo - SCRIPT
 ```shell
 for pkg in $(dpkg-query -W -f='${Package}\n'); do
